@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "977823be-23e8-4ae7-8679-4b38e695b1e7": {
+      "ProjectGuid": "977823be-23e8-4ae7-8679-4b38e695b1e7",
+      "DisplayName": "NeuralNetworkLibrary",
+      "ColorIndex": 0
+    },
+    "a129bc82-0d9b-4c15-85df-8737d18c2b83": {
+      "ProjectGuid": "a129bc82-0d9b-4c15-85df-8737d18c2b83",
+      "DisplayName": "MyTestsConsole",
+      "ColorIndex": 1
+    },
+    "756b7b99-f940-4399-a67f-6cffff5c07bb": {
+      "ProjectGuid": "756b7b99-f940-4399-a67f-6cffff5c07bb",
+      "DisplayName": "MyTestsForms",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

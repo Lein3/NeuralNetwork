@@ -1,0 +1,11 @@
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\bin\Debug\MyTestsConsole.exe.config
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\bin\Debug\MyTestsConsole.exe
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\bin\Debug\MyTestsConsole.pdb
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\bin\Debug\NeuralNetwork.dll
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\bin\Debug\NeuralNetwork.pdb
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\obj\Debug\MyTestsConsole.csproj.AssemblyReference.cache
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\obj\Debug\MyTestsConsole.csproj.SuggestedBindingRedirects.cache
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\obj\Debug\MyTestsConsole.csproj.CoreCompileInputs.cache
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\obj\Debug\MyTestsConsole.csproj.CopyComplete
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\obj\Debug\MyTestsConsole.exe
+C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\obj\Debug\MyTestsConsole.pdb
