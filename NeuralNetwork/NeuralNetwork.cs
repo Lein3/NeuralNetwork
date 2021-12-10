@@ -7,10 +7,11 @@ using System.IO;
 
 namespace NeuralNetworkLibrary
 {
+    [Serializable]
     public class NeuralNetwork
     {
         public Structure structure { get; }
-        public List<Layer> layers { get; }
+        public List<Layer> layers { get; set; }
 
         public NeuralNetwork(Structure temp_Structure)
         {
@@ -92,12 +93,12 @@ namespace NeuralNetworkLibrary
             layers.Add(outputLayer);
         }
 
-        public void Learn(List<double> expected, List<double[]> inputs)
+        public void Learn(List<double> expected, List<double[]> inputs, double learningRate)
         {
             for (int i = 0; i < expected.Count; i++)
             {
                 Learn_RecalculateError(expected[i], inputs[i].ToList());
-                Learn_BackPropagation();
+                Learn_BackPropagation(learningRate);
             }
         }
 
@@ -121,11 +122,11 @@ namespace NeuralNetworkLibrary
             }
         }
 
-        private void Learn_BackPropagation()
+        private void Learn_BackPropagation(double learningRate)
         {
             for (int i = 1; i < layers.Count; i++)
                 for (int j = 0; j < layers[i].neurons.Count; j++)
-                    layers[i].neurons[j].Learn(structure.learningRate);
+                    layers[i].neurons[j].Learn(learningRate);
         }
 
         public void Scalling(List<double[]> inputs)
@@ -144,7 +145,7 @@ namespace NeuralNetworkLibrary
             }
         }
 
-        public void Read_Scalling_Learn(string path, int times)
+        public void Read_Scalling_Learn(string path, int times, double learningRate)
         {
             List<double[]> inputs = new List<double[]>();
             List<double> outputs = new List<double>();
@@ -160,7 +161,7 @@ namespace NeuralNetworkLibrary
             }
             Scalling(inputs);
             for (int i = 0; i < times; i++)
-                Learn(outputs, inputs);
+                Learn(outputs, inputs, learningRate);
         }
     }
 }

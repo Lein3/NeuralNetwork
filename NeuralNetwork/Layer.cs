@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkLibrary
 {
+    [Serializable]
     public class Layer
     {
         public List<Neuron> neurons { get; }

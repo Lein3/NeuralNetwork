@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkLibrary
 {
+    [Serializable]
     public class Neuron
     {
         public List<double> weights { get; set; }
@@ -14,8 +15,8 @@ namespace NeuralNetworkLibrary
         public double output { get; set; }
         public double delta { get; set; }
         public double sum { get; set; }
-        public double max { get; set; } = 1;
-        public double min { get; set; } = 0;
+        public double? max { get; set; }
+        public double? min { get; set; }
         public static Random rnd { get; set; } = new Random();
 
         public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType)
@@ -38,13 +39,15 @@ namespace NeuralNetworkLibrary
             for (int i = 0; i < temp_inputs.Count; i++)
             {
                 if (neuronType == Structure.NeuronType.Input)
-                    inputs[i] = (temp_inputs[i] - min) / (max - min);
+                    inputs[i] = Convert.ToDouble((temp_inputs[i] - min) / (max - min));
                 else
                     inputs[i] = temp_inputs[i];
             }
+
             sum = 0;
             for (int i = 0; i < inputs.Count; i++)
                 sum += inputs[i] * weights[i];
+
             if (neuronType != Structure.NeuronType.Input)
                 output = Sigmoid(sum);
             else
