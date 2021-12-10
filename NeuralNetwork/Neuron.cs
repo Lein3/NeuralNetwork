@@ -12,9 +12,9 @@ namespace NeuralNetworkLibrary
         public List<double> weights { get; }
         public List<double> inputs { get; }
         public Structure.NeuronType neuronType { get; }
-        public double output { get; }
+        public double output { get; set; }
         public double delta { get; }
-        public double sum { get; }
+        public double sum { get; set; }
         public double? max { get; set; }
         public double? min { get; set; }
         private static Random rnd { get; } = new Random();
