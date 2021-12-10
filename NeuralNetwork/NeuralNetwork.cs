@@ -22,7 +22,7 @@ namespace NeuralNetworkLibrary
             CreateOutputLayer();
         }
 
-        public double Predict(List<double> inputSignals)
+        public double Predict(List<double> inputSignals, bool clear = false)
         {
             SendSignalsToInputLayer(inputSignals);
             SendSignalsAfterInputLayer();
@@ -30,6 +30,9 @@ namespace NeuralNetworkLibrary
                 return layers.Last().neurons[0].output;
             else
                 return layers.Last().neurons.OrderByDescending(n => n.output).FirstOrDefault().output;
+
+            if (clear)
+                Learn_Clear();
         }
 
         private void SendSignalsToInputLayer(List<double> inputSignals)
@@ -100,6 +103,7 @@ namespace NeuralNetworkLibrary
                 Learn_RecalculateError(expected[i], inputs[i].ToList());
                 Learn_BackPropagation(learningRate);
             }
+            Learn_Clear();
         }
 
         private void Learn_RecalculateError(double expectedResult, List<double> inputSignals)
@@ -127,6 +131,19 @@ namespace NeuralNetworkLibrary
             for (int i = 1; i < layers.Count; i++)
                 for (int j = 0; j < layers[i].neurons.Count; j++)
                     layers[i].neurons[j].Learn(learningRate);
+        }
+
+        public void Learn_Clear()
+        {
+            foreach (var layer in layers)
+                foreach (var neuron in layer.neurons)
+                {
+                    neuron.delta = 0;
+                    neuron.output = 0;
+                    neuron.sum = 0;
+                    for (int i = 0; i < neuron.inputs.Count; i++)
+                        neuron.inputs[i] = 0;
+                }
         }
 
         public void Scalling(List<double[]> inputs)

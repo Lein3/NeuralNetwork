@@ -18,7 +18,7 @@ namespace MyTestsConsole
             //test1();
             //test2();
             test3();
-            //test4();
+            test4();
             Console.ReadLine();
         }
 
@@ -51,6 +51,7 @@ namespace MyTestsConsole
             neuralNetwork.Read_Scalling_Learn(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv", 5000, 0.01);
             var templist = new List<double> { 63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1 };
             var result = neuralNetwork.Predict(templist);
+            neuralNetwork.Learn_Clear();
             Console.WriteLine(result.ToString());
         }
 

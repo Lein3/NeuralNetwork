@@ -9,8 +9,8 @@ namespace NeuralNetworkLibrary
     [Serializable]
     public class Neuron
     {
-        public List<double> weights { get; }
-        public List<double> inputs { get; }
+        public List<double> weights { get;}
+        public List<double> inputs { get; set; }
         public Structure.NeuronType neuronType { get; }
         public double output { get; set; }
         public double delta { get; set; }
