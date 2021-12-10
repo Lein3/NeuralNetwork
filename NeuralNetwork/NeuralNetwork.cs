@@ -11,7 +11,7 @@ namespace NeuralNetworkLibrary
     public class NeuralNetwork
     {
         public Structure structure { get; }
-        public List<Layer> layers { get; set; }
+        public List<Layer> layers { get; }
 
         public NeuralNetwork(Structure temp_Structure)
         {

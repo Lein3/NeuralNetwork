@@ -9,15 +9,15 @@ namespace NeuralNetworkLibrary
     [Serializable]
     public class Neuron
     {
-        public List<double> weights { get; set; }
+        public List<double> weights { get; }
         public List<double> inputs { get; }
         public Structure.NeuronType neuronType { get; }
-        public double output { get; set; }
-        public double delta { get; set; }
-        public double sum { get; set; }
+        public double output { get; }
+        public double delta { get; }
+        public double sum { get; }
         public double? max { get; set; }
         public double? min { get; set; }
-        public static Random rnd { get; set; } = new Random();
+        private static Random rnd { get; } = new Random();
 
         public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType)
         {
