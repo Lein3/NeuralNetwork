@@ -4,3 +4,9 @@ C:\ProgesForC\Dz\UltraSolution2\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csp
 C:\ProgesForC\Dz\UltraSolution2\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csproj.CoreCompileInputs.cache
 C:\ProgesForC\Dz\UltraSolution2\NeuralNetwork\obj\Debug\NeuralNetwork.dll
 C:\ProgesForC\Dz\UltraSolution2\NeuralNetwork\obj\Debug\NeuralNetwork.pdb
+C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\bin\Debug\NeuralNetwork.dll
+C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\bin\Debug\NeuralNetwork.pdb
+C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csproj.AssemblyReference.cache
+C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csproj.CoreCompileInputs.cache
+C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\obj\Debug\NeuralNetwork.dll
+C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\obj\Debug\NeuralNetwork.pdb

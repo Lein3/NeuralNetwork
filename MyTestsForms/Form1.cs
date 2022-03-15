@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using NeuralNetworkLibrary;
@@ -74,7 +68,7 @@ namespace MyTestsForms
 
         private void button_recalculateError_Click(object sender, EventArgs e)
         {
-            neuralNetwork.Learn(outputs, inputs);
+            neuralNetwork.Learn(outputs, inputs, 0.1);
             button_display_Click(sender, e);
         }
 
@@ -91,7 +85,7 @@ namespace MyTestsForms
             inputs.Add(new double[] { 0.1, 0.1 });
             outputs.Add(0);
             for (int i = 0; i < 10000; i++)
-                neuralNetwork.Learn(outputs, inputs);
+                neuralNetwork.Learn(outputs, inputs, 0.1);
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -101,7 +95,7 @@ namespace MyTestsForms
             inputs.Add(new double[] { 1, 1 });
             outputs.Add(1);
             for (int i = 0; i < 10000; i++)
-                neuralNetwork.Learn(outputs, inputs);
+                neuralNetwork.Learn(outputs, inputs, 0.1);
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -111,7 +105,7 @@ namespace MyTestsForms
             inputs.Add(new double[] { 1, 0 });
             outputs.Add(1);
             for (int i = 0; i < 10000; i++)
-                neuralNetwork.Learn(outputs, inputs);
+                neuralNetwork.Learn(outputs, inputs, 0.1);
         }
 
         private void button11_Click(object sender, EventArgs e)

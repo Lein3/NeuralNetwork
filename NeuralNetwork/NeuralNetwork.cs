@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace NeuralNetworkLibrary
@@ -96,7 +94,7 @@ namespace NeuralNetworkLibrary
             layers.Add(outputLayer);
         }
 
-        public void Learn(List<double> expected, List<double[]> inputs, double learningRate)
+        public void Learn(List<double> expected, List<double[]> inputs, double learningRate = 0.1)
         {
             for (int i = 0; i < expected.Count; i++)
             {

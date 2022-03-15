@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNetworkLibrary
 {
@@ -15,8 +12,8 @@ namespace NeuralNetworkLibrary
         public double output { get; set; }
         public double delta { get; set; }
         public double sum { get; set; }
-        public double? max { get; set; }
-        public double? min { get; set; }
+        public double? max { get; set; } = 1;
+        public double? min { get; set; } = 0;
         private static Random rnd { get; } = new Random();
 
         public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType)
@@ -34,14 +31,14 @@ namespace NeuralNetworkLibrary
             }
         }
 
-        public double ProcessInformation(List<double> temp_inputs)
+        public double ProcessInformation(List<double> original_inputs)
         {
-            for (int i = 0; i < temp_inputs.Count; i++)
+            for (int i = 0; i < original_inputs.Count; i++)
             {
                 if (neuronType == Structure.NeuronType.Input)
-                    inputs[i] = Convert.ToDouble((temp_inputs[i] - min) / (max - min));
+                    inputs[i] = Convert.ToDouble((original_inputs[i] - min) / (max - min));
                 else
-                    inputs[i] = temp_inputs[i];
+                    inputs[i] = original_inputs[i];
             }
 
             sum = 0;
