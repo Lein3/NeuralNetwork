@@ -5,12 +5,10 @@ C:\ProgesForC\Dz\UltraSolution\MyTestsForms\bin\Debug\NeuralNetwork.dll
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\bin\Debug\NeuralNetwork.pdb
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.AssemblyReference.cache
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.SuggestedBindingRedirects.cache
-C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.Form1.resources
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.Properties.Resources.resources
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.GenerateResource.cache
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.CoreCompileInputs.cache
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.CopyComplete
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.exe
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.pdb
-C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.Form2.resources
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.Form3_НаОтчет.resources

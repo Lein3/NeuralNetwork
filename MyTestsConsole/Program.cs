@@ -12,10 +12,10 @@ namespace MyTestsConsole
         static public NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
         static void Main(string[] args)
         {
-            //test1();
+            test1();
             //test2();
-            test3();
-            test4();
+            //test3();
+            //test4();
             Console.ReadLine();
         }
 
@@ -45,11 +45,19 @@ namespace MyTestsConsole
 
         static void test1()
         {
-            neuralNetwork.Read_Scalling_Learn(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv", 5000, 0.01);
-            var templist = new List<double> { 63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1 };
-            var result = neuralNetwork.Predict(templist);
-            neuralNetwork.Learn_Clear();
-            Console.WriteLine(result.ToString());
+            for (int i = 0; i < 5; i++)
+            {
+                var learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv");
+                neuralNetwork = new NeuralNetwork(structure);
+                var templist = new List<double> { 64, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1 };
+                var templist2 = new List<double> { 58, 1, 2, 112, 230, 0, 0, 165, 0, 2.5, 1, 1, 3 };
+
+                var result = neuralNetwork.Predict(templist);
+                var result2 = neuralNetwork.Predict(templist2);
+                Console.WriteLine(result.ToString());
+                Console.WriteLine(result2.ToString());
+                Console.WriteLine();
+            }
         }
 
         static void test4()

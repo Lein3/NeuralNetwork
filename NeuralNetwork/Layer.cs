@@ -18,7 +18,7 @@ namespace NeuralNetworkLibrary
         public List<double> GetSignals()
         {
             List<double> result = new List<double>();
-            foreach (var neuron in neurons)
+            foreach (Neuron neuron in neurons)
                 result.Add(neuron.output);
             return result;
         }

@@ -20,17 +20,12 @@ namespace NeuralNetworkLibrary
             CreateOutputLayer();
         }
 
-        public double Predict(List<double> inputSignals, bool clear = false)
+        #region РасчетыОтвета
+        public List<double> Predict(List<double> inputSignals)
         {
             SendSignalsToInputLayer(inputSignals);
             SendSignalsAfterInputLayer();
-            if (structure.outputNeuronsCount == 1)
-                return layers.Last().neurons[0].output;
-            else
-                return layers.Last().neurons.OrderByDescending(n => n.output).FirstOrDefault().output;
-
-            if (clear)
-                Learn_Clear();
+            return layers.Last().GetSignals();
         }
 
         private void SendSignalsToInputLayer(List<double> inputSignals)
@@ -48,11 +43,13 @@ namespace NeuralNetworkLibrary
             {
                 Layer layer = layers[i];
                 List<double> previousLayerSignals = layers[i - 1].GetSignals();
-                foreach (var neuron in layer.neurons)
+                foreach (Neuron neuron in layer.neurons)
                     neuron.ProcessInformation(previousLayerSignals);
             }
         }
+        #endregion
 
+        #region СозданиеСлоев
         private void CreateInputLayer()
         {
             List<Neuron> inputNeurons = new List<Neuron>();
@@ -93,90 +90,70 @@ namespace NeuralNetworkLibrary
             Layer outputLayer = new Layer(outputNeurons, Structure.NeuronType.Output);
             layers.Add(outputLayer);
         }
+        #endregion
 
-        public void Learn(List<double> expected, List<double[]> inputs, double learningRate = 0.1)
+        #region Обучение
+        public void Learn(LearningData learningData, double learningRate = 0.1)
         {
-            for (int i = 0; i < expected.Count; i++)
+            for (int i = 0; i < learningData.examples.Count; i++)
             {
-                Learn_RecalculateError(expected[i], inputs[i].ToList());
-                Learn_BackPropagation(learningRate);
+                LearningExample example = learningData.examples[i];
+                Learn_RecalculateError(example.inputSignals, example.expectedOutputs);
+                Learn_ChangeWeights(learningRate);
             }
             Learn_Clear();
         }
 
-        private void Learn_RecalculateError(double expectedResult, List<double> inputSignals)
+        private void Learn_RecalculateError(List<double> inputSignals, List<double> expectedOutputs)
         {
-            double actualResult = Predict(inputSignals);
-            double lastError = expectedResult - actualResult;
-            if (structure.outputNeuronsCount == 1)
-                layers.Last().neurons[0].delta = lastError;
+            List<double> actualResult = Predict(inputSignals);
+            for (int i = 0; i < layers.Last().neurons.Count; i++)
+                layers.Last().neurons[i].error = expectedOutputs[i] - actualResult[i];
+
             for (int i = layers.Count - 2; i > 0; i--)
             {
                 Layer currentLayer = layers[i];
-                Layer previousLayer = layers[i + 1];
+                Layer previousRightLayer = layers[i + 1];
                 for (int j = 0; j < currentLayer.neurons.Count; j++)
                 {
-                    double sum = 0;
-                    for (int k = 0; k < previousLayer.neurons.Count; k++)
-                        sum += previousLayer.neurons[k].delta * previousLayer.neurons[k].weights[j];
-                    currentLayer.neurons[j].delta = sum;
+                    double sumResultError = 0;
+                    for (int k = 0; k < previousRightLayer.neurons.Count; k++)
+                        sumResultError += previousRightLayer.neurons[k].error * previousRightLayer.neurons[k].weights[j];
+                    currentLayer.neurons[j].error = sumResultError;
                 }
             }
+            //double lastError = Math.Pow((expectedResult - actualResult), 2);
+            //var sumWeights = 0.0;
+            //for (int l = 0; l < previousRightLayer.neurons[k].weights.Count; l++)
+            //    sumWeights += previousRightLayer.neurons[k].weights[l];
         }
 
-        private void Learn_BackPropagation(double learningRate)
+        private void Learn_ChangeWeights(double learningRate)
         {
-            for (int i = 1; i < layers.Count; i++)
-                for (int j = 0; j < layers[i].neurons.Count; j++)
-                    layers[i].neurons[j].Learn(learningRate);
+            for (int i = layers.Count - 1; i > 0; i--)
+                for (int j = layers[i].neurons.Count - 1; j >= 0; j--)
+                    layers[i].neurons[j].Learn_ChangeWeights(learningRate);
         }
 
         public void Learn_Clear()
         {
-            foreach (var layer in layers)
-                foreach (var neuron in layer.neurons)
+            foreach (Layer layer in layers)
+                foreach (Neuron neuron in layer.neurons)
                 {
-                    neuron.delta = 0;
+                    neuron.error = 0;
                     neuron.output = 0;
                     neuron.sum = 0;
                     for (int i = 0; i < neuron.inputs.Count; i++)
                         neuron.inputs[i] = 0;
                 }
         }
+        #endregion
 
-        public void Scalling(List<double[]> inputs)
+        #region НормализацияМаштабирование
+        public void Normalization()
         {
-            for (int i = 0; i < inputs.First().Length; i++)
-            {
-                List<double> column = new List<double>();
-                for (int j = 0; j < inputs.Count; j++)
-                {
-                    List<double> row = inputs[j].ToList();
-                    column.Add(row[i]);
-                }
-                column.Sort();
-                layers[0].neurons[i].min = column.First();
-                layers[0].neurons[i].max = column.Last();
-            }
-        }
 
-        public void Read_Scalling_Learn(string path, int times, double learningRate)
-        {
-            List<double[]> inputs = new List<double[]>();
-            List<double> outputs = new List<double>();
-            using (StreamReader streamReader = new StreamReader(path))
-            {
-                streamReader.ReadLine();
-                while (!streamReader.EndOfStream)
-                {
-                    List<double> values = streamReader.ReadLine().Split(',').ToList().ConvertAll(a => Convert.ToDouble(a.Replace('.', ',')));
-                    inputs.Add(values.Take(values.Count - 1).ToArray());
-                    outputs.Add(values.Last());
-                }
-            }
-            Scalling(inputs);
-            for (int i = 0; i < times; i++)
-                Learn(outputs, inputs, learningRate);
         }
+        #endregion
     }
 }
