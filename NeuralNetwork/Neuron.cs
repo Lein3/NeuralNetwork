@@ -6,7 +6,7 @@ namespace NeuralNetworkLibrary
     [Serializable]
     public class Neuron
     {
-        public List<double> weights { get;}
+        public List<double> weights { get; }
         public List<double> inputs { get; set; }
         public Structure.NeuronType neuronType { get; }
         public double output { get; set; }
@@ -21,6 +21,7 @@ namespace NeuralNetworkLibrary
             weights = new List<double>();
             inputs = new List<double>();
             Random rnd = new Random(new Guid().GetHashCode());
+
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)
             {
                 if (neuronType == Structure.NeuronType.Input)

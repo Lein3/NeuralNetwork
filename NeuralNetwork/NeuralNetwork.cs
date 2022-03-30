@@ -58,7 +58,7 @@ namespace NeuralNetworkLibrary
                 Neuron neuron = new Neuron(1, Structure.NeuronType.Input);
                 inputNeurons.Add(neuron);
             }
-            Layer inputLayer = new Layer(inputNeurons, Structure.NeuronType.Input);
+            Layer inputLayer = new Layer(inputNeurons);
             layers.Add(inputLayer);
         }
 
@@ -73,7 +73,7 @@ namespace NeuralNetworkLibrary
                     Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Normal);
                     middleNeurons.Add(neuron);
                 }
-                Layer middleLayer = new Layer(middleNeurons, Structure.NeuronType.Normal);
+                Layer middleLayer = new Layer(middleNeurons);
                 layers.Add(middleLayer);
             }
         }
@@ -87,21 +87,24 @@ namespace NeuralNetworkLibrary
                 Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Output);
                 outputNeurons.Add(neuron);
             }
-            Layer outputLayer = new Layer(outputNeurons, Structure.NeuronType.Output);
+            Layer outputLayer = new Layer(outputNeurons);
             layers.Add(outputLayer);
         }
         #endregion
 
         #region Обучение
-        public void Learn(LearningData learningData, double learningRate = 0.1)
+        public void Learn(LearningData learningData, int times, double learningRate = 0.1)
         {
-            for (int i = 0; i < learningData.examples.Count; i++)
+            for (int i = 0; i < times; i++)
             {
-                LearningExample example = learningData.examples[i];
-                Learn_RecalculateError(example.inputSignals, example.expectedOutputs);
-                Learn_ChangeWeights(learningRate);
+                for (int j = 0; j < learningData.examples.Count; j++)
+                {
+                    LearningExample example = learningData.examples[j];
+                    Learn_RecalculateError(example.inputSignals, example.expectedOutputs);
+                    Learn_ChangeWeights(learningRate);
+                }
+                learningData.Mix();
             }
-            Learn_Clear();
         }
 
         private void Learn_RecalculateError(List<double> inputSignals, List<double> expectedOutputs)
@@ -150,9 +153,15 @@ namespace NeuralNetworkLibrary
         #endregion
 
         #region НормализацияМаштабирование
-        public void Normalization()
+        public void Normalization(LearningData learningData)
         {
-
+            for (int i = 0; i < layers.First().neurons.Count; i++)
+            {
+                var column = learningData.examples.Select(item => item.inputSignals[i]).ToList();
+                column.Sort();
+                layers.First().neurons[i].min = column.First();
+                layers.First().neurons[i].max = column.Last();
+            }
         }
         #endregion
     }

@@ -7,12 +7,10 @@ namespace NeuralNetworkLibrary
     public class Layer
     {
         public List<Neuron> neurons { get; }
-        public Structure.NeuronType neuronType { get; }
 
-        public Layer(List<Neuron> temp_Neurons, Structure.NeuronType temp_neuronType)
+        public Layer(List<Neuron> temp_Neurons)
         {
             neurons = temp_Neurons;
-            neuronType = temp_neuronType;
         }
 
         public List<double> GetSignals()

@@ -33,11 +33,18 @@ namespace NeuralNetworkLibrary
             if (temp_inputSignals.Count != temp_expectedOutputs.Count)
                 throw new Exception();
 
+            examples = new List<LearningExample>();
             for (int i = 0; i < temp_inputSignals.Count; i++)
             {
                 var LearningExample = new LearningExample(temp_inputSignals[i].ToList(), temp_expectedOutputs[i].ToList());
                 examples.Add(LearningExample);
             }
+        }
+
+        public void Mix()
+        {
+            var random = new Random(DateTime.Now.Millisecond);
+            examples.OrderBy(item => random.Next());
         }
     }
 }
