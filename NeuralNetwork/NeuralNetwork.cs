@@ -21,7 +21,14 @@ namespace NeuralNetworkLibrary
         }
 
         #region РасчетыОтвета
-        public List<double> Predict(List<double> inputSignals)
+        public Dictionary<string, double> Predict(List<double> inputSignals)
+        {
+            SendSignalsToInputLayer(inputSignals);
+            SendSignalsAfterInputLayer();
+            return layers.Last().GetAnswer();
+        }
+
+        public List<double> Predict_ReturnOnlyValues(List<double> inputSignals)
         {
             SendSignalsToInputLayer(inputSignals);
             SendSignalsAfterInputLayer();
@@ -55,7 +62,7 @@ namespace NeuralNetworkLibrary
             List<Neuron> inputNeurons = new List<Neuron>();
             for (int i = 0; i < structure.inputNeuronsCount; i++)
             {
-                Neuron neuron = new Neuron(1, Structure.NeuronType.Input);
+                Neuron neuron = new Neuron(1, Structure.NeuronType.Input, "входной нейрон " + i.ToString());
                 inputNeurons.Add(neuron);
             }
             Layer inputLayer = new Layer(inputNeurons);
@@ -70,7 +77,7 @@ namespace NeuralNetworkLibrary
                 Layer lastLayerNeuronCount = layers.Last();
                 for (int j = 0; j < structure.middleLayers[i]; j++)
                 {
-                    Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Normal);
+                    Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Normal, null);
                     middleNeurons.Add(neuron);
                 }
                 Layer middleLayer = new Layer(middleNeurons);
@@ -84,7 +91,7 @@ namespace NeuralNetworkLibrary
             Layer lastLayerNeuronCount = layers.Last();
             for (int i = 0; i < structure.outputNeuronsCount; i++)
             {
-                Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Output);
+                Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Output, "выходной нейрон " + i.ToString());
                 outputNeurons.Add(neuron);
             }
             Layer outputLayer = new Layer(outputNeurons);
@@ -109,7 +116,7 @@ namespace NeuralNetworkLibrary
 
         private void Learn_RecalculateError(List<double> inputSignals, List<double> expectedOutputs)
         {
-            List<double> actualResult = Predict(inputSignals);
+            List<double> actualResult = Predict(inputSignals).Values.ToList();
             for (int i = 0; i < layers.Last().neurons.Count; i++)
                 layers.Last().neurons[i].error = expectedOutputs[i] - actualResult[i];
 
@@ -161,7 +168,17 @@ namespace NeuralNetworkLibrary
                 column.Sort();
                 layers.First().neurons[i].min = column.First();
                 layers.First().neurons[i].max = column.Last();
-            }
+                layers.First().neurons[i].name = learningData.paramNamesInput[i];
+            } //нормализация входного слоя
+
+            for (int i = 0; i < layers.Last().neurons.Count; i++)
+            {
+                var column = learningData.examples.Select(item => item.expectedOutputs[i]).ToList();
+                column.Sort();
+                layers.Last().neurons[i].min = column.First();
+                layers.Last().neurons[i].max = column.Last();
+                layers.Last().neurons[i].name = learningData.paramNamesOutput[i];
+            } //выходного слоя
         }
         #endregion
     }

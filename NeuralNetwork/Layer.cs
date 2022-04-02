@@ -20,5 +20,13 @@ namespace NeuralNetworkLibrary
                 result.Add(neuron.output);
             return result;
         }
+
+        public Dictionary<string, double> GetAnswer()
+        {
+            Dictionary<string, double> answer = new Dictionary<string,double>();
+            foreach (Neuron neuron in neurons)
+                answer.Add(neuron.name, neuron.output);
+            return answer;
+        }
     }
 }

@@ -11,4 +11,4 @@ C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.CoreCo
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.csproj.CopyComplete
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.exe
 C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.pdb
-C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.Form3_НаОтчет.resources
+C:\ProgesForC\Dz\UltraSolution\MyTestsForms\obj\Debug\MyTestsForms.Form1.resources

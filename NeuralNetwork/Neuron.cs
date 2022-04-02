@@ -13,10 +13,12 @@ namespace NeuralNetworkLibrary
         public double error { get; set; }
         public double sum { get; set; }
         public double? max { get; set; } = 1;
-        public double? min { get; set; } = 0;       
+        public double? min { get; set; } = 0;
+        public string name { get; set; }
 
-        public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType)
+        public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType, string temp_name)
         {
+            name = temp_name;
             neuronType = temp_neuronType;
             weights = new List<double>();
             inputs = new List<double>();
@@ -59,7 +61,7 @@ namespace NeuralNetworkLibrary
                 return;
             for (int i = 0; i < weights.Count; i++)
             {
-                double new_weight = weights[i] - learningRate * (-error * SigmoidDx(sum) * inputs[i]); 
+                double new_weight = weights[i] + (learningRate * error * SigmoidDx(sum) * inputs[i]); 
                 weights[i] = new_weight;
             }
         }

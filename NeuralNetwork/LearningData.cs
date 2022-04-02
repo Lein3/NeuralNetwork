@@ -9,6 +9,8 @@ namespace NeuralNetworkLibrary
 {
     public class LearningData
     {
+        public List<string> paramNamesInput { get; set; }
+        public List<string> paramNamesOutput { get; set; }
         public List<LearningExample> examples { get; set; }
 
         public LearningData(string path)
@@ -16,7 +18,10 @@ namespace NeuralNetworkLibrary
             examples = new List<LearningExample>();
             using (StreamReader streamReader = new StreamReader(path))
             {
-                streamReader.ReadLine();
+                var paramNames = streamReader.ReadLine().Split(',').ToList();
+                paramNamesInput = paramNames.GetRange(0, paramNames.Count - 1);
+                paramNamesOutput = paramNames.GetRange(paramNames.Count - 1, 1);
+
                 while (!streamReader.EndOfStream)
                 {
                     List<double> values = streamReader.ReadLine().Split(',').ToList().ConvertAll(a => Convert.ToDouble(a.Replace('.', ',')));
