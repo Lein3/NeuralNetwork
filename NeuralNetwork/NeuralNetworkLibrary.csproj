@@ -46,6 +46,10 @@
     <Compile Include="LearningExample.cs" />
     <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Neuron.cs" />
+    <Compile Include="Neuron_Bias.cs" />
+    <Compile Include="Neuron_Input.cs" />
+    <Compile Include="Neuron_Normal.cs" />
+    <Compile Include="Neuron_Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structure.cs" />
   </ItemGroup>

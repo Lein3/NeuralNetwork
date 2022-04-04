@@ -14,17 +14,17 @@ namespace NeuralNetworkLibrary
             Bias = 3
         }
 
-        public bool bias { get; }
-        public int inputNeuronsCount { get; }
-        public int outputNeuronsCount { get; }
-        public List<int> middleLayers { get; }
+        public bool Bias { get; }
+        public int InputNeuronsCount { get; }
+        public int OutputNeuronsCount { get; }
+        public List<int> MiddleLayers { get; }
 
         public Structure(bool temp_bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
         {
-            bias = temp_bias;
-            inputNeuronsCount = temp_inputCount;
-            outputNeuronsCount = temp_outputCount;
-            middleLayers = new List<int>(temp_middleLayers);
+            Bias = temp_bias;
+            InputNeuronsCount = temp_inputCount;
+            OutputNeuronsCount = temp_outputCount;
+            MiddleLayers = new List<int>(temp_middleLayers);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace NeuralNetworkLibrary.Tests
             expectedOutputs.Add(new double[] { 1, 1 });
 
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
-            Structure structure = new Structure(true, 3, 2, 6, 6);
+            Structure structure = new Structure(false, 3, 2, 6, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Learn(learningData, 5000);
 
@@ -63,7 +63,7 @@ namespace NeuralNetworkLibrary.Tests
         public void Normalization_Learn_Test()
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv");
-            Structure structure = new Structure(true, 13, 1, 7);
+            Structure structure = new Structure(true, 13, 1, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn(learningData, 5000);
@@ -147,10 +147,10 @@ namespace NeuralNetworkLibrary.Tests
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn(learningData, 5000);
-            foreach (var example in learningData.examples)
+            foreach (var example in learningData.Examples)
             {
-                var inputSignals = example.inputSignals;
-                var expectedOutputs = example.expectedOutputs;
+                var inputSignals = example.InputSignals;
+                var expectedOutputs = example.ExpectedOutputs;
                 var answer = neuralNetwork.Predict(inputSignals);
             }
         }

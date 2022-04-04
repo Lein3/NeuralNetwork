@@ -2,25 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNetworkLibrary
 {
     public class LearningData
     {
-        public List<string> paramNamesInput { get; set; }
-        public List<string> paramNamesOutput { get; set; }
-        public List<LearningExample> examples { get; set; }
+        public List<string> ParamNamesInput { get; set; }
+        public List<string> ParamNamesOutput { get; set; }
+        public List<LearningExample> Examples { get; set; }
 
         public LearningData(string path)
         {
-            examples = new List<LearningExample>();
+            Examples = new List<LearningExample>();
             using (StreamReader streamReader = new StreamReader(path))
             {
                 var paramNames = streamReader.ReadLine().Split(',').ToList();
-                paramNamesInput = paramNames.GetRange(0, paramNames.Count - 1);
-                paramNamesOutput = paramNames.GetRange(paramNames.Count - 1, 1);
+                ParamNamesInput = paramNames.GetRange(0, paramNames.Count - 1);
+                ParamNamesOutput = paramNames.GetRange(paramNames.Count - 1, 1);
 
                 while (!streamReader.EndOfStream)
                 {
@@ -28,7 +26,7 @@ namespace NeuralNetworkLibrary
                     var inputSignals = values.GetRange(0, values.Count - 1);
                     var expectedOutputs = values.GetRange(values.Count - 1, 1);
                     var LearningExample = new LearningExample(inputSignals, expectedOutputs);
-                    examples.Add(LearningExample);
+                    Examples.Add(LearningExample);
                 }
             }
         }
@@ -38,18 +36,18 @@ namespace NeuralNetworkLibrary
             if (temp_inputSignals.Count != temp_expectedOutputs.Count)
                 throw new Exception();
 
-            examples = new List<LearningExample>();
+            Examples = new List<LearningExample>();
             for (int i = 0; i < temp_inputSignals.Count; i++)
             {
                 var LearningExample = new LearningExample(temp_inputSignals[i].ToList(), temp_expectedOutputs[i].ToList());
-                examples.Add(LearningExample);
+                Examples.Add(LearningExample);
             }
         }
 
         public void Mix()
         {
             var random = new Random(DateTime.Now.Millisecond);
-            examples.OrderBy(item => random.Next());
+            Examples.OrderBy(item => random.Next());
         }
     }
 }
