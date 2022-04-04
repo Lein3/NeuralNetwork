@@ -21,11 +21,16 @@ namespace NeuralNetworkLibrary
             return result;
         }
 
-        public Dictionary<string, double> GetAnswer()
+        public List<Tuple<string, double, double>> GetAnswer()
         {
-            Dictionary<string, double> answer = new Dictionary<string,double>();
+            List<Tuple<string, double, double>> answer = new List<Tuple<string, double, double>>();
             foreach (Neuron neuron in neurons)
-                answer.Add(neuron.name, neuron.output);
+            {
+                var normalizedOutput = neuron.output * (neuron.max - neuron.min) + neuron.min;
+                normalizedOutput = Math.Round(normalizedOutput);
+                var tuple = new Tuple<string, double, double>(neuron.name, neuron.output, normalizedOutput);
+                answer.Add(tuple);
+            }
             return answer;
         }
     }

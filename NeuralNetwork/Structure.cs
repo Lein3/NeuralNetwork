@@ -10,19 +10,21 @@ namespace NeuralNetworkLibrary
         {
             Input = 0,
             Normal = 1,
-            Output = 2
+            Output = 2,
+            Bias = 3
         }
 
+        public bool bias { get; }
         public int inputNeuronsCount { get; }
         public int outputNeuronsCount { get; }
         public List<int> middleLayers { get; }
 
-        public Structure(int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
+        public Structure(bool temp_bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
         {
+            bias = temp_bias;
             inputNeuronsCount = temp_inputCount;
             outputNeuronsCount = temp_outputCount;
-            middleLayers = new List<int>();
-            middleLayers.AddRange(temp_middleLayers);
+            middleLayers = new List<int>(temp_middleLayers);
         }
     }
 }

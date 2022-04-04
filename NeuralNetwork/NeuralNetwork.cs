@@ -21,7 +21,7 @@ namespace NeuralNetworkLibrary
         }
 
         #region РасчетыОтвета
-        public Dictionary<string, double> Predict(List<double> inputSignals)
+        public List<Tuple<string, double, double>> Predict(List<double> inputSignals)
         {
             SendSignalsToInputLayer(inputSignals);
             SendSignalsAfterInputLayer();
@@ -40,7 +40,7 @@ namespace NeuralNetworkLibrary
             for (int i = 0; i < inputSignals.Count; i++)
             {
                 List<double> signal = new List<double> { inputSignals[i] };
-                layers[0].neurons[i].ProcessInformation(signal);
+                layers.First().neurons[i].ProcessInformation(signal);
             }
         }
 
@@ -62,8 +62,13 @@ namespace NeuralNetworkLibrary
             List<Neuron> inputNeurons = new List<Neuron>();
             for (int i = 0; i < structure.inputNeuronsCount; i++)
             {
-                Neuron neuron = new Neuron(1, Structure.NeuronType.Input, "входной нейрон " + i.ToString());
+                Neuron neuron = new Neuron(1, Structure.NeuronType.Input);
                 inputNeurons.Add(neuron);
+            }
+            if (structure.bias)
+            {
+                Neuron bias = new Neuron(1, Structure.NeuronType.Bias);
+                inputNeurons.Add(bias);
             }
             Layer inputLayer = new Layer(inputNeurons);
             layers.Add(inputLayer);
@@ -77,8 +82,13 @@ namespace NeuralNetworkLibrary
                 Layer lastLayerNeuronCount = layers.Last();
                 for (int j = 0; j < structure.middleLayers[i]; j++)
                 {
-                    Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Normal, null);
+                    Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Normal);
                     middleNeurons.Add(neuron);
+                }
+                if (structure.bias)
+                {
+                    Neuron bias = new Neuron(1, Structure.NeuronType.Bias);
+                    middleNeurons.Add(bias);
                 }
                 Layer middleLayer = new Layer(middleNeurons);
                 layers.Add(middleLayer);
@@ -91,7 +101,7 @@ namespace NeuralNetworkLibrary
             Layer lastLayerNeuronCount = layers.Last();
             for (int i = 0; i < structure.outputNeuronsCount; i++)
             {
-                Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Output, "выходной нейрон " + i.ToString());
+                Neuron neuron = new Neuron(lastLayerNeuronCount.neurons.Count, Structure.NeuronType.Output);
                 outputNeurons.Add(neuron);
             }
             Layer outputLayer = new Layer(outputNeurons);
@@ -116,7 +126,7 @@ namespace NeuralNetworkLibrary
 
         private void Learn_RecalculateError(List<double> inputSignals, List<double> expectedOutputs)
         {
-            List<double> actualResult = Predict(inputSignals).Values.ToList();
+            List<double> actualResult = Predict_ReturnOnlyValues(inputSignals);
             for (int i = 0; i < layers.Last().neurons.Count; i++)
                 layers.Last().neurons[i].error = expectedOutputs[i] - actualResult[i];
 
@@ -126,9 +136,16 @@ namespace NeuralNetworkLibrary
                 Layer previousRightLayer = layers[i + 1];
                 for (int j = 0; j < currentLayer.neurons.Count; j++)
                 {
+                    if (currentLayer.neurons[j].neuronType == Structure.NeuronType.Bias)
+                        continue;
+
                     double sumResultError = 0;
                     for (int k = 0; k < previousRightLayer.neurons.Count; k++)
+                    {
+                        if (previousRightLayer.neurons[k].neuronType == Structure.NeuronType.Bias)
+                            continue;
                         sumResultError += previousRightLayer.neurons[k].error * previousRightLayer.neurons[k].weights[j];
+                    }                      
                     currentLayer.neurons[j].error = sumResultError;
                 }
             }
@@ -164,6 +181,9 @@ namespace NeuralNetworkLibrary
         {
             for (int i = 0; i < layers.First().neurons.Count; i++)
             {
+                if (layers.First().neurons[i].neuronType == Structure.NeuronType.Bias)
+                    continue;
+
                 var column = learningData.examples.Select(item => item.inputSignals[i]).ToList();
                 column.Sort();
                 layers.First().neurons[i].min = column.First();

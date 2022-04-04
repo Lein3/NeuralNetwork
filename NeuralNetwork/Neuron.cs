@@ -12,13 +12,12 @@ namespace NeuralNetworkLibrary
         public double output { get; set; }
         public double error { get; set; }
         public double sum { get; set; }
-        public double? max { get; set; } = 1;
-        public double? min { get; set; } = 0;
+        public double max { get; set; } = 1;
+        public double min { get; set; } = 0;
         public string name { get; set; }
 
-        public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType, string temp_name)
+        public Neuron(int temp_previousLayerNeuronsCount, Structure.NeuronType temp_neuronType)
         {
-            name = temp_name;
             neuronType = temp_neuronType;
             weights = new List<double>();
             inputs = new List<double>();
@@ -26,7 +25,7 @@ namespace NeuralNetworkLibrary
 
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)
             {
-                if (neuronType == Structure.NeuronType.Input)
+                if (neuronType == Structure.NeuronType.Input || neuronType == Structure.NeuronType.Bias)
                     weights.Add(1);
                 else
                     weights.Add(rnd.NextDouble() * 2 - 1);
@@ -36,6 +35,15 @@ namespace NeuralNetworkLibrary
 
         public double ProcessInformation(List<double> original_inputs)
         {
+            if (neuronType == Structure.NeuronType.Bias)
+            {
+                inputs[0] = 1;
+                sum = 1;
+                output = 1;
+                return output;
+            }
+                
+
             for (int i = 0; i < original_inputs.Count; i++)
             {
                 if (neuronType == Structure.NeuronType.Input)
@@ -57,8 +65,9 @@ namespace NeuralNetworkLibrary
 
         public void Learn_ChangeWeights(double learningRate)
         {
-            if (neuronType == Structure.NeuronType.Input)
+            if (neuronType == Structure.NeuronType.Input || neuronType == Structure.NeuronType.Bias)
                 return;
+
             for (int i = 0; i < weights.Count; i++)
             {
                 double new_weight = weights[i] + (learningRate * error * SigmoidDx(sum) * inputs[i]); 
