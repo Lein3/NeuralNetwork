@@ -8,10 +8,9 @@ namespace NeuralNetworkLibrary
         public Neuron_Normal(int temp_previousLayerNeuronsCount) : base()
         {
             NeuronType = Structure.NeuronType.Normal;
-            Random rnd = new Random(new Guid().GetHashCode());
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)
             {
-                Weights.Add(rnd.NextDouble() * 2 - 1);
+                Weights.Add(Rnd.NextDouble() * 2 - 1);
                 Inputs.Add(0);
             }
         }

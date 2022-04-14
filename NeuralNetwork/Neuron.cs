@@ -15,9 +15,10 @@ namespace NeuralNetworkLibrary
         public double Max { get; set; }
         public double Min { get; set; }
         public string Name { get; set; }
+        protected static Random Rnd { get; set; } = new Random(DateTime.Now.Millisecond); //сука рандом не трожь все по пизде пойдет
 
         public Neuron()
-        {
+        {           
             Weights = new List<double>();
             Inputs = new List<double>();
             Min = 0;

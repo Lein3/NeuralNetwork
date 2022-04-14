@@ -44,6 +44,7 @@
     <Compile Include="Layer.cs" />
     <Compile Include="LearningData.cs" />
     <Compile Include="LearningExample.cs" />
+    <Compile Include="LearningStatistics.cs" />
     <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Neuron.cs" />
     <Compile Include="Neuron_Bias.cs" />
