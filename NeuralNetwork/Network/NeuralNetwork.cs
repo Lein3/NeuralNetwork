@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNetworkLibrary
+namespace NeuralNetwork
 {
     [Serializable]
     public class NeuralNetwork

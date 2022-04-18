@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace NeuralNetworkLibrary
+namespace NeuralNetwork
 {
     public class Neuron_Input : Neuron
     {

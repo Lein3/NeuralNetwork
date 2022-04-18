@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNetworkLibrary.Tests
+namespace NeuralNetwork.Tests
 {
     [TestClass]
     public class NeuralNetworkTests
@@ -39,13 +39,13 @@ namespace NeuralNetworkLibrary.Tests
             inputSignals.Add(new double[] { 1, 1, 1 });
 
             expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 255, 0 });
-            expectedOutputs.Add(new double[] { 255, 0 });
+            expectedOutputs.Add(new double[] { 1, 0 });
+            expectedOutputs.Add(new double[] { 1, 0 });
             expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 255, 0 });
+            expectedOutputs.Add(new double[] { 1, 0 });
             expectedOutputs.Add(new double[] { 0, 1 });
             expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 255, 1 });
+            expectedOutputs.Add(new double[] { 1, 1 });
 
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
             Structure structure = new Structure(3, 2, 6, 6);
@@ -253,11 +253,11 @@ namespace NeuralNetworkLibrary.Tests
         [TestMethod]
         public void TestExapmles_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv", 2);
-            Structure structure = new Structure(13, 1, 10, 5); // 13 10 1
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv");
+            Structure structure = new Structure(13, 1, 39, 39, 39); // 13 10 1 // 13 10 5 1
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 20000, 0.1);
+            neuralNetwork.Learn_Backpropogation(learningData, 1000, 1);
 
             for (int i = 0; i < learningData.LearningExamples.Count; i++)
             {

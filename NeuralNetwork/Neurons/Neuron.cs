@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NeuralNetworkLibrary
+namespace NeuralNetwork
 {
     [Serializable]
     public abstract class Neuron
@@ -9,6 +9,7 @@ namespace NeuralNetworkLibrary
         public List<double> Weights { get; }
         public List<double> Inputs { get; set; }
         public Structure.NeuronType NeuronType { get; set; }
+        public IActivationFunction ActivationFunction { get; set; }
         public double Output { get; set; }
         public double Error { get; set; }
         public double Sum { get; set; }
@@ -23,6 +24,7 @@ namespace NeuralNetworkLibrary
             Inputs = new List<double>();
             Min = 0;
             Max = 1;
+            ActivationFunction = new Sigmoid();
         }
 
         public virtual double ProcessInformation(List<double> original_inputs)

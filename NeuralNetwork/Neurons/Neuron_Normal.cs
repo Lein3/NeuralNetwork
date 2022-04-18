@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NeuralNetworkLibrary
+namespace NeuralNetwork
 {
-    public class Neuron_Output : Neuron
+    public class Neuron_Normal : Neuron
     {
-        public Neuron_Output(int temp_previousLayerNeuronsCount) : base()
+        public Neuron_Normal(int temp_previousLayerNeuronsCount) : base()
         {
-            NeuronType = Structure.NeuronType.Output;
+            NeuronType = Structure.NeuronType.Normal;
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)
             {
                 Weights.Add(Rnd.NextDouble() * 2 - 1);
@@ -22,7 +22,7 @@ namespace NeuralNetworkLibrary
             for (int i = 0; i < Inputs.Count; i++)
                 Sum += Inputs[i] * Weights[i];
 
-            Output = Sigmoid(Sum);
+            Output = ActivationFunction.Function(Sum);
             return Output;
         }
 
@@ -30,7 +30,7 @@ namespace NeuralNetworkLibrary
         {
             for (int i = 0; i < Weights.Count; i++)
             {
-                double new_weight = Weights[i] + (learningRate * Error * SigmoidDx(Sum) * Inputs[i]);
+                double new_weight = Weights[i] + (learningRate * Error * ActivationFunction.FunctionDx(Sum) * Inputs[i]);
                 Weights[i] = new_weight;
             }
         }

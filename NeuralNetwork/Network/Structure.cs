@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NeuralNetworkLibrary
+namespace NeuralNetwork
 {
     [Serializable]
     public class Structure
