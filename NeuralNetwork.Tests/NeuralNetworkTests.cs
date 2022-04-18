@@ -51,7 +51,7 @@ namespace NeuralNetwork.Tests
             Structure structure = new Structure(3, 2, 6, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 5000);
+            neuralNetwork.Learn_Backpropogation(learningData, 10000);
 
             for (int i = 0; i < 8; i++)
             {

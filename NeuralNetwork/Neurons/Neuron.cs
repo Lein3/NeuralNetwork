@@ -27,26 +27,8 @@ namespace NeuralNetwork
             ActivationFunction = new Sigmoid();
         }
 
-        public virtual double ProcessInformation(List<double> original_inputs)
-        {
-            return Output;
-        }
+        public abstract double ProcessInformation(List<double> original_inputs);
 
-        public virtual void Learn_ChangeWeights(double learningRate)
-        {
-            
-        }
-
-        protected double Sigmoid(double x)
-        {
-            double result = 1 / (1 + Math.Exp(-x));
-            return result;
-        }
-
-        protected double SigmoidDx(double x)
-        {
-            double result = Sigmoid(x) * (1 - Sigmoid(x));
-            return result;
-        }
+        public abstract void Learn_ChangeWeights(double learningRate);
     }
 }

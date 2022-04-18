@@ -27,9 +27,9 @@ namespace NeuralNetwork
             MiddleLayers = new List<int>(temp_middleLayers);
         }
 
-        public Structure(bool bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
+        public Structure(bool temp_bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
         {
-            Bias = bias;
+            Bias = temp_bias;
             InputNeuronsCount = temp_inputCount;
             OutputNeuronsCount = temp_outputCount;
             MiddleLayers = new List<int>(temp_middleLayers);
