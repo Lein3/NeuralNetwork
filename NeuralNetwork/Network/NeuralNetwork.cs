@@ -7,9 +7,9 @@ namespace NeuralNetwork
     [Serializable]
     public class NeuralNetwork
     {
-        public Structure Structure { get; }
-        public List<Layer> Layers { get; }
-        public LearningStatistics LearningStatistics { get; }
+        public Structure Structure { get; private set; }
+        public List<Layer> Layers { get; private set; }
+        public LearningStatistics LearningStatistics { get; private set; }
 
         public NeuralNetwork(Structure temp_Structure)
         {
@@ -125,7 +125,9 @@ namespace NeuralNetwork
                     currentEpochErrorsMAE.Add(Math.Abs(Layers.Last().Neurons.Last().Error));
                     currentEpochErrorsMSE.Add(Math.Pow(Layers.Last().Neurons.Last().Error, 2));
                 }
-                LearningStatistics.MAE.Add(currentEpochErrorsMSE.Average());
+                currentEpochErrorsMAE.Sort();
+                var temp = currentEpochErrorsMAE.Average();
+                LearningStatistics.MAE.Add(currentEpochErrorsMAE.Average());
                 LearningStatistics.MSE.Add(currentEpochErrorsMSE.Average());
                 learningData.Mix();
             } while (LearningStatistics.MSE.Last() > limit);
@@ -145,7 +147,7 @@ namespace NeuralNetwork
                     currentEpochErrorsMAE.Add(Math.Abs(Layers.Last().Neurons.Last().Error));
                     currentEpochErrorsMSE.Add(Math.Pow(Layers.Last().Neurons.Last().Error, 2));
                 }
-                LearningStatistics.MAE.Add(currentEpochErrorsMSE.Average());
+                LearningStatistics.MAE.Add(currentEpochErrorsMAE.Average());
                 LearningStatistics.MSE.Add(currentEpochErrorsMSE.Average());
                 learningData.Mix();
             }

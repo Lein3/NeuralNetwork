@@ -6,7 +6,7 @@ namespace NeuralNetwork
     [Serializable]
     public class Layer
     {
-        public List<Neuron> Neurons { get; }
+        public List<Neuron> Neurons { get; private set; }
 
         public Layer(List<Neuron> temp_Neurons)
         {

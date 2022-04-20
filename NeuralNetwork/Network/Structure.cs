@@ -14,10 +14,10 @@ namespace NeuralNetwork
             Bias = 3
         }
 
-        public bool Bias { get; }
-        public int InputNeuronsCount { get; }
-        public int OutputNeuronsCount { get; }
-        public List<int> MiddleLayers { get; }
+        public bool Bias { get; private set; }
+        public int InputNeuronsCount { get; private set; }
+        public int OutputNeuronsCount { get; private set; }
+        public List<int> MiddleLayers { get; private set; }
 
         public Structure(int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
         {

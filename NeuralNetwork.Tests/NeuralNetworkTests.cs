@@ -51,7 +51,7 @@ namespace NeuralNetwork.Tests
             Structure structure = new Structure(3, 2, 6, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 10000);
+            neuralNetwork.Learn_Backpropogation(learningData, 0.05, 0.5);
 
             for (int i = 0; i < 8; i++)
             {
@@ -254,10 +254,10 @@ namespace NeuralNetwork.Tests
         public void TestExapmles_Test()
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv");
-            Structure structure = new Structure(13, 1, 39, 39, 39); // 13 10 1 // 13 10 5 1
+            Structure structure = new Structure(13, 1, 10, 5); // 13 10 1 // 13 10 5 1
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 1000, 1);
+            neuralNetwork.Learn_Backpropogation(learningData, 10000, 0.1);
 
             for (int i = 0; i < learningData.LearningExamples.Count; i++)
             {
