@@ -14,6 +14,7 @@ namespace Constructor
     public partial class NeuronControl : UserControl
     {
         public Neuron Neuron { get; set; }
+        private Rectangle Ellipse { get; set; }
         public NeuronControl(Neuron neuron)
         {
             InitializeComponent();
@@ -22,9 +23,15 @@ namespace Constructor
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {           
-            var pen = new Pen(Color.Black, 5f);
-            var ellipse = new Rectangle(this.Width / 4, this.Height / 7, 50, 50);
-            e.Graphics.DrawEllipse(pen, ellipse);
+            var pen = new Pen(Color.Black, 2f);
+            Ellipse = new Rectangle(5, 5, 60, 60);
+            e.Graphics.DrawEllipse(pen, Ellipse);
+        }
+
+        public void Fill()
+        {
+            var bruh = new SolidBrush(Color.Red);
+            pictureBox.CreateGraphics().FillEllipse(bruh, Ellipse);
         }
     }
 }

@@ -25,7 +25,12 @@
       "ProjectGuid": "36bc32bc-b3ae-47d0-93b1-1f2a49be2407",
       "DisplayName": "NeuralNetwork.Tests",
       "ColorIndex": 3
+    },
+    "fc274893-39d5-4375-9251-da433766a6eb": {
+      "ProjectGuid": "fc274893-39d5-4375-9251-da433766a6eb",
+      "DisplayName": "Constructor",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }
