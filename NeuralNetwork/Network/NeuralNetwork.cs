@@ -75,7 +75,7 @@ namespace NeuralNetwork
         #endregion
 
         #region РасчетыОтвета
-        public List<Tuple<string, double, double>> Predict(List<double> inputSignals)
+        public List<(string Name, double Output, double NormalizedOutput)> Predict(List<double> inputSignals)
         {
             SendSignalsToInputLayer(inputSignals);
             SendSignalsAfterInputLayer();

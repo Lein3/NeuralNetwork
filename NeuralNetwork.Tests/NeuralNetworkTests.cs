@@ -58,7 +58,7 @@ namespace NeuralNetwork.Tests
                 var input = inputSignals[i];
                 var result = neuralNetwork.Predict_ReturnOnlyValues(input.ToList());
                 Assert.AreEqual(expectedOutputs[i][0], result[0], 0.05);
-            }           
+            }
         }
 
         [TestMethod]

@@ -16,7 +16,7 @@ namespace NeuralNetwork
         public double Max { get; set; }
         public double Min { get; set; }
         public string Name { get; set; }
-        protected static Random Rnd { get; set; } = new Random(DateTime.Now.Millisecond); //сука рандом не трожь все по пизде пойдет
+        protected static Random Rnd { get; set; } = new Random(DateTime.Now.Millisecond); //рандом не трожь все посыпется к чертям
 
         public Neuron()
         {           

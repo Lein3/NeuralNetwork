@@ -21,15 +21,15 @@ namespace NeuralNetwork
             return result;
         }
 
-        public List<Tuple<string, double, double>> GetAnswer()
+        public List<(string Name, double Output, double NormalizedOutput)> GetAnswer()
         {
-            List<Tuple<string, double, double>> answer = new List<Tuple<string, double, double>>();
+            var answer = new List<(string Name, double Output, double NormalizedOutput)>();
             foreach (Neuron neuron in Neurons)
             {
                 var normalizedOutput = neuron.Output * (neuron.Max - neuron.Min) + neuron.Min;
                 normalizedOutput = Math.Round(normalizedOutput);
-                var tuple = new Tuple<string, double, double>(neuron.Name, neuron.Output, normalizedOutput);
-                answer.Add(tuple);
+                var valueTuple = (neuron.Name, neuron.Output, normalizedOutput);
+                answer.Add(valueTuple);
             }
             return answer;
         }
