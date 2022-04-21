@@ -1,0 +1,16 @@
+C:\ProgesForC\Dz\UltraSolution\Constructor\bin\Debug\Constructor.exe.config
+C:\ProgesForC\Dz\UltraSolution\Constructor\bin\Debug\Constructor.exe
+C:\ProgesForC\Dz\UltraSolution\Constructor\bin\Debug\Constructor.pdb
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.csproj.AssemblyReference.cache
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.csproj.SuggestedBindingRedirects.cache
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.Form1.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.Properties.Resources.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.csproj.GenerateResource.cache
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.csproj.CoreCompileInputs.cache
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.exe
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.pdb
+C:\ProgesForC\Dz\UltraSolution\Constructor\bin\Debug\NeuralNetwork.dll
+C:\ProgesForC\Dz\UltraSolution\Constructor\bin\Debug\NeuralNetwork.pdb
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.csproj.CopyComplete
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.NeuronControl.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.CurrentNeuronControl.resources
