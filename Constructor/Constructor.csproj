@@ -52,6 +52,12 @@
     <Compile Include="Controls\CurrentNeuronControl.Designer.cs">
       <DependentUpon>CurrentNeuronControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateMiddleLayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateMiddleLayersForm.Designer.cs">
+      <DependentUpon>CreateMiddleLayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CreateInputLayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <EmbeddedResource Include="Controls\NeuronControl.resx">
       <DependentUpon>NeuronControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateMiddleLayersForm.resx">
+      <DependentUpon>CreateMiddleLayersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,6 +122,9 @@
       <Project>{977823be-23e8-4ae7-8679-4b38e695b1e7}</Project>
       <Name>NeuralNetworkLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ocifrovka6.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

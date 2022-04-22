@@ -14,7 +14,8 @@ namespace Constructor
     public partial class CurrentNeuronControl : UserControl
     {
         public Neuron CurrentNeuron { get; set; }
-        private NeuronFlag neuronFlag;
+        private CreateInputLayerForm parent { get; set; }
+        private NeuronFlag neuronFlag { get; set; }
         public CurrentNeuronControl()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace Constructor
 
         private void pictureBox_CurrentNeuron_Paint(object sender, PaintEventArgs e)
         {
+            parent = this.ParentForm as CreateInputLayerForm;
             var pen = new Pen(Color.Black, 5f);
             var ellipse = new Rectangle(90, 40, 150, 150);
             e.Graphics.DrawEllipse(pen, ellipse);
@@ -35,6 +37,7 @@ namespace Constructor
         {
             this.CurrentNeuron = neuron;
             label_Name.Text = CurrentNeuron.Name;
+            if (CurrentNeuron.NeuronType == Structure.NeuronType.Normal) label_Name.Text = "Sigmoid";
             label_Max.Text = CurrentNeuron.Max.ToString();
             label_Min.Text = CurrentNeuron.Min.ToString();
             label_Sum.Text = CurrentNeuron.Sum == 0 ? string.Empty : CurrentNeuron.Sum.ToString();
@@ -51,11 +54,13 @@ namespace Constructor
                 Point p2 = new Point(90, 115);
                 pictureBox_CurrentNeuron.CreateGraphics().DrawLine(pen, p1, p2);
             }
-
         }
 
         private void LabelClick(object sender, EventArgs e)
         {
+            if (!CheckNormalization())
+                return;
+
             var label = sender as Label;
             var location = label.Location;
             var numeric = new NumericUpDown();
@@ -75,6 +80,23 @@ namespace Constructor
             numeric.BringToFront();
         }
 
+        private bool CheckNormalization()
+        {
+            var tabcontrol = parent.tabControl;
+            switch (tabcontrol.SelectedIndex)
+            {
+                case 0:
+                    if (parent.radioButton_yes1.Checked == true) return true;
+                    break;
+                case 1:
+                    if (parent.radioButton_yes2.Checked == true) return true;
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
+
         enum NeuronFlag
         {
             max,
@@ -90,12 +112,12 @@ namespace Constructor
             {
                 case NeuronFlag.max:
                     CurrentNeuron.Max = Convert.ToDouble(numeric.Value);
-                    label_Max.Text = numeric.Value.ToString().Replace(",", "");
+                    label_Max.Text = numeric.Value.ToString();
                     label_Max.Visible = true;
                     break;
                 case NeuronFlag.min:
                     CurrentNeuron.Min = Convert.ToDouble(numeric.Value);
-                    label_Min.Text = numeric.Value.ToString().Replace(",", "");
+                    label_Min.Text = numeric.Value.ToString();
                     label_Min.Visible = true;
                     break;
                 default:
@@ -120,7 +142,7 @@ namespace Constructor
             };
             textbox.KeyDown += (sender3, e3) => 
             {
-                if ((e3 as KeyEventArgs).KeyCode == Keys.Enter)
+                if ((e3 as KeyEventArgs).KeyCode == Keys.Enter || (e3 as KeyEventArgs).KeyCode == Keys.Escape)
                     this.Controls.Remove(textbox);
             };
             this.Controls.Add(textbox);

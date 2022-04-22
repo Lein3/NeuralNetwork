@@ -48,7 +48,8 @@
             // 
             this.Index.BackColor = System.Drawing.Color.Transparent;
             this.Index.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Index.Location = new System.Drawing.Point(58, 0);
+            this.Index.ForeColor = System.Drawing.Color.Black;
+            this.Index.Location = new System.Drawing.Point(56, 2);
             this.Index.Name = "Index";
             this.Index.Size = new System.Drawing.Size(12, 14);
             this.Index.TabIndex = 1;
@@ -59,6 +60,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.Index);
             this.Controls.Add(this.pictureBox);
             this.MaximumSize = new System.Drawing.Size(70, 70);

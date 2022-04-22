@@ -18,11 +18,6 @@ namespace Constructor
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new CreateInputLayerForm());
-        }
-
         private void OpenChildForm(Form childForm)
         {
             if (ActiveForm != null) ActiveForm.Close();
@@ -35,6 +30,16 @@ namespace Constructor
             panel_Screen.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CreateInputLayerForm());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CreateMiddleLayersForm());
         }
     }
 }

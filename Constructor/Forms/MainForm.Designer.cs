@@ -29,67 +29,61 @@
         private void InitializeComponent()
         {
             this.panel_Navigation = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_Screen = new System.Windows.Forms.Panel();
             this.panel_Navigation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Navigation
             // 
             this.panel_Navigation.BackColor = System.Drawing.Color.White;
-            this.panel_Navigation.Controls.Add(this.button4);
-            this.panel_Navigation.Controls.Add(this.button3);
             this.panel_Navigation.Controls.Add(this.button2);
             this.panel_Navigation.Controls.Add(this.button1);
+            this.panel_Navigation.Controls.Add(this.pictureBox1);
             this.panel_Navigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Navigation.Location = new System.Drawing.Point(0, 0);
             this.panel_Navigation.Name = "panel_Navigation";
             this.panel_Navigation.Size = new System.Drawing.Size(200, 461);
             this.panel_Navigation.TabIndex = 0;
             // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(3, 266);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 43);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(0, 217);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 43);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(0, 168);
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(0, 234);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 43);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 60);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Создать скрытые слои";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(0, 119);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.Location = new System.Drawing.Point(0, 174);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 60);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Создать входной слой";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::Constructor.Properties.Resources.Ocifrovka6;
+            this.pictureBox1.InitialImage = global::Constructor.Properties.Resources.Ocifrovka6;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 174);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel_Screen
             // 
@@ -112,6 +106,7 @@
             this.Text = "ОооКонструктор";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel_Navigation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,10 +114,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel_Navigation;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel_Screen;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button2;
     }
 }

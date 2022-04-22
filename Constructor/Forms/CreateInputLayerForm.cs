@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
-using NeuralNetworkClass = NeuralNetworkNamespace.NeuralNetwork;
 
 namespace Constructor
 {
@@ -19,11 +18,12 @@ namespace Constructor
             InitializeComponent();
         }
 
-        private void DisplayNetwork(Layer layer)
-        {
-            int x = panel_Neurons.Width / 2;
+        protected void DisplayNetwork(Layer layer)
+        {         
+            int x = panel_neurons.Width / 2;
             int y = 30;
             int index = 1;
+            panel_neurons.Controls.Clear();
             foreach (var neuron in layer.Neurons)
             {
                 var control = new NeuronControl(neuron, index++);
@@ -31,21 +31,25 @@ namespace Constructor
                 control.Location = point;
                 control.pictureBox.MouseEnter += onMouseEnter;
                 control.pictureBox.MouseLeave += onMouseLeave;
-                panel_Neurons.Controls.Add(control);
+                panel_neurons.Controls.Add(control);
                 y += 100;
             }
+            panel_neurons.Invalidate();
+
+            var parent = this.ParentForm as MainForm;
+            parent.button2.Enabled = true;
         }
 
-        private void onMouseEnter(object sender, EventArgs e)
+        protected void onMouseEnter(object sender, EventArgs e)
         {
-            currentNeuronControl1.Enabled = true;
+            currentNeuronControl.Enabled = true;
             var parent = (sender as PictureBox).Parent as NeuronControl;
             parent.Fill();
             var neuron = parent.Neuron;
-            currentNeuronControl1.UpdateInfo(neuron);
+            currentNeuronControl.UpdateInfo(neuron);
         }
 
-        private void onMouseLeave(object sender, EventArgs e)
+        protected void onMouseLeave(object sender, EventArgs e)
         {
             var parent = (sender as PictureBox).Parent as NeuronControl;
             parent.pictureBox.Invalidate();
@@ -61,8 +65,22 @@ namespace Constructor
                 NetworkTemplate.Structure = new Structure(inputNeurons, 1, 1);
                 NetworkTemplate.NeuralNetwork = new NeuralNetwork(NetworkTemplate.Structure);
                 NetworkTemplate.NeuralNetwork.Normalization(NetworkTemplate.LearningData);
-                DisplayNetwork(NetworkTemplate.NeuralNetwork.Layers.First());
+                var firstLayer = NetworkTemplate.NeuralNetwork.Layers.First();
+                NetworkTemplate.Layers.Clear();
+                NetworkTemplate.Layers.Add(firstLayer);
+                DisplayNetwork(firstLayer);
             }
+        }
+
+        protected void numericUpDown_Neurons_ValueChanged(object sender, EventArgs e)
+        {
+            var inputNeurons = (int)numericUpDown_Neurons.Value;
+            NetworkTemplate.Structure = new Structure(inputNeurons, 1, 1);
+            NetworkTemplate.NeuralNetwork = new NeuralNetwork(NetworkTemplate.Structure);
+            var firstLayer = NetworkTemplate.NeuralNetwork.Layers.First();
+            NetworkTemplate.Layers.Clear();
+            NetworkTemplate.Layers.Add(firstLayer);
+            DisplayNetwork(firstLayer);
         }
     }
 }
