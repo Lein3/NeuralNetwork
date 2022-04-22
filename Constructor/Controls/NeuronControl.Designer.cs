@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.Index = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +44,22 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
+            // Index
+            // 
+            this.Index.BackColor = System.Drawing.Color.Transparent;
+            this.Index.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Index.Location = new System.Drawing.Point(58, 0);
+            this.Index.Name = "Index";
+            this.Index.Size = new System.Drawing.Size(12, 14);
+            this.Index.TabIndex = 1;
+            this.Index.Text = "Index";
+            this.Index.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // NeuronControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Index);
             this.Controls.Add(this.pictureBox);
             this.MaximumSize = new System.Drawing.Size(70, 70);
             this.Name = "NeuronControl";
@@ -59,5 +72,6 @@
         #endregion
 
         public System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label Index;
     }
 }

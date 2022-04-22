@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNetwork.Tests
+namespace NeuralNetworkNamespace.Tests
 {
     [TestClass]
     public class NeuralNetworkTests

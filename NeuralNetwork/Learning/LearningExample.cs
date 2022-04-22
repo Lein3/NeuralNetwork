@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NeuralNetwork
+namespace NeuralNetworkNamespace
 {
     public class LearningExample
     {

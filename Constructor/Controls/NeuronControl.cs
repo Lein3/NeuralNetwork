@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NeuralNetwork;
+using NeuralNetworkNamespace;
 
 namespace Constructor
 {
@@ -15,10 +15,11 @@ namespace Constructor
     {
         public Neuron Neuron { get; set; }
         private Rectangle Ellipse { get; set; }
-        public NeuronControl(Neuron neuron)
+        public NeuronControl(Neuron neuron, int? index = null)
         {
             InitializeComponent();
             this.Neuron = neuron;
+            this.Index.Text = index.ToString();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)

@@ -72,6 +72,7 @@
             this.label_Min.TabIndex = 7;
             this.label_Min.Text = "Min";
             this.label_Min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Min.DoubleClick += new System.EventHandler(this.LabelClick);
             // 
             // label_Max
             // 
@@ -84,6 +85,7 @@
             this.label_Max.TabIndex = 6;
             this.label_Max.Text = "Max";
             this.label_Max.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Max.DoubleClick += new System.EventHandler(this.LabelClick);
             // 
             // pictureBox_CurrentNeuron
             // 
@@ -102,12 +104,13 @@
             this.label_Name.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_Name.BackColor = System.Drawing.Color.Transparent;
             this.label_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Name.Location = new System.Drawing.Point(133, 3);
+            this.label_Name.Location = new System.Drawing.Point(94, 2);
             this.label_Name.Name = "label_Name";
-            this.label_Name.Size = new System.Drawing.Size(70, 35);
+            this.label_Name.Size = new System.Drawing.Size(150, 35);
             this.label_Name.TabIndex = 10;
             this.label_Name.Text = "Name";
             this.label_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Name.DoubleClick += new System.EventHandler(this.label_Name_DoubleClick);
             // 
             // CurrentNeuronControl
             // 

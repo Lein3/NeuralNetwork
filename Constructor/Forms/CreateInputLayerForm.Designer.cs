@@ -28,24 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.currentNeuronControl1 = new Constructor.CurrentNeuronControl();
             this.panel_Neurons = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.currentNeuronControl1 = new Constructor.CurrentNeuronControl();
+            this.button_readFile = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label_fileName = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // currentNeuronControl1
-            // 
-            this.currentNeuronControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.currentNeuronControl1.BackColor = System.Drawing.Color.Transparent;
-            this.currentNeuronControl1.Location = new System.Drawing.Point(777, 12);
-            this.currentNeuronControl1.MaximumSize = new System.Drawing.Size(340, 215);
-            this.currentNeuronControl1.MinimumSize = new System.Drawing.Size(340, 215);
-            this.currentNeuronControl1.Name = "currentNeuronControl1";
-            this.currentNeuronControl1.Size = new System.Drawing.Size(340, 215);
-            this.currentNeuronControl1.TabIndex = 0;
             // 
             // panel_Neurons
             // 
@@ -53,10 +46,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Neurons.AutoScroll = true;
-            this.panel_Neurons.BackColor = System.Drawing.Color.Silver;
+            this.panel_Neurons.BackColor = System.Drawing.Color.White;
             this.panel_Neurons.Location = new System.Drawing.Point(12, 246);
             this.panel_Neurons.Name = "panel_Neurons";
-            this.panel_Neurons.Size = new System.Drawing.Size(1105, 457);
+            this.panel_Neurons.Size = new System.Drawing.Size(1105, 458);
             this.panel_Neurons.TabIndex = 2;
             // 
             // tabControl
@@ -73,6 +66,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label_fileName);
+            this.tabPage1.Controls.Add(this.button_readFile);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -91,19 +86,60 @@
             this.tabPage2.Text = "Вручную";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // currentNeuronControl1
+            // 
+            this.currentNeuronControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currentNeuronControl1.BackColor = System.Drawing.Color.Transparent;
+            this.currentNeuronControl1.Enabled = false;
+            this.currentNeuronControl1.Location = new System.Drawing.Point(777, 12);
+            this.currentNeuronControl1.MaximumSize = new System.Drawing.Size(340, 215);
+            this.currentNeuronControl1.MinimumSize = new System.Drawing.Size(340, 215);
+            this.currentNeuronControl1.Name = "currentNeuronControl1";
+            this.currentNeuronControl1.Size = new System.Drawing.Size(340, 215);
+            this.currentNeuronControl1.TabIndex = 0;
+            // 
+            // button_readFile
+            // 
+            this.button_readFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_readFile.Location = new System.Drawing.Point(300, 40);
+            this.button_readFile.Name = "button_readFile";
+            this.button_readFile.Size = new System.Drawing.Size(140, 45);
+            this.button_readFile.TabIndex = 0;
+            this.button_readFile.Text = "Прочитать файл";
+            this.button_readFile.UseVisualStyleBackColor = true;
+            this.button_readFile.Click += new System.EventHandler(this.button_readFile_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "CSV files (*.csv)|*.csv| txt files (*.txt) | *.txt | All files (*.*)|*.*";
+            // 
+            // label_fileName
+            // 
+            this.label_fileName.AutoSize = true;
+            this.label_fileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_fileName.Location = new System.Drawing.Point(363, 99);
+            this.label_fileName.Name = "label_fileName";
+            this.label_fileName.Size = new System.Drawing.Size(0, 25);
+            this.label_fileName.TabIndex = 1;
+            this.label_fileName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // CreateInputLayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1129, 715);
+            this.ClientSize = new System.Drawing.Size(1129, 716);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.panel_Neurons);
             this.Controls.Add(this.currentNeuronControl1);
             this.Name = "CreateInputLayerForm";
             this.Text = "OooКонструктор";
             this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -115,6 +151,9 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button_readFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Label label_fileName;
     }
 }
 

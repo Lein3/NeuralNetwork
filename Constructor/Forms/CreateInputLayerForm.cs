@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NeuralNetwork;
-using NeuralNetworkClass = NeuralNetwork.NeuralNetwork;
+using NeuralNetworkNamespace;
+using NeuralNetworkClass = NeuralNetworkNamespace.NeuralNetwork;
 
 namespace Constructor
 {
@@ -17,20 +17,16 @@ namespace Constructor
         public CreateInputLayerForm()
         {
             InitializeComponent();
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\z.csv");
-            Structure structure = new Structure(100, 1, 6, 6);
-            NeuralNetworkClass neuralNetwork = new NeuralNetworkClass(structure);         
-            // neuralNetwork.Normalization(learningData);
-            DisplayNetwork(neuralNetwork.Layers.First());
         }
 
         private void DisplayNetwork(Layer layer)
         {
             int x = panel_Neurons.Width / 2;
-            int y = 0;
+            int y = 30;
+            int index = 1;
             foreach (var neuron in layer.Neurons)
             {
-                var control = new NeuronControl(neuron);
+                var control = new NeuronControl(neuron, index++);
                 var point = new Point(x, y);
                 control.Location = point;
                 control.pictureBox.MouseEnter += onMouseEnter;
@@ -42,6 +38,7 @@ namespace Constructor
 
         private void onMouseEnter(object sender, EventArgs e)
         {
+            currentNeuronControl1.Enabled = true;
             var parent = (sender as PictureBox).Parent as NeuronControl;
             parent.Fill();
             var neuron = parent.Neuron;
@@ -52,6 +49,20 @@ namespace Constructor
         {
             var parent = (sender as PictureBox).Parent as NeuronControl;
             parent.pictureBox.Invalidate();
+        }
+
+        private void button_readFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                label_fileName.Text = openFileDialog.FileName;
+                NetworkTemplate.LearningData = new LearningData(openFileDialog.FileName);
+                var inputNeurons = NetworkTemplate.LearningData.LearningExamples[0].InputSignals.Count;
+                NetworkTemplate.Structure = new Structure(inputNeurons, 1, 1);
+                NetworkTemplate.NeuralNetwork = new NeuralNetwork(NetworkTemplate.Structure);
+                NetworkTemplate.NeuralNetwork.Normalization(NetworkTemplate.LearningData);
+                DisplayNetwork(NetworkTemplate.NeuralNetwork.Layers.First());
+            }
         }
     }
 }

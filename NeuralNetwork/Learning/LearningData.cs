@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace NeuralNetwork
+namespace NeuralNetworkNamespace
 {
     public class LearningData
     {
@@ -11,6 +11,11 @@ namespace NeuralNetwork
         public List<string> ParamNamesOutput { get; set; }
         public List<LearningExample> LearningExamples { get; set; }
         public List<LearningExample> TestExamples { get; set; }
+
+        public LearningData()
+        {
+            
+        }
 
         public LearningData(string path)
         {
