@@ -41,5 +41,15 @@ namespace Constructor
         {
             OpenChildForm(new CreateMiddleLayersForm());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new LearningForm());
+        }
+
+        public void button5_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new EvaluateForm());
+        }
     }
 }

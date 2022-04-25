@@ -36,12 +36,44 @@ namespace Constructor
         public void UpdateInfo(Neuron neuron)
         {
             this.CurrentNeuron = neuron;
-            label_Name.Text = CurrentNeuron.Name;
-            if (CurrentNeuron.NeuronType == Structure.NeuronType.Normal) label_Name.Text = "Sigmoid";
-            label_Max.Text = CurrentNeuron.Max.ToString();
-            label_Min.Text = CurrentNeuron.Min.ToString();
-            label_Sum.Text = CurrentNeuron.Sum == 0 ? string.Empty : CurrentNeuron.Sum.ToString();
-            label_Output.Text = CurrentNeuron.Output == 0 ? string.Empty : "S = " + CurrentNeuron.Sum.ToString();
+            switch (neuron.NeuronType)
+            {
+                case Structure.NeuronType.Input:
+                    label_Name.Text = CurrentNeuron.Name;
+                    label_Max.Text = CurrentNeuron.Max.ToString();
+                    label_Min.Text = CurrentNeuron.Min.ToString();
+                    label_Max.Visible = true;
+                    label_Min.Visible = true;
+                    label_outMax.Visible = false;
+                    label_outMin.Visible = false;
+                    label_Sum.Text = CurrentNeuron.Sum == 0 ? string.Empty : CurrentNeuron.Sum.ToString();
+                    label_Output.Text = CurrentNeuron.Output == 0 ? string.Empty : "S = " + CurrentNeuron.Sum.ToString();
+                    break;
+                case Structure.NeuronType.Normal:
+                    label_Name.Text = "Скрытый";
+                    label_Max.Text = CurrentNeuron.Max.ToString();
+                    label_Min.Text = CurrentNeuron.Min.ToString();
+                    label_Max.Visible = false;
+                    label_Min.Visible = false;
+                    label_outMax.Visible = false;
+                    label_outMin.Visible = false;
+                    label_Sum.Text = CurrentNeuron.Sum == 0 ? string.Empty : CurrentNeuron.Sum.ToString();
+                    label_Output.Text = CurrentNeuron.Output == 0 ? string.Empty : "S = " + CurrentNeuron.Sum.ToString();
+                    break;
+                case Structure.NeuronType.Output:
+                    label_Name.Text = "Выходной";
+                    label_Max.Text = CurrentNeuron.Max.ToString();
+                    label_Min.Text = CurrentNeuron.Min.ToString();
+                    label_Max.Visible = false;
+                    label_Min.Visible = false;
+                    label_outMax.Visible = true;
+                    label_outMin.Visible = true;
+                    label_outMax.Text = "Да";
+                    label_outMin.Text = "Нет";
+                    label_Sum.Text = CurrentNeuron.Sum == 0 ? string.Empty : CurrentNeuron.Sum.ToString();
+                    label_Output.Text = CurrentNeuron.Output == 0 ? string.Empty : "S = " + CurrentNeuron.Sum.ToString();
+                    break;
+            }              
             DrawRelationLines();
         }
 

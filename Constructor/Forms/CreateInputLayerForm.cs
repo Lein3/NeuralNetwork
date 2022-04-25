@@ -20,13 +20,13 @@ namespace Constructor
 
         protected void DisplayNetwork(Layer layer)
         {         
-            int x = panel_neurons.Width / 2;
+            int x = panel_neurons.Width / 3;
             int y = 30;
             int index = 1;
             panel_neurons.Controls.Clear();
             foreach (var neuron in layer.Neurons)
             {
-                var control = new NeuronControl(neuron, index++);
+                var control = new NeuronControl(neuron, null, index++);
                 var point = new Point(x, y);
                 control.Location = point;
                 control.pictureBox.MouseEnter += onMouseEnter;
@@ -61,6 +61,7 @@ namespace Constructor
             {
                 label_fileName.Text = openFileDialog.FileName;
                 NetworkTemplate.LearningData = new LearningData(openFileDialog.FileName);
+                NetworkTemplate.path = openFileDialog.FileName;
                 var inputNeurons = NetworkTemplate.LearningData.LearningExamples[0].InputSignals.Count;
                 NetworkTemplate.Structure = new Structure(inputNeurons, 1, 1);
                 NetworkTemplate.NeuralNetwork = new NeuralNetwork(NetworkTemplate.Structure);

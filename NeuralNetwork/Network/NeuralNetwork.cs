@@ -11,6 +11,13 @@ namespace NeuralNetworkNamespace
         public List<Layer> Layers { get; private set; }
         public LearningStatistics LearningStatistics { get; private set; }
 
+        public NeuralNetwork(List<Layer> temp_layers)
+        {
+            Structure = new Structure();
+            Layers = temp_layers;
+            LearningStatistics = new LearningStatistics();
+        }
+
         public NeuralNetwork(Structure temp_Structure)
         {
             Structure = temp_Structure;
@@ -150,6 +157,7 @@ namespace NeuralNetworkNamespace
                 LearningStatistics.MAE.Add(currentEpochErrorsMAE.Average());
                 LearningStatistics.MSE.Add(currentEpochErrorsMSE.Average());
                 learningData.Mix();
+                //Console.WriteLine($"обучили {i} из {times} средняя абсолютная ошибка: {LearningStatistics.MAE.Last()}");
             }
         }
 

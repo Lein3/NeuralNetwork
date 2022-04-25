@@ -34,6 +34,8 @@
             this.label_Max = new System.Windows.Forms.Label();
             this.pictureBox_CurrentNeuron = new System.Windows.Forms.PictureBox();
             this.label_Name = new System.Windows.Forms.Label();
+            this.label_outMin = new System.Windows.Forms.Label();
+            this.label_outMax = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CurrentNeuron)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +44,7 @@
             this.label_Output.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_Output.BackColor = System.Drawing.Color.Transparent;
             this.label_Output.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Output.Location = new System.Drawing.Point(248, 82);
+            this.label_Output.Location = new System.Drawing.Point(135, 110);
             this.label_Output.Name = "label_Output";
             this.label_Output.Size = new System.Drawing.Size(73, 17);
             this.label_Output.TabIndex = 9;
@@ -54,7 +56,7 @@
             this.label_Sum.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_Sum.BackColor = System.Drawing.Color.Transparent;
             this.label_Sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Sum.Location = new System.Drawing.Point(142, 96);
+            this.label_Sum.Location = new System.Drawing.Point(140, 95);
             this.label_Sum.Name = "label_Sum";
             this.label_Sum.Size = new System.Drawing.Size(61, 17);
             this.label_Sum.TabIndex = 8;
@@ -112,10 +114,36 @@
             this.label_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_Name.DoubleClick += new System.EventHandler(this.label_Name_DoubleClick);
             // 
+            // label_outMin
+            // 
+            this.label_outMin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_outMin.BackColor = System.Drawing.Color.Transparent;
+            this.label_outMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_outMin.Location = new System.Drawing.Point(255, 140);
+            this.label_outMin.Name = "label_outMin";
+            this.label_outMin.Size = new System.Drawing.Size(40, 20);
+            this.label_outMin.TabIndex = 12;
+            this.label_outMin.Text = "Min";
+            this.label_outMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_outMax
+            // 
+            this.label_outMax.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_outMax.BackColor = System.Drawing.Color.Transparent;
+            this.label_outMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_outMax.Location = new System.Drawing.Point(255, 70);
+            this.label_outMax.Name = "label_outMax";
+            this.label_outMax.Size = new System.Drawing.Size(40, 20);
+            this.label_outMax.TabIndex = 11;
+            this.label_outMax.Text = "Max";
+            this.label_outMax.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CurrentNeuronControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label_outMin);
+            this.Controls.Add(this.label_outMax);
             this.Controls.Add(this.label_Name);
             this.Controls.Add(this.label_Output);
             this.Controls.Add(this.label_Sum);
@@ -139,5 +167,7 @@
         private System.Windows.Forms.Label label_Max;
         private System.Windows.Forms.PictureBox pictureBox_CurrentNeuron;
         private System.Windows.Forms.Label label_Name;
+        private System.Windows.Forms.Label label_outMin;
+        private System.Windows.Forms.Label label_outMax;
     }
 }
