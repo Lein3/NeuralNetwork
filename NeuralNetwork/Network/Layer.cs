@@ -7,10 +7,22 @@ namespace NeuralNetworkNamespace
     public class Layer
     {
         public List<Neuron> Neurons { get; private set; }
+        public ICostFunction CostFunction { get; private set; }
 
         public Layer(List<Neuron> temp_Neurons)
         {
             Neurons = temp_Neurons;
+        }
+
+        public void CalculateError(List<double> expectedOutputs)
+        {
+            for (int i = 0; i < Neurons.Count; i++)
+            {
+                var neuron = Neurons[i];
+                var expectedOutput = (expectedOutputs[i] - neuron.Min) / (neuron.Max - neuron.Min);
+                var actualResult = neuron.Output;
+                neuron.Error = CostFunction.CalculateError(expectedOutput, actualResult);
+            }
         }
 
         public List<double> GetSignals()

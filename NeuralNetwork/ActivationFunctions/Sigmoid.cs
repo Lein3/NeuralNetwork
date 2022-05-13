@@ -14,7 +14,7 @@ namespace NeuralNetworkNamespace
             return result;
         }
 
-        public double FunctionDx(double x)
+        public double Derivative(double x)
         {
             double result = Function(x) * (1 - Function(x));
             return result;

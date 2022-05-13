@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkNamespace
 {
-    public interface IActivationFunction
+    public interface ICostFunction
     {
-        double Function(double input);
-
-        double Derivative(double input);
+        double CalculateError(double expected, double actual);
     }
 }
