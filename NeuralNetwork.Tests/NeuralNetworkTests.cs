@@ -135,7 +135,7 @@ namespace NeuralNetworkNamespace.Tests
             expectedOutputs.Add(new double[] { 1 });
 
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
-            Structure structure = new Structure(3, 1, 6);
+            Structure structure = new Structure(3, 1, 6, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 1000);
