@@ -137,7 +137,7 @@ namespace Constructor
                 for (int i = 0; i < count; i++)
                 {
                     NetworkTemplate.NeuralNetwork.Learn_Backpropogation(NetworkTemplate.LearningData, 1, learningRate);
-                    Console.WriteLine($"обучили {i} из {count} средняя абсолютная ошибка: {NetworkTemplate.NeuralNetwork.LearningStatistics.MAE.Last()}");
+                    //Console.WriteLine($"обучили {i} из {count} средняя абсолютная ошибка: {NetworkTemplate.NeuralNetwork.LearningStatistics.MAE.Last()}");
                     if (i % 500 == 0)
                     {
                         DrawAllLayers();

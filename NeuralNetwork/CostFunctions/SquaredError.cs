@@ -15,7 +15,7 @@ namespace NeuralNetworkNamespace
 
         public double Derivative(double expected, double actual, int n = 1)
         {
-            return 2 * 1 / n * (expected - actual) * -1; //https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+            return 2 * (expected - actual); //https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
         }
     }
 }

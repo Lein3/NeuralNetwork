@@ -6,7 +6,7 @@ namespace NeuralNetworkNamespace
     [Serializable]
     public abstract class Neuron
     {
-        public List<double> Weights { get; private set; }
+        public List<double> Weights { get; set; }
         public List<double> Inputs { get; set; }
         public Structure.NeuronType NeuronType { get; set; }
         public IActivationFunction ActivationFunction { get; set; }

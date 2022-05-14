@@ -17,6 +17,7 @@ namespace NeuralNetworkNamespace
             Structure = new Structure();
             Layers = temp_layers;
             LearningStatistics = new LearningStatistics();
+            CostFunction = new SquaredError();
         }
 
         public NeuralNetwork(Structure temp_Structure)
