@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace NeuralNetworkNamespace
 {
-    [Serializable]
     public class Layer
     {
         public List<Neuron> Neurons { get; private set; }
@@ -20,7 +19,7 @@ namespace NeuralNetworkNamespace
                 var neuron = Neurons[i];
                 var expectedOutput = (expectedOutputs[i] - neuron.Min) / (neuron.Max - neuron.Min);
                 var actualResult = neuron.Output;
-                var costDerivative = costFunction.Derivative(expectedOutput, actualResult, Neurons.Count);
+                var costDerivative = costFunction.Derivative(expectedOutput, actualResult);
                 var activationDerivative = neuron.ActivationFunction.Derivative(neuron.Sum);
                 var error = costDerivative * activationDerivative;
                 neuron.Error = error;

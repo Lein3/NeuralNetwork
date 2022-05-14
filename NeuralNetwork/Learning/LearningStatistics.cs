@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkNamespace
 {
-    public class LearningStatistics
+    public class LearningStatistics //щас это хуета
     {
         public List<double> SSE { get; set; } //сумма квадратов
         public List<double> MAE { get; set; } // средняя абсолютная ошибка

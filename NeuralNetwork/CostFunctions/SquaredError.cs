@@ -13,9 +13,9 @@ namespace NeuralNetworkNamespace
             throw new NotImplementedException();
         }
 
-        public double Derivative(double expected, double actual, int n = 1)
+        public double Derivative(double expected, double actual)
         {
-            return 2 * (expected - actual); //https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+            return 2 * (expected - actual);
         }
     }
 }

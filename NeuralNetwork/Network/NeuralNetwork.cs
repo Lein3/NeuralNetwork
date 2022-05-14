@@ -168,19 +168,6 @@ namespace NeuralNetworkNamespace
                 for (int j = Layers[i].Neurons.Count - 1; j >= 0; j--)
                     Layers[i].Neurons[j].Learn_ChangeWeights(learningRate);
         }
-
-        public void Learn_Clear()
-        {
-            foreach (Layer layer in Layers)
-                foreach (Neuron neuron in layer.Neurons)
-                {
-                    neuron.Error = 0;
-                    neuron.Output = 0;
-                    neuron.Sum = 0;
-                    for (int i = 0; i < neuron.Inputs.Count; i++)
-                        neuron.Inputs[i] = 0;
-                }
-        }
         #endregion
 
         #region НормализацияМаштабирование
