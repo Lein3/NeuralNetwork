@@ -9,6 +9,7 @@ namespace NeuralNetworkNamespace
     {
         public Structure Structure { get; private set; }
         public List<Layer> Layers { get; private set; }
+        public ICostFunction CostFunction { get; private set; }
         public LearningStatistics LearningStatistics { get; private set; }
 
         public NeuralNetwork(List<Layer> temp_layers)
@@ -22,6 +23,7 @@ namespace NeuralNetworkNamespace
         {
             Structure = temp_Structure;
             Layers = new List<Layer>();
+            CostFunction = new SquaredError();
             LearningStatistics = new LearningStatistics();
             CreateInputLayer();
             CreateMiddleLayers();
@@ -149,40 +151,13 @@ namespace NeuralNetworkNamespace
         private void Learn_RecalculateError(LearningExample example)
         {
             Predict(example.InputSignals);
-            Layers.Last().CalculateError(example.ExpectedOutputs);
-
-            var inputSignals = example.InputSignals;
-            var expectedOutputs = example.ExpectedOutputs;
-
-            List<double> actualResultFull = Predict_ReturnOnlyValues(inputSignals);
-            for (int i = 0; i < Layers.Last().Neurons.Count; i++)
-            {
-                var neuron = Layers.Last().Neurons[i];
-                var expectedOutput = (expectedOutputs[i] - neuron.Min) / (neuron.Max - neuron.Min);
-                var actualResult = actualResultFull[i];
-                var error = expectedOutput - actualResult;
-                Layers.Last().Neurons[i].Error = expectedOutput - actualResult;
-            }
+            Layers.Last().CalculateError(example.ExpectedOutputs, CostFunction);
                 
-
             for (int i = Layers.Count - 2; i > 0; i--)
             {
                 Layer currentLayer = Layers[i];
                 Layer previousRightLayer = Layers[i + 1];
-                for (int j = 0; j < currentLayer.Neurons.Count; j++)
-                {
-                    if (currentLayer.Neurons[j].NeuronType == Structure.NeuronType.Bias)
-                        continue;
-
-                    double sumResultError = 0;
-                    for (int k = 0; k < previousRightLayer.Neurons.Count; k++)
-                    {
-                        if (previousRightLayer.Neurons[k].NeuronType == Structure.NeuronType.Bias)
-                            continue;
-                        sumResultError += previousRightLayer.Neurons[k].Error * previousRightLayer.Neurons[k].Weights[j];
-                    }                      
-                    currentLayer.Neurons[j].Error = sumResultError;
-                }
+                currentLayer.CalculateError(previousRightLayer);
             }
         }
 

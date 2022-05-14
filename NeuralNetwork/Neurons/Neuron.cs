@@ -24,7 +24,7 @@ namespace NeuralNetworkNamespace
             Inputs = new List<double>();
             Min = 0;
             Max = 1;
-            ActivationFunction = new ReLU();
+            ActivationFunction = new Sigmoid();
         }
 
         public abstract double ProcessInformation(List<double> original_inputs);

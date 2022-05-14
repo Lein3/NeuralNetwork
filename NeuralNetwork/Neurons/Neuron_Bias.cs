@@ -8,10 +8,6 @@ namespace NeuralNetworkNamespace
         public Neuron_Bias() : base()
         {
             NeuronType = Structure.NeuronType.Bias;
-            Weights.Add(1);
-            Inputs.Add(1);
-            Sum = 1;
-            Output = 1;
         }
 
         public override double ProcessInformation(List<double> original_inputs)

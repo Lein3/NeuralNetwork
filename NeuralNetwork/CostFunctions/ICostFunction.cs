@@ -8,6 +8,7 @@ namespace NeuralNetworkNamespace
 {
     public interface ICostFunction
     {
-        double CalculateError(double expected, double actual);
+        void Function();
+        double Derivative(double expected, double actual, int n = 1);
     }
 }

@@ -10,8 +10,7 @@ namespace NeuralNetworkNamespace
             NeuronType = Structure.NeuronType.Output;
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)
             {
-                //Weights.Add(Rnd.NextDouble() * 2 - 1);
-                Weights.Add(Rnd.NextDouble());
+                Weights.Add(Rnd.NextDouble() * 2 - 1);
                 Inputs.Add(0);
             }
         }
@@ -31,7 +30,7 @@ namespace NeuralNetworkNamespace
         {
             for (int i = 0; i < Weights.Count; i++)
             {
-                double new_weight = Weights[i] + (learningRate * Error * ActivationFunction.Derivative(Sum) * Inputs[i]);
+                double new_weight = Weights[i] + (learningRate * -Error * Inputs[i]);
                 Weights[i] = new_weight;
             }
         }

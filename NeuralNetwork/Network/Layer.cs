@@ -7,21 +7,44 @@ namespace NeuralNetworkNamespace
     public class Layer
     {
         public List<Neuron> Neurons { get; private set; }
-        public ICostFunction CostFunction { get; private set; }
 
         public Layer(List<Neuron> temp_Neurons)
         {
             Neurons = temp_Neurons;
         }
 
-        public void CalculateError(List<double> expectedOutputs)
+        public void CalculateError(List<double> expectedOutputs, ICostFunction costFunction) //расчет на последнем слое
         {
             for (int i = 0; i < Neurons.Count; i++)
             {
                 var neuron = Neurons[i];
                 var expectedOutput = (expectedOutputs[i] - neuron.Min) / (neuron.Max - neuron.Min);
                 var actualResult = neuron.Output;
-                neuron.Error = CostFunction.CalculateError(expectedOutput, actualResult);
+                var costDerivative = costFunction.Derivative(expectedOutput, actualResult, Neurons.Count);
+                var activationDerivative = neuron.ActivationFunction.Derivative(neuron.Sum);
+                var error = costDerivative * activationDerivative;
+                neuron.Error = error;
+            }
+        }
+
+        public void CalculateError(Layer previousRightLayer) //расчет на скрытых слоях
+        {
+            for (int i = 0; i < Neurons.Count; i++)
+            {
+                var currentNeuron = Neurons[i];
+                if (currentNeuron.NeuronType == Structure.NeuronType.Bias)
+                    continue;
+
+                double sumResultError = 0;
+                for (int j = 0; j < previousRightLayer.Neurons.Count; j++)
+                {
+                    var previousRightNeuron = previousRightLayer.Neurons[j];
+                    if (previousRightNeuron.NeuronType == Structure.NeuronType.Bias)
+                        continue;
+
+                    sumResultError += previousRightNeuron.Error * previousRightNeuron.Weights[i];
+                }
+                currentNeuron.Error = sumResultError * currentNeuron.ActivationFunction.Derivative(currentNeuron.Sum);
             }
         }
 

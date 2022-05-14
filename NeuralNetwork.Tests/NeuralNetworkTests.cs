@@ -125,20 +125,20 @@ namespace NeuralNetworkNamespace.Tests
             inputSignals.Add(new double[] { 1, 1, 0 });
             inputSignals.Add(new double[] { 1, 1, 1 });
 
-            expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 1, 0 });
-            expectedOutputs.Add(new double[] { 1, 0 });
-            expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 1, 0 });
-            expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 0, 1 });
-            expectedOutputs.Add(new double[] { 1, 1 });
+            expectedOutputs.Add(new double[] { 0 });
+            expectedOutputs.Add(new double[] { 1 });
+            expectedOutputs.Add(new double[] { 1 });
+            expectedOutputs.Add(new double[] { 0 });
+            expectedOutputs.Add(new double[] { 1 });
+            expectedOutputs.Add(new double[] { 0 });
+            expectedOutputs.Add(new double[] { 0 });
+            expectedOutputs.Add(new double[] { 1 });
 
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
-            Structure structure = new Structure(3, 2, 6, 6);
+            Structure structure = new Structure(3, 1, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 0.05, 0.5);
+            neuralNetwork.Learn_Backpropogation(learningData, 1000);
 
             for (int i = 0; i < 8; i++)
             {
@@ -147,8 +147,6 @@ namespace NeuralNetworkNamespace.Tests
                 Assert.AreEqual(expectedOutputs[i][0], result[0], 0.05);
             }
         }
-
-
 
         [TestMethod]
         public void Image_Lines_Test()
@@ -260,7 +258,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void TestExapmles_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv");
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv");
             Structure structure = new Structure(13, 1, 10); // 13 10 1 // 13 10 5 1
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -282,8 +280,6 @@ namespace NeuralNetworkNamespace.Tests
             //    Assert.AreEqual(answer[0], real[0], 0.20);
             //}
         }
-
-
 
         #endregion
     }
