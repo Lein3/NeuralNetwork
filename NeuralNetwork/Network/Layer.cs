@@ -19,7 +19,7 @@ namespace NeuralNetworkNamespace
                 var neuron = Neurons[i];
                 var expectedOutput = (expectedOutputs[i] - neuron.Min) / (neuron.Max - neuron.Min);
                 var actualResult = neuron.Output;
-                var costDerivative = costFunction.Derivative(expectedOutput, actualResult);
+                var costDerivative = costFunction.Derivative(neuron.ActivationFunction, neuron.Sum, expectedOutput, actualResult);
                 var activationDerivative = neuron.ActivationFunction.Derivative(neuron.Sum);
                 var error = costDerivative * activationDerivative;
                 neuron.Error = error;

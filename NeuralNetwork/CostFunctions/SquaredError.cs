@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNetworkNamespace
 {
     internal class SquaredError : ICostFunction
     {
-        public void Function()
+        public double Function(double expected, double actual)
         {
-            throw new NotImplementedException();
+            return Math.Pow(expected - actual, 2);
         }
 
-        public double Derivative(double expected, double actual)
+        public double Derivative(IActivationFunction activationFunction, double activationInput, double expected, double actual)
         {
-            return 2 * (expected - actual);
+            return 2 * (activationFunction.Function(activationInput) - actual) * activationFunction.Derivative(activationInput);
         }
     }
 }

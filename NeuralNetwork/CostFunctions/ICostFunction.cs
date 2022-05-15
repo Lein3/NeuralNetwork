@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NeuralNetworkNamespace
+﻿namespace NeuralNetworkNamespace
 {
     public interface ICostFunction
     {
-        void Function();
-        double Derivative(double expected, double actual);
+        double Function(double expected, double actual);
+        double Derivative(IActivationFunction activationFunction, double activationInput, double expected, double actual);
 
         // кароче меченый мозги хватит ебать я похоже нашел как оно должно быть
         // есть стохастический градиентный спуск это где у тебя 200 примеров и ты каждый пример обрабатываешь отдельно и далее меняешь в соответсвии с ошибкой 200 примеров

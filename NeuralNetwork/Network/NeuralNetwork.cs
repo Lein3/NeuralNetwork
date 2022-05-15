@@ -9,7 +9,7 @@ namespace NeuralNetworkNamespace
     {
         public Structure Structure { get; private set; }
         public List<Layer> Layers { get; private set; }
-        public ICostFunction CostFunction { get; private set; }
+        public ICostFunction CostFunction { get; private set; } = new BinaryLogLoss();
         public LearningStatistics LearningStatistics { get; private set; }
 
         public NeuralNetwork(List<Layer> temp_layers)
@@ -17,14 +17,12 @@ namespace NeuralNetworkNamespace
             Structure = new Structure();
             Layers = temp_layers;
             LearningStatistics = new LearningStatistics();
-            CostFunction = new SquaredError();
         }
 
         public NeuralNetwork(Structure temp_Structure)
         {
             Structure = temp_Structure;
             Layers = new List<Layer>();
-            CostFunction = new SquaredError();
             LearningStatistics = new LearningStatistics();
             CreateInputLayer();
             CreateMiddleLayers();
@@ -32,6 +30,7 @@ namespace NeuralNetworkNamespace
         }
 
         #region СозданиеСлоев
+
         private void CreateInputLayer()
         {
             List<Neuron> inputNeurons = new List<Neuron>();
@@ -82,9 +81,11 @@ namespace NeuralNetworkNamespace
             Layer outputLayer = new Layer(outputNeurons);
             Layers.Add(outputLayer);
         }
+
         #endregion
 
         #region РасчетыОтвета
+
         public List<(string Name, double Output, double NormalizedOutput)> Predict(List<double> inputSignals)
         {
             SendSignalsToInputLayer(inputSignals);
@@ -118,9 +119,11 @@ namespace NeuralNetworkNamespace
                     neuron.ProcessInformation(previousLayerSignals);
             }
         }
+
         #endregion
 
         #region Обучение
+
         public void Learn_Backpropogation(LearningData learningData, double limit, double learningRate = 0.1)
         {
             do
@@ -168,9 +171,11 @@ namespace NeuralNetworkNamespace
                 for (int j = Layers[i].Neurons.Count - 1; j >= 0; j--)
                     Layers[i].Neurons[j].Learn_ChangeWeights(learningRate);
         }
+
         #endregion
 
         #region НормализацияМаштабирование
+
         public void Normalization(LearningData learningData)
         {
             for (int i = 0; i < Layers.First().Neurons.Count; i++)
@@ -199,6 +204,7 @@ namespace NeuralNetworkNamespace
                     Layers.Last().Neurons[i].Name = learningData.ParamNamesOutput[i];
             } //выходного слоя
         }
+
         #endregion
     }
 }

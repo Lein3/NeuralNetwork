@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
@@ -137,14 +134,13 @@ namespace Constructor
                 for (int i = 0; i < count; i++)
                 {
                     NetworkTemplate.NeuralNetwork.Learn_Backpropogation(NetworkTemplate.LearningData, 1, learningRate);
-                    //Console.WriteLine($"обучили {i} из {count} средняя абсолютная ошибка: {NetworkTemplate.NeuralNetwork.LearningStatistics.MAE.Last()}");
+                    Console.WriteLine($"обучили {i} из {count} средняя абсолютная ошибка: {NetworkTemplate.NeuralNetwork.LearningStatistics.MAE.Last()}");
                     if (i % 500 == 0)
                     {
                         DrawAllLayers();
                     }
                 }
             });
-            //Console.ReadKey();
             var parent = this.ParentForm as MainForm;
             parent.button5.Enabled = true;
             parent.button5_Click(null, null);

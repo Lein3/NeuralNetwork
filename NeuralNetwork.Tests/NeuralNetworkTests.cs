@@ -41,10 +41,10 @@ namespace NeuralNetworkNamespace.Tests
         public void Regression_Test()
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\дома.csv");
-            Structure structure = new Structure(7, 1, 5);
+            Structure structure = new Structure(7, 1, 10);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 100);
+            neuralNetwork.Learn_Backpropogation(learningData, 1);
             var real2 = neuralNetwork.Predict_ReturnOnlyValues(learningData.LearningExamples[0].InputSignals);
 
             for (int i = 0; i < learningData.LearningExamples.Count; i++)
@@ -54,56 +54,6 @@ namespace NeuralNetworkNamespace.Tests
                 var real = neuralNetwork.Predict_ReturnOnlyValues(example);
                 //Assert.AreEqual(answer[0], real[0], 0.20);
             }
-
-            for (int i = 0; i < learningData.TestExamples.Count; i++)
-            {
-                var example = learningData.TestExamples[i].InputSignals;
-                var answer = learningData.TestExamples[i].ExpectedOutputs;
-                var real = neuralNetwork.Predict_ReturnOnlyValues(example);
-                //Assert.AreEqual(answer[0], real[0], 0.20);
-            }
-        }
-
-        [TestMethod]
-        public void RegressionProblem_Test()
-        {
-            var inputSignals = new List<double[]>();
-            var expectedOutputs = new List<double[]>();
-
-            inputSignals.Add(new double[] { 1 });
-            inputSignals.Add(new double[] { 2 });
-            inputSignals.Add(new double[] { 3 });
-            inputSignals.Add(new double[] { 4 });
-            inputSignals.Add(new double[] { 5 });
-            inputSignals.Add(new double[] { 6 });
-            inputSignals.Add(new double[] { 7 });
-
-            expectedOutputs.Add(new double[] { 1 });
-            expectedOutputs.Add(new double[] { 2 });
-            expectedOutputs.Add(new double[] { 3 });
-            expectedOutputs.Add(new double[] { 4 });
-            expectedOutputs.Add(new double[] { 5 });
-            expectedOutputs.Add(new double[] { 6 });
-            expectedOutputs.Add(new double[] { 7 });
-
-            var ForAnswer = new List<double>() { 8 };
-
-            LearningData learningData = new LearningData(inputSignals, expectedOutputs);
-            Structure structure = new Structure(false, 1, 1);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
-
-            foreach (var neuron in neuralNetwork.Layers.First().Neurons)
-            {
-                neuron.Max = 7;
-            }
-            foreach (var neuron in neuralNetwork.Layers.Last().Neurons)
-            {
-                neuron.Max = 7;
-            }
-            neuralNetwork.Learn_Backpropogation(learningData, 100);
-            var kek = neuralNetwork.Predict_ReturnOnlyValues(ForAnswer);
-
-            //throw new NotImplementedException();
         }
 
         #endregion
@@ -138,15 +88,17 @@ namespace NeuralNetworkNamespace.Tests
             Structure structure = new Structure(3, 1, 6, 6);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 1000);
+            neuralNetwork.Learn_Backpropogation(learningData, 10000);
 
             var answers = new List<double>();
             for (int i = 0; i < 8; i++)
             {
                 var input = inputSignals[i];
                 answers.Add(neuralNetwork.Predict_ReturnOnlyValues(input.ToList())[0]);
-                //Assert.AreEqual(expectedOutputs[i][0], result[0], 0.05);
+                var result = neuralNetwork.Predict_ReturnOnlyValues(input.ToList());
+                Assert.AreEqual(expectedOutputs[i][0], result[0], 0.1);
             }
+            //пиздец столько ебался а в итоге просто мало эпох было указано
         }
 
         [TestMethod]
@@ -206,7 +158,7 @@ namespace NeuralNetworkNamespace.Tests
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
             Structure structure = new Structure(false, 9, 2, 5, 4);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
-            neuralNetwork.Learn_Backpropogation(learningData, 100000, 0.01);
+            neuralNetwork.Learn_Backpropogation(learningData, 10000);
 
             for (int i = 0; i < 8; i++)
             {
@@ -249,7 +201,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void CreateLearningDataWithPercents_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv", 10);
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", 10);
             Structure structure = new Structure(true, 13, 1, 7);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
