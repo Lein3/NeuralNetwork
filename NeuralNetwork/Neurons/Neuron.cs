@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace NeuralNetworkNamespace
 {
-    [Serializable]
     public abstract class Neuron
     {
         public List<double> Weights { get; set; }

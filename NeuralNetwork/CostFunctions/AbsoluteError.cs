@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetwork.CostFunctions
 {
-    internal class LogLoss
+    internal class AbsoluteError
     {
     }
 }

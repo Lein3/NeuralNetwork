@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace NeuralNetworkNamespace
 {
-    [Serializable]
     public class NeuralNetwork
     {
         public Structure Structure { get; private set; }
