@@ -4,12 +4,19 @@ using System.Linq;
 
 namespace NeuralNetworkNamespace
 {
-    [Serializable]
     public class NeuralNetwork
     {
         public Structure Structure { get; private set; }
         public List<Layer> Layers { get; private set; }
+        public ICostFunction CostFunction { get; private set; } = new BinaryLogLoss();
         public LearningStatistics LearningStatistics { get; private set; }
+
+        public NeuralNetwork(List<Layer> temp_layers)
+        {
+            Structure = new Structure();
+            Layers = temp_layers;
+            LearningStatistics = new LearningStatistics();
+        }
 
         public NeuralNetwork(Structure temp_Structure)
         {
@@ -22,6 +29,7 @@ namespace NeuralNetworkNamespace
         }
 
         #region СозданиеСлоев
+
         private void CreateInputLayer()
         {
             List<Neuron> inputNeurons = new List<Neuron>();
@@ -30,7 +38,7 @@ namespace NeuralNetworkNamespace
                 Neuron neuron = new Neuron_Input();
                 inputNeurons.Add(neuron);
             }
-            if (Structure.Bias)
+            if (Structure.Bias == true)
             {
                 Neuron bias = new Neuron_Bias();
                 inputNeurons.Add(bias);
@@ -50,7 +58,7 @@ namespace NeuralNetworkNamespace
                     Neuron neuron = new Neuron_Normal(lastLayerNeuronCount.Neurons.Count);
                     middleNeurons.Add(neuron);
                 }
-                if (Structure.Bias)
+                if (Structure.Bias == true)
                 {
                     Neuron bias = new Neuron_Bias();
                     middleNeurons.Add(bias);
@@ -72,9 +80,11 @@ namespace NeuralNetworkNamespace
             Layer outputLayer = new Layer(outputNeurons);
             Layers.Add(outputLayer);
         }
+
         #endregion
 
         #region РасчетыОтвета
+
         public List<(string Name, double Output, double NormalizedOutput)> Predict(List<double> inputSignals)
         {
             SendSignalsToInputLayer(inputSignals);
@@ -108,81 +118,49 @@ namespace NeuralNetworkNamespace
                     neuron.ProcessInformation(previousLayerSignals);
             }
         }
+
         #endregion
 
         #region Обучение
+
         public void Learn_Backpropogation(LearningData learningData, double limit, double learningRate = 0.1)
         {
             do
             {
-                var currentEpochErrorsMAE = new List<double>();
-                var currentEpochErrorsMSE = new List<double>();
                 for (int j = 0; j < learningData.LearningExamples.Count; j++)
                 {
                     LearningExample example = learningData.LearningExamples[j];
-                    Learn_RecalculateError(example.InputSignals, example.ExpectedOutputs);
+                    Learn_RecalculateError(example);
                     Learn_ChangeWeights(learningRate);
-                    currentEpochErrorsMAE.Add(Math.Abs(Layers.Last().Neurons.Last().Error));
-                    currentEpochErrorsMSE.Add(Math.Pow(Layers.Last().Neurons.Last().Error, 2));
                 }
-                currentEpochErrorsMAE.Sort();
-                var temp = currentEpochErrorsMAE.Average();
-                LearningStatistics.MAE.Add(currentEpochErrorsMAE.Average());
-                LearningStatistics.MSE.Add(currentEpochErrorsMSE.Average());
                 learningData.Mix();
-            } while (LearningStatistics.MSE.Last() > limit);
+            } while (true);
         }
 
         public void Learn_Backpropogation(LearningData learningData, int times, double learningRate = 0.1)
         {
             for (int i = 0; i < times; i++)
             {
-                var currentEpochErrorsMAE = new List<double>();
-                var currentEpochErrorsMSE = new List<double>();
                 for (int j = 0; j < learningData.LearningExamples.Count; j++)
                 {
                     LearningExample example = learningData.LearningExamples[j];
-                    Learn_RecalculateError(example.InputSignals, example.ExpectedOutputs);
+                    Learn_RecalculateError(example);
                     Learn_ChangeWeights(learningRate);
-                    currentEpochErrorsMAE.Add(Math.Abs(Layers.Last().Neurons.Last().Error));
-                    currentEpochErrorsMSE.Add(Math.Pow(Layers.Last().Neurons.Last().Error, 2));
                 }
-                LearningStatistics.MAE.Add(currentEpochErrorsMAE.Average());
-                LearningStatistics.MSE.Add(currentEpochErrorsMSE.Average());
                 learningData.Mix();
             }
         }
 
-        private void Learn_RecalculateError(List<double> inputSignals, List<double> expectedOutputs)
+        private void Learn_RecalculateError(LearningExample example)
         {
-            List<double> actualResultFull = Predict_ReturnOnlyValues(inputSignals);
-            for (int i = 0; i < Layers.Last().Neurons.Count; i++)
-            {
-                var neuron = Layers.Last().Neurons[i];
-                var expectedOutput = (expectedOutputs[i] - neuron.Min) / (neuron.Max - neuron.Min);
-                var actualResult = actualResultFull[i];
-                Layers.Last().Neurons[i].Error = expectedOutput - actualResult;
-            }
+            Predict(example.InputSignals);
+            Layers.Last().CalculateError(example.ExpectedOutputs, CostFunction);
                 
-
             for (int i = Layers.Count - 2; i > 0; i--)
             {
                 Layer currentLayer = Layers[i];
                 Layer previousRightLayer = Layers[i + 1];
-                for (int j = 0; j < currentLayer.Neurons.Count; j++)
-                {
-                    if (currentLayer.Neurons[j].NeuronType == Structure.NeuronType.Bias)
-                        continue;
-
-                    double sumResultError = 0;
-                    for (int k = 0; k < previousRightLayer.Neurons.Count; k++)
-                    {
-                        if (previousRightLayer.Neurons[k].NeuronType == Structure.NeuronType.Bias)
-                            continue;
-                        sumResultError += previousRightLayer.Neurons[k].Error * previousRightLayer.Neurons[k].Weights[j];
-                    }                      
-                    currentLayer.Neurons[j].Error = sumResultError;
-                }
+                currentLayer.CalculateError(previousRightLayer);
             }
         }
 
@@ -193,21 +171,10 @@ namespace NeuralNetworkNamespace
                     Layers[i].Neurons[j].Learn_ChangeWeights(learningRate);
         }
 
-        public void Learn_Clear()
-        {
-            foreach (Layer layer in Layers)
-                foreach (Neuron neuron in layer.Neurons)
-                {
-                    neuron.Error = 0;
-                    neuron.Output = 0;
-                    neuron.Sum = 0;
-                    for (int i = 0; i < neuron.Inputs.Count; i++)
-                        neuron.Inputs[i] = 0;
-                }
-        }
         #endregion
 
         #region НормализацияМаштабирование
+
         public void Normalization(LearningData learningData)
         {
             for (int i = 0; i < Layers.First().Neurons.Count; i++)
@@ -222,7 +189,10 @@ namespace NeuralNetworkNamespace
                 if (learningData.ParamNamesInput != null)
                     Layers.First().Neurons[i].Name = learningData.ParamNamesInput[i];
             } //нормализация входного слоя
+        }
 
+        public void NormalizationOutput(LearningData learningData)
+        {
             for (int i = 0; i < Layers.Last().Neurons.Count; i++)
             {
                 var column = learningData.LearningExamples.Select(item => item.ExpectedOutputs[i]).ToList();
@@ -233,6 +203,7 @@ namespace NeuralNetworkNamespace
                     Layers.Last().Neurons[i].Name = learningData.ParamNamesOutput[i];
             } //выходного слоя
         }
+
         #endregion
     }
 }

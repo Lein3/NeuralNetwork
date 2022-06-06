@@ -30,12 +30,6 @@
         {
             this.panel_neurons = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.radioButton_yes1 = new System.Windows.Forms.RadioButton();
-            this.radioButton_no1 = new System.Windows.Forms.RadioButton();
-            this.label_normalization1 = new System.Windows.Forms.Label();
-            this.label_fileName = new System.Windows.Forms.Label();
-            this.button_readFile = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.radioButton_yes2 = new System.Windows.Forms.RadioButton();
             this.radioButton_no2 = new System.Windows.Forms.RadioButton();
@@ -45,10 +39,16 @@
             this.label_warning = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.currentNeuronControl = new Constructor.CurrentNeuronControl();
+            this.button_readFile = new System.Windows.Forms.Button();
+            this.label_fileName = new System.Windows.Forms.Label();
+            this.label_normalization1 = new System.Windows.Forms.Label();
+            this.radioButton_no1 = new System.Windows.Forms.RadioButton();
+            this.radioButton_yes1 = new System.Windows.Forms.RadioButton();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Neurons)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_neurons
@@ -74,75 +74,6 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(730, 215);
             this.tabControl.TabIndex = 3;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.radioButton_yes1);
-            this.tabPage1.Controls.Add(this.radioButton_no1);
-            this.tabPage1.Controls.Add(this.label_normalization1);
-            this.tabPage1.Controls.Add(this.label_fileName);
-            this.tabPage1.Controls.Add(this.button_readFile);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 189);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Автоматически";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_yes1
-            // 
-            this.radioButton_yes1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radioButton_yes1.Location = new System.Drawing.Point(560, 145);
-            this.radioButton_yes1.Name = "radioButton_yes1";
-            this.radioButton_yes1.Size = new System.Drawing.Size(40, 20);
-            this.radioButton_yes1.TabIndex = 8;
-            this.radioButton_yes1.Text = "да";
-            this.radioButton_yes1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_no1
-            // 
-            this.radioButton_no1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radioButton_no1.Checked = true;
-            this.radioButton_no1.Location = new System.Drawing.Point(490, 145);
-            this.radioButton_no1.Name = "radioButton_no1";
-            this.radioButton_no1.Size = new System.Drawing.Size(45, 20);
-            this.radioButton_no1.TabIndex = 7;
-            this.radioButton_no1.TabStop = true;
-            this.radioButton_no1.Text = "нет";
-            this.radioButton_no1.UseVisualStyleBackColor = true;
-            // 
-            // label_normalization1
-            // 
-            this.label_normalization1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_normalization1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_normalization1.Location = new System.Drawing.Point(130, 140);
-            this.label_normalization1.Name = "label_normalization1";
-            this.label_normalization1.Size = new System.Drawing.Size(335, 25);
-            this.label_normalization1.TabIndex = 6;
-            this.label_normalization1.Text = "Разрешить ручную нормализацию";
-            // 
-            // label_fileName
-            // 
-            this.label_fileName.AutoSize = true;
-            this.label_fileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_fileName.Location = new System.Drawing.Point(363, 99);
-            this.label_fileName.Name = "label_fileName";
-            this.label_fileName.Size = new System.Drawing.Size(0, 25);
-            this.label_fileName.TabIndex = 1;
-            this.label_fileName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button_readFile
-            // 
-            this.button_readFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_readFile.Location = new System.Drawing.Point(300, 40);
-            this.button_readFile.Name = "button_readFile";
-            this.button_readFile.Size = new System.Drawing.Size(140, 45);
-            this.button_readFile.TabIndex = 0;
-            this.button_readFile.Text = "Прочитать файл";
-            this.button_readFile.UseVisualStyleBackColor = true;
-            this.button_readFile.Click += new System.EventHandler(this.button_readFile_Click);
             // 
             // tabPage2
             // 
@@ -240,6 +171,75 @@
             this.currentNeuronControl.Size = new System.Drawing.Size(340, 215);
             this.currentNeuronControl.TabIndex = 0;
             // 
+            // button_readFile
+            // 
+            this.button_readFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_readFile.Location = new System.Drawing.Point(300, 40);
+            this.button_readFile.Name = "button_readFile";
+            this.button_readFile.Size = new System.Drawing.Size(140, 45);
+            this.button_readFile.TabIndex = 0;
+            this.button_readFile.Text = "Прочитать файл";
+            this.button_readFile.UseVisualStyleBackColor = true;
+            this.button_readFile.Click += new System.EventHandler(this.button_readFile_Click);
+            // 
+            // label_fileName
+            // 
+            this.label_fileName.AutoSize = true;
+            this.label_fileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_fileName.Location = new System.Drawing.Point(363, 99);
+            this.label_fileName.Name = "label_fileName";
+            this.label_fileName.Size = new System.Drawing.Size(0, 25);
+            this.label_fileName.TabIndex = 1;
+            this.label_fileName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label_normalization1
+            // 
+            this.label_normalization1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_normalization1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_normalization1.Location = new System.Drawing.Point(130, 140);
+            this.label_normalization1.Name = "label_normalization1";
+            this.label_normalization1.Size = new System.Drawing.Size(335, 25);
+            this.label_normalization1.TabIndex = 6;
+            this.label_normalization1.Text = "Разрешить ручную нормализацию";
+            // 
+            // radioButton_no1
+            // 
+            this.radioButton_no1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.radioButton_no1.Checked = true;
+            this.radioButton_no1.Location = new System.Drawing.Point(490, 145);
+            this.radioButton_no1.Name = "radioButton_no1";
+            this.radioButton_no1.Size = new System.Drawing.Size(45, 20);
+            this.radioButton_no1.TabIndex = 7;
+            this.radioButton_no1.TabStop = true;
+            this.radioButton_no1.Text = "нет";
+            this.radioButton_no1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_yes1
+            // 
+            this.radioButton_yes1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.radioButton_yes1.Location = new System.Drawing.Point(560, 145);
+            this.radioButton_yes1.Name = "radioButton_yes1";
+            this.radioButton_yes1.Size = new System.Drawing.Size(40, 20);
+            this.radioButton_yes1.TabIndex = 8;
+            this.radioButton_yes1.Text = "да";
+            this.radioButton_yes1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.radioButton_yes1);
+            this.tabPage1.Controls.Add(this.radioButton_no1);
+            this.tabPage1.Controls.Add(this.label_normalization1);
+            this.tabPage1.Controls.Add(this.label_fileName);
+            this.tabPage1.Controls.Add(this.button_readFile);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(722, 189);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Автоматически";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // CreateInputLayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,11 +253,11 @@
             this.Name = "CreateInputLayerForm";
             this.Text = "OooКонструктор";
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Neurons)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -265,22 +265,22 @@
         #endregion
 
         private CurrentNeuronControl currentNeuronControl;
-        private System.Windows.Forms.Button button_readFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Label label_fileName;
         private System.Windows.Forms.Label label_warning;
         private System.Windows.Forms.Label label_neurons;
         public System.Windows.Forms.TabControl tabControl;
-        public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabPage tabPage2;
         public System.Windows.Forms.NumericUpDown numericUpDown_Neurons;
-        private System.Windows.Forms.Label label_normalization1;
         private System.Windows.Forms.Label label_normalization2;
-        public System.Windows.Forms.RadioButton radioButton_yes1;
-        public System.Windows.Forms.RadioButton radioButton_no1;
         public System.Windows.Forms.RadioButton radioButton_yes2;
         public System.Windows.Forms.RadioButton radioButton_no2;
         protected System.Windows.Forms.Panel panel_neurons;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.RadioButton radioButton_yes1;
+        public System.Windows.Forms.RadioButton radioButton_no1;
+        private System.Windows.Forms.Label label_normalization1;
+        private System.Windows.Forms.Label label_fileName;
+        private System.Windows.Forms.Button button_readFile;
     }
 }
 

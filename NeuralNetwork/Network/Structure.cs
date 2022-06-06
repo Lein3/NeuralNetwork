@@ -32,7 +32,7 @@ namespace NeuralNetworkNamespace
             MiddleLayers = new List<int>(temp_middleLayers);
         }
 
-        public Structure(bool temp_bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
+        public Structure(bool temp_bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers) //два конструктора потому что будет не красиво с порядком
         {
             Bias = temp_bias;
             InputNeuronsCount = temp_inputCount;

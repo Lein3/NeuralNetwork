@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace NeuralNetworkNamespace
 {
@@ -30,7 +29,7 @@ namespace NeuralNetworkNamespace
         {
             for (int i = 0; i < Weights.Count; i++)
             {
-                double new_weight = Weights[i] + (learningRate * Error * ActivationFunction.FunctionDx(Sum) * Inputs[i]);
+                double new_weight = Weights[i] + (learningRate * -Error * Inputs[i]);
                 Weights[i] = new_weight;
             }
         }

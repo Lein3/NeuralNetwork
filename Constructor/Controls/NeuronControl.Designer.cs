@@ -39,7 +39,7 @@
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox.Size = new System.Drawing.Size(75, 75);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -47,11 +47,11 @@
             // Index
             // 
             this.Index.BackColor = System.Drawing.Color.Transparent;
-            this.Index.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Index.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Index.ForeColor = System.Drawing.Color.Black;
-            this.Index.Location = new System.Drawing.Point(56, 2);
+            this.Index.Location = new System.Drawing.Point(61, 0);
             this.Index.Name = "Index";
-            this.Index.Size = new System.Drawing.Size(12, 14);
+            this.Index.Size = new System.Drawing.Size(14, 14);
             this.Index.TabIndex = 1;
             this.Index.Text = "Index";
             this.Index.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -63,9 +63,9 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.Index);
             this.Controls.Add(this.pictureBox);
-            this.MaximumSize = new System.Drawing.Size(70, 70);
+            this.MaximumSize = new System.Drawing.Size(75, 75);
             this.Name = "NeuronControl";
-            this.Size = new System.Drawing.Size(70, 70);
+            this.Size = new System.Drawing.Size(75, 75);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 

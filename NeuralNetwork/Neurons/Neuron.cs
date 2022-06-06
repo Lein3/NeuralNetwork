@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace NeuralNetworkNamespace
 {
-    [Serializable]
     public abstract class Neuron
     {
-        public List<double> Weights { get; private set; }
+        public List<double> Weights { get; set; }
         public List<double> Inputs { get; set; }
         public Structure.NeuronType NeuronType { get; set; }
-        public IActivationFunction ActivationFunction { get; set; }
+        public IActivationFunction ActivationFunction { get; set; } = new Sigmoid();
+        public double Sum { get; set; }
         public double Output { get; set; }
         public double Error { get; set; }
-        public double Sum { get; set; }
         public double Max { get; set; }
         public double Min { get; set; }
         public string Name { get; set; }
@@ -24,7 +24,6 @@ namespace NeuralNetworkNamespace
             Inputs = new List<double>();
             Min = 0;
             Max = 1;
-            ActivationFunction = new Sigmoid();
         }
 
         public abstract double ProcessInformation(List<double> original_inputs);

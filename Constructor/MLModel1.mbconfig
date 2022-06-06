@@ -1,0 +1,12 @@
+﻿{
+  "TrainingTime": 0,
+  "Scenario": "ObjectDetection",
+  "Environment": {
+    "Type": "Azure",
+    "Version": 1,
+    "SubscriptionID": "00000000-0000-0000-0000-000000000000",
+    "ExperimentName": "Обнаружениеобъектов"
+  },
+  "Type": "TrainingConfig",
+  "Version": 1
+}

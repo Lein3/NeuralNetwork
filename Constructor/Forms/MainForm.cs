@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Constructor
 {
@@ -25,21 +19,30 @@ namespace Constructor
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panel_Screen.Controls.Clear();
-            panel_Screen.Controls.Add(childForm);
-            panel_Screen.Tag = childForm;
+            //panel_Screen.Controls.Clear();
+            //panel_Screen.Controls.Add(childForm);
+            //panel_Screen.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ReColorButtons(Button currentButton)
         {
-            OpenChildForm(new CreateInputLayerForm());
+            foreach (Button button in this.Controls.OfType<Button>())
+            {
+                button.BackColor = System.Drawing.ColorTranslator.FromHtml("#333333");
+            }
+            currentButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#666666");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CreateMiddleLayersForm());
+            ReColorButtons(sender as Button);
+        }
+
+        private void pictureBox_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

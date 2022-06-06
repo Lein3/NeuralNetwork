@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNetworkNamespace
 {
@@ -14,7 +10,7 @@ namespace NeuralNetworkNamespace
             return result;
         }
 
-        public double FunctionDx(double x)
+        public double Derivative(double x)
         {
             double result = Function(x) * (1 - Function(x));
             return result;

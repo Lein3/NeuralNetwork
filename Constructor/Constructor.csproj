@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +54,13 @@
     </Compile>
     <Compile Include="Controls\CurrentNeuronControl.Designer.cs">
       <DependentUpon>CurrentNeuronControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CurrentExample.cs" />
+    <Compile Include="Forms\EvaluateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EvaluateForm.Designer.cs">
+      <DependentUpon>EvaluateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreateMiddleLayersForm.cs">
       <SubType>Form</SubType>
@@ -76,7 +86,19 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NetworkTemplate.cs" />
+    <Compile Include="Forms\LearningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LearningForm.Designer.cs">
+      <DependentUpon>LearningForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NetworkTemplate.cs" />
+    <Compile Include="Forms\SelectModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectModeForm.Designer.cs">
+      <DependentUpon>SelectModeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\CurrentNeuronControl.resx">
@@ -91,8 +113,17 @@
     <EmbeddedResource Include="Forms\CreateMiddleLayersForm.resx">
       <DependentUpon>CreateMiddleLayersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EvaluateForm.resx">
+      <DependentUpon>EvaluateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LearningForm.resx">
+      <DependentUpon>LearningForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectModeForm.resx">
+      <DependentUpon>SelectModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,6 +135,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MLModel1.mbconfig" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,7 +156,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Ocifrovka6.jpg" />
+    <None Include="Resources\мегамозг.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\закрыть.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.psd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMinimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

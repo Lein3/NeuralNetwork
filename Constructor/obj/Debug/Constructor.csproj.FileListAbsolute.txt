@@ -16,3 +16,6 @@ C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.CurrentNeuronCo
 C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.MainForm.resources
 C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.CreateInputLayerForm.resources
 C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.CreateMiddleLayersForm.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.LearningForm.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.EvaluateForm.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.SelectModeForm.resources
