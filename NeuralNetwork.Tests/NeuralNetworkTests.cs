@@ -9,6 +9,93 @@ namespace NeuralNetworkNamespace.Tests
     public class NeuralNetworkTests
     {
         #region общее
+        [TestMethod]
+        public void NeuronConstructor_Test()
+        {
+            Neuron neuron = new Neuron_Normal(10);
+            Assert.IsNotNull(neuron);
+            Assert.IsNotNull(neuron.Weights);
+        }
+
+        [TestMethod]
+        public void NeuronProccessInformation_Test()
+        {
+            Neuron neuron = new Neuron_Normal(3);
+            neuron.Weights = new List<double>() { -1, 0, 1 };
+            neuron.ActivationFunction = new Sigmoid();
+            neuron.ProcessInformation(new List<double>() { 3, 2, 1 });
+            Assert.AreEqual(neuron.Sum, -2);
+            Assert.AreEqual(neuron.Output, 0.119, 0.01);
+        }
+
+        [TestMethod]
+        public void NeuronChangeWeightsErrorNotEqualsZero_Test()
+        {
+            Neuron neuron = new Neuron_Normal(3);
+            neuron.Weights = new List<double>() { -1, 0, 1 };
+            neuron.Inputs = new List<double>() { 1, 1, 1 };
+            neuron.Error = 5;
+           
+            neuron.Learn_ChangeWeights(1);
+            var oldWeights = new List<double>(neuron.Weights);
+            var newWeights = new List<double>() { -6, -5, -4};
+
+            for (int i = 0; i < oldWeights.Count; i++)
+                Assert.AreEqual(oldWeights[i], newWeights[i]);
+        }
+
+        [TestMethod]
+        public void NeuronChangeWeightsErrorEqualsZero_Test()
+        {
+            Neuron neuron = new Neuron_Normal(3);
+            neuron.Weights = new List<double>() { -1, 0, 1 };
+            neuron.Inputs = new List<double>() { 1, 1, 1 };
+            neuron.Error = 0;
+
+            var oldWeights = new List<double>(neuron.Weights);
+            neuron.Learn_ChangeWeights(1);
+            var newWeights = new List<double>(neuron.Weights);
+
+            for (int i = 0; i < oldWeights.Count; i++)
+                Assert.AreEqual(oldWeights[i], newWeights[i]);
+        }
+
+        [TestMethod]
+        public void LayerConstrucor_Test()
+        {
+            List<Neuron> neurons = new List<Neuron>();
+            for (int i = 0; i < 9; i++)
+                neurons.Add(new Neuron_Normal(3) { Name = "нейрон " + i.ToString()});
+
+            Layer layer = new Layer(neurons);
+            Assert.IsNotNull(layer);
+            for (int i = 0; i < layer.Neurons.Count; i++)
+                Assert.AreEqual(layer.Neurons[i].Name, "нейрон " + i.ToString());
+        }
+
+        [TestMethod]
+        public void LayerGetSignals_Test()
+        {
+            List<Neuron> neurons = new List<Neuron>();
+            for (int i = 0; i < 5; i++)
+                neurons.Add(new Neuron_Normal(3) { Output = 1 });
+
+            Layer layer = new Layer(neurons);
+            var signals = layer.GetSignals();
+            var expected = new List<double>() { 1, 1, 1, 1, 1 };
+            for (int i = 0; i < signals.Count; i++)
+                Assert.AreEqual(signals[i], expected[i]);
+        }
+
+        [TestMethod]
+        public void NeuralNetworkGetAnserNotNull_Test()
+        {
+            Structure structure = new Structure(5, 1, 5);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            var input = new List<double>() { 1, 1, 1, 1, 1 };
+            var anser = neuralNetwork.Predict(input);
+            Assert.IsNotNull(anser);
+        }
 
         [TestMethod]
         public void NormalizationComlete_Test()

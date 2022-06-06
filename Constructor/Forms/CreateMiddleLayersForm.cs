@@ -124,21 +124,21 @@ namespace Constructor
 
             UpdateAllLayers();
 
-            var parent = this.ParentForm as MainForm;
-            parent.button3.Enabled = true;
+            var parent = this.ParentForm as SelectModeForm;
+            //parent.button3.Enabled = true;
         }
 
         private void tabPage_thisOut_Enter(object sender, EventArgs e)
         {
-            var parent = this.ParentForm as MainForm;
+            var parent = this.ParentForm as SelectModeForm;
             
-            if (parent.button3.Enabled == true)
-            {
-                label_neuronsMain.Visible = false;
-                numericUpDown_main.Visible = false;
-                label_neuronOut.Visible = true;
-                numericUpDown_out.Visible = true;
-            }
+            //if (parent.button3.Enabled == true)
+            //{
+            //    label_neuronsMain.Visible = false;
+            //    numericUpDown_main.Visible = false;
+            //    label_neuronOut.Visible = true;
+            //    numericUpDown_out.Visible = true;
+            //}
         }
 
         private void tabPage_thisNormal_Enter(object sender, EventArgs e)
@@ -163,8 +163,8 @@ namespace Constructor
             NetworkTemplate.Layers = Layers;
             UpdateAllLayers();
 
-            var parent = this.ParentForm as MainForm;
-            parent.button4.Enabled = true;
+            var parent = this.ParentForm as SelectModeForm;
+            //parent.button4.Enabled = true;
         }
     }
 }

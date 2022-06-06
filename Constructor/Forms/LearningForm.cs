@@ -141,9 +141,9 @@ namespace Constructor
                     }
                 }
             });
-            var parent = this.ParentForm as MainForm;
-            parent.button5.Enabled = true;
-            parent.button5_Click(null, null);
+            var parent = this.ParentForm as SelectModeForm;
+            //parent.button5.Enabled = true;
+            //parent.button5_Click(null, null);
         }
 
         private void button_dataset_Click(object sender, EventArgs e)

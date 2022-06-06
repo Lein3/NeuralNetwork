@@ -18,3 +18,4 @@ C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.CreateInputLaye
 C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.CreateMiddleLayersForm.resources
 C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.LearningForm.resources
 C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.EvaluateForm.resources
+C:\ProgesForC\Dz\UltraSolution\Constructor\obj\Debug\Constructor.SelectModeForm.resources

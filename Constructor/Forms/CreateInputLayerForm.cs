@@ -31,8 +31,8 @@ namespace Constructor
             }
             panel_neurons.Invalidate();
 
-            var parent = this.ParentForm as MainForm;
-            parent.button2.Enabled = true;
+            var parent = this.ParentForm as SelectModeForm;
+            //parent.button2.Enabled = true;
         }
 
         protected void onMouseEnter(object sender, EventArgs e)

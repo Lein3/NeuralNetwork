@@ -61,11 +61,88 @@ namespace Constructor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Автоматизированный режим делает большую часть работы. Система автоматически подберет оптимальную модель и проведет ее обучение. Для данного режима необходимо лишь иметь набор данных и указать тип сценария..
+        /// </summary>
+        internal static string AutoModeExplanation {
+            get {
+                return ResourceManager.GetString("AutoModeExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ocifrovka6 {
+        internal static System.Drawing.Bitmap btnClose {
             get {
-                object obj = ResourceManager.GetObject("Ocifrovka6", resourceCulture);
+                object obj = ResourceManager.GetObject("btnClose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnMinimize {
+            get {
+                object obj = ResourceManager.GetObject("btnMinimize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Режим полной свободы предоставляет все пользователю. Разрешается полная настройка всех слоев, всех нейронов, ручная нормализация, отсутствует проверка на соответсвие входных данных и соответсвие функций активации. В данном режиме наиболее высока вероятность возникновения ошибки..
+        /// </summary>
+        internal static string FullFreedomModeExplanation {
+            get {
+                return ResourceManager.GetString("FullFreedomModeExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Профессиональный режим дает большую свободу нежели автоматический режим, однако до сих пор имеются определенные ограничения. Разрешается ручная настройка скрытых слоев и нейронов в них и выбор функции активации, однако углубленная настройка элементов не будет доступна, что значительно уменьшает вероятность ошибки..
+        /// </summary>
+        internal static string ProfessionalModeExplanation {
+            get {
+                return ResourceManager.GetString("ProfessionalModeExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User {
+            get {
+                object obj = ResourceManager.GetObject("User", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap закрыть_белый {
+            get {
+                object obj = ResourceManager.GetObject("закрыть_белый", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap закрыть_черный {
+            get {
+                object obj = ResourceManager.GetObject("закрыть_черный", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap мегамозг {
+            get {
+                object obj = ResourceManager.GetObject("мегамозг", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

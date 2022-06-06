@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FC274893-39D5-4375-9251-DA433766A6EB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Constructor</RootNamespace>
     <AssemblyName>Constructor</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -55,7 +55,7 @@
     <Compile Include="Controls\CurrentNeuronControl.Designer.cs">
       <DependentUpon>CurrentNeuronControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CurrentExample.cs" />
+    <Compile Include="Controls\CurrentExample.cs" />
     <Compile Include="Forms\EvaluateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,7 +92,13 @@
     <Compile Include="Forms\LearningForm.Designer.cs">
       <DependentUpon>LearningForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NetworkTemplate.cs" />
+    <Compile Include="Controls\NetworkTemplate.cs" />
+    <Compile Include="Forms\SelectModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectModeForm.Designer.cs">
+      <DependentUpon>SelectModeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\CurrentNeuronControl.resx">
@@ -116,6 +122,9 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectModeForm.resx">
+      <DependentUpon>SelectModeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -126,6 +135,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MLModel1.mbconfig" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,7 +156,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Ocifrovka6.jpg" />
+    <None Include="Resources\мегамозг.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\закрыть.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.psd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMinimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
