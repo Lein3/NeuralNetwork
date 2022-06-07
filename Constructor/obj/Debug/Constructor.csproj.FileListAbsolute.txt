@@ -33,8 +33,10 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.CreateMiddleLay
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.EvaluateForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.LearningForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.MainForm.resources
-C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.SelectModeForm.resources
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.SelectModeAndAuthorizationForm.resources
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.SelectScenarioForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.Properties.Resources.resources
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.ScenarioControl.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.GenerateResource.cache
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.CoreCompileInputs.cache
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.CopyComplete

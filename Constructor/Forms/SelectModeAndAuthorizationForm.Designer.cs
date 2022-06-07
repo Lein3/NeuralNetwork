@@ -1,6 +1,6 @@
 ﻿namespace Constructor
 {
-    partial class SelectModeForm
+    partial class SelectModeAndAuthorizationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -152,6 +152,7 @@
             // label_MainSeparator
             // 
             this.label_MainSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            this.label_MainSeparator.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_MainSeparator.ForeColor = System.Drawing.Color.White;
             this.label_MainSeparator.Location = new System.Drawing.Point(267, 65);
             this.label_MainSeparator.Name = "label_MainSeparator";
@@ -192,7 +193,7 @@
             // label_Username
             // 
             this.label_Username.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label_Username.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Username.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Username.ForeColor = System.Drawing.Color.White;
             this.label_Username.Location = new System.Drawing.Point(34, 0);
             this.label_Username.Name = "label_Username";
@@ -237,6 +238,7 @@
             this.button_Close.FlatAppearance.BorderSize = 0;
             this.button_Close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
             this.button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Close.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.button_Close.Location = new System.Drawing.Point(660, 15);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(30, 25);
@@ -250,7 +252,7 @@
             this.button_Authorization.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Authorization.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.button_Authorization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Authorization.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Authorization.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.button_Authorization.ForeColor = System.Drawing.Color.White;
             this.button_Authorization.Location = new System.Drawing.Point(5, 150);
             this.button_Authorization.Name = "button_Authorization";
@@ -290,6 +292,7 @@
             // 
             this.label_Element17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element17.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_Element17.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element17.Location = new System.Drawing.Point(199, 1);
             this.label_Element17.Name = "label_Element17";
             this.label_Element17.Size = new System.Drawing.Size(1, 29);
@@ -299,6 +302,7 @@
             // 
             this.label_Element16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element16.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label_Element16.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element16.Location = new System.Drawing.Point(0, 1);
             this.label_Element16.Name = "label_Element16";
             this.label_Element16.Size = new System.Drawing.Size(1, 29);
@@ -308,6 +312,7 @@
             // 
             this.label_Element18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element18.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Element18.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element18.Location = new System.Drawing.Point(0, 30);
             this.label_Element18.Name = "label_Element18";
             this.label_Element18.Size = new System.Drawing.Size(200, 1);
@@ -317,6 +322,7 @@
             // 
             this.label_Element15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_Element15.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element15.Location = new System.Drawing.Point(0, 0);
             this.label_Element15.Name = "label_Element15";
             this.label_Element15.Size = new System.Drawing.Size(200, 1);
@@ -351,6 +357,7 @@
             // 
             this.label_Element13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element13.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_Element13.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element13.Location = new System.Drawing.Point(199, 1);
             this.label_Element13.Name = "label_Element13";
             this.label_Element13.Size = new System.Drawing.Size(1, 29);
@@ -360,6 +367,7 @@
             // 
             this.label_Element12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label_Element12.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element12.Location = new System.Drawing.Point(0, 1);
             this.label_Element12.Name = "label_Element12";
             this.label_Element12.Size = new System.Drawing.Size(1, 29);
@@ -369,6 +377,7 @@
             // 
             this.label_Element14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Element14.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element14.Location = new System.Drawing.Point(0, 30);
             this.label_Element14.Name = "label_Element14";
             this.label_Element14.Size = new System.Drawing.Size(200, 1);
@@ -378,6 +387,7 @@
             // 
             this.label_Element11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_Element11.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element11.Location = new System.Drawing.Point(0, 0);
             this.label_Element11.Name = "label_Element11";
             this.label_Element11.Size = new System.Drawing.Size(200, 1);
@@ -502,7 +512,7 @@
             this.button_MyDatasets.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button_MyDatasets.Size = new System.Drawing.Size(250, 45);
             this.button_MyDatasets.TabIndex = 28;
-            this.button_MyDatasets.Text = "Мои наборы";
+            this.button_MyDatasets.Text = "Мои наборы данных";
             this.button_MyDatasets.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button_MyDatasets.UseVisualStyleBackColor = false;
             this.button_MyDatasets.Visible = false;
@@ -600,6 +610,7 @@
             // 
             this.label_Element23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element23.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_Element23.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element23.Location = new System.Drawing.Point(199, 1);
             this.label_Element23.Name = "label_Element23";
             this.label_Element23.Size = new System.Drawing.Size(1, 29);
@@ -609,6 +620,7 @@
             // 
             this.label_Element22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element22.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label_Element22.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element22.Location = new System.Drawing.Point(0, 1);
             this.label_Element22.Name = "label_Element22";
             this.label_Element22.Size = new System.Drawing.Size(1, 29);
@@ -618,6 +630,7 @@
             // 
             this.label_Element24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element24.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Element24.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element24.Location = new System.Drawing.Point(0, 30);
             this.label_Element24.Name = "label_Element24";
             this.label_Element24.Size = new System.Drawing.Size(200, 1);
@@ -627,6 +640,7 @@
             // 
             this.label_Element21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_Element21.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element21.Location = new System.Drawing.Point(0, 0);
             this.label_Element21.Name = "label_Element21";
             this.label_Element21.Size = new System.Drawing.Size(200, 1);
@@ -662,6 +676,7 @@
             // 
             this.label_Element27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element27.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_Element27.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element27.Location = new System.Drawing.Point(199, 1);
             this.label_Element27.Name = "label_Element27";
             this.label_Element27.Size = new System.Drawing.Size(1, 29);
@@ -671,6 +686,7 @@
             // 
             this.label_Element26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element26.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label_Element26.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element26.Location = new System.Drawing.Point(0, 1);
             this.label_Element26.Name = "label_Element26";
             this.label_Element26.Size = new System.Drawing.Size(1, 29);
@@ -680,6 +696,7 @@
             // 
             this.label_Element28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element28.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Element28.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element28.Location = new System.Drawing.Point(0, 30);
             this.label_Element28.Name = "label_Element28";
             this.label_Element28.Size = new System.Drawing.Size(200, 1);
@@ -689,6 +706,7 @@
             // 
             this.label_Element25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.label_Element25.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_Element25.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.label_Element25.Location = new System.Drawing.Point(0, 0);
             this.label_Element25.Name = "label_Element25";
             this.label_Element25.Size = new System.Drawing.Size(200, 1);
@@ -700,7 +718,7 @@
             this.button_Registration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Registration.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(100)))), ((int)(((byte)(101)))));
             this.button_Registration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Registration.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Registration.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.button_Registration.ForeColor = System.Drawing.Color.White;
             this.button_Registration.Location = new System.Drawing.Point(5, 150);
             this.button_Registration.Name = "button_Registration";
@@ -710,7 +728,7 @@
             this.button_Registration.UseVisualStyleBackColor = false;
             this.button_Registration.Click += new System.EventHandler(this.button_Registration_Click);
             // 
-            // SelectModeForm
+            // SelectModeAndAuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -735,7 +753,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(700, 450);
-            this.Name = "SelectModeForm";
+            this.Name = "SelectModeAndAuthorizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ОооКонструктор";
             this.panel_Top.ResumeLayout(false);

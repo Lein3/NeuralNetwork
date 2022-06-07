@@ -1,11 +1,9 @@
 ﻿{
   "TrainingTime": 0,
-  "Scenario": "ObjectDetection",
+  "Scenario": "Classification",
   "Environment": {
-    "Type": "Azure",
-    "Version": 1,
-    "SubscriptionID": "00000000-0000-0000-0000-000000000000",
-    "ExperimentName": "Обнаружениеобъектов"
+    "Type": "LocalCPU",
+    "Version": 1
   },
   "Type": "TrainingConfig",
   "Version": 1

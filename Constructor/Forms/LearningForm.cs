@@ -141,7 +141,7 @@ namespace Constructor
                     }
                 }
             });
-            var parent = this.ParentForm as SelectModeForm;
+            var parent = this.ParentForm as SelectModeAndAuthorizationForm;
             //parent.button5.Enabled = true;
             //parent.button5_Click(null, null);
         }
@@ -160,19 +160,19 @@ namespace Constructor
 
         private void LoadDataset()
         {
-            var listLearning = new List<CurrentExample>();
-            foreach (var example in NetworkTemplate.LearningData.LearningExamples)
-                listLearning.Add(new CurrentExample(example));
-            dataGridView_learningData.DataSource = listLearning;
-            dataGridView_learningData.Columns[14].Visible = false;
-            label_learningCount.Text = listLearning.Count.ToString();
+            //var listLearning = new List<CurrentExample>();
+            //foreach (var example in NetworkTemplate.LearningData.LearningExamples)
+            //    listLearning.Add(new CurrentExample(example));
+            //dataGridView_learningData.DataSource = listLearning;
+            //dataGridView_learningData.Columns[14].Visible = false;
+            //label_learningCount.Text = listLearning.Count.ToString();
 
-            var listTest = new List<CurrentExample>();
-            foreach (var example in NetworkTemplate.LearningData.TestExamples)
-                listTest.Add(new CurrentExample(example));
-            dataGridView_testData.DataSource = listTest;
-            dataGridView_testData.Columns[14].Visible = false;
-            label_testCount.Text = listTest.Count.ToString();
+            //var listTest = new List<CurrentExample>();
+            //foreach (var example in NetworkTemplate.LearningData.TestExamples)
+            //    listTest.Add(new CurrentExample(example));
+            //dataGridView_testData.DataSource = listTest;
+            //dataGridView_testData.Columns[14].Visible = false;
+            //label_testCount.Text = listTest.Count.ToString();
         }
     }
 }

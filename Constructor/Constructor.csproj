@@ -78,7 +78,6 @@
     <Compile Include="Controls\CurrentNeuronControl.Designer.cs">
       <DependentUpon>CurrentNeuronControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CurrentExample.cs" />
     <Compile Include="Forms\EvaluateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,14 +115,26 @@
       <DependentUpon>LearningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\NetworkTemplate.cs" />
-    <Compile Include="Forms\SelectModeForm.cs">
+    <Compile Include="Forms\SelectModeAndAuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectModeForm.Designer.cs">
-      <DependentUpon>SelectModeForm.cs</DependentUpon>
+    <Compile Include="Forms\SelectModeAndAuthorizationForm.Designer.cs">
+      <DependentUpon>SelectModeAndAuthorizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectScenarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectScenarioForm.Designer.cs">
+      <DependentUpon>SelectScenarioForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\ScenarioControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ScenarioControl.Designer.cs">
+      <DependentUpon>ScenarioControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\CurrentNeuronControl.resx">
       <DependentUpon>CurrentNeuronControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,24 +156,30 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectModeForm.resx">
-      <DependentUpon>SelectModeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SelectModeAndAuthorizationForm.resx">
+      <DependentUpon>SelectModeAndAuthorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectScenarioForm.resx">
+      <DependentUpon>SelectScenarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Controls\ScenarioControl.resx">
+      <DependentUpon>ScenarioControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="MLModel1.mbconfig" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -197,7 +214,7 @@
     <None Include="Resources\User.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\main.ico" />
+    <None Include="Resources\mainIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -210,6 +227,33 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\бинарная.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\мультиклассификация.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\прогнозирование значений.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\обнаружение объектов.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\рекомендация.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\кластеризация.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\обнаружение аномалий.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\прогнозирование.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Новый точечный рисунок.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

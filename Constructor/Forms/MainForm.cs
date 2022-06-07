@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Linq;
+using Constructor.Properties;
+using System.Drawing;
 
 namespace Constructor
 {
@@ -10,39 +12,57 @@ namespace Constructor
         public MainForm()
         {
             InitializeComponent();
+            this.Icon = Resources.mainIcon;
+            foreach (Button button in this.Controls.OfType<Button>())
+            {
+                button.Click += Recolor_Click;
+            }
         }
 
         private void OpenChildForm(Form childForm)
         {
-            if (ActiveForm != null) ActiveForm.Close();
+            if (ActiveForm != null)
+            {
+                ActiveForm.Close();
+            }
             ActiveForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            //panel_Screen.Controls.Clear();
-            //panel_Screen.Controls.Add(childForm);
-            //panel_Screen.Tag = childForm;
+            panel_Screen.Controls.Clear();
+            panel_Screen.Controls.Add(childForm);
+            panel_Screen.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }
 
-        private void ReColorButtons(Button currentButton)
+        private void RecolorButtons(Button currentButton)
         {
             foreach (Button button in this.Controls.OfType<Button>())
             {
-                button.BackColor = System.Drawing.ColorTranslator.FromHtml("#333333");
+                button.BackColor = Color.FromArgb(51, 51, 51);
             }
-            currentButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#666666");
+            currentButton.BackColor = Color.FromArgb(102, 102, 102);
         }
 
-        private void button_Click(object sender, EventArgs e)
+        private void Recolor_Click(object sender, EventArgs e)
         {
-            ReColorButtons(sender as Button);
+            RecolorButtons(sender as Button);
         }
 
-        private void pictureBox_Exit_Click(object sender, EventArgs e)
+        private void button_Minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button_Close_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button_Scenario_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SelectScenarioForm());
         }
     }
 }

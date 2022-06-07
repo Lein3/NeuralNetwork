@@ -124,13 +124,13 @@ namespace Constructor
 
             UpdateAllLayers();
 
-            var parent = this.ParentForm as SelectModeForm;
+            var parent = this.ParentForm as SelectModeAndAuthorizationForm;
             //parent.button3.Enabled = true;
         }
 
         private void tabPage_thisOut_Enter(object sender, EventArgs e)
         {
-            var parent = this.ParentForm as SelectModeForm;
+            var parent = this.ParentForm as SelectModeAndAuthorizationForm;
             
             //if (parent.button3.Enabled == true)
             //{
@@ -163,7 +163,7 @@ namespace Constructor
             NetworkTemplate.Layers = Layers;
             UpdateAllLayers();
 
-            var parent = this.ParentForm as SelectModeForm;
+            var parent = this.ParentForm as SelectModeAndAuthorizationForm;
             //parent.button4.Enabled = true;
         }
     }

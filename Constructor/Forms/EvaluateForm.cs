@@ -16,26 +16,26 @@ namespace Constructor
 
         private void LoadDataset()
         {
-            var listLearning = new List<CurrentExample>();
-            foreach (var example in NetworkTemplate.LearningData.LearningExamples)
-            {
-                var answer = NetworkTemplate.NeuralNetwork.Predict_ReturnOnlyValues(example.InputSignals);
-                var answerCurrent = Math.Round(answer[0], 4);
-                listLearning.Add(new CurrentExample(example, answerCurrent));
-            }
-            dataGridView_learning.DataSource = listLearning;
-            label_learningError.Text += " " + CalculateError(dataGridView_learning).ToString() + "%";
+            //var listLearning = new List<CurrentExample>();
+            //foreach (var example in NetworkTemplate.LearningData.LearningExamples)
+            //{
+            //    var answer = NetworkTemplate.NeuralNetwork.Predict_ReturnOnlyValues(example.InputSignals);
+            //    var answerCurrent = Math.Round(answer[0], 4);
+            //    listLearning.Add(new CurrentExample(example, answerCurrent));
+            //}
+            //dataGridView_learning.DataSource = listLearning;
+            //label_learningError.Text += " " + CalculateError(dataGridView_learning).ToString() + "%";
 
-            var listTest = new List<CurrentExample>();
-            foreach (var example in NetworkTemplate.LearningData.TestExamples)
-            {
-                var answer = NetworkTemplate.NeuralNetwork.Predict_ReturnOnlyValues(example.InputSignals);
-                var answerCurrent = Math.Round(answer[0], 4);
-                listTest.Add(new CurrentExample(example, answerCurrent));
-            }
-            dataGridView_test.DataSource = listTest;
-            label_testError.Text += " " + CalculateError(dataGridView_test).ToString() + "%";
-            CalculateCritCount();
+            //var listTest = new List<CurrentExample>();
+            //foreach (var example in NetworkTemplate.LearningData.TestExamples)
+            //{
+            //    var answer = NetworkTemplate.NeuralNetwork.Predict_ReturnOnlyValues(example.InputSignals);
+            //    var answerCurrent = Math.Round(answer[0], 4);
+            //    listTest.Add(new CurrentExample(example, answerCurrent));
+            //}
+            //dataGridView_test.DataSource = listTest;
+            //label_testError.Text += " " + CalculateError(dataGridView_test).ToString() + "%";
+            //CalculateCritCount();
         }
 
         private double CalculateError(DataGridView dataGridView)

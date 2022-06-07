@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
@@ -10,10 +11,10 @@ namespace Constructor
         public Neuron CurrentNeuron { get; set; }
         private CreateInputLayerForm parent { get; set; }
         private NeuronFlag neuronFlag { get; set; }
+
         public CurrentNeuronControl()
         {
             InitializeComponent();
-            this.BackColor = Color.Transparent;
         }
 
         private void pictureBox_CurrentNeuron_Paint(object sender, PaintEventArgs e)

@@ -8,12 +8,12 @@ using Constructor.Properties;
 
 namespace Constructor
 {
-    public partial class SelectModeForm : Form
+    public partial class SelectModeAndAuthorizationForm : Form
     {
-        public SelectModeForm()
+        public SelectModeAndAuthorizationForm()
         {
             InitializeComponent();
-            this.Icon = Resources.main;
+            this.Icon = Resources.mainIcon;
 
             //так сделано чтобы в конструкторе все было четко видно
             this.Size = this.MinimumSize;
@@ -107,14 +107,14 @@ namespace Constructor
         {
             //TODO: сделать авторизацию
             AuthorizationVisibility();
-            label_Username.Text = "Привет, АШОТ-КАМШОТ";
+            label_Username.Text = "Привет, ку";
         }
 
         private void button_Registration_Click(object sender, EventArgs e)
         {
             //TODO: сделать регистрацию
             AuthorizationVisibility();
-            label_Username.Text = "Привет, АШОТ-КАМШОТ";
+            label_Username.Text = "Привет, ку";
         }
 
         private void AuthorizationVisibility()

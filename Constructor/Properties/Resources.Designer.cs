@@ -101,9 +101,9 @@ namespace Constructor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
         /// </summary>
-        internal static System.Drawing.Icon main {
+        internal static System.Drawing.Icon mainIcon {
             get {
-                object obj = ResourceManager.GetObject("main", resourceCulture);
+                object obj = ResourceManager.GetObject("mainIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -123,6 +123,16 @@ namespace Constructor.Properties {
         internal static System.Drawing.Bitmap User {
             get {
                 object obj = ResourceManager.GetObject("User", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap бинарная {
+            get {
+                object obj = ResourceManager.GetObject("бинарная", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -150,9 +160,69 @@ namespace Constructor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap кластеризация {
+            get {
+                object obj = ResourceManager.GetObject("кластеризация", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap мегамозг {
             get {
                 object obj = ResourceManager.GetObject("мегамозг", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap мультиклассификация {
+            get {
+                object obj = ResourceManager.GetObject("мультиклассификация", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap обнаружение_аномалий {
+            get {
+                object obj = ResourceManager.GetObject("обнаружение_аномалий", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap обнаружение_объектов {
+            get {
+                object obj = ResourceManager.GetObject("обнаружение_объектов", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap прогнозирование {
+            get {
+                object obj = ResourceManager.GetObject("прогнозирование", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap рекомендация {
+            get {
+                object obj = ResourceManager.GetObject("рекомендация", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

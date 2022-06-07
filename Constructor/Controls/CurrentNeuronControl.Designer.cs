@@ -91,7 +91,7 @@
             // 
             // pictureBox_CurrentNeuron
             // 
-            this.pictureBox_CurrentNeuron.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_CurrentNeuron.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.pictureBox_CurrentNeuron.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox_CurrentNeuron.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox_CurrentNeuron.Location = new System.Drawing.Point(0, 0);
@@ -166,8 +166,8 @@
         private System.Windows.Forms.Label label_Min;
         private System.Windows.Forms.Label label_Max;
         private System.Windows.Forms.PictureBox pictureBox_CurrentNeuron;
-        private System.Windows.Forms.Label label_Name;
         private System.Windows.Forms.Label label_outMin;
         private System.Windows.Forms.Label label_outMax;
+        public System.Windows.Forms.Label label_Name;
     }
 }

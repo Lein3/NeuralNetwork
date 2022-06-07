@@ -12,6 +12,7 @@ namespace Constructor
         public NeuronControl(Neuron neuron, double? error = null, int? index = null)
         {
             InitializeComponent();
+            pictureBox.BackColor = Color.Transparent;
             this.Neuron = neuron;
             if (error != null)
             {
