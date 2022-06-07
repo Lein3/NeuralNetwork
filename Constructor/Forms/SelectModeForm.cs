@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using static Constructor.Properties.Resources;
+using Constructor.Properties;
 
 namespace Constructor
 {
@@ -13,9 +13,16 @@ namespace Constructor
         public SelectModeForm()
         {
             InitializeComponent();
-            new List<Control> { panel_Top, UserInfoPanel, UserProfilePicture, Username }.ForEach(x =>
+            this.Icon = Resources.main;
+
+            //так сделано чтобы в конструкторе все было четко видно
+            this.Size = this.MinimumSize;
+            panel_Authorization.Top -= 100;
+            label_Authorization.Top -= 100;
+
+            new List<Control> { panel_Top, panel_UserInfo, pictureBox_UserPicture, label_Username }.ForEach(x =>
             {
-                x.MouseDown += (s, e) =>
+                x.MouseDown += (object s, MouseEventArgs e) =>
                 {
                     x.Capture = false;
                     Capture = false;
@@ -26,52 +33,28 @@ namespace Constructor
         }
 
         #region Description
-        /// <summary>
-        /// ТУТ БЛЯТЬ КОРОЧЕ БЕРЕТСЯ ТЕКСТ ИЗ РЕСУРСОВ ПРИ НАВЕДЕНИИ НА КНОПКИ ЕПТА
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
         private void DescriptionFunction(object sender, EventArgs e)
         {
-            try
+            switch ((sender as Button).Name)
             {
-                switch ((sender as Button).Name)
-                {
-                    case "AutoModeButton":
-                        SetDescription(AutoModeExplanation);
-                        break;
-                    case "ProfessionalModeButton":
-                        SetDescription(ProfessionalModeExplanation);
-                        break;
-                    case "FreedomModeButton":
-                        SetDescription(FullFreedomModeExplanation);
-                        break;
-                    case "LoadModelsButton":
-                        SetDescription("Загрузка типо модели");
-                        break;
-                    case "UserModelsButton":
-                        SetDescription("Отобразить сохраненные модели");
-                        break;
-                    case "AuthorizationButton":
-                        SetDescription("я не насрал");
-                        break;
-                    case "RegistrationButton":
-                        SetDescription("я насрал");
-                        break;
-                }
-            }
-            catch
-            {
-                switch ((sender as LinkLabel).Name)
-                {
-                    case "ShowAuthorizationPanel":
-                        SetDescription("Открыть окно регистрации");
-                        break;
-                    case "ShowRegistrationPanel":
-                        SetDescription("Открыть окно авторизации");
-                        break;
-                }
+                case "button_MyModels":
+                    SetDescription(null);
+                    break;
+                case "button_MyDatasets":
+                    SetDescription(null);
+                    break;
+                case "button_LoadModel":
+                    SetDescription(null);
+                    break;
+                case "button_AutoMode":
+                    SetDescription(Resources.AutoModeExplanation);
+                    break;
+                case "button_ProfessionalMode":
+                    SetDescription(Resources.ProfessionalModeExplanation);
+                    break;
+                case "button_FreeMode":
+                    SetDescription(Resources.FreeModeExplanation);
+                    break;
             }
         }
 
@@ -82,67 +65,66 @@ namespace Constructor
         #endregion
 
         #region ControlBox
-        private void MinimizeButton_Click(object sender, EventArgs e)
+        private void button_Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void button_Close_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
         #endregion
 
         #region Animation
-        private async void ShowAuthorizationPanel_Click(object sender, EventArgs e)
+        private async void linkLabel_ShowRegistration_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            while (RegistrationPanel.Location.X > -300)
+            while (panel_Authorization.Location.Y < 500)
             {
                 await Task.Delay(1);
-                //
-                RegistrationPanel.Location = new Point(RegistrationPanel.Location.X - 12, RegistrationPanel.Location.Y);
-                RegistrationLabel.Location = new Point(RegistrationLabel.Location.X - 12, RegistrationLabel.Location.Y);
-                //
-                AuthorizationPanel.Location = new Point(AuthorizationPanel.Location.X + 12, AuthorizationPanel.Location.Y);
-                AuthorizationLabel.Location = new Point(AuthorizationLabel.Location.X + 12, AuthorizationLabel.Location.Y);
+                panel_Authorization.Location = new Point(panel_Authorization.Location.X, panel_Authorization.Location.Y + 12);
+                label_Authorization.Location = new Point(label_Authorization.Location.X, label_Authorization.Location.Y + 12);
+                panel_Registration.Location = new Point(panel_Registration.Location.X, panel_Registration.Location.Y - 12);
+                label_Registration.Location = new Point(label_Registration.Location.X, label_Registration.Location.Y - 12);
             }
-            AuthorizationPanel.Location = new Point(28, AuthorizationPanel.Location.Y);
-            AuthorizationLabel.Location = new Point(39, AuthorizationLabel.Location.Y);
         }
 
-        private async void ShowRegistrationPanel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void linkLabel_ShowAuthorization_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            while (AuthorizationPanel.Location.X > -300)
+            while (panel_Registration.Location.Y < 500)
             {
                 await Task.Delay(1);
-                //
-                AuthorizationPanel.Location = new Point(AuthorizationPanel.Location.X - 12, AuthorizationPanel.Location.Y);
-                AuthorizationLabel.Location = new Point(AuthorizationLabel.Location.X - 12, AuthorizationLabel.Location.Y);
-                //
-                RegistrationPanel.Location = new Point(RegistrationPanel.Location.X + 12, RegistrationPanel.Location.Y);
-                RegistrationLabel.Location = new Point(RegistrationLabel.Location.X + 12, RegistrationLabel.Location.Y);
+                panel_Authorization.Location = new Point(panel_Authorization.Location.X, panel_Authorization.Location.Y - 12);
+                label_Authorization.Location = new Point(label_Authorization.Location.X, label_Authorization.Location.Y - 12);
+                panel_Registration.Location = new Point(panel_Registration.Location.X, panel_Registration.Location.Y + 12);
+                label_Registration.Location = new Point(label_Registration.Location.X, label_Registration.Location.Y + 12);
             }
-            RegistrationPanel.Location = new Point(28, RegistrationPanel.Location.Y);
-            RegistrationLabel.Location = new Point(39, RegistrationLabel.Location.Y);
         }
         #endregion
 
-        #region Authorization
+        #region AuthorizationRegistration
         private void AuthorizationButton_Click(object sender, EventArgs e)
         {
-            //
+            //TODO: сделать авторизацию
             AuthorizationVisibility();
-            //
-            Username.Text = "Привет, АШОТ-КАМШОТ";
+            label_Username.Text = "Привет, АШОТ-КАМШОТ";
+        }
+
+        private void button_Registration_Click(object sender, EventArgs e)
+        {
+            //TODO: сделать регистрацию
+            AuthorizationVisibility();
+            label_Username.Text = "Привет, АШОТ-КАМШОТ";
         }
 
         private void AuthorizationVisibility()
         {
-            AuthorizationPanel.Visible = false;
-            AuthorizationLabel.Visible = false;
-            RegistrationPanel.Visible = false;
-            RegistrationLabel.Visible = false;
-            UserModelsButton.Visible = true;
+            panel_Authorization.Visible = false;
+            label_Authorization.Visible = false;
+            panel_Registration.Visible = false;
+            label_Registration.Visible = false;
+            button_MyModels.Visible = true;
+            button_MyDatasets.Visible = true;
         }
         #endregion
     }

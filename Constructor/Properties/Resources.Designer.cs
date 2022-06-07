@@ -92,9 +92,19 @@ namespace Constructor.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Режим полной свободы предоставляет все пользователю. Разрешается полная настройка всех слоев, всех нейронов, ручная нормализация, отсутствует проверка на соответсвие входных данных и соответсвие функций активации. В данном режиме наиболее высока вероятность возникновения ошибки..
         /// </summary>
-        internal static string FullFreedomModeExplanation {
+        internal static string FreeModeExplanation {
             get {
-                return ResourceManager.GetString("FullFreedomModeExplanation", resourceCulture);
+                return ResourceManager.GetString("FreeModeExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon main {
+            get {
+                object obj = ResourceManager.GetObject("main", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
