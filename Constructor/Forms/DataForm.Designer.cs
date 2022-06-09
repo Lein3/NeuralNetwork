@@ -83,7 +83,6 @@
             this.label2.Size = new System.Drawing.Size(180, 27);
             this.label2.TabIndex = 6;
             this.label2.Text = "Входные данные";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -121,6 +120,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "SQL Server";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // DataForm
             // 

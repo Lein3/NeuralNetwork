@@ -43,3 +43,5 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.CopyComp
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.exe
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.pdb
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.DataForm.resources
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\Microsoft.Data.ConnectionUI.Dialog.dll
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\Microsoft.Data.ConnectionUI.dll

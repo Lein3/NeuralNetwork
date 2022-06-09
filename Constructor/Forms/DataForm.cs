@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.ConnectionUI;
 
 namespace Constructor
 {
@@ -17,9 +18,11 @@ namespace Constructor
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            
+            DataConnectionDialog d = new DataConnectionDialog();
+            DataSource.AddStandardDataSources(d);
+            DataConnectionDialog.Show(d);
         }
     }
 }
