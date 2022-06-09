@@ -107,6 +107,7 @@
             this.button_AutoMode.Text = "Автоматизированный режим";
             this.button_AutoMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_AutoMode.UseVisualStyleBackColor = false;
+            this.button_AutoMode.Click += new System.EventHandler(this.button_AutoMode_Click);
             this.button_AutoMode.MouseEnter += new System.EventHandler(this.DescriptionFunction);
             // 
             // button_ProfessionalMode

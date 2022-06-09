@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.button_Scenario = new System.Windows.Forms.Button();
-            this.button_EnviromentSredaNeNado = new System.Windows.Forms.Button();
             this.button_Data = new System.Windows.Forms.Button();
             this.button_Learning = new System.Windows.Forms.Button();
             this.button_CalculateNeNado = new System.Windows.Forms.Button();
@@ -58,33 +57,14 @@
             this.button_Scenario.UseVisualStyleBackColor = false;
             this.button_Scenario.Click += new System.EventHandler(this.button_Scenario_Click);
             // 
-            // button_EnviromentSredaNeNado
-            // 
-            this.button_EnviromentSredaNeNado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.button_EnviromentSredaNeNado.Enabled = false;
-            this.button_EnviromentSredaNeNado.FlatAppearance.BorderSize = 0;
-            this.button_EnviromentSredaNeNado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_EnviromentSredaNeNado.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_EnviromentSredaNeNado.ForeColor = System.Drawing.Color.White;
-            this.button_EnviromentSredaNeNado.Location = new System.Drawing.Point(30, 70);
-            this.button_EnviromentSredaNeNado.Margin = new System.Windows.Forms.Padding(0);
-            this.button_EnviromentSredaNeNado.Name = "button_EnviromentSredaNeNado";
-            this.button_EnviromentSredaNeNado.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button_EnviromentSredaNeNado.Size = new System.Drawing.Size(166, 29);
-            this.button_EnviromentSredaNeNado.TabIndex = 1;
-            this.button_EnviromentSredaNeNado.Text = "Среда";
-            this.button_EnviromentSredaNeNado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_EnviromentSredaNeNado.UseVisualStyleBackColor = false;
-            // 
             // button_Data
             // 
             this.button_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.button_Data.Enabled = false;
             this.button_Data.FlatAppearance.BorderSize = 0;
             this.button_Data.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Data.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Data.ForeColor = System.Drawing.Color.White;
-            this.button_Data.Location = new System.Drawing.Point(30, 100);
+            this.button_Data.Location = new System.Drawing.Point(30, 70);
             this.button_Data.Margin = new System.Windows.Forms.Padding(0);
             this.button_Data.Name = "button_Data";
             this.button_Data.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -93,6 +73,7 @@
             this.button_Data.Text = "Данные";
             this.button_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Data.UseVisualStyleBackColor = false;
+            this.button_Data.Click += new System.EventHandler(this.button_Data_Click);
             // 
             // button_Learning
             // 
@@ -226,7 +207,6 @@
             this.Controls.Add(this.button_CalculateNeNado);
             this.Controls.Add(this.button_Learning);
             this.Controls.Add(this.button_Data);
-            this.Controls.Add(this.button_EnviromentSredaNeNado);
             this.Controls.Add(this.button_Scenario);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -241,16 +221,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button_Scenario;
-        private System.Windows.Forms.Button button_EnviromentSredaNeNado;
-        private System.Windows.Forms.Button button_Data;
-        private System.Windows.Forms.Button button_Learning;
-        private System.Windows.Forms.Button button_CalculateNeNado;
-        private System.Windows.Forms.Button button_UsingNeNado;
-        private System.Windows.Forms.Button button_SaveModel;
         private System.Windows.Forms.Button button_Minimize;
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.Panel panel_Screen;
+        public System.Windows.Forms.Button button_Scenario;
+        public System.Windows.Forms.Button button_Data;
+        public System.Windows.Forms.Button button_Learning;
+        public System.Windows.Forms.Button button_CalculateNeNado;
+        public System.Windows.Forms.Button button_UsingNeNado;
+        public System.Windows.Forms.Button button_SaveModel;
     }
 }

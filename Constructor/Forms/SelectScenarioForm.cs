@@ -17,14 +17,20 @@ namespace Constructor
             InitializeComponent();
         }
 
-        private void scenarioControl1_Load(object sender, EventArgs e)
+        private void scenarioControl1_DoubleClick(object sender, EventArgs e)
         {
             //TODO: выбор сценария
+            var parent = this.ParentForm as MainForm;
+            parent.button_Data.Enabled = true;
+            parent.button_Data_Click(sender, e);
         }
 
-        private void scenarioControl2_Load(object sender, EventArgs e)
+        private void scenarioControl2_DoubleClick(object sender, EventArgs e)
         {
             //TODO: выбор сценария
+            var parent = this.ParentForm as MainForm;
+            parent.button_Data.Enabled = true;
+            parent.button_Data_Click(sender, e);
         }
     }
 }

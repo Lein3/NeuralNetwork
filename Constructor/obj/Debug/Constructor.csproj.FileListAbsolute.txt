@@ -42,3 +42,4 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.CoreComp
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.CopyComplete
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.exe
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.pdb
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.DataForm.resources

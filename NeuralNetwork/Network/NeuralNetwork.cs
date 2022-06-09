@@ -141,6 +141,7 @@ namespace NeuralNetworkNamespace
         {
             for (int i = 0; i < times; i++)
             {
+                Console.WriteLine("обучили раз" + i.ToString());
                 for (int j = 0; j < learningData.LearningExamples.Count; j++)
                 {
                     LearningExample example = learningData.LearningExamples[j];
@@ -148,6 +149,7 @@ namespace NeuralNetworkNamespace
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
+                Console.WriteLine("обучили раз" + i.ToString());
             }
         }
 

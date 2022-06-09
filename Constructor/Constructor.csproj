@@ -78,6 +78,12 @@
     <Compile Include="Controls\CurrentNeuronControl.Designer.cs">
       <DependentUpon>CurrentNeuronControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataForm.Designer.cs">
+      <DependentUpon>DataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EvaluateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateMiddleLayersForm.resx">
       <DependentUpon>CreateMiddleLayersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataForm.resx">
+      <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EvaluateForm.resx">
       <DependentUpon>EvaluateForm.cs</DependentUpon>
