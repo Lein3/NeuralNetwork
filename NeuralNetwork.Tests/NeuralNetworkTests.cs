@@ -299,18 +299,18 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void TestExapmles_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv");
-            Structure structure = new Structure(13, 1, 10); // 13 10 1 // 13 10 5 1
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\мошенники.csv");
+            Structure structure = new Structure(30, 1, 15); // 13 10 1 // 13 10 5 1
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
-            neuralNetwork.Learn_Backpropogation(learningData, 10000, 0.1);
+            neuralNetwork.Learn_Backpropogation(learningData, 1, 0.1);
 
             for (int i = 0; i < learningData.LearningExamples.Count; i++)
             {
                 var example = learningData.LearningExamples[i].InputSignals;
                 var answer = learningData.LearningExamples[i].ExpectedOutputs;
                 var real = neuralNetwork.Predict_ReturnOnlyValues(example);
-                Assert.AreEqual(answer[0], real[0], 0.20);
+                Assert.AreEqual(answer[0], real[0], 0.20);              
             }
 
             //for (int i = 0; i < learningData.TestExamples.Count; i++)

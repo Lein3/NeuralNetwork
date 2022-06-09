@@ -127,5 +127,11 @@ namespace Constructor
             button_MyDatasets.Visible = true;
         }
         #endregion
+
+        private void button_AutoMode_Click(object sender, EventArgs e)
+        {
+            new MainForm().Show();
+            this.Hide();
+        }
     }
 }

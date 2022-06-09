@@ -28,7 +28,7 @@ namespace NeuralNetworkNamespace
 
                 while (!streamReader.EndOfStream)
                 {
-                    List<double> values = streamReader.ReadLine().Split(',').ToList().ConvertAll(a => Convert.ToDouble(a.Replace('.', ',')));
+                    List<double> values = streamReader.ReadLine().Split(',').ToList().ConvertAll(a => Convert.ToDouble(a.Replace('.', ',').Replace('"', ' ')));
                     var inputSignals = values.GetRange(0, values.Count - 1);
                     var expectedOutputs = values.GetRange(values.Count - 1, 1);
                     var LearningExample = new LearningExample(inputSignals, expectedOutputs);

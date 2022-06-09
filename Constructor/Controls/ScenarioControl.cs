@@ -46,6 +46,12 @@ namespace Constructor
                     BackColor = Color.FromArgb(77, 77, 77);
                 };
             });
+            ListControls.Skip(1).ToList().ForEach(item => item.DoubleClick += CustomDoubleClick);
+        }
+
+        public void CustomDoubleClick(object sender, EventArgs e)
+        {
+            this.OnDoubleClick(new EventArgs());
         }
     }
 }

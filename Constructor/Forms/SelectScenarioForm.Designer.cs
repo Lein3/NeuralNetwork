@@ -123,7 +123,7 @@
             this.scenarioControl1.ScenarioName = "Бинарная классификация";
             this.scenarioControl1.Size = new System.Drawing.Size(220, 300);
             this.scenarioControl1.TabIndex = 4;
-            this.scenarioControl1.Load += new System.EventHandler(this.scenarioControl1_Load);
+            this.scenarioControl1.DoubleClick += new System.EventHandler(this.scenarioControl1_DoubleClick);
             // 
             // scenarioControl2
             // 
@@ -140,7 +140,7 @@
             this.scenarioControl2.ScenarioName = "Мультиклассовая классификация";
             this.scenarioControl2.Size = new System.Drawing.Size(220, 300);
             this.scenarioControl2.TabIndex = 5;
-            this.scenarioControl2.Load += new System.EventHandler(this.scenarioControl2_Load);
+            this.scenarioControl2.DoubleClick += new System.EventHandler(this.scenarioControl2_DoubleClick);
             // 
             // scenarioControl3
             // 
@@ -291,7 +291,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1168, 929);
+            this.ClientSize = new System.Drawing.Size(1185, 946);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.label4);

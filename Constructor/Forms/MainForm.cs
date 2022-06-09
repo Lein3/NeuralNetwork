@@ -60,9 +60,14 @@ namespace Constructor
             Application.Exit();
         }
 
-        private void button_Scenario_Click(object sender, EventArgs e)
+        public void button_Scenario_Click(object sender, EventArgs e)
         {
             OpenChildForm(new SelectScenarioForm());
+        }
+
+        public void button_Data_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DataForm());
         }
     }
 }
