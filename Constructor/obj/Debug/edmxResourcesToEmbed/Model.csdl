@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NeuralNetworkConstructorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActivationFunctions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NeuralNetworks" Relationship="Self.FK_NeuralNetworks_ActivationFunctions" FromRole="ActivationFunctions" ToRole="NeuralNetworks" />
+  </EntityType>
+  <EntityType Name="CostFunctions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NeuralNetworks" Relationship="Self.FK_NeuralNetworks_CostFunctions" FromRole="CostFunctions" ToRole="NeuralNetworks" />
+  </EntityType>
+  <EntityType Name="Datasets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Owner" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Datasets_Users" FromRole="Datasets" ToRole="Users" />
+    <NavigationProperty Name="NeuralNetworks" Relationship="Self.FK_NeuralNetworks_Datasets" FromRole="Datasets" ToRole="NeuralNetworks" />
+  </EntityType>
+  <EntityType Name="LearningResults">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EpochCount" Type="Int32" />
+    <Property Name="LearningRate" Type="Double" Nullable="false" />
+    <Property Name="ErrorLimit" Type="Double" />
+    <Property Name="ExamplesLearningCount" Type="Int32" Nullable="false" />
+    <Property Name="ExamplesTestCount" Type="Int32" />
+    <Property Name="ElapsedTimeMilliseconds" Type="Int32" />
+    <Property Name="ResultErrorLearningExamples" Type="Double" Nullable="false" />
+    <Property Name="ResultErrorTestExamples" Type="Double" />
+    <NavigationProperty Name="NeuralNetworks" Relationship="Self.NeuralNetworks_LearningResults" FromRole="LearningResults" ToRole="NeuralNetworks" />
+  </EntityType>
+  <EntityType Name="NeuralNetworks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Owner" Type="Int32" />
+    <Property Name="Dataset" Type="Int32" Nullable="false" />
+    <Property Name="InputNeuronsCount" Type="Int32" Nullable="false" />
+    <Property Name="OutputNeuronsCount" Type="Int32" Nullable="false" />
+    <Property Name="MiddleLayers" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bias" Type="Boolean" Nullable="false" />
+    <Property Name="ActivationFunction" Type="Int32" Nullable="false" />
+    <Property Name="CostFunction" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ActivationFunctions" Relationship="Self.FK_NeuralNetworks_ActivationFunctions" FromRole="NeuralNetworks" ToRole="ActivationFunctions" />
+    <NavigationProperty Name="CostFunctions" Relationship="Self.FK_NeuralNetworks_CostFunctions" FromRole="NeuralNetworks" ToRole="CostFunctions" />
+    <NavigationProperty Name="Datasets" Relationship="Self.FK_NeuralNetworks_Datasets" FromRole="NeuralNetworks" ToRole="Datasets" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_NeuralNetworks_Users" FromRole="NeuralNetworks" ToRole="Users" />
+    <NavigationProperty Name="LearningResults" Relationship="Self.NeuralNetworks_LearningResults" FromRole="NeuralNetworks" ToRole="LearningResults" />
+    <NavigationProperty Name="Users1" Relationship="Self.Users_NeuralNetworks" FromRole="NeuralNetworks" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Datasets" Relationship="Self.FK_Datasets_Users" FromRole="Users" ToRole="Datasets" />
+    <NavigationProperty Name="NeuralNetworks" Relationship="Self.FK_NeuralNetworks_Users" FromRole="Users" ToRole="NeuralNetworks" />
+    <NavigationProperty Name="NeuralNetworks1" Relationship="Self.Users_NeuralNetworks" FromRole="Users" ToRole="NeuralNetworks" />
+  </EntityType>
+  <Association Name="FK_NeuralNetworks_ActivationFunctions">
+    <End Role="ActivationFunctions" Type="Self.ActivationFunctions" Multiplicity="1" />
+    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivationFunctions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NeuralNetworks">
+        <PropertyRef Name="ActivationFunction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NeuralNetworks_CostFunctions">
+    <End Role="CostFunctions" Type="Self.CostFunctions" Multiplicity="1" />
+    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostFunctions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NeuralNetworks">
+        <PropertyRef Name="CostFunction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Datasets_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Datasets" Type="Self.Datasets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Datasets">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NeuralNetworks_Datasets">
+    <End Role="Datasets" Type="Self.Datasets" Multiplicity="1" />
+    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datasets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NeuralNetworks">
+        <PropertyRef Name="Dataset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NeuralNetworks_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NeuralNetworks">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NeuralNetworks_LearningResults">
+    <End Role="LearningResults" Type="Self.LearningResults" Multiplicity="*" />
+    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
+  </Association>
+  <Association Name="Users_NeuralNetworks">
+    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="NeuralNetworkConstructorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActivationFunctions" EntityType="Self.ActivationFunctions" />
+    <EntitySet Name="CostFunctions" EntityType="Self.CostFunctions" />
+    <EntitySet Name="Datasets" EntityType="Self.Datasets" />
+    <EntitySet Name="LearningResults" EntityType="Self.LearningResults" />
+    <EntitySet Name="NeuralNetworks" EntityType="Self.NeuralNetworks" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_NeuralNetworks_ActivationFunctions" Association="Self.FK_NeuralNetworks_ActivationFunctions">
+      <End Role="ActivationFunctions" EntitySet="ActivationFunctions" />
+      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NeuralNetworks_CostFunctions" Association="Self.FK_NeuralNetworks_CostFunctions">
+      <End Role="CostFunctions" EntitySet="CostFunctions" />
+      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Datasets_Users" Association="Self.FK_Datasets_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Datasets" EntitySet="Datasets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NeuralNetworks_Datasets" Association="Self.FK_NeuralNetworks_Datasets">
+      <End Role="Datasets" EntitySet="Datasets" />
+      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NeuralNetworks_Users" Association="Self.FK_NeuralNetworks_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
+    </AssociationSet>
+    <AssociationSet Name="NeuralNetworks_LearningResults" Association="Self.NeuralNetworks_LearningResults">
+      <End Role="LearningResults" EntitySet="LearningResults" />
+      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
+    </AssociationSet>
+    <AssociationSet Name="Users_NeuralNetworks" Association="Self.Users_NeuralNetworks">
+      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

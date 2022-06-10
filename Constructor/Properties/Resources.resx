@@ -148,6 +148,9 @@
   <data name="закрыть_черный" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\закрыть.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="иконка_справки" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\иконка справки.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="кластеризация" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\кластеризация.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

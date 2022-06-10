@@ -160,6 +160,16 @@ namespace Constructor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap иконка_справки {
+            get {
+                object obj = ResourceManager.GetObject("иконка_справки", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap кластеризация {
             get {
                 object obj = ResourceManager.GetObject("кластеризация", resourceCulture);

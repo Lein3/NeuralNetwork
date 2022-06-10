@@ -28,88 +28,102 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.label_Description = new System.Windows.Forms.Label();
+            this.Label_Description3 = new System.Windows.Forms.LinkLabel();
+            this.label_Description2 = new System.Windows.Forms.Label();
+            this.label_SelectInputType = new System.Windows.Forms.Label();
+            this.label_SelectInputType2 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.panel_FromFile = new System.Windows.Forms.Panel();
+            this.button_FromFile = new System.Windows.Forms.Button();
             this.textBox_FilePath = new System.Windows.Forms.TextBox();
-            this.button_MyModels = new System.Windows.Forms.Button();
             this.panel_FromDatabase = new System.Windows.Forms.Panel();
+            this.label_DataSourceName = new System.Windows.Forms.Label();
+            this.comboBox_SelectTableFromDataSource = new System.Windows.Forms.ComboBox();
+            this.label_SelectTableFromDataSource = new System.Windows.Forms.Label();
             this.button_SelectDataSource = new System.Windows.Forms.Button();
             this.panel_FromDataset = new System.Windows.Forms.Panel();
-            this.label_SelectTable = new System.Windows.Forms.Label();
-            this.comboBox_SelectTableFromDb = new System.Windows.Forms.ComboBox();
-            this.comboBox_SelectDataset = new System.Windows.Forms.ComboBox();
-            this.label_SelectDataset = new System.Windows.Forms.Label();
-            this.label_DatabaseName = new System.Windows.Forms.Label();
+            this.comboBox_SelectLocalDataset = new System.Windows.Forms.ComboBox();
+            this.label_SelectLocalDataset = new System.Windows.Forms.Label();
+            this.comboBox_PredictMark = new System.Windows.Forms.ComboBox();
+            this.label_PredictMark = new System.Windows.Forms.Label();
+            this.pictureBox_PredictMarkHelp = new System.Windows.Forms.PictureBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.linkLabel_PredictMarkParams = new System.Windows.Forms.LinkLabel();
+            this.label_DataPreview = new System.Windows.Forms.Label();
+            this.label_DataPreviewInfo = new System.Windows.Forms.Label();
+            this.label_FileSeparatorSing = new System.Windows.Forms.Label();
+            this.radioButton_Separator1 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panel_FromFile.SuspendLayout();
             this.panel_FromDatabase.SuspendLayout();
             this.panel_FromDataset.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // label_Description
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Добавление данных";
+            this.label_Description.AutoSize = true;
+            this.label_Description.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Description.ForeColor = System.Drawing.Color.White;
+            this.label_Description.Location = new System.Drawing.Point(10, 10);
+            this.label_Description.Name = "label_Description";
+            this.label_Description.Size = new System.Drawing.Size(247, 30);
+            this.label_Description.TabIndex = 1;
+            this.label_Description.Text = "Добавление данных";
             // 
-            // linkLabel1
+            // Label_Description3
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(174)))), ((int)(((byte)(199)))));
-            this.linkLabel1.Location = new System.Drawing.Point(12, 70);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(462, 17);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Как получить примеры наборов данных и дополнительные сведения?";
+            this.Label_Description3.ActiveLinkColor = System.Drawing.Color.White;
+            this.Label_Description3.AutoSize = true;
+            this.Label_Description3.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Description3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(174)))), ((int)(((byte)(199)))));
+            this.Label_Description3.Location = new System.Drawing.Point(12, 70);
+            this.Label_Description3.Name = "Label_Description3";
+            this.Label_Description3.Size = new System.Drawing.Size(462, 17);
+            this.Label_Description3.TabIndex = 5;
+            this.Label_Description3.TabStop = true;
+            this.Label_Description3.Text = "Как получить примеры наборов данных и дополнительные сведения?";
             // 
-            // label2
+            // label_Description2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(623, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Для создания модели необходимо добавить данные и выбрать столбец для прогнозирова" +
+            this.label_Description2.AutoSize = true;
+            this.label_Description2.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Description2.ForeColor = System.Drawing.Color.White;
+            this.label_Description2.Location = new System.Drawing.Point(12, 50);
+            this.label_Description2.Name = "label_Description2";
+            this.label_Description2.Size = new System.Drawing.Size(623, 17);
+            this.label_Description2.TabIndex = 4;
+            this.label_Description2.Text = "Для создания модели необходимо добавить данные и выбрать столбец для прогнозирова" +
     "ния.\r\n";
             // 
-            // label3
+            // label_SelectInputType
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(10, 120);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 27);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Входные данные";
+            this.label_SelectInputType.AutoSize = true;
+            this.label_SelectInputType.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectInputType.ForeColor = System.Drawing.Color.White;
+            this.label_SelectInputType.Location = new System.Drawing.Point(10, 120);
+            this.label_SelectInputType.Name = "label_SelectInputType";
+            this.label_SelectInputType.Size = new System.Drawing.Size(180, 27);
+            this.label_SelectInputType.TabIndex = 6;
+            this.label_SelectInputType.Text = "Входные данные";
             // 
-            // label4
+            // label_SelectInputType2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(14, 155);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 34);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Тип источника данных\r\n\r\n";
+            this.label_SelectInputType2.AutoSize = true;
+            this.label_SelectInputType2.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectInputType2.ForeColor = System.Drawing.Color.White;
+            this.label_SelectInputType2.Location = new System.Drawing.Point(14, 155);
+            this.label_SelectInputType2.Name = "label_SelectInputType2";
+            this.label_SelectInputType2.Size = new System.Drawing.Size(155, 34);
+            this.label_SelectInputType2.TabIndex = 7;
+            this.label_SelectInputType2.Text = "Тип источника данных\r\n\r\n";
             // 
             // radioButton1
             // 
@@ -169,13 +183,34 @@
             // 
             // panel_FromFile
             // 
-            this.panel_FromFile.Controls.Add(this.button_MyModels);
+            this.panel_FromFile.Controls.Add(this.radioButton5);
+            this.panel_FromFile.Controls.Add(this.radioButton_Separator1);
+            this.panel_FromFile.Controls.Add(this.label_FileSeparatorSing);
+            this.panel_FromFile.Controls.Add(this.button_FromFile);
             this.panel_FromFile.Controls.Add(this.textBox_FilePath);
             this.panel_FromFile.Location = new System.Drawing.Point(425, 120);
             this.panel_FromFile.Name = "panel_FromFile";
-            this.panel_FromFile.Size = new System.Drawing.Size(540, 70);
+            this.panel_FromFile.Size = new System.Drawing.Size(540, 100);
             this.panel_FromFile.TabIndex = 12;
             this.panel_FromFile.Visible = false;
+            // 
+            // button_FromFile
+            // 
+            this.button_FromFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.button_FromFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_FromFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
+            this.button_FromFile.FlatAppearance.BorderSize = 0;
+            this.button_FromFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_FromFile.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_FromFile.ForeColor = System.Drawing.Color.White;
+            this.button_FromFile.Location = new System.Drawing.Point(425, 25);
+            this.button_FromFile.Margin = new System.Windows.Forms.Padding(0);
+            this.button_FromFile.Name = "button_FromFile";
+            this.button_FromFile.Size = new System.Drawing.Size(70, 22);
+            this.button_FromFile.TabIndex = 26;
+            this.button_FromFile.Text = "Обзор...";
+            this.button_FromFile.UseVisualStyleBackColor = false;
+            this.button_FromFile.Click += new System.EventHandler(this.button_FromFile_Click);
             // 
             // textBox_FilePath
             // 
@@ -188,35 +223,51 @@
             this.textBox_FilePath.Size = new System.Drawing.Size(400, 22);
             this.textBox_FilePath.TabIndex = 0;
             // 
-            // button_MyModels
-            // 
-            this.button_MyModels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.button_MyModels.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_MyModels.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
-            this.button_MyModels.FlatAppearance.BorderSize = 0;
-            this.button_MyModels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_MyModels.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_MyModels.ForeColor = System.Drawing.Color.White;
-            this.button_MyModels.Location = new System.Drawing.Point(425, 25);
-            this.button_MyModels.Margin = new System.Windows.Forms.Padding(0);
-            this.button_MyModels.Name = "button_MyModels";
-            this.button_MyModels.Size = new System.Drawing.Size(70, 22);
-            this.button_MyModels.TabIndex = 26;
-            this.button_MyModels.Text = "Обзор...";
-            this.button_MyModels.UseVisualStyleBackColor = false;
-            this.button_MyModels.Click += new System.EventHandler(this.button_MyModels_Click);
-            // 
             // panel_FromDatabase
             // 
-            this.panel_FromDatabase.Controls.Add(this.label_DatabaseName);
-            this.panel_FromDatabase.Controls.Add(this.comboBox_SelectTableFromDb);
-            this.panel_FromDatabase.Controls.Add(this.label_SelectTable);
+            this.panel_FromDatabase.Controls.Add(this.label_DataSourceName);
+            this.panel_FromDatabase.Controls.Add(this.comboBox_SelectTableFromDataSource);
+            this.panel_FromDatabase.Controls.Add(this.label_SelectTableFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.button_SelectDataSource);
-            this.panel_FromDatabase.Location = new System.Drawing.Point(425, 200);
+            this.panel_FromDatabase.Location = new System.Drawing.Point(425, 240);
             this.panel_FromDatabase.Name = "panel_FromDatabase";
-            this.panel_FromDatabase.Size = new System.Drawing.Size(540, 120);
+            this.panel_FromDatabase.Size = new System.Drawing.Size(429, 120);
             this.panel_FromDatabase.TabIndex = 13;
             this.panel_FromDatabase.Visible = false;
+            // 
+            // label_DataSourceName
+            // 
+            this.label_DataSourceName.AutoSize = true;
+            this.label_DataSourceName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_DataSourceName.ForeColor = System.Drawing.Color.White;
+            this.label_DataSourceName.Location = new System.Drawing.Point(217, 15);
+            this.label_DataSourceName.Name = "label_DataSourceName";
+            this.label_DataSourceName.Size = new System.Drawing.Size(192, 17);
+            this.label_DataSourceName.TabIndex = 28;
+            this.label_DataSourceName.Text = "Источник данных не выбран\r\n";
+            // 
+            // comboBox_SelectTableFromDataSource
+            // 
+            this.comboBox_SelectTableFromDataSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectTableFromDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectTableFromDataSource.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectTableFromDataSource.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectTableFromDataSource.FormattingEnabled = true;
+            this.comboBox_SelectTableFromDataSource.Location = new System.Drawing.Point(10, 80);
+            this.comboBox_SelectTableFromDataSource.Name = "comboBox_SelectTableFromDataSource";
+            this.comboBox_SelectTableFromDataSource.Size = new System.Drawing.Size(185, 23);
+            this.comboBox_SelectTableFromDataSource.TabIndex = 27;
+            // 
+            // label_SelectTableFromDataSource
+            // 
+            this.label_SelectTableFromDataSource.AutoSize = true;
+            this.label_SelectTableFromDataSource.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectTableFromDataSource.ForeColor = System.Drawing.Color.White;
+            this.label_SelectTableFromDataSource.Location = new System.Drawing.Point(10, 50);
+            this.label_SelectTableFromDataSource.Name = "label_SelectTableFromDataSource";
+            this.label_SelectTableFromDataSource.Size = new System.Drawing.Size(65, 17);
+            this.label_SelectTableFromDataSource.TabIndex = 15;
+            this.label_SelectTableFromDataSource.Text = "Таблица\r\n";
             // 
             // button_SelectDataSource
             // 
@@ -234,87 +285,174 @@
             this.button_SelectDataSource.TabIndex = 26;
             this.button_SelectDataSource.Text = "Выбрать источник данных";
             this.button_SelectDataSource.UseVisualStyleBackColor = false;
-            this.button_SelectDataSource.Click += new System.EventHandler(this.button1_Click);
+            this.button_SelectDataSource.Click += new System.EventHandler(this.button_SelectDataSource_Click);
             // 
             // panel_FromDataset
             // 
-            this.panel_FromDataset.Controls.Add(this.comboBox_SelectDataset);
-            this.panel_FromDataset.Controls.Add(this.label_SelectDataset);
-            this.panel_FromDataset.Location = new System.Drawing.Point(425, 340);
+            this.panel_FromDataset.Controls.Add(this.comboBox_SelectLocalDataset);
+            this.panel_FromDataset.Controls.Add(this.label_SelectLocalDataset);
+            this.panel_FromDataset.Location = new System.Drawing.Point(735, 24);
             this.panel_FromDataset.Name = "panel_FromDataset";
-            this.panel_FromDataset.Size = new System.Drawing.Size(540, 80);
+            this.panel_FromDataset.Size = new System.Drawing.Size(230, 80);
             this.panel_FromDataset.TabIndex = 14;
             this.panel_FromDataset.Visible = false;
             // 
-            // label_SelectTable
+            // comboBox_SelectLocalDataset
             // 
-            this.label_SelectTable.AutoSize = true;
-            this.label_SelectTable.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_SelectTable.ForeColor = System.Drawing.Color.White;
-            this.label_SelectTable.Location = new System.Drawing.Point(10, 50);
-            this.label_SelectTable.Name = "label_SelectTable";
-            this.label_SelectTable.Size = new System.Drawing.Size(65, 17);
-            this.label_SelectTable.TabIndex = 15;
-            this.label_SelectTable.Text = "Таблица\r\n";
-            // 
-            // comboBox_SelectTableFromDb
-            // 
-            this.comboBox_SelectTableFromDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_SelectTableFromDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_SelectTableFromDb.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_SelectTableFromDb.ForeColor = System.Drawing.Color.White;
-            this.comboBox_SelectTableFromDb.FormattingEnabled = true;
-            this.comboBox_SelectTableFromDb.Location = new System.Drawing.Point(10, 80);
-            this.comboBox_SelectTableFromDb.Name = "comboBox_SelectTableFromDb";
-            this.comboBox_SelectTableFromDb.Size = new System.Drawing.Size(185, 23);
-            this.comboBox_SelectTableFromDb.TabIndex = 27;
-            // 
-            // comboBox_SelectDataset
-            // 
-            this.comboBox_SelectDataset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_SelectDataset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_SelectDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_SelectDataset.ForeColor = System.Drawing.Color.White;
-            this.comboBox_SelectDataset.FormattingEnabled = true;
-            this.comboBox_SelectDataset.Items.AddRange(new object[] {
+            this.comboBox_SelectLocalDataset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectLocalDataset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectLocalDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectLocalDataset.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectLocalDataset.FormattingEnabled = true;
+            this.comboBox_SelectLocalDataset.Items.AddRange(new object[] {
             "база1",
             "база2",
             "база3",
             "база4"});
-            this.comboBox_SelectDataset.Location = new System.Drawing.Point(10, 40);
-            this.comboBox_SelectDataset.Name = "comboBox_SelectDataset";
-            this.comboBox_SelectDataset.Size = new System.Drawing.Size(185, 23);
-            this.comboBox_SelectDataset.TabIndex = 29;
+            this.comboBox_SelectLocalDataset.Location = new System.Drawing.Point(10, 40);
+            this.comboBox_SelectLocalDataset.Name = "comboBox_SelectLocalDataset";
+            this.comboBox_SelectLocalDataset.Size = new System.Drawing.Size(185, 23);
+            this.comboBox_SelectLocalDataset.TabIndex = 29;
             // 
-            // label_SelectDataset
+            // label_SelectLocalDataset
             // 
-            this.label_SelectDataset.AutoSize = true;
-            this.label_SelectDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_SelectDataset.ForeColor = System.Drawing.Color.White;
-            this.label_SelectDataset.Location = new System.Drawing.Point(10, 10);
-            this.label_SelectDataset.Name = "label_SelectDataset";
-            this.label_SelectDataset.Size = new System.Drawing.Size(100, 17);
-            this.label_SelectDataset.TabIndex = 28;
-            this.label_SelectDataset.Text = "Набор данных";
+            this.label_SelectLocalDataset.AutoSize = true;
+            this.label_SelectLocalDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectLocalDataset.ForeColor = System.Drawing.Color.White;
+            this.label_SelectLocalDataset.Location = new System.Drawing.Point(10, 10);
+            this.label_SelectLocalDataset.Name = "label_SelectLocalDataset";
+            this.label_SelectLocalDataset.Size = new System.Drawing.Size(100, 17);
+            this.label_SelectLocalDataset.TabIndex = 28;
+            this.label_SelectLocalDataset.Text = "Набор данных";
             // 
-            // label_DatabaseName
+            // comboBox_PredictMark
             // 
-            this.label_DatabaseName.AutoSize = true;
-            this.label_DatabaseName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DatabaseName.ForeColor = System.Drawing.Color.White;
-            this.label_DatabaseName.Location = new System.Drawing.Point(217, 15);
-            this.label_DatabaseName.Name = "label_DatabaseName";
-            this.label_DatabaseName.Size = new System.Drawing.Size(192, 17);
-            this.label_DatabaseName.TabIndex = 28;
-            this.label_DatabaseName.Text = "Источник данных не выбран\r\n";
+            this.comboBox_PredictMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_PredictMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_PredictMark.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_PredictMark.ForeColor = System.Drawing.Color.White;
+            this.comboBox_PredictMark.FormattingEnabled = true;
+            this.comboBox_PredictMark.Location = new System.Drawing.Point(20, 340);
+            this.comboBox_PredictMark.Name = "comboBox_PredictMark";
+            this.comboBox_PredictMark.Size = new System.Drawing.Size(185, 23);
+            this.comboBox_PredictMark.TabIndex = 29;
+            this.comboBox_PredictMark.Text = "Выберите столбец";
+            // 
+            // label_PredictMark
+            // 
+            this.label_PredictMark.AutoSize = true;
+            this.label_PredictMark.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_PredictMark.ForeColor = System.Drawing.Color.White;
+            this.label_PredictMark.Location = new System.Drawing.Point(15, 310);
+            this.label_PredictMark.Name = "label_PredictMark";
+            this.label_PredictMark.Size = new System.Drawing.Size(229, 17);
+            this.label_PredictMark.TabIndex = 28;
+            this.label_PredictMark.Text = "Прогнозируемый столбец(метка):\r\n";
+            // 
+            // pictureBox_PredictMarkHelp
+            // 
+            this.pictureBox_PredictMarkHelp.Image = global::Constructor.Properties.Resources.иконка_справки;
+            this.pictureBox_PredictMarkHelp.Location = new System.Drawing.Point(245, 310);
+            this.pictureBox_PredictMarkHelp.Name = "pictureBox_PredictMarkHelp";
+            this.pictureBox_PredictMarkHelp.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox_PredictMarkHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_PredictMarkHelp.TabIndex = 30;
+            this.pictureBox_PredictMarkHelp.TabStop = false;
+            this.toolTip.SetToolTip(this.pictureBox_PredictMarkHelp, "Это целевой столбец, который должна спрогнозировать модель.");
+            // 
+            // linkLabel_PredictMarkParams
+            // 
+            this.linkLabel_PredictMarkParams.ActiveLinkColor = System.Drawing.Color.White;
+            this.linkLabel_PredictMarkParams.AutoSize = true;
+            this.linkLabel_PredictMarkParams.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel_PredictMarkParams.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(174)))), ((int)(((byte)(199)))));
+            this.linkLabel_PredictMarkParams.Location = new System.Drawing.Point(15, 375);
+            this.linkLabel_PredictMarkParams.Name = "linkLabel_PredictMarkParams";
+            this.linkLabel_PredictMarkParams.Size = new System.Drawing.Size(224, 17);
+            this.linkLabel_PredictMarkParams.TabIndex = 31;
+            this.linkLabel_PredictMarkParams.TabStop = true;
+            this.linkLabel_PredictMarkParams.Text = "Расширенные параметры данных";
+            // 
+            // label_DataPreview
+            // 
+            this.label_DataPreview.AutoSize = true;
+            this.label_DataPreview.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_DataPreview.ForeColor = System.Drawing.Color.White;
+            this.label_DataPreview.Location = new System.Drawing.Point(15, 420);
+            this.label_DataPreview.Name = "label_DataPreview";
+            this.label_DataPreview.Size = new System.Drawing.Size(374, 27);
+            this.label_DataPreview.TabIndex = 32;
+            this.label_DataPreview.Text = "Предварительный просмотр данных";
+            // 
+            // label_DataPreviewInfo
+            // 
+            this.label_DataPreviewInfo.AutoSize = true;
+            this.label_DataPreviewInfo.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_DataPreviewInfo.ForeColor = System.Drawing.Color.White;
+            this.label_DataPreviewInfo.Location = new System.Drawing.Point(21, 455);
+            this.label_DataPreviewInfo.Name = "label_DataPreviewInfo";
+            this.label_DataPreviewInfo.Size = new System.Drawing.Size(295, 17);
+            this.label_DataPreviewInfo.TabIndex = 33;
+            this.label_DataPreviewInfo.Text = "Здесь отобразится сводка о наборе данных\r\n";
+            // 
+            // label_FileSeparatorSing
+            // 
+            this.label_FileSeparatorSing.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileSeparatorSing.ForeColor = System.Drawing.Color.White;
+            this.label_FileSeparatorSing.Location = new System.Drawing.Point(20, 65);
+            this.label_FileSeparatorSing.Name = "label_FileSeparatorSing";
+            this.label_FileSeparatorSing.Size = new System.Drawing.Size(130, 15);
+            this.label_FileSeparatorSing.TabIndex = 34;
+            this.label_FileSeparatorSing.Text = "Знак разделитель\r\n\r\n";
+            // 
+            // radioButton_Separator1
+            // 
+            this.radioButton_Separator1.AutoSize = true;
+            this.radioButton_Separator1.Checked = true;
+            this.radioButton_Separator1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_Separator1.ForeColor = System.Drawing.Color.White;
+            this.radioButton_Separator1.Location = new System.Drawing.Point(170, 60);
+            this.radioButton_Separator1.Name = "radioButton_Separator1";
+            this.radioButton_Separator1.Size = new System.Drawing.Size(35, 31);
+            this.radioButton_Separator1.TabIndex = 34;
+            this.radioButton_Separator1.TabStop = true;
+            this.radioButton_Separator1.Text = ";";
+            this.radioButton_Separator1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5.ForeColor = System.Drawing.Color.White;
+            this.radioButton5.Location = new System.Drawing.Point(210, 60);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(35, 31);
+            this.radioButton5.TabIndex = 35;
+            this.radioButton5.Text = ",";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(20, 490);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(950, 280);
+            this.dataGridView.TabIndex = 34;
             // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1000, 700);
+            this.ClientSize = new System.Drawing.Size(1000, 800);
             this.ControlBox = false;
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.label_DataPreviewInfo);
+            this.Controls.Add(this.label_DataPreview);
+            this.Controls.Add(this.linkLabel_PredictMarkParams);
+            this.Controls.Add(this.pictureBox_PredictMarkHelp);
+            this.Controls.Add(this.comboBox_PredictMark);
+            this.Controls.Add(this.label_PredictMark);
             this.Controls.Add(this.panel_FromDataset);
             this.Controls.Add(this.panel_FromDatabase);
             this.Controls.Add(this.panel_FromFile);
@@ -322,11 +460,11 @@
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_SelectInputType2);
+            this.Controls.Add(this.label_SelectInputType);
+            this.Controls.Add(this.Label_Description3);
+            this.Controls.Add(this.label_Description2);
+            this.Controls.Add(this.label_Description);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -340,6 +478,8 @@
             this.panel_FromDatabase.PerformLayout();
             this.panel_FromDataset.ResumeLayout(false);
             this.panel_FromDataset.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,25 +487,36 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_Description;
+        private System.Windows.Forms.LinkLabel Label_Description3;
+        private System.Windows.Forms.Label label_Description2;
+        private System.Windows.Forms.Label label_SelectInputType;
+        private System.Windows.Forms.Label label_SelectInputType2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Panel panel_FromFile;
         private System.Windows.Forms.TextBox textBox_FilePath;
-        private System.Windows.Forms.Button button_MyModels;
+        private System.Windows.Forms.Button button_FromFile;
         private System.Windows.Forms.Panel panel_FromDatabase;
         private System.Windows.Forms.Button button_SelectDataSource;
         private System.Windows.Forms.Panel panel_FromDataset;
-        private System.Windows.Forms.ComboBox comboBox_SelectTableFromDb;
-        private System.Windows.Forms.Label label_SelectTable;
-        private System.Windows.Forms.ComboBox comboBox_SelectDataset;
-        private System.Windows.Forms.Label label_SelectDataset;
-        private System.Windows.Forms.Label label_DatabaseName;
+        private System.Windows.Forms.ComboBox comboBox_SelectTableFromDataSource;
+        private System.Windows.Forms.Label label_SelectTableFromDataSource;
+        private System.Windows.Forms.ComboBox comboBox_SelectLocalDataset;
+        private System.Windows.Forms.Label label_SelectLocalDataset;
+        private System.Windows.Forms.Label label_DataSourceName;
+        private System.Windows.Forms.ComboBox comboBox_PredictMark;
+        private System.Windows.Forms.Label label_PredictMark;
+        private System.Windows.Forms.PictureBox pictureBox_PredictMarkHelp;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.LinkLabel linkLabel_PredictMarkParams;
+        private System.Windows.Forms.Label label_DataPreview;
+        private System.Windows.Forms.Label label_DataPreviewInfo;
+        private System.Windows.Forms.Label label_FileSeparatorSing;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton_Separator1;
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
