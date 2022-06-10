@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Constructor
+﻿namespace Constructor
 {
-    internal class GlobalTemplate
+    public static class GlobalTemplate
     {
-        Users CurrentUser { get; set; }
+        public static Users CurrentUser { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Constructor.Properties;
+using System.Linq;
 
 namespace Constructor
 {
@@ -104,16 +105,36 @@ namespace Constructor
         #region AuthorizationRegistration
         private void AuthorizationButton_Click(object sender, EventArgs e)
         {
-            //TODO: сделать авторизацию
-            AuthorizationVisibility();
-            label_Username.Text = "Привет, ку";
+            var login = textBox_LoginAuthorization.Text;
+            var password = HashingPassword.Hashing_Function(textBox_PasswordAuthorization.Text);
+            var user = Connection.db.Value.Users.SingleOrDefault(item => item.Login == login && item.Password == password);
+            if (user != null)
+            {
+                GlobalTemplate.CurrentUser = user;
+                AuthorizationVisibility();
+                label_Username.Text = "Привет, " + GlobalTemplate.CurrentUser.Login;
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }               
         }
 
         private void button_Registration_Click(object sender, EventArgs e)
         {
-            //TODO: сделать регистрацию
+            if (Connection.db.Value.Users.Any(item => item.Login == textBox_LoginRegistration.Text))
+            {
+                MessageBox.Show("Логин уже занят");
+                return;
+            }
+
+            var user = new Users() { Login = textBox_LoginRegistration.Text, Password = HashingPassword.Hashing_Function(textBox_PasswordRegistration.Text)};
+            Connection.db.Value.Users.Add(user);
+            Connection.db.Value.SaveChanges();
+            GlobalTemplate.CurrentUser = user;
+
             AuthorizationVisibility();
-            label_Username.Text = "Привет, ку";
+            label_Username.Text = "Привет, " + GlobalTemplate.CurrentUser.Login;
         }
 
         private void AuthorizationVisibility()

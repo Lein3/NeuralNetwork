@@ -47,7 +47,7 @@
             this.label_Element18 = new System.Windows.Forms.Label();
             this.label_Element15 = new System.Windows.Forms.Label();
             this.panel_LoginAuthorization = new System.Windows.Forms.Panel();
-            this.textbox_LoginAuthorization = new System.Windows.Forms.TextBox();
+            this.textBox_LoginAuthorization = new System.Windows.Forms.TextBox();
             this.label_Element13 = new System.Windows.Forms.Label();
             this.label_Element12 = new System.Windows.Forms.Label();
             this.label_Element14 = new System.Windows.Forms.Label();
@@ -331,7 +331,7 @@
             // 
             // panel_LoginAuthorization
             // 
-            this.panel_LoginAuthorization.Controls.Add(this.textbox_LoginAuthorization);
+            this.panel_LoginAuthorization.Controls.Add(this.textBox_LoginAuthorization);
             this.panel_LoginAuthorization.Controls.Add(this.label_Element13);
             this.panel_LoginAuthorization.Controls.Add(this.label_Element12);
             this.panel_LoginAuthorization.Controls.Add(this.label_Element14);
@@ -341,18 +341,18 @@
             this.panel_LoginAuthorization.Size = new System.Drawing.Size(200, 31);
             this.panel_LoginAuthorization.TabIndex = 14;
             // 
-            // textbox_LoginAuthorization
+            // textBox_LoginAuthorization
             // 
-            this.textbox_LoginAuthorization.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textbox_LoginAuthorization.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textbox_LoginAuthorization.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textbox_LoginAuthorization.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_LoginAuthorization.ForeColor = System.Drawing.Color.White;
-            this.textbox_LoginAuthorization.Location = new System.Drawing.Point(1, 10);
-            this.textbox_LoginAuthorization.Multiline = true;
-            this.textbox_LoginAuthorization.Name = "textbox_LoginAuthorization";
-            this.textbox_LoginAuthorization.Size = new System.Drawing.Size(198, 20);
-            this.textbox_LoginAuthorization.TabIndex = 17;
+            this.textBox_LoginAuthorization.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.textBox_LoginAuthorization.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_LoginAuthorization.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox_LoginAuthorization.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_LoginAuthorization.ForeColor = System.Drawing.Color.White;
+            this.textBox_LoginAuthorization.Location = new System.Drawing.Point(1, 10);
+            this.textBox_LoginAuthorization.Multiline = true;
+            this.textBox_LoginAuthorization.Name = "textBox_LoginAuthorization";
+            this.textBox_LoginAuthorization.Size = new System.Drawing.Size(198, 20);
+            this.textBox_LoginAuthorization.TabIndex = 17;
             // 
             // label_Element13
             // 
@@ -797,7 +797,7 @@
         private System.Windows.Forms.Label label_Element18;
         private System.Windows.Forms.Label label_Element15;
         private System.Windows.Forms.Panel panel_LoginAuthorization;
-        private System.Windows.Forms.TextBox textbox_LoginAuthorization;
+        private System.Windows.Forms.TextBox textBox_LoginAuthorization;
         private System.Windows.Forms.Label label_Element13;
         private System.Windows.Forms.Label label_Element12;
         private System.Windows.Forms.Label label_Element14;
