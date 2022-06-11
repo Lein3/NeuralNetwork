@@ -149,11 +149,11 @@
       <DependentUpon>LearningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\NetworkTemplate.cs" />
-    <Compile Include="Forms\SelectModeAndAuthorizationForm.cs">
+    <Compile Include="Forms\AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectModeAndAuthorizationForm.Designer.cs">
-      <DependentUpon>SelectModeAndAuthorizationForm.cs</DependentUpon>
+    <Compile Include="Forms\AuthorizationForm.Designer.cs">
+      <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SelectScenarioForm.cs">
       <SubType>Form</SubType>
@@ -219,8 +219,8 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectModeAndAuthorizationForm.resx">
-      <DependentUpon>SelectModeAndAuthorizationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AuthorizationForm.resx">
+      <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectScenarioForm.resx">
       <DependentUpon>SelectScenarioForm.cs</DependentUpon>

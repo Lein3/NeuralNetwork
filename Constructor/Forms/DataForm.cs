@@ -64,10 +64,7 @@ namespace Constructor
             }
             learningData = new LearningData(openFileDialog.FileName, FileSeparator);
             dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
-
-            var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
-            comboBox_PredictMark.DataSource = paramsNames;
-            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;
+            UpdateComboBoxPredictMark();
         }
         #endregion
 
@@ -97,7 +94,7 @@ namespace Constructor
             using (SqlConnection sqlConnection = new SqlConnection(dynamicSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand("SELECT name FROM sys.tables", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME != 'sysdiagrams'", sqlConnection);
                 var SelectedTables = sqlCommand.ExecuteReader();
                 var TableNames = new List<string>();
                 while (SelectedTables.Read())
@@ -119,6 +116,16 @@ namespace Constructor
                 DataSet dataSet = new DataSet();
                 sqlDataAdapter.Fill(dataSet);
                 dataGridView.DataSource = dataSet.Tables[0];
+                try
+                {
+                    learningData = new LearningData(dataSet);
+                    UpdateComboBoxPredictMark();
+                }
+                catch (Exception)
+                {
+                    comboBox_PredictMark.DataSource = null;
+                    MessageBox.Show("Выбранный набор данных не может быть выбран для обучения нейронной сети");
+                }
             }
         }
         #endregion
@@ -158,6 +165,8 @@ namespace Constructor
                 DataSet dataSet = new DataSet();
                 sqlDataAdapter.Fill(dataSet);
                 dataGridView.DataSource = dataSet.Tables[0];
+                learningData = new LearningData(dataSet);
+                UpdateComboBoxPredictMark();
             }
         }
         #endregion
@@ -169,6 +178,29 @@ namespace Constructor
                 panel.Visible = false;
         }
 
+        private void comboBox_PredictMark_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            learningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
+            dataGridView.DataSource = null;
+            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
+            UpdateComboBoxPredictMark();
+        }
+
+        private void UpdateComboBoxPredictMark()
+        {
+            var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
+            comboBox_PredictMark.DataSource = paramsNames;
+            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;
+            button_Next.Visible = true;         
+        }
+
+        private void button_Next_Click(object sender, EventArgs e)
+        {
+            var parent = this.ParentForm as MainForm;
+            parent.button_Learning.Enabled = true;
+            parent.button_Learning_Click(sender, e);
+        }
+
         private void radioButton_Separator1_CheckedChanged(object sender, EventArgs e)
         {
             FileSeparator = ';';
@@ -178,17 +210,9 @@ namespace Constructor
         {
             FileSeparator = ',';
         }
+
         #endregion
 
-        private void comboBox_PredictMark_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            learningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
-            dataGridView.DataSource = null;
-            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
 
-            var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
-            comboBox_PredictMark.DataSource = paramsNames;
-            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;
-        }
     }
 }

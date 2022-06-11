@@ -322,16 +322,6 @@ namespace NeuralNetworkNamespace.Tests
             //}
         }
 
-        [TestMethod]
-        public void Converttttttttt()
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            string a = "0.5";
-            var kek = Convert.ToDouble(a);
-            string b = "0,5";
-            var kek2 = Convert.ToDouble(b);
-        }
-
         #endregion
     }
 }

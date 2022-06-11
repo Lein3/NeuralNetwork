@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace Constructor
 {
-    public partial class SelectModeAndAuthorizationForm : Form
+    public partial class AuthorizationForm : Form
     {
-        public SelectModeAndAuthorizationForm()
+        public AuthorizationForm()
         {
             InitializeComponent();
             this.Icon = Resources.mainIcon;

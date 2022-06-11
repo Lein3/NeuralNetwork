@@ -1,6 +1,6 @@
 ﻿namespace Constructor
 {
-    partial class SelectModeAndAuthorizationForm
+    partial class AuthorizationForm
     {
         /// <summary>
         /// Required designer variable.

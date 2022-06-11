@@ -31,7 +31,7 @@ namespace Constructor
             }
             panel_neurons.Invalidate();
 
-            var parent = this.ParentForm as SelectModeAndAuthorizationForm;
+            var parent = this.ParentForm as AuthorizationForm;
             //parent.button2.Enabled = true;
         }
 

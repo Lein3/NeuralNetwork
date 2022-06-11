@@ -140,7 +140,7 @@ namespace Constructor
                     }
                 }
             });
-            var parent = this.ParentForm as SelectModeAndAuthorizationForm;
+            var parent = this.ParentForm as AuthorizationForm;
             //parent.button5.Enabled = true;
             //parent.button5_Click(null, null);
         }

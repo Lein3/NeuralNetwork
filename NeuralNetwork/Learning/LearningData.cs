@@ -24,16 +24,16 @@ namespace NeuralNetworkNamespace
             LearningExamples = new List<LearningExample>();
             using (StreamReader streamReader = new StreamReader(path))
             {
-                var paramNames = streamReader.ReadLine().Split(separator).ToList();
+                List<string> paramNames = streamReader.ReadLine().Split(separator).ToList();
                 ParamNamesInput = paramNames.GetRange(0, paramNames.Count - 1);
                 ParamNamesOutput = paramNames.GetRange(paramNames.Count - 1, 1);
 
                 while (!streamReader.EndOfStream)
                 {
                     List<double> values = streamReader.ReadLine().Split(separator).ToList().ConvertAll(item => Convert.ToDouble(item));
-                    var inputSignals = values.GetRange(0, values.Count - 1);
-                    var expectedOutputs = values.GetRange(values.Count - 1, 1);
-                    var LearningExample = new LearningExample(inputSignals, expectedOutputs);
+                    List<double> inputSignals = values.GetRange(0, values.Count - 1);
+                    List<double> expectedOutputs = values.GetRange(values.Count - 1, 1);
+                    LearningExample LearningExample = new LearningExample(inputSignals, expectedOutputs);
                     LearningExamples.Add(LearningExample);
                 }
             }
@@ -52,19 +52,43 @@ namespace NeuralNetworkNamespace
             LearningExamples = new List<LearningExample>();
             for (int i = 0; i < temp_inputSignals.Count; i++)
             {
-                var LearningExample = new LearningExample(temp_inputSignals[i].ToList(), temp_expectedOutputs[i].ToList());
+                LearningExample LearningExample = new LearningExample(temp_inputSignals[i].ToList(), temp_expectedOutputs[i].ToList());
                 LearningExamples.Add(LearningExample);
+            }
+        }
+
+        public LearningData(DataSet dataSet)
+        {
+            ParamNamesInput = new List<string>();
+            ParamNamesOutput = new List<string>();
+            LearningExamples = new List<LearningExample>();
+
+            DataTable dataTable = dataSet.Tables[0];
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                ParamNamesInput.Add(column.ColumnName);
+            }
+            ParamNamesOutput.Add(ParamNamesInput.Last());
+            ParamNamesInput.Remove(ParamNamesInput.Last());
+
+            foreach(DataRow row in dataTable.Rows)
+            {
+                var values = row.ItemArray.Select(item => Convert.ToDouble(item)).ToList();
+                var inputSignals = values.GetRange(0, values.Count - 1);
+                var expectedOutputs = values.GetRange(values.Count - 1, 1);
+                var learningExample = new LearningExample(inputSignals, expectedOutputs);
+                LearningExamples.Add(learningExample);
             }
         }
 
         public void SplitOnLearningAndTestData(int TestPercents)
         {
             TestExamples = new List<LearningExample>();
-            var count = LearningExamples.Count / 100 * TestPercents;
+            int count = LearningExamples.Count / 100 * TestPercents;
             Random random = new Random();
             for (int i = 0; i < count; i++)
             {
-                var index = random.Next(0, LearningExamples.Count);
+                int index = random.Next(0, LearningExamples.Count);
                 TestExamples.Add(LearningExamples[index]);
                 LearningExamples.RemoveAt(index);
             }
@@ -72,7 +96,7 @@ namespace NeuralNetworkNamespace
 
         public void Mix()
         {
-            var random = new Random(DateTime.Now.Millisecond);
+            Random random = new Random(DateTime.Now.Millisecond);
             LearningExamples.OrderBy(item => random.Next());
         }
 
@@ -99,10 +123,17 @@ namespace NeuralNetworkNamespace
 
         public void SwapToParamOutput(int index)
         {
-            (ParamNamesInput[index], ParamNamesOutput[0]) = (ParamNamesOutput[0], ParamNamesInput[index]);
+            try
+            {
+                (ParamNamesInput[index], ParamNamesOutput[0]) = (ParamNamesOutput[0], ParamNamesInput[index]);
 
-            foreach (var example in LearningExamples)
-                (example.InputSignals[index], example.ExpectedOutputs[0]) = (example.ExpectedOutputs[0], example.InputSignals[index]);
+                foreach (LearningExample example in LearningExamples)
+                    (example.InputSignals[index], example.ExpectedOutputs[0]) = (example.ExpectedOutputs[0], example.InputSignals[index]);
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

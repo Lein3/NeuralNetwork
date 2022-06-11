@@ -33,7 +33,6 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.CreateMiddleLay
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.EvaluateForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.LearningForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.MainForm.resources
-C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.SelectModeAndAuthorizationForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.SelectScenarioForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.Properties.Resources.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.ScenarioControl.resources
@@ -49,3 +48,4 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.dll
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.SqlServer.dll
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.xml
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.SqlServer.xml
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.AuthorizationForm.resources

@@ -92,6 +92,7 @@
             this.button_Learning.Text = "Обучение";
             this.button_Learning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Learning.UseVisualStyleBackColor = false;
+            this.button_Learning.Click += new System.EventHandler(this.button_Learning_Click);
             // 
             // button_CalculateNeNado
             // 
