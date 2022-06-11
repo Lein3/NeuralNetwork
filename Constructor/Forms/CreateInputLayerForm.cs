@@ -55,7 +55,7 @@ namespace Constructor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 label_fileName.Text = openFileDialog.FileName;
-                NetworkTemplate.LearningData = new LearningData(openFileDialog.FileName);
+                //NetworkTemplate.LearningData = new LearningData(openFileDialog.FileName, filese);
                 NetworkTemplate.path = openFileDialog.FileName;
                 var inputNeurons = NetworkTemplate.LearningData.LearningExamples[0].InputSignals.Count;
                 NetworkTemplate.Structure = new Structure(inputNeurons, 1, 1);

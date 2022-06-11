@@ -117,7 +117,7 @@ namespace Constructor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 label_fileName.Text = openFileDialog.FileName;
-                NetworkTemplate.LearningData = new LearningData(openFileDialog.FileName, (int)numericUpDown_percent.Value);
+                //NetworkTemplate.LearningData = new LearningData(openFileDialog.FileName, (int)numericUpDown_percent.Value);
                 NetworkTemplate.path = openFileDialog.FileName;              
                 LoadDataset();             
             }
@@ -151,7 +151,7 @@ namespace Constructor
                 MessageBox.Show("не выбраны данные");
             else
             {
-                NetworkTemplate.LearningData = new LearningData(NetworkTemplate.path, (int)numericUpDown_percent.Value);
+                //NetworkTemplate.LearningData = new LearningData(NetworkTemplate.path, (int)numericUpDown_percent.Value);
                 LoadDataset();
             }
             button_start.Enabled = true;

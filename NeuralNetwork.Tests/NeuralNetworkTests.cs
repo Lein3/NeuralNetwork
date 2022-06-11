@@ -100,7 +100,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void NormalizationComlete_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv");
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(13, 1, 7);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -111,7 +111,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void StatisticsNotNull_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv");
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(13, 1, 7);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -127,7 +127,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void Regression_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\дома.csv");
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(7, 1, 10);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -259,7 +259,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void RandomPatient_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\MyTestsConsole\z.csv");
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(false, 13, 1, 7);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -288,7 +288,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void CreateLearningDataWithPercents_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", 10);
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(true, 13, 1, 7);
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -299,7 +299,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void TestExapmles_Test()
         {
-            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\мошенники.csv");
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\болезни.csv", ',');
             Structure structure = new Structure(30, 1, 15); // 13 10 1 // 13 10 5 1
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
             neuralNetwork.Normalization(learningData);
@@ -320,6 +320,16 @@ namespace NeuralNetworkNamespace.Tests
             //    var real = neuralNetwork.Predict_ReturnOnlyValues(example);
             //    Assert.AreEqual(answer[0], real[0], 0.20);
             //}
+        }
+
+        [TestMethod]
+        public void Converttttttttt()
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            string a = "0.5";
+            var kek = Convert.ToDouble(a);
+            string b = "0,5";
+            var kek2 = Convert.ToDouble(b);
         }
 
         #endregion

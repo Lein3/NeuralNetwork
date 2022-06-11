@@ -17,6 +17,7 @@ namespace Constructor
             {
                 button.Click += Recolor_Click;
             }
+            button_Data_Click(null, null);
         }
 
         private void OpenChildForm(Form childForm)

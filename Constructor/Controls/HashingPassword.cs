@@ -8,8 +8,16 @@ namespace Constructor
     {
         public static string Hashing_Function(string input)
         {
-            var hash = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(input));
-            return Convert.ToBase64String(hash);
+            using (var Hashing = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] Hash = Hashing.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var Builder = new StringBuilder(Hash.Length * 2);
+                for (int index = 0; index < Hash.Length; index++)
+                {
+                    Builder.Append($"{Hash[index]:X2}");
+                }
+                return $"{Builder}";
+            }
         }
     }
 }

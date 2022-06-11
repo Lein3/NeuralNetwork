@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_Description = new System.Windows.Forms.Label();
             this.Label_Description3 = new System.Windows.Forms.LinkLabel();
             this.label_Description2 = new System.Windows.Forms.Label();
@@ -39,6 +43,9 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.panel_FromFile = new System.Windows.Forms.Panel();
+            this.radioButton_Separator2 = new System.Windows.Forms.RadioButton();
+            this.radioButton_Separator1 = new System.Windows.Forms.RadioButton();
+            this.label_FileSeparatorSing = new System.Windows.Forms.Label();
             this.button_FromFile = new System.Windows.Forms.Button();
             this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.panel_FromDatabase = new System.Windows.Forms.Panel();
@@ -56,9 +63,6 @@
             this.linkLabel_PredictMarkParams = new System.Windows.Forms.LinkLabel();
             this.label_DataPreview = new System.Windows.Forms.Label();
             this.label_DataPreviewInfo = new System.Windows.Forms.Label();
-            this.label_FileSeparatorSing = new System.Windows.Forms.Label();
-            this.radioButton_Separator1 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panel_FromFile.SuspendLayout();
             this.panel_FromDatabase.SuspendLayout();
@@ -180,10 +184,11 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Мои наборы данных";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // panel_FromFile
             // 
-            this.panel_FromFile.Controls.Add(this.radioButton5);
+            this.panel_FromFile.Controls.Add(this.radioButton_Separator2);
             this.panel_FromFile.Controls.Add(this.radioButton_Separator1);
             this.panel_FromFile.Controls.Add(this.label_FileSeparatorSing);
             this.panel_FromFile.Controls.Add(this.button_FromFile);
@@ -193,6 +198,44 @@
             this.panel_FromFile.Size = new System.Drawing.Size(540, 100);
             this.panel_FromFile.TabIndex = 12;
             this.panel_FromFile.Visible = false;
+            // 
+            // radioButton_Separator2
+            // 
+            this.radioButton_Separator2.AutoSize = true;
+            this.radioButton_Separator2.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_Separator2.ForeColor = System.Drawing.Color.White;
+            this.radioButton_Separator2.Location = new System.Drawing.Point(335, 60);
+            this.radioButton_Separator2.Name = "radioButton_Separator2";
+            this.radioButton_Separator2.Size = new System.Drawing.Size(92, 24);
+            this.radioButton_Separator2.TabIndex = 35;
+            this.radioButton_Separator2.Text = "Запятая";
+            this.radioButton_Separator2.UseVisualStyleBackColor = true;
+            this.radioButton_Separator2.CheckedChanged += new System.EventHandler(this.radioButton_Separator2_CheckedChanged);
+            // 
+            // radioButton_Separator1
+            // 
+            this.radioButton_Separator1.AutoSize = true;
+            this.radioButton_Separator1.Checked = true;
+            this.radioButton_Separator1.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_Separator1.ForeColor = System.Drawing.Color.White;
+            this.radioButton_Separator1.Location = new System.Drawing.Point(170, 60);
+            this.radioButton_Separator1.Name = "radioButton_Separator1";
+            this.radioButton_Separator1.Size = new System.Drawing.Size(149, 24);
+            this.radioButton_Separator1.TabIndex = 34;
+            this.radioButton_Separator1.TabStop = true;
+            this.radioButton_Separator1.Text = "Точка с запятой";
+            this.radioButton_Separator1.UseVisualStyleBackColor = true;
+            this.radioButton_Separator1.CheckedChanged += new System.EventHandler(this.radioButton_Separator1_CheckedChanged);
+            // 
+            // label_FileSeparatorSing
+            // 
+            this.label_FileSeparatorSing.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileSeparatorSing.ForeColor = System.Drawing.Color.White;
+            this.label_FileSeparatorSing.Location = new System.Drawing.Point(20, 65);
+            this.label_FileSeparatorSing.Name = "label_FileSeparatorSing";
+            this.label_FileSeparatorSing.Size = new System.Drawing.Size(130, 15);
+            this.label_FileSeparatorSing.TabIndex = 34;
+            this.label_FileSeparatorSing.Text = "Знак разделитель\r\n\r\n";
             // 
             // button_FromFile
             // 
@@ -240,7 +283,7 @@
             this.label_DataSourceName.AutoSize = true;
             this.label_DataSourceName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_DataSourceName.ForeColor = System.Drawing.Color.White;
-            this.label_DataSourceName.Location = new System.Drawing.Point(217, 15);
+            this.label_DataSourceName.Location = new System.Drawing.Point(215, 15);
             this.label_DataSourceName.Name = "label_DataSourceName";
             this.label_DataSourceName.Size = new System.Drawing.Size(192, 17);
             this.label_DataSourceName.TabIndex = 28;
@@ -395,48 +438,52 @@
             this.label_DataPreviewInfo.TabIndex = 33;
             this.label_DataPreviewInfo.Text = "Здесь отобразится сводка о наборе данных\r\n";
             // 
-            // label_FileSeparatorSing
-            // 
-            this.label_FileSeparatorSing.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_FileSeparatorSing.ForeColor = System.Drawing.Color.White;
-            this.label_FileSeparatorSing.Location = new System.Drawing.Point(20, 65);
-            this.label_FileSeparatorSing.Name = "label_FileSeparatorSing";
-            this.label_FileSeparatorSing.Size = new System.Drawing.Size(130, 15);
-            this.label_FileSeparatorSing.TabIndex = 34;
-            this.label_FileSeparatorSing.Text = "Знак разделитель\r\n\r\n";
-            // 
-            // radioButton_Separator1
-            // 
-            this.radioButton_Separator1.AutoSize = true;
-            this.radioButton_Separator1.Checked = true;
-            this.radioButton_Separator1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_Separator1.ForeColor = System.Drawing.Color.White;
-            this.radioButton_Separator1.Location = new System.Drawing.Point(170, 60);
-            this.radioButton_Separator1.Name = "radioButton_Separator1";
-            this.radioButton_Separator1.Size = new System.Drawing.Size(35, 31);
-            this.radioButton_Separator1.TabIndex = 34;
-            this.radioButton_Separator1.TabStop = true;
-            this.radioButton_Separator1.Text = ";";
-            this.radioButton_Separator1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.ForeColor = System.Drawing.Color.White;
-            this.radioButton5.Location = new System.Drawing.Point(210, 60);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(35, 31);
-            this.radioButton5.TabIndex = 35;
-            this.radioButton5.Text = ",";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
             // dataGridView
             // 
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridView.EnableHeadersVisualStyles = false;
+            this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.dataGridView.Location = new System.Drawing.Point(20, 490);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(950, 280);
+            this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridView.Size = new System.Drawing.Size(950, 330);
             this.dataGridView.TabIndex = 34;
             // 
             // DataForm
@@ -444,7 +491,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1000, 800);
+            this.ClientSize = new System.Drawing.Size(1000, 840);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label_DataPreviewInfo);
@@ -515,7 +562,7 @@
         private System.Windows.Forms.Label label_DataPreview;
         private System.Windows.Forms.Label label_DataPreviewInfo;
         private System.Windows.Forms.Label label_FileSeparatorSing;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton_Separator2;
         private System.Windows.Forms.RadioButton radioButton_Separator1;
         private System.Windows.Forms.DataGridView dataGridView;
     }

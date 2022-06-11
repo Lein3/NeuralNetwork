@@ -1,6 +1,6 @@
 ﻿{
   "TrainingTime": 10,
-  "Scenario": "Regression",
+  "Scenario": "Classification",
   "DataSource": {
     "Type": "TabularFile",
     "Version": 1,
