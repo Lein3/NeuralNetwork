@@ -50,7 +50,7 @@
             this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.panel_FromDatabase = new System.Windows.Forms.Panel();
             this.label_DataSourceName = new System.Windows.Forms.Label();
-            this.comboBox_SelectTableFromDataSource = new System.Windows.Forms.ComboBox();
+            this.comboBox_SelectDatasetFromDataSource = new System.Windows.Forms.ComboBox();
             this.label_SelectTableFromDataSource = new System.Windows.Forms.Label();
             this.button_SelectDataSource = new System.Windows.Forms.Button();
             this.panel_FromPublicDataset = new System.Windows.Forms.Panel();
@@ -273,7 +273,7 @@
             // panel_FromDatabase
             // 
             this.panel_FromDatabase.Controls.Add(this.label_DataSourceName);
-            this.panel_FromDatabase.Controls.Add(this.comboBox_SelectTableFromDataSource);
+            this.panel_FromDatabase.Controls.Add(this.comboBox_SelectDatasetFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.label_SelectTableFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.button_SelectDataSource);
             this.panel_FromDatabase.Location = new System.Drawing.Point(305, 240);
@@ -293,18 +293,18 @@
             this.label_DataSourceName.TabIndex = 28;
             this.label_DataSourceName.Text = "Источник данных не выбран\r\n";
             // 
-            // comboBox_SelectTableFromDataSource
+            // comboBox_SelectDatasetFromDataSource
             // 
-            this.comboBox_SelectTableFromDataSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_SelectTableFromDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_SelectTableFromDataSource.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_SelectTableFromDataSource.ForeColor = System.Drawing.Color.White;
-            this.comboBox_SelectTableFromDataSource.FormattingEnabled = true;
-            this.comboBox_SelectTableFromDataSource.Location = new System.Drawing.Point(10, 80);
-            this.comboBox_SelectTableFromDataSource.Name = "comboBox_SelectTableFromDataSource";
-            this.comboBox_SelectTableFromDataSource.Size = new System.Drawing.Size(185, 23);
-            this.comboBox_SelectTableFromDataSource.TabIndex = 27;
-            this.comboBox_SelectTableFromDataSource.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectTableFromDataSource_SelectionChangeCommitted);
+            this.comboBox_SelectDatasetFromDataSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectDatasetFromDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectDatasetFromDataSource.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectDatasetFromDataSource.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectDatasetFromDataSource.FormattingEnabled = true;
+            this.comboBox_SelectDatasetFromDataSource.Location = new System.Drawing.Point(10, 80);
+            this.comboBox_SelectDatasetFromDataSource.Name = "comboBox_SelectDatasetFromDataSource";
+            this.comboBox_SelectDatasetFromDataSource.Size = new System.Drawing.Size(185, 23);
+            this.comboBox_SelectDatasetFromDataSource.TabIndex = 27;
+            this.comboBox_SelectDatasetFromDataSource.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectDatasetsFromDataSource_SelectionChangeCommitted);
             // 
             // label_SelectTableFromDataSource
             // 
@@ -381,6 +381,7 @@
             this.comboBox_PredictMark.Size = new System.Drawing.Size(185, 23);
             this.comboBox_PredictMark.TabIndex = 29;
             this.comboBox_PredictMark.Text = "Выберите столбец";
+            this.comboBox_PredictMark.SelectionChangeCommitted += new System.EventHandler(this.comboBox_PredictMark_SelectionChangeCommitted);
             // 
             // label_PredictMark
             // 
@@ -412,10 +413,10 @@
             this.linkLabel_PredictMarkParams.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(174)))), ((int)(((byte)(199)))));
             this.linkLabel_PredictMarkParams.Location = new System.Drawing.Point(15, 375);
             this.linkLabel_PredictMarkParams.Name = "linkLabel_PredictMarkParams";
-            this.linkLabel_PredictMarkParams.Size = new System.Drawing.Size(224, 17);
+            this.linkLabel_PredictMarkParams.Size = new System.Drawing.Size(392, 17);
             this.linkLabel_PredictMarkParams.TabIndex = 31;
             this.linkLabel_PredictMarkParams.TabStop = true;
-            this.linkLabel_PredictMarkParams.Text = "Расширенные параметры данных";
+            this.linkLabel_PredictMarkParams.Text = "Расширенные параметры данных (не успеваю - вырезать?)";
             // 
             // label_DataPreview
             // 
@@ -441,6 +442,7 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -587,7 +589,7 @@
         private System.Windows.Forms.Panel panel_FromDatabase;
         private System.Windows.Forms.Button button_SelectDataSource;
         private System.Windows.Forms.Panel panel_FromPublicDataset;
-        private System.Windows.Forms.ComboBox comboBox_SelectTableFromDataSource;
+        private System.Windows.Forms.ComboBox comboBox_SelectDatasetFromDataSource;
         private System.Windows.Forms.Label label_SelectTableFromDataSource;
         private System.Windows.Forms.ComboBox comboBox_SelectPublicDataset;
         private System.Windows.Forms.Label label_SelectPublicDataset;

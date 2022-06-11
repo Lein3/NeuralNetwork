@@ -96,5 +96,13 @@ namespace NeuralNetworkNamespace
 
             return dataSet;
         }
+
+        public void SwapToParamOutput(int index)
+        {
+            (ParamNamesInput[index], ParamNamesOutput[0]) = (ParamNamesOutput[0], ParamNamesInput[index]);
+
+            foreach (var example in LearningExamples)
+                (example.InputSignals[index], example.ExpectedOutputs[0]) = (example.ExpectedOutputs[0], example.InputSignals[index]);
+        }
     }
 }

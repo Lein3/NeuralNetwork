@@ -115,7 +115,7 @@
       },
       {
         "ColumnName": "target",
-        "ColumnPurpose": "Feature",
+        "ColumnPurpose": "Label",
         "ColumnDataFormat": "Single",
         "IsCategorical": true,
         "Type": "Column",

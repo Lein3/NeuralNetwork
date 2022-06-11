@@ -13,9 +13,11 @@ namespace Constructor
 {
     public partial class DataForm : Form
     {
+        private LearningData learningData { get; set; }
         private Point ActivePanelLocation { get; set; } = new Point(300, 150);
         private char FileSeparator { get; set; } = ';';
-        private SqlConnectionStringBuilder sqlConnectionStringBuilder { get; set; }
+        private SqlConnectionStringBuilder dynamicSqlConnectionStringBuilder { get; set; }
+        private SqlConnectionStringBuilder localSqlConnectionStringBuilder { get; set; } = new SqlConnectionStringBuilder("Data Source=localhost;Initial Catalog=NeuralNetworkConstructor;Integrated Security=True");
 
         public DataForm()
         {
@@ -27,7 +29,9 @@ namespace Constructor
             // в конструкторе панели расположены в целях удобства редактирования тут мы их перемещаем на рабочее место
 
             if (GlobalTemplate.CurrentUser != null)
+            {
                 radioButton4.Enabled = true;
+            }
         }
 
         #region Из Файла
@@ -57,13 +61,13 @@ namespace Constructor
                 {
                     radioButton_Separator2.Checked = true;
                 }
-                else if (firstLine.Contains('-'))
-                {
-                    radioButton_Separator2.Checked = true;
-                }
             }
-            LearningData learningData = new LearningData(openFileDialog.FileName, FileSeparator);
+            learningData = new LearningData(openFileDialog.FileName, FileSeparator);
             dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
+
+            var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
+            comboBox_PredictMark.DataSource = paramsNames;
+            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;
         }
         #endregion
 
@@ -83,19 +87,19 @@ namespace Constructor
                 return;
             }
 
-            sqlConnectionStringBuilder = new SqlConnectionStringBuilder(d.ConnectionString);
-            label_DataSourceName.Text = sqlConnectionStringBuilder.InitialCatalog;
-            comboBox_SelectTableFromDataSource.DataSource = GetDatasetsFromDataSource();
+            dynamicSqlConnectionStringBuilder = new SqlConnectionStringBuilder(d.ConnectionString);
+            label_DataSourceName.Text = dynamicSqlConnectionStringBuilder.InitialCatalog;
+            comboBox_SelectDatasetFromDataSource.DataSource = GetDatasetsFromDataSource();
         }
 
         private List<string> GetDatasetsFromDataSource()
         {
-            using (SqlConnection sqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(dynamicSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand("SELECT name FROM sys.tables", sqlConnection);
                 var SelectedTables = sqlCommand.ExecuteReader();
-                var TableNames = new List<String>();
+                var TableNames = new List<string>();
                 while (SelectedTables.Read())
                 {
                     TableNames.Add(SelectedTables.GetString(0));
@@ -104,11 +108,12 @@ namespace Constructor
             }
         }
 
-        private void comboBox_SelectTableFromDataSource_SelectionChangeCommitted(object sender, EventArgs e)
+        private void comboBox_SelectDatasetsFromDataSource_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var tableName = comboBox_SelectTableFromDataSource.GetItemText(comboBox_SelectTableFromDataSource.SelectedItem); //по другому не обновляется либо криво идет
-            using (SqlConnection sqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
+            var tableName = comboBox_SelectDatasetFromDataSource.GetItemText(comboBox_SelectDatasetFromDataSource.SelectedItem); //по другому не обновляется либо криво идет
+            using (SqlConnection sqlConnection = new SqlConnection(dynamicSqlConnectionStringBuilder.ConnectionString))
             {
+                sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [{tableName}]", sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 DataSet dataSet = new DataSet();
@@ -145,8 +150,7 @@ namespace Constructor
 
         private void comboBox_SelectDatasetFromLocalDatabase_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var tableName = (sender as ComboBox).SelectedValue.ToString();
-            SqlConnectionStringBuilder localSqlConnectionStringBuilder = new SqlConnectionStringBuilder("Data Source=localhost;Initial Catalog=NeuralNetworkConstructor;Integrated Security=True");
+            var tableName = (sender as ComboBox).SelectedValue.ToString();        
             using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{tableName}]", sqlConnection);
@@ -174,6 +178,17 @@ namespace Constructor
         {
             FileSeparator = ',';
         }
-        #endregion      
+        #endregion
+
+        private void comboBox_PredictMark_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            learningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
+            dataGridView.DataSource = null;
+            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
+
+            var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
+            comboBox_PredictMark.DataSource = paramsNames;
+            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;
+        }
     }
 }
