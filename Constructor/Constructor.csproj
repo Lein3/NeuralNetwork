@@ -192,9 +192,6 @@
     <Compile Include="Controls\ScenarioControl.Designer.cs">
       <DependentUpon>ScenarioControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

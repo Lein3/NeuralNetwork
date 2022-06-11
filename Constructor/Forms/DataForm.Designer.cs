@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_Description = new System.Windows.Forms.Label();
             this.Label_Description3 = new System.Windows.Forms.LinkLabel();
             this.label_Description2 = new System.Windows.Forms.Label();
@@ -53,9 +53,9 @@
             this.comboBox_SelectTableFromDataSource = new System.Windows.Forms.ComboBox();
             this.label_SelectTableFromDataSource = new System.Windows.Forms.Label();
             this.button_SelectDataSource = new System.Windows.Forms.Button();
-            this.panel_FromDataset = new System.Windows.Forms.Panel();
-            this.comboBox_SelectLocalDataset = new System.Windows.Forms.ComboBox();
-            this.label_SelectLocalDataset = new System.Windows.Forms.Label();
+            this.panel_FromPublicDataset = new System.Windows.Forms.Panel();
+            this.comboBox_SelectPublicDataset = new System.Windows.Forms.ComboBox();
+            this.label_SelectPublicDataset = new System.Windows.Forms.Label();
             this.comboBox_PredictMark = new System.Windows.Forms.ComboBox();
             this.label_PredictMark = new System.Windows.Forms.Label();
             this.pictureBox_PredictMarkHelp = new System.Windows.Forms.PictureBox();
@@ -64,11 +64,15 @@
             this.label_DataPreview = new System.Windows.Forms.Label();
             this.label_DataPreviewInfo = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.panel_FromPrivateDataset = new System.Windows.Forms.Panel();
+            this.comboBox_SelectPrivateDataset = new System.Windows.Forms.ComboBox();
+            this.label_SelectPrivateDataset = new System.Windows.Forms.Label();
             this.panel_FromFile.SuspendLayout();
             this.panel_FromDatabase.SuspendLayout();
-            this.panel_FromDataset.SuspendLayout();
+            this.panel_FromPublicDataset.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.panel_FromPrivateDataset.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_Description
@@ -193,7 +197,7 @@
             this.panel_FromFile.Controls.Add(this.label_FileSeparatorSing);
             this.panel_FromFile.Controls.Add(this.button_FromFile);
             this.panel_FromFile.Controls.Add(this.textBox_FilePath);
-            this.panel_FromFile.Location = new System.Drawing.Point(425, 120);
+            this.panel_FromFile.Location = new System.Drawing.Point(305, 120);
             this.panel_FromFile.Name = "panel_FromFile";
             this.panel_FromFile.Size = new System.Drawing.Size(540, 100);
             this.panel_FromFile.TabIndex = 12;
@@ -272,7 +276,7 @@
             this.panel_FromDatabase.Controls.Add(this.comboBox_SelectTableFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.label_SelectTableFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.button_SelectDataSource);
-            this.panel_FromDatabase.Location = new System.Drawing.Point(425, 240);
+            this.panel_FromDatabase.Location = new System.Drawing.Point(305, 240);
             this.panel_FromDatabase.Name = "panel_FromDatabase";
             this.panel_FromDatabase.Size = new System.Drawing.Size(429, 120);
             this.panel_FromDatabase.TabIndex = 13;
@@ -300,6 +304,7 @@
             this.comboBox_SelectTableFromDataSource.Name = "comboBox_SelectTableFromDataSource";
             this.comboBox_SelectTableFromDataSource.Size = new System.Drawing.Size(185, 23);
             this.comboBox_SelectTableFromDataSource.TabIndex = 27;
+            this.comboBox_SelectTableFromDataSource.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectTableFromDataSource_SelectionChangeCommitted);
             // 
             // label_SelectTableFromDataSource
             // 
@@ -330,43 +335,39 @@
             this.button_SelectDataSource.UseVisualStyleBackColor = false;
             this.button_SelectDataSource.Click += new System.EventHandler(this.button_SelectDataSource_Click);
             // 
-            // panel_FromDataset
+            // panel_FromPublicDataset
             // 
-            this.panel_FromDataset.Controls.Add(this.comboBox_SelectLocalDataset);
-            this.panel_FromDataset.Controls.Add(this.label_SelectLocalDataset);
-            this.panel_FromDataset.Location = new System.Drawing.Point(735, 24);
-            this.panel_FromDataset.Name = "panel_FromDataset";
-            this.panel_FromDataset.Size = new System.Drawing.Size(230, 80);
-            this.panel_FromDataset.TabIndex = 14;
-            this.panel_FromDataset.Visible = false;
+            this.panel_FromPublicDataset.Controls.Add(this.comboBox_SelectPublicDataset);
+            this.panel_FromPublicDataset.Controls.Add(this.label_SelectPublicDataset);
+            this.panel_FromPublicDataset.Location = new System.Drawing.Point(760, 240);
+            this.panel_FromPublicDataset.Name = "panel_FromPublicDataset";
+            this.panel_FromPublicDataset.Size = new System.Drawing.Size(230, 80);
+            this.panel_FromPublicDataset.TabIndex = 14;
+            this.panel_FromPublicDataset.Visible = false;
             // 
-            // comboBox_SelectLocalDataset
+            // comboBox_SelectPublicDataset
             // 
-            this.comboBox_SelectLocalDataset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_SelectLocalDataset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_SelectLocalDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_SelectLocalDataset.ForeColor = System.Drawing.Color.White;
-            this.comboBox_SelectLocalDataset.FormattingEnabled = true;
-            this.comboBox_SelectLocalDataset.Items.AddRange(new object[] {
-            "база1",
-            "база2",
-            "база3",
-            "база4"});
-            this.comboBox_SelectLocalDataset.Location = new System.Drawing.Point(10, 40);
-            this.comboBox_SelectLocalDataset.Name = "comboBox_SelectLocalDataset";
-            this.comboBox_SelectLocalDataset.Size = new System.Drawing.Size(185, 23);
-            this.comboBox_SelectLocalDataset.TabIndex = 29;
+            this.comboBox_SelectPublicDataset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectPublicDataset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectPublicDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectPublicDataset.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectPublicDataset.FormattingEnabled = true;
+            this.comboBox_SelectPublicDataset.Location = new System.Drawing.Point(10, 40);
+            this.comboBox_SelectPublicDataset.Name = "comboBox_SelectPublicDataset";
+            this.comboBox_SelectPublicDataset.Size = new System.Drawing.Size(185, 23);
+            this.comboBox_SelectPublicDataset.TabIndex = 29;
+            this.comboBox_SelectPublicDataset.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectDatasetFromLocalDatabase_SelectionChangeCommitted);
             // 
-            // label_SelectLocalDataset
+            // label_SelectPublicDataset
             // 
-            this.label_SelectLocalDataset.AutoSize = true;
-            this.label_SelectLocalDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_SelectLocalDataset.ForeColor = System.Drawing.Color.White;
-            this.label_SelectLocalDataset.Location = new System.Drawing.Point(10, 10);
-            this.label_SelectLocalDataset.Name = "label_SelectLocalDataset";
-            this.label_SelectLocalDataset.Size = new System.Drawing.Size(100, 17);
-            this.label_SelectLocalDataset.TabIndex = 28;
-            this.label_SelectLocalDataset.Text = "Набор данных";
+            this.label_SelectPublicDataset.AutoSize = true;
+            this.label_SelectPublicDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectPublicDataset.ForeColor = System.Drawing.Color.White;
+            this.label_SelectPublicDataset.Location = new System.Drawing.Point(10, 10);
+            this.label_SelectPublicDataset.Name = "label_SelectPublicDataset";
+            this.label_SelectPublicDataset.Size = new System.Drawing.Size(100, 17);
+            this.label_SelectPublicDataset.TabIndex = 28;
+            this.label_SelectPublicDataset.Text = "Набор данных";
             // 
             // comboBox_PredictMark
             // 
@@ -446,45 +447,79 @@
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.dataGridView.Location = new System.Drawing.Point(20, 490);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView.Size = new System.Drawing.Size(950, 330);
             this.dataGridView.TabIndex = 34;
+            // 
+            // panel_FromPrivateDataset
+            // 
+            this.panel_FromPrivateDataset.Controls.Add(this.comboBox_SelectPrivateDataset);
+            this.panel_FromPrivateDataset.Controls.Add(this.label_SelectPrivateDataset);
+            this.panel_FromPrivateDataset.Location = new System.Drawing.Point(758, 340);
+            this.panel_FromPrivateDataset.Name = "panel_FromPrivateDataset";
+            this.panel_FromPrivateDataset.Size = new System.Drawing.Size(230, 80);
+            this.panel_FromPrivateDataset.TabIndex = 35;
+            this.panel_FromPrivateDataset.Visible = false;
+            // 
+            // comboBox_SelectPrivateDataset
+            // 
+            this.comboBox_SelectPrivateDataset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectPrivateDataset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectPrivateDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectPrivateDataset.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectPrivateDataset.FormattingEnabled = true;
+            this.comboBox_SelectPrivateDataset.Location = new System.Drawing.Point(10, 40);
+            this.comboBox_SelectPrivateDataset.Name = "comboBox_SelectPrivateDataset";
+            this.comboBox_SelectPrivateDataset.Size = new System.Drawing.Size(185, 23);
+            this.comboBox_SelectPrivateDataset.TabIndex = 29;
+            this.comboBox_SelectPrivateDataset.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectDatasetFromLocalDatabase_SelectionChangeCommitted);
+            // 
+            // label_SelectPrivateDataset
+            // 
+            this.label_SelectPrivateDataset.AutoSize = true;
+            this.label_SelectPrivateDataset.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectPrivateDataset.ForeColor = System.Drawing.Color.White;
+            this.label_SelectPrivateDataset.Location = new System.Drawing.Point(10, 10);
+            this.label_SelectPrivateDataset.Name = "label_SelectPrivateDataset";
+            this.label_SelectPrivateDataset.Size = new System.Drawing.Size(100, 17);
+            this.label_SelectPrivateDataset.TabIndex = 28;
+            this.label_SelectPrivateDataset.Text = "Набор данных";
             // 
             // DataForm
             // 
@@ -493,6 +528,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(1000, 840);
             this.ControlBox = false;
+            this.Controls.Add(this.panel_FromPrivateDataset);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label_DataPreviewInfo);
             this.Controls.Add(this.label_DataPreview);
@@ -500,7 +536,7 @@
             this.Controls.Add(this.pictureBox_PredictMarkHelp);
             this.Controls.Add(this.comboBox_PredictMark);
             this.Controls.Add(this.label_PredictMark);
-            this.Controls.Add(this.panel_FromDataset);
+            this.Controls.Add(this.panel_FromPublicDataset);
             this.Controls.Add(this.panel_FromDatabase);
             this.Controls.Add(this.panel_FromFile);
             this.Controls.Add(this.radioButton4);
@@ -523,10 +559,12 @@
             this.panel_FromFile.PerformLayout();
             this.panel_FromDatabase.ResumeLayout(false);
             this.panel_FromDatabase.PerformLayout();
-            this.panel_FromDataset.ResumeLayout(false);
-            this.panel_FromDataset.PerformLayout();
+            this.panel_FromPublicDataset.ResumeLayout(false);
+            this.panel_FromPublicDataset.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.panel_FromPrivateDataset.ResumeLayout(false);
+            this.panel_FromPrivateDataset.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,11 +586,11 @@
         private System.Windows.Forms.Button button_FromFile;
         private System.Windows.Forms.Panel panel_FromDatabase;
         private System.Windows.Forms.Button button_SelectDataSource;
-        private System.Windows.Forms.Panel panel_FromDataset;
+        private System.Windows.Forms.Panel panel_FromPublicDataset;
         private System.Windows.Forms.ComboBox comboBox_SelectTableFromDataSource;
         private System.Windows.Forms.Label label_SelectTableFromDataSource;
-        private System.Windows.Forms.ComboBox comboBox_SelectLocalDataset;
-        private System.Windows.Forms.Label label_SelectLocalDataset;
+        private System.Windows.Forms.ComboBox comboBox_SelectPublicDataset;
+        private System.Windows.Forms.Label label_SelectPublicDataset;
         private System.Windows.Forms.Label label_DataSourceName;
         private System.Windows.Forms.ComboBox comboBox_PredictMark;
         private System.Windows.Forms.Label label_PredictMark;
@@ -565,5 +603,8 @@
         private System.Windows.Forms.RadioButton radioButton_Separator2;
         private System.Windows.Forms.RadioButton radioButton_Separator1;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Panel panel_FromPrivateDataset;
+        private System.Windows.Forms.ComboBox comboBox_SelectPrivateDataset;
+        private System.Windows.Forms.Label label_SelectPrivateDataset;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -14,15 +15,17 @@ namespace Constructor
     {
         private Point ActivePanelLocation { get; set; } = new Point(300, 150);
         private char FileSeparator { get; set; } = ';';
-        LearningData learningData2;
+        private SqlConnectionStringBuilder sqlConnectionStringBuilder { get; set; }
+
         public DataForm()
         {
             InitializeComponent();
             panel_FromFile.Location = ActivePanelLocation;
             panel_FromDatabase.Location = ActivePanelLocation;
-            panel_FromDataset.Location = ActivePanelLocation;
+            panel_FromPublicDataset.Location = ActivePanelLocation;
+            panel_FromPrivateDataset.Location = ActivePanelLocation;
             // в конструкторе панели расположены в целях удобства редактирования тут мы их перемещаем на рабочее место
-            //TODO: сделать рабочей кнопку мои наборы данных
+
             if (GlobalTemplate.CurrentUser != null)
                 radioButton4.Enabled = true;
         }
@@ -37,7 +40,11 @@ namespace Constructor
         private void button_FromFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
             textBox_FilePath.Text = openFileDialog.FileName;
             using (StreamReader streamReader = new StreamReader(openFileDialog.FileName))
             {
@@ -55,9 +62,8 @@ namespace Constructor
                     radioButton_Separator2.Checked = true;
                 }
             }
-            LearningData learningData = new LearningData(openFileDialog.FileName, FileSeparator);          
-            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables["Table1"];
-            learningData2 = learningData;
+            LearningData learningData = new LearningData(openFileDialog.FileName, FileSeparator);
+            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
         }
         #endregion
 
@@ -72,13 +78,17 @@ namespace Constructor
         {
             DataConnectionDialog d = new DataConnectionDialog();
             DataSource.AddStandardDataSources(d);
-            DataConnectionDialog.Show(d);
-            SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder(d.ConnectionString);
+            if (DataConnectionDialog.Show(d) != DialogResult.OK)
+            {
+                return;
+            }
+
+            sqlConnectionStringBuilder = new SqlConnectionStringBuilder(d.ConnectionString);
             label_DataSourceName.Text = sqlConnectionStringBuilder.InitialCatalog;
-            comboBox_SelectTableFromDataSource.DataSource = GetDatasetsFromDataSource(sqlConnectionStringBuilder);
+            comboBox_SelectTableFromDataSource.DataSource = GetDatasetsFromDataSource();
         }
 
-        private List<string> GetDatasetsFromDataSource(SqlConnectionStringBuilder sqlConnectionStringBuilder)
+        private List<string> GetDatasetsFromDataSource()
         {
             using (SqlConnection sqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
             {
@@ -93,35 +103,58 @@ namespace Constructor
                 return TableNames;
             }
         }
+
+        private void comboBox_SelectTableFromDataSource_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var tableName = comboBox_SelectTableFromDataSource.GetItemText(comboBox_SelectTableFromDataSource.SelectedItem); //по другому не обновляется либо криво идет
+            using (SqlConnection sqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [{tableName}]", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                DataSet dataSet = new DataSet();
+                sqlDataAdapter.Fill(dataSet);
+                dataGridView.DataSource = dataSet.Tables[0];
+            }
+        }
         #endregion
 
-        #region Все Анонимные Датасеты
+        #region Датасеты Нашей Базы
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             SetAllPanelsInvisible();
-            panel_FromDataset.Visible = true;
-            comboBox_SelectLocalDataset.DataSource = GetAllLocalDatasets();
+            panel_FromPublicDataset.Visible = true;
+            comboBox_SelectPublicDataset.DataSource = GetDatasetsFromLocalDatabase(null).ToList();
+            comboBox_SelectPublicDataset.DisplayMember = "Name";
+            comboBox_SelectPublicDataset.ValueMember = "ID_Table";
         }
 
-        private List<string> GetAllLocalDatasets()
-        {
-            var TableNames = new NeuralNetworkConstructorEntities().Database.SqlQuery<string>("SELECT name FROM sys.tables ").ToList();
-            TableNames.RemoveRange(TableNames.Count - 9, 9); //в базе 8 таблиц наших и 1 sysdyagrams они в списке находятся в самом конце и мы их оттуда удаляем
-            return TableNames;
-        }
-        #endregion
-
-        #region Мои Датасеты
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            panel_FromDataset.Visible = true;
-            comboBox_SelectLocalDataset.DataSource = GetMyDatasets();
+            SetAllPanelsInvisible();
+            panel_FromPrivateDataset.Visible = true;
+            comboBox_SelectPrivateDataset.DataSource = GetDatasetsFromLocalDatabase(GlobalTemplate.CurrentUser.ID).ToList();
+            comboBox_SelectPrivateDataset.DisplayMember = "Name";
+            comboBox_SelectPrivateDataset.ValueMember = "ID_Table";
         }
 
-        private List<string> GetMyDatasets()
+        private IQueryable<Datasets> GetDatasetsFromLocalDatabase(Nullable<int> id_Owner)
         {
-            var TableNames = new NeuralNetworkConstructorEntities().Database.SqlQuery<string>($"SELECT Name From Datasets where Owner = {GlobalTemplate.CurrentUser.ID}").ToList();
-            return TableNames;
+            var Datasets = Connection.db.Value.Datasets.Where(item => item.Owner == id_Owner);
+            return Datasets;
+        }
+
+        private void comboBox_SelectDatasetFromLocalDatabase_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var tableName = (sender as ComboBox).SelectedValue.ToString();
+            SqlConnectionStringBuilder localSqlConnectionStringBuilder = new SqlConnectionStringBuilder("Data Source=localhost;Initial Catalog=NeuralNetworkConstructor;Integrated Security=True");
+            using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{tableName}]", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                DataSet dataSet = new DataSet();
+                sqlDataAdapter.Fill(dataSet);
+                dataGridView.DataSource = dataSet.Tables[0];
+            }
         }
         #endregion
 
@@ -141,6 +174,6 @@ namespace Constructor
         {
             FileSeparator = ',';
         }
-        #endregion
+        #endregion      
     }
 }

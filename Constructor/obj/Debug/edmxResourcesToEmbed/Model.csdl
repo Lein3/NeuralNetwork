@@ -27,6 +27,7 @@
     <Property Name="DeleteDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Datasets_Users" FromRole="Datasets" ToRole="Users" />
     <NavigationProperty Name="NeuralNetworks" Relationship="Self.FK_NeuralNetworks_Datasets" FromRole="Datasets" ToRole="NeuralNetworks" />
+    <Property Name="ID_Table" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="LearningResults">
     <Key>
@@ -62,16 +63,6 @@
     <NavigationProperty Name="Users" Relationship="Self.FK_NeuralNetworks_Users" FromRole="NeuralNetworks" ToRole="Users" />
     <NavigationProperty Name="LearningResults" Relationship="Self.NeuralNetworks_LearningResults" FromRole="NeuralNetworks" ToRole="LearningResults" />
     <NavigationProperty Name="Users1" Relationship="Self.Users_NeuralNetworks" FromRole="NeuralNetworks" ToRole="Users" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -158,7 +149,6 @@
     <EntitySet Name="Datasets" EntityType="Self.Datasets" />
     <EntitySet Name="LearningResults" EntityType="Self.LearningResults" />
     <EntitySet Name="NeuralNetworks" EntityType="Self.NeuralNetworks" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_NeuralNetworks_ActivationFunctions" Association="Self.FK_NeuralNetworks_ActivationFunctions">
       <End Role="ActivationFunctions" EntitySet="ActivationFunctions" />

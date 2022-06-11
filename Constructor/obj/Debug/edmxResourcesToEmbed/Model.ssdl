@@ -20,6 +20,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Owner" Type="int" />
+    <Property Name="ID_Table" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CreationDate" Type="date" Nullable="false" />
     <Property Name="DeleteDate" Type="date" />
@@ -59,16 +60,6 @@
     </Key>
     <Property Name="ID_NeuralNetwork" Type="int" Nullable="false" />
     <Property Name="ID_LearningResults" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -201,7 +192,6 @@
     <EntitySet Name="LearningResults" EntityType="Self.LearningResults" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NeuralNetworks" EntityType="Self.NeuralNetworks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NeuralNetworks_LearningResults" EntityType="Self.NeuralNetworks_LearningResults" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users_NeuralNetworks" EntityType="Self.Users_NeuralNetworks" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Datasets_Users" Association="Self.FK_Datasets_Users">
