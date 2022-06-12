@@ -15,6 +15,7 @@ namespace NeuralNetworkNamespace
 
         public Layer(LearningData learningData)
         {
+            Neurons = new List<Neuron>();
             for (int i = 0; i < learningData.ParamNamesInput.Count; i++)
             {
                 Neuron neuron = new Neuron_Input();

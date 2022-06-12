@@ -192,6 +192,9 @@ namespace Constructor
 
         private void UpdateComboBoxPredictMark()
         {
+            label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
+            label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)";
+
             var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
             comboBox_PredictMark.DataSource = paramsNames;
             comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;

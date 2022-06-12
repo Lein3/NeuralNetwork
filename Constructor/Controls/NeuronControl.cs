@@ -12,14 +12,18 @@ namespace Constructor
         public NeuronControl(Neuron neuron, double? error = null, int? index = null)
         {
             InitializeComponent();
-            this.Size = new Size(75, 75);
+            this.Neuron = neuron;
+            this.Size = new Size(75, 90);
+            //для удобства в работе в конструкторе там элементы большие
+
+
             foreach (Control element in this.Controls)
             {
                 element.BackColor = Color.Transparent;
+                element.MouseEnter += onMouseEnter;
+                element.MouseLeave += onMouseLeave;
             }
 
-            pictureBox.BackColor = Color.Transparent;
-            this.Neuron = neuron;
             if (error != null)
             {
                 var label_error = new Label();
@@ -38,12 +42,10 @@ namespace Constructor
             this.Index.Text = index.ToString();
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.Black, 2f);
-            if (this.Neuron.NeuronType == Structure.NeuronType.Input) pen = new Pen(Color.Blue, 2f);
-            if (this.Neuron.NeuronType == Structure.NeuronType.Output) pen = new Pen(Color.Green, 2f);
-            Ellipse = new Rectangle(5, 5, 60, 60);
+            Pen pen = new Pen(Color.FromArgb(85, 170, 255), 2f);
+            Ellipse = new Rectangle(5, 20, 60, 60);
             e.Graphics.DrawEllipse(pen, Ellipse);
         }
 
@@ -51,6 +53,18 @@ namespace Constructor
         {
             var bruh = new SolidBrush(Color.Red);
             pictureBox.CreateGraphics().FillEllipse(bruh, Ellipse);
+        }
+
+        private void onMouseEnter(object sender, EventArgs e)
+        {
+            Fill();
+            var parent = this.ParentForm as NetworkConfigurationForm;
+            parent.currentNeuronControl.UpdateInfo(Neuron);
+        }
+
+        private void onMouseLeave(object sender, EventArgs e)
+        {
+            pictureBox.Invalidate();
         }
     }
 }

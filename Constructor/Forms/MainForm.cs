@@ -70,7 +70,6 @@ namespace Constructor
             OpenChildForm(new DataForm());
         }
 
-
         public void button_Configuration_Click(object sender, EventArgs e)
         {
             OpenChildForm(new NetworkConfigurationForm());

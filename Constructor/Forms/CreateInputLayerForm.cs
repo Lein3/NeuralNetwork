@@ -37,17 +37,17 @@ namespace Constructor
 
         protected void onMouseEnter(object sender, EventArgs e)
         {
-            currentNeuronControl.Enabled = true;
-            var parent = (sender as PictureBox).Parent as NeuronControl;
-            parent.Fill();
-            var neuron = parent.Neuron;
-            currentNeuronControl.UpdateInfo(neuron);
+            //currentNeuronControl.Enabled = true;
+            //var parent = (sender as PictureBox).Parent as NeuronControl;
+            //parent.Fill();
+            //var neuron = parent.Neuron;
+            //currentNeuronControl.UpdateInfo(neuron);
         }
 
         protected void onMouseLeave(object sender, EventArgs e)
         {
-            var parent = (sender as PictureBox).Parent as NeuronControl;
-            parent.pictureBox.Invalidate();
+            //var parent = (sender as PictureBox).Parent as NeuronControl;
+            //parent.pictureBox.Invalidate();
         }
 
         private void button_readFile_Click(object sender, EventArgs e)
