@@ -12,19 +12,25 @@ namespace Constructor
         public NeuronControl(Neuron neuron, double? error = null, int? index = null)
         {
             InitializeComponent();
+            this.Size = new Size(75, 75);
+            foreach (Control element in this.Controls)
+            {
+                element.BackColor = Color.Transparent;
+            }
+
             pictureBox.BackColor = Color.Transparent;
             this.Neuron = neuron;
             if (error != null)
             {
                 var label_error = new Label();
-                label_error.BackColor = System.Drawing.Color.Transparent;
-                label_error.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                label_error.ForeColor = System.Drawing.Color.Black;
-                label_error.Location = new System.Drawing.Point(23, 25);
+                label_error.BackColor = Color.Transparent;
+                label_error.Font = new Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                label_error.ForeColor = Color.Black;
+                label_error.Location = new Point(23, 25);
                 label_error.Name = "label_error";
-                label_error.Size = new System.Drawing.Size(29, 22);
+                label_error.Size = new Size(29, 22);
                 label_error.TabIndex = 2;
-                label_error.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                label_error.TextAlign = ContentAlignment.MiddleCenter;
                 label_error.Text = Math.Round((double)error, 3).ToString();
                 Controls.Add(label_error);
                 label_error.BringToFront();

@@ -43,6 +43,9 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.panel_FromFile = new System.Windows.Forms.Panel();
+            this.checkBox_FromFileSaveCheck = new System.Windows.Forms.CheckBox();
+            this.textBox_FromFileSaveName = new System.Windows.Forms.TextBox();
+            this.label_FromFileSave = new System.Windows.Forms.Label();
             this.radioButton_Separator2 = new System.Windows.Forms.RadioButton();
             this.radioButton_Separator1 = new System.Windows.Forms.RadioButton();
             this.label_FileSeparatorSing = new System.Windows.Forms.Label();
@@ -68,9 +71,6 @@
             this.comboBox_SelectPrivateDataset = new System.Windows.Forms.ComboBox();
             this.label_SelectPrivateDataset = new System.Windows.Forms.Label();
             this.button_Next = new System.Windows.Forms.Button();
-            this.label_FromFileSave = new System.Windows.Forms.Label();
-            this.textBox_FromFileSaveName = new System.Windows.Forms.TextBox();
-            this.checkBox_FromFileSaveCheck = new System.Windows.Forms.CheckBox();
             this.panel_FromFile.SuspendLayout();
             this.panel_FromDatabase.SuspendLayout();
             this.panel_FromPublicDataset.SuspendLayout();
@@ -209,6 +209,41 @@
             this.panel_FromFile.Size = new System.Drawing.Size(540, 115);
             this.panel_FromFile.TabIndex = 12;
             this.panel_FromFile.Visible = false;
+            // 
+            // checkBox_FromFileSaveCheck
+            // 
+            this.checkBox_FromFileSaveCheck.AutoSize = true;
+            this.checkBox_FromFileSaveCheck.Checked = true;
+            this.checkBox_FromFileSaveCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_FromFileSaveCheck.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            this.checkBox_FromFileSaveCheck.ForeColor = System.Drawing.Color.White;
+            this.checkBox_FromFileSaveCheck.Location = new System.Drawing.Point(335, 86);
+            this.checkBox_FromFileSaveCheck.Name = "checkBox_FromFileSaveCheck";
+            this.checkBox_FromFileSaveCheck.Size = new System.Drawing.Size(144, 21);
+            this.checkBox_FromFileSaveCheck.TabIndex = 38;
+            this.checkBox_FromFileSaveCheck.Text = "Сохраняем в базе";
+            this.checkBox_FromFileSaveCheck.UseVisualStyleBackColor = true;
+            // 
+            // textBox_FromFileSaveName
+            // 
+            this.textBox_FromFileSaveName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.textBox_FromFileSaveName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_FromFileSaveName.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.textBox_FromFileSaveName.ForeColor = System.Drawing.Color.White;
+            this.textBox_FromFileSaveName.Location = new System.Drawing.Point(75, 85);
+            this.textBox_FromFileSaveName.Name = "textBox_FromFileSaveName";
+            this.textBox_FromFileSaveName.Size = new System.Drawing.Size(244, 22);
+            this.textBox_FromFileSaveName.TabIndex = 37;
+            // 
+            // label_FromFileSave
+            // 
+            this.label_FromFileSave.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FromFileSave.ForeColor = System.Drawing.Color.White;
+            this.label_FromFileSave.Location = new System.Drawing.Point(20, 85);
+            this.label_FromFileSave.Name = "label_FromFileSave";
+            this.label_FromFileSave.Size = new System.Drawing.Size(45, 15);
+            this.label_FromFileSave.TabIndex = 36;
+            this.label_FromFileSave.Text = "Имя\r\n";
             // 
             // radioButton_Separator2
             // 
@@ -552,41 +587,6 @@
             this.button_Next.Visible = false;
             this.button_Next.Click += new System.EventHandler(this.button_Next_Click);
             // 
-            // label_FromFileSave
-            // 
-            this.label_FromFileSave.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_FromFileSave.ForeColor = System.Drawing.Color.White;
-            this.label_FromFileSave.Location = new System.Drawing.Point(20, 85);
-            this.label_FromFileSave.Name = "label_FromFileSave";
-            this.label_FromFileSave.Size = new System.Drawing.Size(45, 15);
-            this.label_FromFileSave.TabIndex = 36;
-            this.label_FromFileSave.Text = "Имя\r\n";
-            // 
-            // textBox_FromFileSaveName
-            // 
-            this.textBox_FromFileSaveName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.textBox_FromFileSaveName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_FromFileSaveName.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.textBox_FromFileSaveName.ForeColor = System.Drawing.Color.White;
-            this.textBox_FromFileSaveName.Location = new System.Drawing.Point(75, 85);
-            this.textBox_FromFileSaveName.Name = "textBox_FromFileSaveName";
-            this.textBox_FromFileSaveName.Size = new System.Drawing.Size(244, 22);
-            this.textBox_FromFileSaveName.TabIndex = 37;
-            // 
-            // checkBox_FromFileSaveCheck
-            // 
-            this.checkBox_FromFileSaveCheck.AutoSize = true;
-            this.checkBox_FromFileSaveCheck.Checked = true;
-            this.checkBox_FromFileSaveCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_FromFileSaveCheck.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            this.checkBox_FromFileSaveCheck.ForeColor = System.Drawing.Color.White;
-            this.checkBox_FromFileSaveCheck.Location = new System.Drawing.Point(335, 86);
-            this.checkBox_FromFileSaveCheck.Name = "checkBox_FromFileSaveCheck";
-            this.checkBox_FromFileSaveCheck.Size = new System.Drawing.Size(144, 21);
-            this.checkBox_FromFileSaveCheck.TabIndex = 38;
-            this.checkBox_FromFileSaveCheck.Text = "Сохраняем в базе";
-            this.checkBox_FromFileSaveCheck.UseVisualStyleBackColor = true;
-            // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,7 +621,6 @@
             this.MinimizeBox = false;
             this.Name = "DataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ОооКонструктор";
             this.panel_FromFile.ResumeLayout(false);
             this.panel_FromFile.PerformLayout();
             this.panel_FromDatabase.ResumeLayout(false);

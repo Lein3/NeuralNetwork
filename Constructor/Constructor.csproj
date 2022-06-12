@@ -181,6 +181,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NetworkConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NetworkConfigurationForm.Designer.cs">
+      <DependentUpon>NetworkConfigurationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NeuralNetworks.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -225,6 +231,9 @@
     <EmbeddedResource Include="Forms\SelectScenarioForm.resx">
       <DependentUpon>SelectScenarioForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NetworkConfigurationForm.resx">
+      <DependentUpon>NetworkConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -233,11 +242,11 @@
     <EmbeddedResource Include="Controls\ScenarioControl.resx">
       <DependentUpon>ScenarioControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="MLModel1.mbconfig" />
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="MLModel1.mbconfig" />
     <None Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>

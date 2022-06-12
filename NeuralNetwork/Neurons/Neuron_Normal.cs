@@ -4,7 +4,7 @@ namespace NeuralNetworkNamespace
 {
     public class Neuron_Normal : Neuron
     {
-        public Neuron_Normal(int temp_previousLayerNeuronsCount) : base()
+        public Neuron_Normal(int temp_previousLayerNeuronsCount, FunctionsEnum function = FunctionsEnum.Sigmoid) : base(function)
         {
             NeuronType = Structure.NeuronType.Normal;
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)

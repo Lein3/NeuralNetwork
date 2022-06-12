@@ -73,7 +73,7 @@ namespace Constructor
 
         public void button_Configuration_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DataForm());
+            OpenChildForm(new NetworkConfigurationForm());
         }
 
         public void button_Learning_Click(object sender, EventArgs e)

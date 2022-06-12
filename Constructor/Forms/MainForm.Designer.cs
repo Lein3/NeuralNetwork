@@ -38,6 +38,9 @@
             this.button_Close = new System.Windows.Forms.Button();
             this.panel_Screen = new System.Windows.Forms.Panel();
             this.button_Configuration = new System.Windows.Forms.Button();
+            this.button_InputLayer = new System.Windows.Forms.Button();
+            this.button_MiddleLayers = new System.Windows.Forms.Button();
+            this.button_OutputLayer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Scenario
@@ -51,7 +54,7 @@
             this.button_Scenario.Margin = new System.Windows.Forms.Padding(0);
             this.button_Scenario.Name = "button_Scenario";
             this.button_Scenario.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button_Scenario.Size = new System.Drawing.Size(166, 29);
+            this.button_Scenario.Size = new System.Drawing.Size(165, 30);
             this.button_Scenario.TabIndex = 0;
             this.button_Scenario.Text = "Сценарий";
             this.button_Scenario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -69,7 +72,7 @@
             this.button_Data.Margin = new System.Windows.Forms.Padding(0);
             this.button_Data.Name = "button_Data";
             this.button_Data.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button_Data.Size = new System.Drawing.Size(166, 29);
+            this.button_Data.Size = new System.Drawing.Size(165, 30);
             this.button_Data.TabIndex = 2;
             this.button_Data.Text = "Данные";
             this.button_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -197,7 +200,6 @@
             // button_Configuration
             // 
             this.button_Configuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.button_Configuration.Enabled = false;
             this.button_Configuration.FlatAppearance.BorderSize = 0;
             this.button_Configuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Configuration.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -206,12 +208,63 @@
             this.button_Configuration.Margin = new System.Windows.Forms.Padding(0);
             this.button_Configuration.Name = "button_Configuration";
             this.button_Configuration.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button_Configuration.Size = new System.Drawing.Size(166, 29);
+            this.button_Configuration.Size = new System.Drawing.Size(165, 30);
             this.button_Configuration.TabIndex = 17;
             this.button_Configuration.Text = "Обучение";
             this.button_Configuration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Configuration.UseVisualStyleBackColor = false;
             this.button_Configuration.Click += new System.EventHandler(this.button_Configuration_Click);
+            // 
+            // button_InputLayer
+            // 
+            this.button_InputLayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_InputLayer.FlatAppearance.BorderSize = 0;
+            this.button_InputLayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_InputLayer.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_InputLayer.ForeColor = System.Drawing.Color.White;
+            this.button_InputLayer.Location = new System.Drawing.Point(75, 130);
+            this.button_InputLayer.Margin = new System.Windows.Forms.Padding(0);
+            this.button_InputLayer.Name = "button_InputLayer";
+            this.button_InputLayer.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_InputLayer.Size = new System.Drawing.Size(120, 30);
+            this.button_InputLayer.TabIndex = 18;
+            this.button_InputLayer.Text = "Входной слой";
+            this.button_InputLayer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_InputLayer.UseVisualStyleBackColor = false;
+            // 
+            // button_MiddleLayers
+            // 
+            this.button_MiddleLayers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_MiddleLayers.FlatAppearance.BorderSize = 0;
+            this.button_MiddleLayers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_MiddleLayers.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_MiddleLayers.ForeColor = System.Drawing.Color.White;
+            this.button_MiddleLayers.Location = new System.Drawing.Point(75, 160);
+            this.button_MiddleLayers.Margin = new System.Windows.Forms.Padding(0);
+            this.button_MiddleLayers.Name = "button_MiddleLayers";
+            this.button_MiddleLayers.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_MiddleLayers.Size = new System.Drawing.Size(120, 30);
+            this.button_MiddleLayers.TabIndex = 19;
+            this.button_MiddleLayers.Text = "Скрытые слои";
+            this.button_MiddleLayers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_MiddleLayers.UseVisualStyleBackColor = false;
+            // 
+            // button_OutputLayer
+            // 
+            this.button_OutputLayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_OutputLayer.FlatAppearance.BorderSize = 0;
+            this.button_OutputLayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_OutputLayer.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_OutputLayer.ForeColor = System.Drawing.Color.White;
+            this.button_OutputLayer.Location = new System.Drawing.Point(75, 190);
+            this.button_OutputLayer.Margin = new System.Windows.Forms.Padding(0);
+            this.button_OutputLayer.Name = "button_OutputLayer";
+            this.button_OutputLayer.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_OutputLayer.Size = new System.Drawing.Size(120, 30);
+            this.button_OutputLayer.TabIndex = 20;
+            this.button_OutputLayer.Text = "Выходной слой";
+            this.button_OutputLayer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_OutputLayer.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -220,6 +273,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.button_OutputLayer);
+            this.Controls.Add(this.button_MiddleLayers);
+            this.Controls.Add(this.button_InputLayer);
             this.Controls.Add(this.button_Configuration);
             this.Controls.Add(this.panel_Screen);
             this.Controls.Add(this.button_Minimize);
@@ -253,5 +309,8 @@
         public System.Windows.Forms.Button button_UsingNeNado;
         public System.Windows.Forms.Button button_SaveModel;
         public System.Windows.Forms.Button button_Configuration;
+        public System.Windows.Forms.Button button_InputLayer;
+        public System.Windows.Forms.Button button_MiddleLayers;
+        public System.Windows.Forms.Button button_OutputLayer;
     }
 }

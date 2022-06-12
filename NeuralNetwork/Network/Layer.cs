@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NeuralNetworkNamespace
 {
@@ -10,6 +11,22 @@ namespace NeuralNetworkNamespace
         public Layer(List<Neuron> temp_Neurons)
         {
             Neurons = temp_Neurons;
+        }
+
+        public Layer(LearningData learningData)
+        {
+            for (int i = 0; i < learningData.ParamNamesInput.Count; i++)
+            {
+                Neuron neuron = new Neuron_Input();
+                neuron.Name = learningData.ParamNamesInput[i];
+
+                var column = learningData.LearningExamples.Select(item => item.InputSignals[i]).ToList();
+                column.Sort();
+                neuron.Min = column.Min();
+                neuron.Max = column.Max();
+
+                Neurons.Add(neuron);
+            }
         }
 
         public void CalculateError(List<double> expectedOutputs, ICostFunction costFunction) //расчет на последнем слое

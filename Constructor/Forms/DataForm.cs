@@ -221,6 +221,7 @@ namespace Constructor
                 }
             }
 
+            GlobalTemplate.LearningData = learningData;
             var parent = this.ParentForm as MainForm;
             parent.button_Configuration.Enabled = true;
             parent.button_Configuration_Click(sender, e);
