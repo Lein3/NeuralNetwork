@@ -8,7 +8,7 @@ namespace Constructor
 {
     public partial class MainForm : Form
     {
-        private new Form ActiveForm { get; set; }
+        private Form OpenedForm { get; set; }
         public MainForm()
         {
             InitializeComponent();
@@ -21,11 +21,16 @@ namespace Constructor
 
         private void OpenChildForm(Form childForm)
         {
-            if (ActiveForm != null)
+            if (OpenedForm != null)
             {
-                ActiveForm.Close();
+                if (OpenedForm.Name == childForm.Name)
+                {
+                    return;
+                }
+                OpenedForm.Dispose();
             }
-            ActiveForm = childForm;
+
+            OpenedForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
@@ -73,6 +78,7 @@ namespace Constructor
         public void button_Configuration_Click(object sender, EventArgs e)
         {
             OpenChildForm(new NetworkConfigurationForm());
+            panel_Learning.Visible = !panel_Learning.Visible;
         }
 
         public void button_Learning_Click(object sender, EventArgs e)

@@ -16,55 +16,41 @@ namespace Constructor
             this.Size = new Size(75, 90);
             //для удобства в работе в конструкторе там элементы большие
 
-
-            foreach (Control element in this.Controls)
-            {
-                element.BackColor = Color.Transparent;
-                element.MouseEnter += onMouseEnter;
-                element.MouseLeave += onMouseLeave;
-            }
-
             if (error != null)
             {
-                var label_error = new Label();
-                label_error.BackColor = Color.Transparent;
-                label_error.Font = new Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                label_error.ForeColor = Color.Black;
-                label_error.Location = new Point(23, 25);
-                label_error.Name = "label_error";
-                label_error.Size = new Size(29, 22);
-                label_error.TabIndex = 2;
-                label_error.TextAlign = ContentAlignment.MiddleCenter;
-                label_error.Text = Math.Round((double)error, 3).ToString();
-                Controls.Add(label_error);
-                label_error.BringToFront();
+                label_Error.Text = Math.Round((double)error, 3).ToString();
             }
-            this.Index.Text = index.ToString();
+            label_Index.Text = index.ToString();
         }
 
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(85, 170, 255), 2f);
+            Pen pen = new Pen(Color.FromArgb(85, 170, 255), 2f);            
+            if (Neuron.NeuronType == Structure.NeuronType.Bias)
+            {
+                pen = new Pen(Color.FromArgb(56, 138, 52), 2f);
+            }
             Ellipse = new Rectangle(5, 20, 60, 60);
             e.Graphics.DrawEllipse(pen, Ellipse);
         }
 
         public void Fill()
         {
-            var bruh = new SolidBrush(Color.Red);
+            var bruh = new SolidBrush(Color.FromArgb(120, 120, 120));          
             pictureBox.CreateGraphics().FillEllipse(bruh, Ellipse);
+            label_Error.BackColor = Color.FromArgb(120, 120, 120);
         }
 
-        private void onMouseEnter(object sender, EventArgs e)
+        private void pictureBox_MouseEnter(object sender, EventArgs e)
         {
             Fill();
-            var parent = this.ParentForm as NetworkConfigurationForm;
-            parent.currentNeuronControl.UpdateInfo(Neuron);
+            (ParentForm as NetworkConfigurationForm).currentNeuronControl.UpdateInfo(Neuron);
         }
 
-        private void onMouseLeave(object sender, EventArgs e)
+        private void pictureBox_MouseLeave(object sender, EventArgs e)
         {
             pictureBox.Invalidate();
+            label_Error.BackColor = Color.FromArgb(51, 51, 51);
         }
     }
 }

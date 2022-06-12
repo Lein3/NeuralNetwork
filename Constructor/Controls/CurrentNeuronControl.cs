@@ -52,6 +52,9 @@ namespace Constructor
             this.CurrentNeuron = neuron;
             switch (neuron.NeuronType)
             {
+                case Structure.NeuronType.Bias:
+                    DisplayInfo("Нейрон смещения", false);
+                    break;
                 case Structure.NeuronType.Input:
                     DisplayInfo(CurrentNeuron.Name, true);
                     break;
@@ -80,6 +83,7 @@ namespace Constructor
         {
             label_Max.Visible = false;
             numericUpDown_Max.Visible = true;
+            numericUpDown_Max.Value = (decimal)CurrentNeuron.Max;
         }
 
         private void numericUpDown_Max_ValueChanged(object sender, EventArgs e)
@@ -94,6 +98,7 @@ namespace Constructor
         {
             label_Min.Visible = false;
             numericUpDown_Min.Visible = true;
+            numericUpDown_Min.Value = (decimal)CurrentNeuron.Max;
         }
 
         private void numericUpDown_Min_ValueChanged(object sender, EventArgs e)
