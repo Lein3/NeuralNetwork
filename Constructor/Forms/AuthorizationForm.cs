@@ -150,6 +150,21 @@ namespace Constructor
 
         private void button_AutoMode_Click(object sender, EventArgs e)
         {
+            GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.autoMode;
+            new MainForm().Show();
+            this.Hide();
+        }
+
+        private void button_ProfessionalMode_Click(object sender, EventArgs e)
+        {
+            GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.professionalMode;
+            new MainForm().Show();
+            this.Hide();
+        }
+
+        private void button_FreeMode_Click(object sender, EventArgs e)
+        {
+            GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.freeMode;
             new MainForm().Show();
             this.Hide();
         }

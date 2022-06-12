@@ -93,7 +93,7 @@
     <Compile Include="ActivationFunctions.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Connection.cs" />
+    <Compile Include="Controls\Connection.cs" />
     <Compile Include="Controls\CurrentNeuronControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -161,7 +161,7 @@
     <Compile Include="Forms\SelectScenarioForm.Designer.cs">
       <DependentUpon>SelectScenarioForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GlobalTemplate.cs" />
+    <Compile Include="Controls\GlobalTemplate.cs" />
     <Compile Include="Controls\HashingPassword.cs" />
     <Compile Include="LearningResults.cs">
       <DependentUpon>Model.tt</DependentUpon>

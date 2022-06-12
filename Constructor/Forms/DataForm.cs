@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using Microsoft.Data.ConnectionUI;
 using NeuralNetworkNamespace;
@@ -64,6 +65,7 @@ namespace Constructor
             }
             learningData = new LearningData(openFileDialog.FileName, FileSeparator);
             dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
+            textBox_FromFileSaveName.Text = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
             UpdateComboBoxPredictMark();
         }
         #endregion
@@ -151,7 +153,7 @@ namespace Constructor
 
         private IQueryable<Datasets> GetDatasetsFromLocalDatabase(Nullable<int> id_Owner)
         {
-            var Datasets = Connection.db.Value.Datasets.Where(item => item.Owner == id_Owner);
+            var Datasets = Connection.db.Value.Datasets.Where(item => item.Owner == id_Owner).OrderBy(item => item.Name);
             return Datasets;
         }
 
@@ -160,10 +162,12 @@ namespace Constructor
             var tableName = (sender as ComboBox).SelectedValue.ToString();        
             using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
             {
+                sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{tableName}]", sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 DataSet dataSet = new DataSet();
                 sqlDataAdapter.Fill(dataSet);
+                dataGridView.DataSource = null;
                 dataGridView.DataSource = dataSet.Tables[0];
                 learningData = new LearningData(dataSet);
                 UpdateComboBoxPredictMark();
@@ -196,9 +200,94 @@ namespace Constructor
 
         private void button_Next_Click(object sender, EventArgs e)
         {
+            if (panel_FromFile.Visible == true && checkBox_FromFileSaveCheck.Checked == true)
+            {
+                if (Connection.db.Value.Datasets.Where(item => item.Owner == null).Any(item => item.Name == textBox_FromFileSaveName.Text))
+                {
+                    if (MessageBox.Show("В базе данных уже есть набор данных с таким названием. Продолжить?", "Наименование уже существует", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        while (Connection.db.Value.Datasets.Where(item => item.Owner == null).Any(item => item.Name == textBox_FromFileSaveName.Text))
+                        {
+                            textBox_FromFileSaveName.Text = textBox_FromFileSaveName.Text + "0";
+                        }
+                        var dataset = learningData.ConvertToDotNetDataSet();
+                        CreateTableInLocalDatabase(dataset);
+                    }
+                }
+                else
+                {
+                    var dataset = learningData.ConvertToDotNetDataSet();
+                    CreateTableInLocalDatabase(dataset);
+                }
+            }
+
             var parent = this.ParentForm as MainForm;
-            parent.button_Learning.Enabled = true;
-            parent.button_Learning_Click(sender, e);
+            parent.button_Configuration.Enabled = true;
+            parent.button_Configuration_Click(sender, e);
+        }
+
+        private void CreateTableInLocalDatabase(DataSet dataSet)
+        {
+            //для начала нам нужно определить имя таблицы в базе данных
+            //мы получаем список всех датасетов из бд по их id_Table и к последнему нужно добавить +1
+            var lastID = Connection.db.Value.Datasets.OrderByDescending(item => item.ID_Table).First().ID_Table;
+            lastID += 1;
+
+            //теперь нужно создать запрос на создание таблицы под наш датасет в базе
+            StringBuilder createQuery = new StringBuilder($"CREATE TABLE [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastID}]");
+            createQuery.Append("(");
+            for (int i = 0; i < dataSet.Tables[0].Columns.Count; i++)
+            {
+                createQuery.Append(dataSet.Tables[0].Columns[i].ColumnName);
+                createQuery.Append(" ");
+                createQuery.Append("float");
+                createQuery.Append(",");
+            }
+            createQuery.Append(")");
+
+            //теперь нужно создать таблицу под наш датасет в базе
+            using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
+            {
+                sqlConnection.Open();
+                SqlTransaction sqlTransaction = sqlConnection.BeginTransaction();
+
+                //создаем таблицу в бд
+                SqlCommand sqlCommandCreateTable = new SqlCommand(createQuery.ToString(), sqlConnection);
+                sqlCommandCreateTable.Transaction = sqlTransaction;
+                sqlCommandCreateTable.ExecuteNonQuery();
+
+                //вставляем данные
+                SqlCommand sqlCommandInsertIntoTable = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastID}]", sqlConnection);
+                sqlCommandInsertIntoTable.Transaction = sqlTransaction;
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommandInsertIntoTable);
+                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
+                sqlDataAdapter.Update(dataSet, "Table1");
+
+                //и прям обязательно нужно создать запись в Datasets
+                Nullable<int> owner = GlobalTemplate.CurrentUser?.ID;
+                SqlCommand sqlCommandInsertIntoDatasets = new SqlCommand("INSERT INTO Datasets Values (@Owner, @ID_Table, @Name, @CreationDate, @DeleteDate)", sqlConnection);
+                sqlCommandInsertIntoDatasets.Transaction = sqlTransaction;
+
+                SqlParameter ownerParam;
+                SqlParameter idTableParam = new SqlParameter("@ID_Table", lastID);
+                SqlParameter NameParam = new SqlParameter("@Name", textBox_FromFileSaveName.Text);
+                SqlParameter CreationDateParam = new SqlParameter("@CreationDate", DateTime.Today);
+                SqlParameter DeleteDateParam;
+                if (owner == null)
+                {
+                    ownerParam = new SqlParameter("@Owner", DBNull.Value);
+                    DeleteDateParam = new SqlParameter("@DeleteDate", DateTime.Today.AddDays(5));
+                }
+                else
+                {
+                    ownerParam = new SqlParameter("@Owner", owner);
+                    DeleteDateParam = new SqlParameter("@DeleteDate", DBNull.Value);
+                }
+                sqlCommandInsertIntoDatasets.Parameters.AddRange( new SqlParameter[] { ownerParam, idTableParam, NameParam, CreationDateParam, DeleteDateParam } );
+                sqlCommandInsertIntoDatasets.ExecuteNonQuery();
+
+                sqlTransaction.Commit();
+            }        
         }
 
         private void radioButton_Separator1_CheckedChanged(object sender, EventArgs e)
@@ -211,8 +300,7 @@ namespace Constructor
             FileSeparator = ',';
         }
 
+
         #endregion
-
-
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_Description = new System.Windows.Forms.Label();
             this.Label_Description3 = new System.Windows.Forms.LinkLabel();
             this.label_Description2 = new System.Windows.Forms.Label();
@@ -68,6 +68,9 @@
             this.comboBox_SelectPrivateDataset = new System.Windows.Forms.ComboBox();
             this.label_SelectPrivateDataset = new System.Windows.Forms.Label();
             this.button_Next = new System.Windows.Forms.Button();
+            this.label_FromFileSave = new System.Windows.Forms.Label();
+            this.textBox_FromFileSaveName = new System.Windows.Forms.TextBox();
+            this.checkBox_FromFileSaveCheck = new System.Windows.Forms.CheckBox();
             this.panel_FromFile.SuspendLayout();
             this.panel_FromDatabase.SuspendLayout();
             this.panel_FromPublicDataset.SuspendLayout();
@@ -193,14 +196,17 @@
             // 
             // panel_FromFile
             // 
+            this.panel_FromFile.Controls.Add(this.checkBox_FromFileSaveCheck);
+            this.panel_FromFile.Controls.Add(this.textBox_FromFileSaveName);
+            this.panel_FromFile.Controls.Add(this.label_FromFileSave);
             this.panel_FromFile.Controls.Add(this.radioButton_Separator2);
             this.panel_FromFile.Controls.Add(this.radioButton_Separator1);
             this.panel_FromFile.Controls.Add(this.label_FileSeparatorSing);
             this.panel_FromFile.Controls.Add(this.button_FromFile);
             this.panel_FromFile.Controls.Add(this.textBox_FilePath);
-            this.panel_FromFile.Location = new System.Drawing.Point(305, 120);
+            this.panel_FromFile.Location = new System.Drawing.Point(305, 105);
             this.panel_FromFile.Name = "panel_FromFile";
-            this.panel_FromFile.Size = new System.Drawing.Size(540, 100);
+            this.panel_FromFile.Size = new System.Drawing.Size(540, 115);
             this.panel_FromFile.TabIndex = 12;
             this.panel_FromFile.Visible = false;
             // 
@@ -209,7 +215,7 @@
             this.radioButton_Separator2.AutoSize = true;
             this.radioButton_Separator2.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton_Separator2.ForeColor = System.Drawing.Color.White;
-            this.radioButton_Separator2.Location = new System.Drawing.Point(335, 60);
+            this.radioButton_Separator2.Location = new System.Drawing.Point(335, 55);
             this.radioButton_Separator2.Name = "radioButton_Separator2";
             this.radioButton_Separator2.Size = new System.Drawing.Size(92, 24);
             this.radioButton_Separator2.TabIndex = 35;
@@ -223,7 +229,7 @@
             this.radioButton_Separator1.Checked = true;
             this.radioButton_Separator1.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton_Separator1.ForeColor = System.Drawing.Color.White;
-            this.radioButton_Separator1.Location = new System.Drawing.Point(170, 60);
+            this.radioButton_Separator1.Location = new System.Drawing.Point(170, 55);
             this.radioButton_Separator1.Name = "radioButton_Separator1";
             this.radioButton_Separator1.Size = new System.Drawing.Size(149, 24);
             this.radioButton_Separator1.TabIndex = 34;
@@ -236,7 +242,7 @@
             // 
             this.label_FileSeparatorSing.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileSeparatorSing.ForeColor = System.Drawing.Color.White;
-            this.label_FileSeparatorSing.Location = new System.Drawing.Point(20, 65);
+            this.label_FileSeparatorSing.Location = new System.Drawing.Point(20, 60);
             this.label_FileSeparatorSing.Name = "label_FileSeparatorSing";
             this.label_FileSeparatorSing.Size = new System.Drawing.Size(130, 15);
             this.label_FileSeparatorSing.TabIndex = 34;
@@ -251,7 +257,7 @@
             this.button_FromFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_FromFile.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_FromFile.ForeColor = System.Drawing.Color.White;
-            this.button_FromFile.Location = new System.Drawing.Point(425, 25);
+            this.button_FromFile.Location = new System.Drawing.Point(425, 20);
             this.button_FromFile.Margin = new System.Windows.Forms.Padding(0);
             this.button_FromFile.Name = "button_FromFile";
             this.button_FromFile.Size = new System.Drawing.Size(70, 22);
@@ -266,7 +272,7 @@
             this.textBox_FilePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_FilePath.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
             this.textBox_FilePath.ForeColor = System.Drawing.Color.White;
-            this.textBox_FilePath.Location = new System.Drawing.Point(15, 25);
+            this.textBox_FilePath.Location = new System.Drawing.Point(15, 20);
             this.textBox_FilePath.Name = "textBox_FilePath";
             this.textBox_FilePath.Size = new System.Drawing.Size(400, 22);
             this.textBox_FilePath.TabIndex = 0;
@@ -450,43 +456,43 @@
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.dataGridView.Location = new System.Drawing.Point(20, 490);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView.Size = new System.Drawing.Size(885, 330);
             this.dataGridView.TabIndex = 34;
             // 
@@ -545,6 +551,41 @@
             this.button_Next.UseVisualStyleBackColor = false;
             this.button_Next.Visible = false;
             this.button_Next.Click += new System.EventHandler(this.button_Next_Click);
+            // 
+            // label_FromFileSave
+            // 
+            this.label_FromFileSave.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FromFileSave.ForeColor = System.Drawing.Color.White;
+            this.label_FromFileSave.Location = new System.Drawing.Point(20, 85);
+            this.label_FromFileSave.Name = "label_FromFileSave";
+            this.label_FromFileSave.Size = new System.Drawing.Size(45, 15);
+            this.label_FromFileSave.TabIndex = 36;
+            this.label_FromFileSave.Text = "Имя\r\n";
+            // 
+            // textBox_FromFileSaveName
+            // 
+            this.textBox_FromFileSaveName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.textBox_FromFileSaveName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_FromFileSaveName.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.textBox_FromFileSaveName.ForeColor = System.Drawing.Color.White;
+            this.textBox_FromFileSaveName.Location = new System.Drawing.Point(75, 85);
+            this.textBox_FromFileSaveName.Name = "textBox_FromFileSaveName";
+            this.textBox_FromFileSaveName.Size = new System.Drawing.Size(244, 22);
+            this.textBox_FromFileSaveName.TabIndex = 37;
+            // 
+            // checkBox_FromFileSaveCheck
+            // 
+            this.checkBox_FromFileSaveCheck.AutoSize = true;
+            this.checkBox_FromFileSaveCheck.Checked = true;
+            this.checkBox_FromFileSaveCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_FromFileSaveCheck.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            this.checkBox_FromFileSaveCheck.ForeColor = System.Drawing.Color.White;
+            this.checkBox_FromFileSaveCheck.Location = new System.Drawing.Point(335, 86);
+            this.checkBox_FromFileSaveCheck.Name = "checkBox_FromFileSaveCheck";
+            this.checkBox_FromFileSaveCheck.Size = new System.Drawing.Size(144, 21);
+            this.checkBox_FromFileSaveCheck.TabIndex = 38;
+            this.checkBox_FromFileSaveCheck.Text = "Сохраняем в базе";
+            this.checkBox_FromFileSaveCheck.UseVisualStyleBackColor = true;
             // 
             // DataForm
             // 
@@ -633,5 +674,8 @@
         private System.Windows.Forms.ComboBox comboBox_SelectPrivateDataset;
         private System.Windows.Forms.Label label_SelectPrivateDataset;
         private System.Windows.Forms.Button button_Next;
+        private System.Windows.Forms.CheckBox checkBox_FromFileSaveCheck;
+        private System.Windows.Forms.TextBox textBox_FromFileSaveName;
+        private System.Windows.Forms.Label label_FromFileSave;
     }
 }

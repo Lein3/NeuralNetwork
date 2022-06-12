@@ -12,7 +12,7 @@ namespace Constructor
 
         private void scenarioControl1_DoubleClick(object sender, EventArgs e)
         {
-            //TODO: выбор сценария
+            GlobalTemplate.CurrentScenario = GlobalTemplate.Scenario.binaryClassification;
             var parent = this.ParentForm as MainForm;
             parent.button_Data.Enabled = true;
             parent.button_Data_Click(sender, e);
@@ -20,7 +20,7 @@ namespace Constructor
 
         private void scenarioControl2_DoubleClick(object sender, EventArgs e)
         {
-            //TODO: выбор сценария
+            GlobalTemplate.CurrentScenario = GlobalTemplate.Scenario.multiclassClassification;
             var parent = this.ParentForm as MainForm;
             parent.button_Data.Enabled = true;
             parent.button_Data_Click(sender, e);

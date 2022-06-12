@@ -6,14 +6,7 @@ namespace NeuralNetworkNamespace
     [Serializable]
     public class Structure
     {
-        public enum NeuronType
-        {
-            Input = 0,
-            Normal = 1,
-            Output = 2,
-            Bias = 3
-        }
-
+        public enum NeuronType { Input = 0, Normal = 1, Output = 2, Bias = 3 }
         public bool Bias { get; set; }
         public int InputNeuronsCount { get;  set; }
         public int OutputNeuronsCount { get;  set; }

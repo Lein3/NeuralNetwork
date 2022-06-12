@@ -70,9 +70,15 @@ namespace Constructor
             OpenChildForm(new DataForm());
         }
 
+
+        public void button_Configuration_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DataForm());
+        }
+
         public void button_Learning_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new LearningForm());
+            OpenChildForm(new CreateMiddleLayersForm());
         }
     }
 }

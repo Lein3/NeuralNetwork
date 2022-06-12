@@ -37,6 +37,7 @@
             this.button_Minimize = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
             this.panel_Screen = new System.Windows.Forms.Panel();
+            this.button_Configuration = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Scenario
@@ -83,7 +84,7 @@
             this.button_Learning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Learning.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Learning.ForeColor = System.Drawing.Color.White;
-            this.button_Learning.Location = new System.Drawing.Point(30, 130);
+            this.button_Learning.Location = new System.Drawing.Point(30, 295);
             this.button_Learning.Margin = new System.Windows.Forms.Padding(0);
             this.button_Learning.Name = "button_Learning";
             this.button_Learning.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -102,7 +103,7 @@
             this.button_CalculateNeNado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_CalculateNeNado.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_CalculateNeNado.ForeColor = System.Drawing.Color.White;
-            this.button_CalculateNeNado.Location = new System.Drawing.Point(30, 160);
+            this.button_CalculateNeNado.Location = new System.Drawing.Point(30, 325);
             this.button_CalculateNeNado.Margin = new System.Windows.Forms.Padding(0);
             this.button_CalculateNeNado.Name = "button_CalculateNeNado";
             this.button_CalculateNeNado.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -120,7 +121,7 @@
             this.button_UsingNeNado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_UsingNeNado.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_UsingNeNado.ForeColor = System.Drawing.Color.White;
-            this.button_UsingNeNado.Location = new System.Drawing.Point(30, 190);
+            this.button_UsingNeNado.Location = new System.Drawing.Point(30, 355);
             this.button_UsingNeNado.Margin = new System.Windows.Forms.Padding(0);
             this.button_UsingNeNado.Name = "button_UsingNeNado";
             this.button_UsingNeNado.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -138,7 +139,7 @@
             this.button_SaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SaveModel.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_SaveModel.ForeColor = System.Drawing.Color.White;
-            this.button_SaveModel.Location = new System.Drawing.Point(30, 220);
+            this.button_SaveModel.Location = new System.Drawing.Point(30, 385);
             this.button_SaveModel.Margin = new System.Windows.Forms.Padding(0);
             this.button_SaveModel.Name = "button_SaveModel";
             this.button_SaveModel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -193,6 +194,25 @@
             this.panel_Screen.Size = new System.Drawing.Size(570, 450);
             this.panel_Screen.TabIndex = 16;
             // 
+            // button_Configuration
+            // 
+            this.button_Configuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_Configuration.Enabled = false;
+            this.button_Configuration.FlatAppearance.BorderSize = 0;
+            this.button_Configuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Configuration.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Configuration.ForeColor = System.Drawing.Color.White;
+            this.button_Configuration.Location = new System.Drawing.Point(30, 100);
+            this.button_Configuration.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Configuration.Name = "button_Configuration";
+            this.button_Configuration.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_Configuration.Size = new System.Drawing.Size(166, 29);
+            this.button_Configuration.TabIndex = 17;
+            this.button_Configuration.Text = "Обучение";
+            this.button_Configuration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Configuration.UseVisualStyleBackColor = false;
+            this.button_Configuration.Click += new System.EventHandler(this.button_Configuration_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,6 +220,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.button_Configuration);
             this.Controls.Add(this.panel_Screen);
             this.Controls.Add(this.button_Minimize);
             this.Controls.Add(this.button_Close);
@@ -231,5 +252,6 @@
         public System.Windows.Forms.Button button_CalculateNeNado;
         public System.Windows.Forms.Button button_UsingNeNado;
         public System.Windows.Forms.Button button_SaveModel;
+        public System.Windows.Forms.Button button_Configuration;
     }
 }

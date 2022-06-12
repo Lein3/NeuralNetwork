@@ -128,6 +128,7 @@
             this.button_ProfessionalMode.Text = "Профессиональный режим";
             this.button_ProfessionalMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_ProfessionalMode.UseVisualStyleBackColor = false;
+            this.button_ProfessionalMode.Click += new System.EventHandler(this.button_ProfessionalMode_Click);
             this.button_ProfessionalMode.MouseEnter += new System.EventHandler(this.DescriptionFunction);
             // 
             // button_FreeMode
@@ -148,6 +149,7 @@
             this.button_FreeMode.Text = "Свободный режим";
             this.button_FreeMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_FreeMode.UseVisualStyleBackColor = false;
+            this.button_FreeMode.Click += new System.EventHandler(this.button_FreeMode_Click);
             this.button_FreeMode.MouseEnter += new System.EventHandler(this.DescriptionFunction);
             // 
             // label_MainSeparator
@@ -729,7 +731,7 @@
             this.button_Registration.UseVisualStyleBackColor = false;
             this.button_Registration.Click += new System.EventHandler(this.button_Registration_Click);
             // 
-            // SelectModeAndAuthorizationForm
+            // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -754,7 +756,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(700, 450);
-            this.Name = "SelectModeAndAuthorizationForm";
+            this.Name = "AuthorizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ОооКонструктор";
             this.panel_Top.ResumeLayout(false);
