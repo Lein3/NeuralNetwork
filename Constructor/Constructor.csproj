@@ -118,18 +118,6 @@
     <Compile Include="Forms\EvaluateForm.Designer.cs">
       <DependentUpon>EvaluateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateMiddleLayersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CreateMiddleLayersForm.Designer.cs">
-      <DependentUpon>CreateMiddleLayersForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CreateInputLayerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CreateInputLayerForm.Designer.cs">
-      <DependentUpon>CreateInputLayerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\NeuronControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,11 +130,11 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LearningForm.cs">
+    <Compile Include="Forms\Gavno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LearningForm.Designer.cs">
-      <DependentUpon>LearningForm.cs</DependentUpon>
+    <Compile Include="Forms\Gavno.Designer.cs">
+      <DependentUpon>Gavno.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\NetworkTemplate.cs" />
     <Compile Include="Forms\AuthorizationForm.cs">
@@ -168,6 +156,12 @@
     </Compile>
     <Compile Include="Controls\LayerCountControl.Designer.cs">
       <DependentUpon>LayerCountControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LearningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LearningForm.Designer.cs">
+      <DependentUpon>LearningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LearningResults.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -213,14 +207,8 @@
     <EmbeddedResource Include="Controls\LayerCountControl.resx">
       <DependentUpon>LayerCountControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateInputLayerForm.resx">
-      <DependentUpon>CreateInputLayerForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\NeuronControl.resx">
       <DependentUpon>NeuronControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateMiddleLayersForm.resx">
-      <DependentUpon>CreateMiddleLayersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
@@ -228,8 +216,8 @@
     <EmbeddedResource Include="Forms\EvaluateForm.resx">
       <DependentUpon>EvaluateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LearningForm.resx">
-      <DependentUpon>LearningForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Gavno.resx">
+      <DependentUpon>Gavno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -242,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NetworkConfigurationForm.resx">
       <DependentUpon>NetworkConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LearningForm.resx">
+      <DependentUpon>LearningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

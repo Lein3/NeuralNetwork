@@ -4,7 +4,7 @@ namespace NeuralNetworkNamespace
 {
     public class Neuron_Bias : Neuron
     {
-        public Neuron_Bias() : base(FunctionsEnum.None)
+        public Neuron_Bias() : base(ActivationFunctionEnum.None)
         {
             NeuronType = Structure.NeuronType.Bias;
         }

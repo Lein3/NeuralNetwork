@@ -35,22 +35,22 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label_SelectActivationFunctionMiddle = new System.Windows.Forms.Label();
+            this.comboBox_SelectActivationFunctionMiddle = new System.Windows.Forms.ComboBox();
             this.panel_LayerCountMiddle = new System.Windows.Forms.Panel();
             this.numericUpDown_LayersCountMiddle = new System.Windows.Forms.NumericUpDown();
             this.label_NeuronsCountMiddle = new System.Windows.Forms.Label();
             this.label_DescriptionMiddle = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label_SelectActivationFunctionOutput = new System.Windows.Forms.Label();
+            this.comboBox_SelectActivationFunctionOutput = new System.Windows.Forms.ComboBox();
             this.numericUpDown_NeuronsCountOutput = new System.Windows.Forms.NumericUpDown();
             this.label_DescriptionOutput = new System.Windows.Forms.Label();
             this.label_NeuronsCountOutput = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.checkBox_DrawOnCenter = new System.Windows.Forms.CheckBox();
             this.checkBox_Bias = new System.Windows.Forms.CheckBox();
-            this.comboBox_SelectActivationFunctionMiddle = new System.Windows.Forms.ComboBox();
             this.currentNeuronControl = new Constructor.CurrentNeuronControl();
-            this.label_SelectActivationFunctionMiddle = new System.Windows.Forms.Label();
-            this.label_SelectActivationFunctionOutput = new System.Windows.Forms.Label();
-            this.comboBox_SelectActivationFunctionOutput = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NeuronsCountInput)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -153,6 +153,29 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Скрытые слои";
             // 
+            // label_SelectActivationFunctionMiddle
+            // 
+            this.label_SelectActivationFunctionMiddle.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectActivationFunctionMiddle.ForeColor = System.Drawing.Color.White;
+            this.label_SelectActivationFunctionMiddle.Location = new System.Drawing.Point(360, 55);
+            this.label_SelectActivationFunctionMiddle.Name = "label_SelectActivationFunctionMiddle";
+            this.label_SelectActivationFunctionMiddle.Size = new System.Drawing.Size(144, 20);
+            this.label_SelectActivationFunctionMiddle.TabIndex = 49;
+            this.label_SelectActivationFunctionMiddle.Text = "Функция активации";
+            // 
+            // comboBox_SelectActivationFunctionMiddle
+            // 
+            this.comboBox_SelectActivationFunctionMiddle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectActivationFunctionMiddle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectActivationFunctionMiddle.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectActivationFunctionMiddle.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectActivationFunctionMiddle.FormattingEnabled = true;
+            this.comboBox_SelectActivationFunctionMiddle.Location = new System.Drawing.Point(230, 50);
+            this.comboBox_SelectActivationFunctionMiddle.Name = "comboBox_SelectActivationFunctionMiddle";
+            this.comboBox_SelectActivationFunctionMiddle.Size = new System.Drawing.Size(123, 23);
+            this.comboBox_SelectActivationFunctionMiddle.TabIndex = 47;
+            this.comboBox_SelectActivationFunctionMiddle.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectActivationFunctionMiddle_SelectionChangeCommitted);
+            // 
             // panel_LayerCountMiddle
             // 
             this.panel_LayerCountMiddle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -209,25 +232,38 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Выходной слой";
             // 
+            // label_SelectActivationFunctionOutput
+            // 
+            this.label_SelectActivationFunctionOutput.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SelectActivationFunctionOutput.ForeColor = System.Drawing.Color.White;
+            this.label_SelectActivationFunctionOutput.Location = new System.Drawing.Point(360, 55);
+            this.label_SelectActivationFunctionOutput.Name = "label_SelectActivationFunctionOutput";
+            this.label_SelectActivationFunctionOutput.Size = new System.Drawing.Size(144, 20);
+            this.label_SelectActivationFunctionOutput.TabIndex = 51;
+            this.label_SelectActivationFunctionOutput.Text = "Функция активации";
+            // 
+            // comboBox_SelectActivationFunctionOutput
+            // 
+            this.comboBox_SelectActivationFunctionOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox_SelectActivationFunctionOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_SelectActivationFunctionOutput.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.comboBox_SelectActivationFunctionOutput.ForeColor = System.Drawing.Color.White;
+            this.comboBox_SelectActivationFunctionOutput.FormattingEnabled = true;
+            this.comboBox_SelectActivationFunctionOutput.Location = new System.Drawing.Point(230, 50);
+            this.comboBox_SelectActivationFunctionOutput.Name = "comboBox_SelectActivationFunctionOutput";
+            this.comboBox_SelectActivationFunctionOutput.Size = new System.Drawing.Size(123, 23);
+            this.comboBox_SelectActivationFunctionOutput.TabIndex = 50;
+            this.comboBox_SelectActivationFunctionOutput.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectActivationFunctionOutput_SelectedIndexChanged);
+            // 
             // numericUpDown_NeuronsCountOutput
             // 
             this.numericUpDown_NeuronsCountOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.numericUpDown_NeuronsCountOutput.Font = new System.Drawing.Font("Microsoft JhengHei", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown_NeuronsCountOutput.ForeColor = System.Drawing.Color.White;
             this.numericUpDown_NeuronsCountOutput.Location = new System.Drawing.Point(20, 50);
-            this.numericUpDown_NeuronsCountOutput.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDown_NeuronsCountOutput.Name = "numericUpDown_NeuronsCountOutput";
             this.numericUpDown_NeuronsCountOutput.Size = new System.Drawing.Size(40, 22);
             this.numericUpDown_NeuronsCountOutput.TabIndex = 46;
-            this.numericUpDown_NeuronsCountOutput.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDown_NeuronsCountOutput.ValueChanged += new System.EventHandler(this.numericUpDown_NeuronsCountOutput_ValueChanged);
             // 
             // label_DescriptionOutput
@@ -287,19 +323,6 @@
             this.checkBox_Bias.UseVisualStyleBackColor = true;
             this.checkBox_Bias.CheckedChanged += new System.EventHandler(this.checkBox_Bias_CheckedChanged);
             // 
-            // comboBox_SelectActivationFunctionMiddle
-            // 
-            this.comboBox_SelectActivationFunctionMiddle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_SelectActivationFunctionMiddle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_SelectActivationFunctionMiddle.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_SelectActivationFunctionMiddle.ForeColor = System.Drawing.Color.White;
-            this.comboBox_SelectActivationFunctionMiddle.FormattingEnabled = true;
-            this.comboBox_SelectActivationFunctionMiddle.Location = new System.Drawing.Point(230, 50);
-            this.comboBox_SelectActivationFunctionMiddle.Name = "comboBox_SelectActivationFunctionMiddle";
-            this.comboBox_SelectActivationFunctionMiddle.Size = new System.Drawing.Size(123, 23);
-            this.comboBox_SelectActivationFunctionMiddle.TabIndex = 47;
-            this.comboBox_SelectActivationFunctionMiddle.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectActivationFunctionMiddle_SelectionChangeCommitted);
-            // 
             // currentNeuronControl
             // 
             this.currentNeuronControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -311,39 +334,6 @@
             this.currentNeuronControl.Name = "currentNeuronControl";
             this.currentNeuronControl.Size = new System.Drawing.Size(340, 215);
             this.currentNeuronControl.TabIndex = 6;
-            // 
-            // label_SelectActivationFunctionMiddle
-            // 
-            this.label_SelectActivationFunctionMiddle.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_SelectActivationFunctionMiddle.ForeColor = System.Drawing.Color.White;
-            this.label_SelectActivationFunctionMiddle.Location = new System.Drawing.Point(360, 55);
-            this.label_SelectActivationFunctionMiddle.Name = "label_SelectActivationFunctionMiddle";
-            this.label_SelectActivationFunctionMiddle.Size = new System.Drawing.Size(144, 20);
-            this.label_SelectActivationFunctionMiddle.TabIndex = 49;
-            this.label_SelectActivationFunctionMiddle.Text = "Функция активации";
-            // 
-            // label_SelectActivationFunctionOutput
-            // 
-            this.label_SelectActivationFunctionOutput.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_SelectActivationFunctionOutput.ForeColor = System.Drawing.Color.White;
-            this.label_SelectActivationFunctionOutput.Location = new System.Drawing.Point(360, 55);
-            this.label_SelectActivationFunctionOutput.Name = "label_SelectActivationFunctionOutput";
-            this.label_SelectActivationFunctionOutput.Size = new System.Drawing.Size(144, 20);
-            this.label_SelectActivationFunctionOutput.TabIndex = 51;
-            this.label_SelectActivationFunctionOutput.Text = "Функция активации";
-            // 
-            // comboBox_SelectActivationFunctionOutput
-            // 
-            this.comboBox_SelectActivationFunctionOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_SelectActivationFunctionOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_SelectActivationFunctionOutput.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_SelectActivationFunctionOutput.ForeColor = System.Drawing.Color.White;
-            this.comboBox_SelectActivationFunctionOutput.FormattingEnabled = true;
-            this.comboBox_SelectActivationFunctionOutput.Location = new System.Drawing.Point(230, 50);
-            this.comboBox_SelectActivationFunctionOutput.Name = "comboBox_SelectActivationFunctionOutput";
-            this.comboBox_SelectActivationFunctionOutput.Size = new System.Drawing.Size(123, 23);
-            this.comboBox_SelectActivationFunctionOutput.TabIndex = 50;
-            this.comboBox_SelectActivationFunctionOutput.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectActivationFunctionOutput_SelectedIndexChanged);
             // 
             // NetworkConfigurationForm
             // 

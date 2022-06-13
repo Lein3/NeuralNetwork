@@ -54,7 +54,7 @@
     <Compile Include="ActivationFunctions\Threshold.cs" />
     <Compile Include="CostFunctions\AbsoluteError.cs" />
     <Compile Include="CostFunctions\BinaryLogLoss.cs" />
-    <Compile Include="CostFunctions\LogLoss.cs" />
+    <Compile Include="CostFunctions\CategoryLogLoss.cs" />
     <Compile Include="CostFunctions\SquaredError.cs" />
     <Compile Include="CostFunctions\ICostFunction.cs" />
     <Compile Include="Network\Layer.cs" />

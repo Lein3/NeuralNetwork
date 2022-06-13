@@ -227,6 +227,7 @@ namespace Constructor
             GlobalTemplate.LearningData = learningData;
             var parent = this.ParentForm as MainForm;
             parent.button_Configuration.Enabled = true;
+            parent.RecolorButtons(parent.button_Configuration);
             parent.button_Configuration_Click(sender, e);
         }
 

@@ -13,7 +13,7 @@ namespace Constructor
         {
             InitializeComponent();
             this.Icon = Resources.mainIcon;
-            foreach (Button button in this.Controls.OfType<Button>())
+            foreach (Button button in panel_Left.Controls.OfType<Button>())
             {
                 button.Click += Recolor_Click;
             }
@@ -41,9 +41,9 @@ namespace Constructor
             childForm.Show();
         }
 
-        private void RecolorButtons(Button currentButton)
+        public void RecolorButtons(Button currentButton)
         {
-            foreach (Button button in this.Controls.OfType<Button>())
+            foreach (Button button in panel_Left.Controls.OfType<Button>())
             {
                 button.BackColor = Color.FromArgb(51, 51, 51);
             }
@@ -68,22 +68,33 @@ namespace Constructor
         public void button_Scenario_Click(object sender, EventArgs e)
         {
             OpenChildForm(new SelectScenarioForm());
+            panel_Configuration.Visible = false;
         }
 
         public void button_Data_Click(object sender, EventArgs e)
         {
             OpenChildForm(new DataForm());
+            panel_Configuration.Visible = false;
         }
 
         public void button_Configuration_Click(object sender, EventArgs e)
         {
             OpenChildForm(new NetworkConfigurationForm());
-            panel_Learning.Visible = !panel_Learning.Visible;
+            panel_Configuration.Visible = !panel_Configuration.Visible;
         }
 
-        public void button_Learning_Click(object sender, EventArgs e)
+        private void button_LayersReady_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CreateMiddleLayersForm());
+            (OpenedForm as NetworkConfigurationForm).SaveNetwork();
+            OpenChildForm(new LearningForm());
+            button_Learning.Enabled = true;
+            panel_Configuration.Visible = false;
+            RecolorButtons(button_Learning);
+        }
+
+        private void button_Learning_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new LearningForm());
         }
     }
 }

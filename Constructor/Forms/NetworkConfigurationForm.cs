@@ -17,16 +17,15 @@ namespace Constructor
         {
             InitializeComponent();
             Layers = new List<Layer>();
-
-            GlobalTemplate.LearningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\болезни2.csv", ',');
             Layers.Add(new Layer(GlobalTemplate.LearningData));
 
             DisplayNetwork();
             numericUpDown_NeuronsCountInput.Value = Layers.First().Neurons.Count;
-            comboBox_SelectActivationFunctionMiddle.DataSource = Enum.GetValues(typeof(Neuron.FunctionsEnum));
+            comboBox_SelectActivationFunctionMiddle.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
             comboBox_SelectActivationFunctionMiddle.SelectedIndex = 5;
-            comboBox_SelectActivationFunctionOutput.DataSource = Enum.GetValues(typeof(Neuron.FunctionsEnum));
-            comboBox_SelectActivationFunctionOutput.SelectedIndex = 5;
+            comboBox_SelectActivationFunctionOutput.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
+            comboBox_SelectActivationFunctionOutput.SelectedIndex = 5;          
+            tabControl.SelectedIndex = 0;
 
             if (GlobalTemplate.CurrentWorkMode == GlobalTemplate.WorkMode.freeMode)
             {
@@ -96,6 +95,10 @@ namespace Constructor
         #region Скрытые слои
         private void numericUpDown_LayersCountMiddle_ValueChanged(object sender, EventArgs e)
         {
+            var parent = this.ParentForm as MainForm;
+            parent.button_MiddleLayers.Text = "Скрытые слои ✓";
+            parent.button_MiddleLayers.ForeColor = Color.FromArgb(85, 170, 255);
+
             var values = new List<int>();
             foreach (var control in panel_LayerCountMiddle.Controls.OfType<LayerCountControl>())
             {
@@ -146,8 +149,8 @@ namespace Constructor
 
         private void comboBox_SelectActivationFunctionMiddle_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var activationFunction = (Neuron.FunctionsEnum)comboBox_SelectActivationFunctionMiddle.SelectedValue;
-            if (activationFunction == Neuron.FunctionsEnum.Softmax && GlobalTemplate.CurrentWorkMode != GlobalTemplate.WorkMode.freeMode)
+            var activationFunction = (Neuron.ActivationFunctionEnum)comboBox_SelectActivationFunctionMiddle.SelectedValue;
+            if (activationFunction == Neuron.ActivationFunctionEnum.Softmax && GlobalTemplate.CurrentWorkMode != GlobalTemplate.WorkMode.freeMode)
             {
                 MessageBox.Show("В текущем режиме нельзя установить Softmax для скрытых слоев");
                 comboBox_SelectActivationFunctionMiddle.SelectedIndex = 5;
@@ -155,7 +158,8 @@ namespace Constructor
             }
             setActivationFunctionToMiddleLayer(activationFunction);
         }
-        private void setActivationFunctionToMiddleLayer(Neuron.FunctionsEnum activationFunction)
+
+        private void setActivationFunctionToMiddleLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
             foreach (var layer in Layers)
             {
@@ -170,6 +174,18 @@ namespace Constructor
         #region Выходной слой
         private void numericUpDown_NeuronsCountOutput_ValueChanged(object sender, EventArgs e)
         {
+            if (numericUpDown_NeuronsCountOutput.Value == 0)
+            {                
+                return;
+            }
+            else
+            {
+                numericUpDown_NeuronsCountOutput.Minimum = 1;
+                var parent = this.ParentForm as MainForm;
+                parent.button_OutputLayer.Text = "Выходной слой ✓";
+                parent.button_OutputLayer.ForeColor = Color.FromArgb(85, 170, 255);
+                parent.button_LayersReady.Enabled = true;
+            }
             if (Layers.Last().Neurons.FirstOrDefault()?.NeuronType == Structure.NeuronType.Output)
             {
                 Layers.Remove(Layers.Last());
@@ -181,6 +197,13 @@ namespace Constructor
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            if (tabControl.SelectedIndex == 1)
+            {
+                var parent = this.ParentForm as MainForm;
+                parent.button_InputLayer.Text = "Входной слой ✓";
+                parent.button_InputLayer.ForeColor = Color.FromArgb(85, 170, 255);
+            }
             if (tabControl.SelectedIndex == 2)
             {
                 numericUpDown_NeuronsCountOutput_ValueChanged(sender, e);
@@ -189,11 +212,11 @@ namespace Constructor
 
         private void comboBox_SelectActivationFunctionOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var activationFunction = (Neuron.FunctionsEnum)comboBox_SelectActivationFunctionMiddle.SelectedValue;
+            var activationFunction = (Neuron.ActivationFunctionEnum)comboBox_SelectActivationFunctionMiddle.SelectedValue;
             setActivationFunctionToOutputLayer(activationFunction);
         }
 
-        private void setActivationFunctionToOutputLayer(Neuron.FunctionsEnum activationFunction)
+        private void setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
             foreach (var neuron in Layers.Last().Neurons)
             {
@@ -232,6 +255,10 @@ namespace Constructor
             DisplayNetwork();
         }
 
+        public void SaveNetwork()
+        {
+            GlobalTemplate.NeuralNetwork = new NeuralNetwork(Layers);
+        }
         #endregion
     }
 }

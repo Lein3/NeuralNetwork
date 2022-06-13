@@ -5,7 +5,7 @@ namespace NeuralNetworkNamespace
 {
     public class Neuron_Input : Neuron
     {
-        public Neuron_Input(FunctionsEnum function = FunctionsEnum.None) : base(function)
+        public Neuron_Input(ActivationFunctionEnum function = ActivationFunctionEnum.None) : base(function)
         {
             NeuronType = Structure.NeuronType.Input;
             Weights.Add(1);

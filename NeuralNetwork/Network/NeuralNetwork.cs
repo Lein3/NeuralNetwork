@@ -8,7 +8,8 @@ namespace NeuralNetworkNamespace
     {
         public Structure Structure { get; private set; }
         public List<Layer> Layers { get; private set; }
-        public ICostFunction CostFunction { get; private set; } = new BinaryLogLoss();
+        public enum CostFunctionEnum { AbsoluteError, BinaryLogLoss, CategoryLogLoss, SquaredError };
+        public ICostFunction CostFunction { get; private set; }
         public LearningStatistics LearningStatistics { get; private set; }
 
         public NeuralNetwork(List<Layer> temp_layers)
@@ -18,7 +19,7 @@ namespace NeuralNetworkNamespace
             LearningStatistics = new LearningStatistics();
         }
 
-        public NeuralNetwork(Structure temp_Structure)
+        public NeuralNetwork(Structure temp_Structure, CostFunctionEnum costFunctionEnum)
         {
             Structure = temp_Structure;
             Layers = new List<Layer>();
@@ -26,6 +27,7 @@ namespace NeuralNetworkNamespace
             CreateInputLayer();
             CreateMiddleLayers();
             CreateOutputLayer();
+            SetCostFunction(costFunctionEnum);
         }
 
         #region СозданиеСлоев
@@ -79,6 +81,25 @@ namespace NeuralNetworkNamespace
             }
             Layer outputLayer = new Layer(outputNeurons);
             Layers.Add(outputLayer);
+        }
+
+        public void SetCostFunction(CostFunctionEnum costFunctionEnum)
+        {
+            switch (costFunctionEnum)
+            {
+                case CostFunctionEnum.AbsoluteError:
+                    CostFunction = null;
+                    break;
+                case CostFunctionEnum.BinaryLogLoss:
+                    CostFunction = new BinaryLogLoss();
+                    break;
+                case CostFunctionEnum.CategoryLogLoss:
+                    CostFunction = null;
+                    break;
+                case CostFunctionEnum.SquaredError:
+                    CostFunction = new SquaredError();
+                    break;
+            }
         }
 
         #endregion

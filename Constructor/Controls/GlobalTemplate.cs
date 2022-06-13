@@ -16,5 +16,7 @@ namespace Constructor
 
         public static LearningData LearningData { get; set; }
 
+        public static NeuralNetwork NeuralNetwork { get; set; }
+
     }
 }

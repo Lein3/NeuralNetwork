@@ -1,6 +1,6 @@
 ﻿namespace NeuralNetworkNamespace
 {
-    internal class LogLoss
+    internal class CategoryLogLoss
     {
     }
 }

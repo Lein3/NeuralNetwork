@@ -150,7 +150,7 @@ namespace Constructor
             {
                 label_ActivationFunction.Text = "Функция активации: ";
                 comboBox_SelectActivationFunction.Visible = true;
-                comboBox_SelectActivationFunction.DataSource = Enum.GetValues(typeof(Neuron.FunctionsEnum));
+                comboBox_SelectActivationFunction.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
             }
         }
     }

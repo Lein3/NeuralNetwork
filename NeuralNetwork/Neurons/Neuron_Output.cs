@@ -4,7 +4,7 @@ namespace NeuralNetworkNamespace
 {
     public class Neuron_Output : Neuron
     {
-        public Neuron_Output(int temp_previousLayerNeuronsCount, FunctionsEnum function = FunctionsEnum.Sigmoid) : base(function)
+        public Neuron_Output(int temp_previousLayerNeuronsCount, ActivationFunctionEnum function = ActivationFunctionEnum.Sigmoid) : base(function)
         {
             NeuronType = Structure.NeuronType.Output;
             for (int i = 0; i < temp_previousLayerNeuronsCount; i++)

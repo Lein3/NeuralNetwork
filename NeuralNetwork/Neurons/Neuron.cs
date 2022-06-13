@@ -9,7 +9,7 @@ namespace NeuralNetworkNamespace
         public List<double> Weights { get; set; }
         public List<double> Inputs { get; set; }
         public Structure.NeuronType NeuronType { get; set; }
-        public enum FunctionsEnum { None, ELU, Linear, LReLU, ReLu, Sigmoid, Softmax, Th, Threshold };
+        public enum ActivationFunctionEnum { None, ELU, Linear, LReLU, ReLu, Sigmoid, Softmax, Th, Threshold };
         public IActivationFunction ActivationFunction { get; set; }
         public double Sum { get; set; }
         public double Output { get; set; }
@@ -19,7 +19,7 @@ namespace NeuralNetworkNamespace
         public string Name { get; set; }
         protected static Random Rnd { get; set; } = new Random(DateTime.Now.Millisecond); //рандом не трожь все посыпется к чертям
 
-        public Neuron(FunctionsEnum function)
+        public Neuron(ActivationFunctionEnum function)
         {           
             Weights = new List<double>();
             Inputs = new List<double>();
@@ -32,32 +32,32 @@ namespace NeuralNetworkNamespace
 
         public abstract void Learn_ChangeWeights(double learningRate);
 
-        public void SetActivationFunction(FunctionsEnum function)
+        public void SetActivationFunction(ActivationFunctionEnum function)
         {
             switch (function)
             {
-                case FunctionsEnum.None:
+                case ActivationFunctionEnum.None:
                     ActivationFunction = null;
                     break;
-                case FunctionsEnum.ELU:
+                case ActivationFunctionEnum.ELU:
                     ActivationFunction = null;
                     break;
-                case FunctionsEnum.Linear:
+                case ActivationFunctionEnum.Linear:
                     ActivationFunction = new Linear();
                     break;
-                case FunctionsEnum.LReLU:
+                case ActivationFunctionEnum.LReLU:
                     ActivationFunction = new LReLU();
                     break;
-                case FunctionsEnum.Sigmoid:
+                case ActivationFunctionEnum.Sigmoid:
                     ActivationFunction = new Sigmoid();
                     break;
-                case FunctionsEnum.Softmax:
+                case ActivationFunctionEnum.Softmax:
                     ActivationFunction = new Softmax();
                     break;
-                case FunctionsEnum.Th:
+                case ActivationFunctionEnum.Th:
                     ActivationFunction = null;
                     break;
-                case FunctionsEnum.Threshold:
+                case ActivationFunctionEnum.Threshold:
                     ActivationFunction = null;
                     break;
                 default:

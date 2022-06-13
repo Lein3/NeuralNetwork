@@ -27,9 +27,7 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\NeuralNetwork.pdb
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.AssemblyReference.cache
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.csproj.SuggestedBindingRedirects.cache
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.CurrentNeuronControl.resources
-C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.CreateInputLayerForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.NeuronControl.resources
-C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.CreateMiddleLayersForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.EvaluateForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.LearningForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.MainForm.resources
@@ -51,3 +49,4 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.SqlServer.x
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.AuthorizationForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.NetworkConfigurationForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.LayerCountControl.resources
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.Gavno.resources
