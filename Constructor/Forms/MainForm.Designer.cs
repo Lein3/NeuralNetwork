@@ -41,6 +41,7 @@
             this.panel_Configuration = new System.Windows.Forms.Panel();
             this.button_LayersReady = new System.Windows.Forms.Button();
             this.panel_Left = new System.Windows.Forms.Panel();
+            this.button_Evaluate = new System.Windows.Forms.Button();
             this.panel_Configuration.SuspendLayout();
             this.panel_Left.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +89,7 @@
             // 
             this.button_Learning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button_Learning.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_Learning.Enabled = false;
             this.button_Learning.FlatAppearance.BorderSize = 0;
             this.button_Learning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Learning.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,7 +98,7 @@
             this.button_Learning.Margin = new System.Windows.Forms.Padding(0);
             this.button_Learning.Name = "button_Learning";
             this.button_Learning.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button_Learning.Size = new System.Drawing.Size(170, 29);
+            this.button_Learning.Size = new System.Drawing.Size(170, 30);
             this.button_Learning.TabIndex = 3;
             this.button_Learning.Text = "Обучение";
             this.button_Learning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,7 +165,7 @@
             this.button_Configuration.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button_Configuration.Size = new System.Drawing.Size(170, 30);
             this.button_Configuration.TabIndex = 17;
-            this.button_Configuration.Text = "Конфигурация сети";
+            this.button_Configuration.Text = "Конфигурация";
             this.button_Configuration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Configuration.UseVisualStyleBackColor = false;
             this.button_Configuration.Click += new System.EventHandler(this.button_Configuration_Click);
@@ -257,6 +259,7 @@
             // 
             // panel_Left
             // 
+            this.panel_Left.Controls.Add(this.button_Evaluate);
             this.panel_Left.Controls.Add(this.button_Learning);
             this.panel_Left.Controls.Add(this.panel_Configuration);
             this.panel_Left.Controls.Add(this.button_Configuration);
@@ -266,6 +269,25 @@
             this.panel_Left.Name = "panel_Left";
             this.panel_Left.Size = new System.Drawing.Size(170, 448);
             this.panel_Left.TabIndex = 22;
+            // 
+            // button_Evaluate
+            // 
+            this.button_Evaluate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_Evaluate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_Evaluate.FlatAppearance.BorderSize = 0;
+            this.button_Evaluate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Evaluate.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Evaluate.ForeColor = System.Drawing.Color.White;
+            this.button_Evaluate.Location = new System.Drawing.Point(0, 240);
+            this.button_Evaluate.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Evaluate.Name = "button_Evaluate";
+            this.button_Evaluate.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_Evaluate.Size = new System.Drawing.Size(170, 30);
+            this.button_Evaluate.TabIndex = 22;
+            this.button_Evaluate.Text = "Расчет";
+            this.button_Evaluate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Evaluate.UseVisualStyleBackColor = false;
+            this.button_Evaluate.Click += new System.EventHandler(this.button_Evaluate_Click);
             // 
             // MainForm
             // 
@@ -306,5 +328,6 @@
         private System.Windows.Forms.Panel panel_Configuration;
         public System.Windows.Forms.Button button_LayersReady;
         private System.Windows.Forms.Panel panel_Left;
+        public System.Windows.Forms.Button button_Evaluate;
     }
 }

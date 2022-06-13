@@ -83,7 +83,7 @@ namespace Constructor
             panel_Configuration.Visible = !panel_Configuration.Visible;
         }
 
-        private void button_LayersReady_Click(object sender, EventArgs e)
+        public void button_LayersReady_Click(object sender, EventArgs e)
         {
             (OpenedForm as NetworkConfigurationForm).SaveNetwork();
             OpenChildForm(new LearningForm());
@@ -92,9 +92,14 @@ namespace Constructor
             RecolorButtons(button_Learning);
         }
 
-        private void button_Learning_Click(object sender, EventArgs e)
+        public void button_Learning_Click(object sender, EventArgs e)
         {
             OpenChildForm(new LearningForm());
+        }
+
+        public void button_Evaluate_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new EvaluateForm());
         }
     }
 }

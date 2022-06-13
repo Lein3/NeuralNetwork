@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace NeuralNetworkNamespace
@@ -159,7 +158,7 @@ namespace NeuralNetworkNamespace
                 learningData.Mix();
                 LearningStatistics.LogLoss.Add(currentEpochError.Average());
             } 
-            while (LearningStatistics.LogLoss.Last() <= errorLimit);
+            while (LearningStatistics.LogLoss.Last() >= errorLimit);
         }
 
         public void Learn_Backpropogation(LearningData learningData, int epochTimes, double learningRate = 0.1)

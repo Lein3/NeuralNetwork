@@ -29,6 +29,7 @@ namespace Constructor
             panel_FromPrivateDataset.Location = ActivePanelLocation;
             // в конструкторе панели расположены в целях удобства редактирования тут мы их перемещаем на рабочее место
 
+            //TODO: несколько меток
             if (GlobalTemplate.CurrentUser != null)
             {
                 radioButton4.Enabled = true;

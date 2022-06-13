@@ -66,7 +66,7 @@ namespace Constructor
             var learningRate = (double)numericUpDown_LearningRate.Value;
             if (radioButton_ErrorLimit.Checked == true)
             {
-                var errorLimit = (double)numericUpDown_ErrorLimit.Value;
+                var errorLimit = (double)numericUpDown_ErrorLimit.Value / 100;
                 neuralNetwork.Learn_Backpropogation(learningData, errorLimit, learningRate);
             }
             else if (radioButton_EpochCount.Checked == true)
@@ -74,6 +74,11 @@ namespace Constructor
                 var epochTimes = (int)numericUpDown_EpochCount.Value;
                 neuralNetwork.Learn_Backpropogation(learningData, epochTimes, learningRate);
             }
+
+            var parent = this.ParentForm as MainForm;
+            parent.button_Evaluate.Enabled = true;
+            parent.RecolorButtons(parent.button_Evaluate);
+            parent.button_Evaluate_Click(sender, e);
         }
 
         private void button_Replace_Click(object sender, EventArgs e)

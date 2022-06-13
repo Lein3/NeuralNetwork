@@ -91,7 +91,7 @@ namespace NeuralNetworkNamespace.Tests
         public void NeuralNetworkGetAnserNotNull_Test()
         {
             Structure structure = new Structure(5, 1, 5);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             var input = new List<double>() { 1, 1, 1, 1, 1 };
             var anser = neuralNetwork.Predict(input);
             Assert.IsNotNull(anser);
@@ -102,7 +102,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(13, 1, 7);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             Assert.AreEqual(learningData.ParamNamesInput.First(), neuralNetwork.Layers.First().Neurons.First().Name);
             Assert.AreEqual(learningData.ParamNamesInput.Last(), neuralNetwork.Layers.First().Neurons.Last().Name);
@@ -113,7 +113,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(13, 1, 7);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 50);
             Assert.IsNotNull(neuralNetwork.LearningStatistics.MSE);
@@ -129,7 +129,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(7, 1, 10);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 1);
             var real2 = neuralNetwork.Predict_ReturnOnlyValues(learningData.LearningExamples[0].InputSignals);
@@ -173,7 +173,7 @@ namespace NeuralNetworkNamespace.Tests
 
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
             Structure structure = new Structure(3, 1, 6, 6);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 10000);
 
@@ -244,7 +244,7 @@ namespace NeuralNetworkNamespace.Tests
 
             LearningData learningData = new LearningData(inputSignals, expectedOutputs);
             Structure structure = new Structure(false, 9, 2, 5, 4);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Learn_Backpropogation(learningData, 10000);
 
             for (int i = 0; i < 8; i++)
@@ -261,7 +261,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(false, 13, 1, 7);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 5000);
 
@@ -290,7 +290,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\UltraSolution\болезни.csv", ',');
             Structure structure = new Structure(true, 13, 1, 7);
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             Assert.AreEqual(273, learningData.LearningExamples.Count);
             Assert.AreEqual(30, learningData.TestExamples.Count);
@@ -301,7 +301,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\болезни.csv", ',');
             Structure structure = new Structure(30, 1, 15); // 13 10 1 // 13 10 5 1
-            NeuralNetwork neuralNetwork = new NeuralNetwork(structure);
+            NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 1, 0.1);
 

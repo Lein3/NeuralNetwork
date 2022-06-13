@@ -106,6 +106,12 @@
     <Compile Include="Datasets.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EvaluateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EvaluateForm.Designer.cs">
+      <DependentUpon>EvaluateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NeuronControl.resx">
       <DependentUpon>NeuronControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EvaluateForm.resx">
+      <DependentUpon>EvaluateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
