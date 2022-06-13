@@ -144,37 +144,42 @@ namespace NeuralNetworkNamespace
 
         #region Обучение
 
-        public void Learn_Backpropogation(LearningData learningData, double limit, double learningRate = 0.1)
+        public void Learn_Backpropogation(LearningData learningData, double errorLimit, double learningRate = 0.1)
         {
             do
             {
+                var currentEpochError = new List<double>();
                 for (int j = 0; j < learningData.LearningExamples.Count; j++)
                 {
                     LearningExample example = learningData.LearningExamples[j];
-                    Learn_RecalculateError(example);
+                    var currentExampleError = Learn_RecalculateError(example);
+                    currentEpochError.Add(currentExampleError);
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
-            } while (true);
+                LearningStatistics.LogLoss.Add(currentEpochError.Average());
+            } 
+            while (LearningStatistics.LogLoss.Last() <= errorLimit);
         }
 
-        public void Learn_Backpropogation(LearningData learningData, int times, double learningRate = 0.1)
+        public void Learn_Backpropogation(LearningData learningData, int epochTimes, double learningRate = 0.1)
         {
-            for (int i = 0; i < times; i++)
+            for (int i = 0; i < epochTimes; i++)
             {
-                Console.WriteLine("обучили раз" + i.ToString());
+                var currentEpochError = new List<double>();
                 for (int j = 0; j < learningData.LearningExamples.Count; j++)
                 {
                     LearningExample example = learningData.LearningExamples[j];
-                    Learn_RecalculateError(example);
+                    var currentExampleError = Learn_RecalculateError(example);
+                    currentEpochError.Add(currentExampleError);
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
-                Console.WriteLine("обучили раз" + i.ToString());
+                LearningStatistics.LogLoss.Add(currentEpochError.Average());
             }
         }
 
-        private void Learn_RecalculateError(LearningExample example)
+        private double Learn_RecalculateError(LearningExample example)
         {
             Predict(example.InputSignals);
             Layers.Last().CalculateError(example.ExpectedOutputs, CostFunction);
@@ -185,6 +190,10 @@ namespace NeuralNetworkNamespace
                 Layer previousRightLayer = Layers[i + 1];
                 currentLayer.CalculateError(previousRightLayer);
             }
+
+            var actualResult = Predict_ReturnOnlyValues(example.InputSignals)[0];
+            var expectedResult = example.ExpectedOutputs[0];
+            return CostFunction.Function(expectedResult, actualResult);
         }
 
         private void Learn_ChangeWeights(double learningRate)

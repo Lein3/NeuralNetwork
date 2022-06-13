@@ -83,6 +83,11 @@ namespace NeuralNetworkNamespace
 
         public void SplitOnLearningAndTestData(int TestPercents)
         {
+            if (TestExamples != null)
+            {
+                LearningExamples = LearningExamples.Union(TestExamples).ToList();
+            }
+
             TestExamples = new List<LearningExample>();
             int count = LearningExamples.Count / 100 * TestPercents;
             Random random = new Random();
@@ -103,22 +108,33 @@ namespace NeuralNetworkNamespace
         public DataSet ConvertToDotNetDataSet()
         {
             DataSet dataSet = new DataSet();
-            DataTable dataTable = new DataTable();
-            dataSet.Tables.Add(dataTable);
+            DataTable dataTableLearning = new DataTable();
+            dataSet.Tables.Add(dataTableLearning);
+            FillTable(dataTableLearning, LearningExamples);
 
-            foreach (string item in ParamNamesInput.Concat(ParamNamesOutput))
+            if (TestExamples != null)
             {
-                DataColumn dataColumn = new DataColumn(item);
-                dataTable.Columns.Add(dataColumn);
-            }
-            foreach (LearningExample item in LearningExamples)
-            {
-                DataRow dataRow = dataTable.NewRow();
-                dataRow.ItemArray = item.InputSignals.Concat(item.ExpectedOutputs).Cast<object>().ToArray();
-                dataTable.Rows.Add(dataRow);
+                DataTable dataTableTest = new DataTable();
+                dataSet.Tables.Add(dataTableTest);
+                FillTable(dataTableTest, TestExamples);
             }
 
             return dataSet;
+        }
+
+        private void FillTable(DataTable dataTableLearning, List<LearningExample> source)
+        {
+            foreach (string item in ParamNamesInput.Concat(ParamNamesOutput))
+            {
+                DataColumn dataColumn = new DataColumn(item);
+                dataTableLearning.Columns.Add(dataColumn);
+            }
+            foreach (LearningExample item in source)
+            {
+                DataRow dataRow = dataTableLearning.NewRow();
+                dataRow.ItemArray = item.InputSignals.Concat(item.ExpectedOutputs).Cast<object>().ToArray();
+                dataTableLearning.Rows.Add(dataRow);
+            }
         }
 
         public void SwapToParamOutput(int index)

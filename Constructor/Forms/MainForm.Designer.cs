@@ -88,7 +88,6 @@
             // 
             this.button_Learning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button_Learning.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_Learning.Enabled = false;
             this.button_Learning.FlatAppearance.BorderSize = 0;
             this.button_Learning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Learning.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
