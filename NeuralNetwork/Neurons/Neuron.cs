@@ -32,7 +32,7 @@ namespace NeuralNetworkNamespace
 
         public abstract void Learn_ChangeWeights(double learningRate);
 
-        protected void SetActivationFunction(FunctionsEnum function)
+        public void SetActivationFunction(FunctionsEnum function)
         {
             switch (function)
             {

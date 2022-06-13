@@ -50,3 +50,4 @@ C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.xml
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\bin\Debug\EntityFramework.SqlServer.xml
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.AuthorizationForm.resources
 C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.NetworkConfigurationForm.resources
+C:\ProgesForC\Dz\NeuralNetwork\Constructor\obj\Debug\Constructor.LayerCountControl.resources

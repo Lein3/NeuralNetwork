@@ -20,6 +20,10 @@ namespace Constructor
             {
                 label_Error.Text = Math.Round((double)error, 3).ToString();
             }
+            else
+            {
+                label_Error.Text = String.Empty;
+            }
             label_Index.Text = index.ToString();
         }
 

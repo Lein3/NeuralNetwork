@@ -13,6 +13,34 @@ namespace NeuralNetworkNamespace
             Neurons = temp_Neurons;
         }
 
+        public Layer(Structure.NeuronType neuronType, int previousLayerNeuronsCount, int currentLayerNeuronsCount, bool bias = false)
+        {
+            Neurons = new List<Neuron>();
+            for (int i = 0; i < currentLayerNeuronsCount; i++)
+            {
+                switch (neuronType)
+                {
+                    case Structure.NeuronType.Input:
+                        Neuron neuronInput = new Neuron_Input();
+                        Neurons.Add(neuronInput);
+                        break;
+                    case Structure.NeuronType.Normal:
+                        Neuron neuronNormal = new Neuron_Normal(previousLayerNeuronsCount);
+                        Neurons.Add(neuronNormal);
+                        break;
+                    case Structure.NeuronType.Output:
+                        Neuron neuronOutput = new Neuron_Output(previousLayerNeuronsCount);
+                        Neurons.Add(neuronOutput);
+                        break;
+                }             
+            }
+            if (bias == true && neuronType != Structure.NeuronType.Output)
+            {
+                Neuron neuron = new Neuron_Bias();
+                Neurons.Add(neuron);
+            }
+        }
+
         public Layer(LearningData learningData)
         {
             Neurons = new List<Neuron>();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
 
@@ -65,6 +66,13 @@ namespace Constructor
                     DisplayInfo("Выходной нейрон", false);
                     break;
             }
+
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach(var weight in neuron.Weights)
+            {
+                stringBuilder.AppendLine(weight.ToString());
+            }
+            toolTip.SetToolTip(pictureBox_WeightsShow, stringBuilder.ToString());
         }
 
         private void DisplayInfo(string neuronName, bool labelMinMaxVisible)

@@ -212,7 +212,7 @@
             this.button_Configuration.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button_Configuration.Size = new System.Drawing.Size(165, 30);
             this.button_Configuration.TabIndex = 17;
-            this.button_Configuration.Text = "Обучение";
+            this.button_Configuration.Text = "Конфигурация сети";
             this.button_Configuration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Configuration.UseVisualStyleBackColor = false;
             this.button_Configuration.Click += new System.EventHandler(this.button_Configuration_Click);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label_Output = new System.Windows.Forms.Label();
             this.label_Sum = new System.Windows.Forms.Label();
             this.label_Min = new System.Windows.Forms.Label();
@@ -39,9 +40,13 @@
             this.numericUpDown_Min = new System.Windows.Forms.NumericUpDown();
             this.textBox_ChangeNeuronName = new System.Windows.Forms.TextBox();
             this.comboBox_SelectActivationFunction = new System.Windows.Forms.ComboBox();
+            this.label_Weights = new System.Windows.Forms.Label();
+            this.pictureBox_WeightsShow = new System.Windows.Forms.PictureBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CurrentNeuron)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_WeightsShow)).BeginInit();
             this.SuspendLayout();
             // 
             // label_Output
@@ -211,10 +216,35 @@
             this.comboBox_SelectActivationFunction.TabIndex = 45;
             this.comboBox_SelectActivationFunction.Visible = false;
             // 
+            // label_Weights
+            // 
+            this.label_Weights.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Weights.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_Weights.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.label_Weights.ForeColor = System.Drawing.Color.White;
+            this.label_Weights.Location = new System.Drawing.Point(3, 3);
+            this.label_Weights.Name = "label_Weights";
+            this.label_Weights.Size = new System.Drawing.Size(92, 30);
+            this.label_Weights.TabIndex = 46;
+            this.label_Weights.Text = "Весовые коэффициенты";
+            this.label_Weights.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox_WeightsShow
+            // 
+            this.pictureBox_WeightsShow.Image = global::Constructor.Properties.Resources.иконка_справки;
+            this.pictureBox_WeightsShow.Location = new System.Drawing.Point(5, 35);
+            this.pictureBox_WeightsShow.Name = "pictureBox_WeightsShow";
+            this.pictureBox_WeightsShow.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox_WeightsShow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_WeightsShow.TabIndex = 47;
+            this.pictureBox_WeightsShow.TabStop = false;
+            // 
             // CurrentNeuronControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.pictureBox_WeightsShow);
+            this.Controls.Add(this.label_Weights);
             this.Controls.Add(this.comboBox_SelectActivationFunction);
             this.Controls.Add(this.textBox_ChangeNeuronName);
             this.Controls.Add(this.numericUpDown_Min);
@@ -233,6 +263,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CurrentNeuron)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_WeightsShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +282,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_Min;
         private System.Windows.Forms.TextBox textBox_ChangeNeuronName;
         private System.Windows.Forms.ComboBox comboBox_SelectActivationFunction;
+        public System.Windows.Forms.Label label_Weights;
+        private System.Windows.Forms.PictureBox pictureBox_WeightsShow;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
