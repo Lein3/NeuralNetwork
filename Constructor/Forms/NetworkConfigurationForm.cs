@@ -11,7 +11,7 @@ namespace Constructor
     {
         private List<Layer> Layers { get; set; }
         private bool Bias { get; set; } = false;
-        private bool DrawOnCenter { get; set; } = true;
+        private bool DrawOnCenter { get; set; } = false;
 
         public NetworkConfigurationForm()
         {
@@ -105,6 +105,7 @@ namespace Constructor
                 var value = (int)control.numericUpDown_LayerNeuronsCount.Value;
                 values.Add(value);
             }
+
             panel_LayerCountMiddle.Controls.Clear();
             for (int i = 0, x = 5, y = 5; i < (int)numericUpDown_LayersCountMiddle.Value; i++, x += 60)
             {
@@ -161,10 +162,13 @@ namespace Constructor
 
         private void setActivationFunctionToMiddleLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
-            foreach (var layer in Layers)
+            foreach (var layer in Layers.Skip(1))
             {
                 foreach(var neuron in layer.Neurons)
                 {
+                    if (neuron.NeuronType == Structure.NeuronType.Bias)
+                        continue;
+
                     neuron.SetActivationFunction(activationFunction);
                 }
             }
@@ -190,7 +194,20 @@ namespace Constructor
             {
                 Layers.Remove(Layers.Last());
             }
-            var layer = new Layer(Structure.NeuronType.Output, Layers.Last().Neurons.Count, (int)numericUpDown_NeuronsCountOutput.Value, Bias);
+
+            Layer layer = null;
+            if (GlobalTemplate.CurrentScenario != GlobalTemplate.Scenario.multiclassClassification)
+            {
+                layer = new Layer(Structure.NeuronType.Output, Layers.Last().Neurons.Count, (int)numericUpDown_NeuronsCountOutput.Value, Bias);
+            }
+            else
+            {
+                layer = new Layer(Structure.NeuronType.Output, Layers.Last().Neurons.Count, GlobalTemplate.LearningData.ParamNamesOutput.Count);
+                setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum.Softmax, layer);
+                comboBox_SelectActivationFunctionOutput.SelectedIndex = 6;
+                comboBox_SelectActivationFunctionOutput.Enabled = false;
+                numericUpDown_NeuronsCountOutput.Enabled = false;
+            }
             Layers.Add(layer);
             DisplayNetwork();
         }
@@ -206,19 +223,27 @@ namespace Constructor
             }
             if (tabControl.SelectedIndex == 2)
             {
-                numericUpDown_NeuronsCountOutput_ValueChanged(sender, e);
+                numericUpDown_NeuronsCountOutput.Value = GlobalTemplate.LearningData.ParamNamesOutput.Count;
             }
         }
 
-        private void comboBox_SelectActivationFunctionOutput_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox_SelectActivationFunctionOutput_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var activationFunction = (Neuron.ActivationFunctionEnum)comboBox_SelectActivationFunctionMiddle.SelectedValue;
+            var activationFunction = (Neuron.ActivationFunctionEnum)comboBox_SelectActivationFunctionOutput.SelectedValue;
             setActivationFunctionToOutputLayer(activationFunction);
         }
 
         private void setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
             foreach (var neuron in Layers.Last().Neurons)
+            {
+                neuron.SetActivationFunction(activationFunction);
+            }
+        }
+
+        private void setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction, Layer layer)
+        {
+            foreach (var neuron in layer.Neurons)
             {
                 neuron.SetActivationFunction(activationFunction);
             }

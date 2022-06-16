@@ -67,6 +67,7 @@
             this.textBox_PredictMarkName.Name = "textBox_PredictMarkName";
             this.textBox_PredictMarkName.Size = new System.Drawing.Size(187, 22);
             this.textBox_PredictMarkName.TabIndex = 49;
+            this.textBox_PredictMarkName.TextChanged += new System.EventHandler(this.textBox_PredictMarkName_TextChanged);
             // 
             // label_PredictMarkName
             // 
@@ -83,6 +84,7 @@
             // 
             this.button_AddMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button_AddMark.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_AddMark.Enabled = false;
             this.button_AddMark.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button_AddMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_AddMark.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,6 +149,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.Name = "PredictMarkControl";
             this.Size = new System.Drawing.Size(280, 130);
+            this.Load += new System.EventHandler(this.PredictMarkControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,7 +157,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label_PredictMarkName;
         private System.Windows.Forms.PictureBox pictureBox_PredictMarkHelp;
         private System.Windows.Forms.Label label_PredictMark;
         public System.Windows.Forms.Button button_RemoveMark;
@@ -162,5 +164,6 @@
         public System.Windows.Forms.Button button_AddMark;
         public System.Windows.Forms.ComboBox comboBox_PredictMark;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label label_PredictMarkName;
     }
 }

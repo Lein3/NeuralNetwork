@@ -7,7 +7,13 @@ namespace NeuralNetworkNamespace
         public double Function(double x)
         {
             double result = 1 / (1 + Math.Exp(-x));
-            return result;
+
+            if (result == 1)
+                return result - 0.0001;
+            else if (result == 0)
+                return result + 0.0001;
+            else
+                return result;
         }
 
         public double Derivative(double x)

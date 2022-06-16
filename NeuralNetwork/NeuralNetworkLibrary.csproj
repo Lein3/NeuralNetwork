@@ -67,6 +67,7 @@
     <Compile Include="Neurons\Neuron_Input.cs" />
     <Compile Include="Neurons\Neuron_Normal.cs" />
     <Compile Include="Neurons\Neuron_Output.cs" />
+    <Compile Include="ActivationFunctions\None.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Network\Structure.cs" />
     <Compile Include="ActivationFunctions\Sigmoid.cs" />

@@ -416,6 +416,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\пасхалка.png" />
     <None Include="Resources\иконка справки.png" />
   </ItemGroup>
   <ItemGroup>

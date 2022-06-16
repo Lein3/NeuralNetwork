@@ -72,7 +72,7 @@ namespace Constructor
             dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
             textBox_FromFileSaveName.Text = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
             predictMarkControl0.Visible = true;
-            UpdateComboBoxPredictMark();
+            FirstUpdateComboBoxPredictMark();
         }
 
         private void radioButton_Separator1_CheckedChanged(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace Constructor
                 {
                     learningData = new LearningData(dataSet);
                     predictMarkControl0.Visible = true;
-                    UpdateComboBoxPredictMark();
+                    FirstUpdateComboBoxPredictMark();
                 }
                 catch (Exception)
                 {
@@ -188,7 +188,7 @@ namespace Constructor
                 dataGridView.DataSource = dataSet.Tables[0];
                 learningData = new LearningData(dataSet);
                 predictMarkControl0.Visible = true;
-                UpdateComboBoxPredictMark();
+                FirstUpdateComboBoxPredictMark();
             }
         }
         #endregion
@@ -200,18 +200,27 @@ namespace Constructor
                 panel.Visible = false;
         }
 
-        public void UpdateComboBoxPredictMark()
+        public void FirstUpdateComboBoxPredictMark()
         {
             label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
             label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)";
 
             var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
-            foreach(var control in this.Controls.OfType<PredictMarkControl>())
-            {
-                control.comboBox_PredictMark.DataSource = paramsNames;
-                control.comboBox_PredictMark.SelectedIndex = control.comboBox_PredictMark.Items.Count - 1 - control.MarkIndex;
-            }
+            predictMarkControl0.button_AddMark.Enabled = true;
+            predictMarkControl0.comboBox_PredictMark.DataSource = paramsNames;
+            predictMarkControl0.comboBox_PredictMark.SelectedIndex = predictMarkControl0.comboBox_PredictMark.Items.Count - 1;
             button_Next.Visible = true;         
+        }
+
+        public void UpdateAllComboBoxPredictMark()
+        {
+            foreach (PredictMarkControl control in Controls.OfType<PredictMarkControl>())
+            {
+                var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
+                control.comboBox_PredictMark.DataSource = paramsNames;
+                var index = paramsNames.Count - learningData.ParamNamesOutput.Count + control.MarkIndex;
+                control.comboBox_PredictMark.SelectedIndex = index;
+            }
         }
 
         private void button_Next_Click(object sender, EventArgs e)
@@ -256,7 +265,7 @@ namespace Constructor
             createQuery.Append("(");
             for (int i = 0; i < dataSet.Tables[0].Columns.Count; i++)
             {
-                createQuery.Append(dataSet.Tables[0].Columns[i].ColumnName);
+                createQuery.Append($"[{dataSet.Tables[0].Columns[i].ColumnName}]");
                 createQuery.Append(" ");
                 createQuery.Append("float");
                 createQuery.Append(",");

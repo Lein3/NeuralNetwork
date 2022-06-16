@@ -15,7 +15,7 @@ namespace Constructor
         public int MarkIndex { get; set; }
         public PredictMarkControl()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         private void comboBox_PredictMark_SelectionChangeCommitted(object sender, EventArgs e)
@@ -24,15 +24,19 @@ namespace Constructor
             if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.binaryClassification || MarkIndex == 0)
             {
                 parent.learningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
+                parent.dataGridView.DataSource = null;
+                parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
+                parent.FirstUpdateComboBoxPredictMark();
             }
             else
             {
                 parent.learningData.ParamNamesOutput.Add(null);
                 parent.learningData.MoveToParamOutput(comboBox_PredictMark.SelectedIndex);
+                button_AddMark.Enabled = true;
+                parent.dataGridView.DataSource = null;
+                parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
+                parent.UpdateAllComboBoxPredictMark();
             }
-            parent.dataGridView.DataSource = null;
-            parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
-            parent.UpdateComboBoxPredictMark();
         }
 
         private void button_AddMark_Click(object sender, EventArgs e)
@@ -44,7 +48,6 @@ namespace Constructor
             var lastLocationY = lastpredictMarkControl.Location.Y;
             var predictMarkControl = new PredictMarkControl() { MarkIndex = lastIndex, Location = new Point(lastLocationX, lastLocationY) };
             parent.Controls.Add(predictMarkControl);
-            parent.UpdateComboBoxPredictMark();
         }
 
         private void button_RemoveMark_Click(object sender, EventArgs e)
@@ -56,7 +59,29 @@ namespace Constructor
 
             var parent = ParentForm as DataForm;
             parent.Controls.Remove(this);
-            parent.UpdateComboBoxPredictMark();
+            parent.learningData.MoveToParamInput(MarkIndex);
+            parent.dataGridView.DataSource = null;
+            parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
+            parent.UpdateAllComboBoxPredictMark();
+        }
+
+        private void PredictMarkControl_Load(object sender, EventArgs e)
+        {
+            var parent = ParentForm as DataForm;
+            comboBox_PredictMark.DataSource = parent?.learningData?.ParamNamesInput.Concat(parent.learningData.ParamNamesOutput).ToList();
+        }
+
+        private void textBox_PredictMarkName_TextChanged(object sender, EventArgs e)
+        {
+            var parent = ParentForm as DataForm;
+            if (parent.learningData.ClassNames.Count <= MarkIndex)
+            {
+                for (int i = parent.learningData.ClassNames.Count; i < MarkIndex + 1; i++)
+                {
+                    parent.learningData.ClassNames.Add("");
+                }
+                parent.learningData.ClassNames[MarkIndex] = textBox_PredictMarkName.Text;
+            }
         }
     }
 }

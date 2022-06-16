@@ -78,6 +78,7 @@
             this.label_Element28 = new System.Windows.Forms.Label();
             this.label_Element25 = new System.Windows.Forms.Label();
             this.button_Registration = new System.Windows.Forms.Button();
+            this.pictureBox_Pashalka = new System.Windows.Forms.PictureBox();
             this.panel_Top.SuspendLayout();
             this.panel_UserInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UserPicture)).BeginInit();
@@ -87,6 +88,7 @@
             this.panel_Registration.SuspendLayout();
             this.panel_LoginRegistration.SuspendLayout();
             this.panel_PasswordRegistration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Pashalka)).BeginInit();
             this.SuspendLayout();
             // 
             // button_AutoMode
@@ -731,6 +733,15 @@
             this.button_Registration.UseVisualStyleBackColor = false;
             this.button_Registration.Click += new System.EventHandler(this.button_Registration_Click);
             // 
+            // pictureBox_Pashalka
+            // 
+            this.pictureBox_Pashalka.Location = new System.Drawing.Point(275, 455);
+            this.pictureBox_Pashalka.Name = "pictureBox_Pashalka";
+            this.pictureBox_Pashalka.Size = new System.Drawing.Size(410, 300);
+            this.pictureBox_Pashalka.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Pashalka.TabIndex = 31;
+            this.pictureBox_Pashalka.TabStop = false;
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,6 +749,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(700, 800);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox_Pashalka);
             this.Controls.Add(this.label_Registration);
             this.Controls.Add(this.panel_Registration);
             this.Controls.Add(this.panel_Top);
@@ -774,6 +786,7 @@
             this.panel_LoginRegistration.PerformLayout();
             this.panel_PasswordRegistration.ResumeLayout(false);
             this.panel_PasswordRegistration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Pashalka)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -830,5 +843,6 @@
         private System.Windows.Forms.Label label_Element28;
         private System.Windows.Forms.Label label_Element25;
         private System.Windows.Forms.Button button_Registration;
+        private System.Windows.Forms.PictureBox pictureBox_Pashalka;
     }
 }

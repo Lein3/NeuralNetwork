@@ -160,6 +160,25 @@ namespace NeuralNetworkNamespace
             }
         }
 
+        public void MoveToParamInput(int index)
+        {
+            try
+            {
+                ParamNamesInput.Add(ParamNamesOutput[index]);
+                ParamNamesOutput.RemoveAt(index);
+
+                foreach (LearningExample example in LearningExamples)
+                {
+                    example.InputSignals.Add(example.ExpectedOutputs[index]);
+                    example.ExpectedOutputs.RemoveAt(index);
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
         public void MoveToParamOutput(int index)
         {
             try
@@ -175,6 +194,7 @@ namespace NeuralNetworkNamespace
             }
             catch
             {
+                ParamNamesOutput.RemoveAt(ParamNamesOutput.Count - 1);
                 return;
             }
         }

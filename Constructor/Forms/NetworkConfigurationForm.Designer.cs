@@ -253,7 +253,7 @@
             this.comboBox_SelectActivationFunctionOutput.Name = "comboBox_SelectActivationFunctionOutput";
             this.comboBox_SelectActivationFunctionOutput.Size = new System.Drawing.Size(123, 23);
             this.comboBox_SelectActivationFunctionOutput.TabIndex = 50;
-            this.comboBox_SelectActivationFunctionOutput.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectActivationFunctionOutput_SelectedIndexChanged);
+            this.comboBox_SelectActivationFunctionOutput.SelectionChangeCommitted += new System.EventHandler(this.comboBox_SelectActivationFunctionOutput_SelectionChangeCommitted);
             // 
             // numericUpDown_NeuronsCountOutput
             // 
@@ -299,8 +299,6 @@
             // 
             // checkBox_DrawOnCenter
             // 
-            this.checkBox_DrawOnCenter.Checked = true;
-            this.checkBox_DrawOnCenter.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_DrawOnCenter.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.checkBox_DrawOnCenter.ForeColor = System.Drawing.Color.White;
             this.checkBox_DrawOnCenter.Location = new System.Drawing.Point(15, 55);

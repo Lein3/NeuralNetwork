@@ -10,6 +10,7 @@ namespace Constructor
 {
     public partial class AuthorizationForm : Form
     {
+        int pashalka = 0;
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -86,6 +87,15 @@ namespace Constructor
                 label_Authorization.Location = new Point(label_Authorization.Location.X, label_Authorization.Location.Y + 12);
                 panel_Registration.Location = new Point(panel_Registration.Location.X, panel_Registration.Location.Y - 12);
                 label_Registration.Location = new Point(label_Registration.Location.X, label_Registration.Location.Y - 12);
+            }
+            pashalka++;
+            if (pashalka >= 4)
+            {
+                Size = new Size(700, 800);
+            }
+            if (pashalka == 6)
+            {
+                pictureBox_Pashalka.Image = Resources.пасхалка;
             }
         }
 

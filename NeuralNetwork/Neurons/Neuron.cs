@@ -37,7 +37,7 @@ namespace NeuralNetworkNamespace
             switch (function)
             {
                 case ActivationFunctionEnum.None:
-                    ActivationFunction = null;
+                    ActivationFunction = new None();
                     break;
                 case ActivationFunctionEnum.ELU:
                     ActivationFunction = null;
