@@ -55,6 +55,7 @@
             this.button_RemoveMark.TabIndex = 50;
             this.button_RemoveMark.Text = "-";
             this.button_RemoveMark.UseVisualStyleBackColor = false;
+            this.button_RemoveMark.Click += new System.EventHandler(this.button_RemoveMark_Click);
             // 
             // textBox_PredictMarkName
             // 
@@ -93,6 +94,7 @@
             this.button_AddMark.TabIndex = 47;
             this.button_AddMark.Text = "+";
             this.button_AddMark.UseVisualStyleBackColor = false;
+            this.button_AddMark.Click += new System.EventHandler(this.button_AddMark_Click);
             // 
             // pictureBox_PredictMarkHelp
             // 

@@ -17,13 +17,17 @@ namespace NeuralNetworkNamespace
 
         public LearningData()
         {
-            
+            ParamNamesInput = new List<string>();
+            ParamNamesOutput = new List<string>();
+            ClassNames = new List<string>();
+            LearningExamples = new List<LearningExample>();
         }
 
         public LearningData(string path, char separator)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             LearningExamples = new List<LearningExample>();
+            ClassNames = new List<string>();
             using (StreamReader streamReader = new StreamReader(path))
             {
                 List<string> paramNames = streamReader.ReadLine().Split(separator).ToList();
@@ -52,6 +56,7 @@ namespace NeuralNetworkNamespace
                 throw new Exception();
 
             LearningExamples = new List<LearningExample>();
+            ClassNames = new List<string>();
             for (int i = 0; i < temp_inputSignals.Count; i++)
             {
                 LearningExample LearningExample = new LearningExample(temp_inputSignals[i].ToList(), temp_expectedOutputs[i].ToList());
@@ -64,6 +69,7 @@ namespace NeuralNetworkNamespace
             ParamNamesInput = new List<string>();
             ParamNamesOutput = new List<string>();
             LearningExamples = new List<LearningExample>();
+            ClassNames = new List<string>();
 
             DataTable dataTable = dataSet.Tables[0];
             foreach (DataColumn column in dataTable.Columns)
@@ -154,9 +160,30 @@ namespace NeuralNetworkNamespace
             }
         }
 
+        public void MoveToParamOutput(int index)
+        {
+            try
+            {
+                ParamNamesOutput[ParamNamesOutput.Count - 1] = ParamNamesInput[index];
+                ParamNamesInput.RemoveAt(index);
+
+                foreach (LearningExample example in LearningExamples)
+                {
+                    example.ExpectedOutputs.Add(example.InputSignals[index]);
+                    example.InputSignals.RemoveAt(index);
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
         private Dictionary<string, int> SelectClassesCountInformation()
         {
-            if (ParamNamesOutput.Count == 1)
+            if (ClassNames.Count == 0)
+                return null;
+            else if (ParamNamesOutput.Count == 1)
                 return GetBinaryClassesCountInformation();
             else
                 return GetMultiClassesCountInformation();

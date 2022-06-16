@@ -33,6 +33,11 @@ namespace Constructor
             {
                 radioButton4.Enabled = true;
             }
+            if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.binaryClassification)
+            {
+                predictMarkControl0.button_AddMark.Visible = false;
+                predictMarkControl0.button_RemoveMark.Visible = false;
+            }
         }
 
         #region Из Файла
@@ -66,7 +71,7 @@ namespace Constructor
             learningData = new LearningData(openFileDialog.FileName, FileSeparator);
             dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
             textBox_FromFileSaveName.Text = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-            predictMarkControl.Visible = true;
+            predictMarkControl0.Visible = true;
             UpdateComboBoxPredictMark();
         }
 
@@ -132,12 +137,12 @@ namespace Constructor
                 try
                 {
                     learningData = new LearningData(dataSet);
-                    predictMarkControl.Visible = true;
+                    predictMarkControl0.Visible = true;
                     UpdateComboBoxPredictMark();
                 }
                 catch (Exception)
                 {
-                    predictMarkControl.comboBox_PredictMark.DataSource = null;
+                    predictMarkControl0.comboBox_PredictMark.DataSource = null;
                     MessageBox.Show("Выбранный набор данных не может быть выбран для обучения нейронной сети");
                 }
             }
@@ -182,7 +187,7 @@ namespace Constructor
                 dataGridView.DataSource = null;
                 dataGridView.DataSource = dataSet.Tables[0];
                 learningData = new LearningData(dataSet);
-                predictMarkControl.Visible = true;
+                predictMarkControl0.Visible = true;
                 UpdateComboBoxPredictMark();
             }
         }
@@ -201,8 +206,11 @@ namespace Constructor
             label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)";
 
             var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
-            predictMarkControl.comboBox_PredictMark.DataSource = paramsNames;
-            predictMarkControl.comboBox_PredictMark.SelectedIndex = predictMarkControl.comboBox_PredictMark.Items.Count - 1;
+            foreach(var control in this.Controls.OfType<PredictMarkControl>())
+            {
+                control.comboBox_PredictMark.DataSource = paramsNames;
+                control.comboBox_PredictMark.SelectedIndex = control.comboBox_PredictMark.Items.Count - 1 - control.MarkIndex;
+            }
             button_Next.Visible = true;         
         }
 
