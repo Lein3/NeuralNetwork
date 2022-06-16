@@ -41,6 +41,7 @@
             this.panel_Configuration = new System.Windows.Forms.Panel();
             this.button_LayersReady = new System.Windows.Forms.Button();
             this.panel_Left = new System.Windows.Forms.Panel();
+            this.button_SaveModel = new System.Windows.Forms.Button();
             this.button_Evaluate = new System.Windows.Forms.Button();
             this.panel_Configuration.SuspendLayout();
             this.panel_Left.SuspendLayout();
@@ -259,6 +260,7 @@
             // 
             // panel_Left
             // 
+            this.panel_Left.Controls.Add(this.button_SaveModel);
             this.panel_Left.Controls.Add(this.button_Evaluate);
             this.panel_Left.Controls.Add(this.button_Learning);
             this.panel_Left.Controls.Add(this.panel_Configuration);
@@ -270,10 +272,31 @@
             this.panel_Left.Size = new System.Drawing.Size(170, 448);
             this.panel_Left.TabIndex = 22;
             // 
+            // button_SaveModel
+            // 
+            this.button_SaveModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_SaveModel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_SaveModel.Enabled = false;
+            this.button_SaveModel.FlatAppearance.BorderSize = 0;
+            this.button_SaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SaveModel.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_SaveModel.ForeColor = System.Drawing.Color.White;
+            this.button_SaveModel.Location = new System.Drawing.Point(0, 270);
+            this.button_SaveModel.Margin = new System.Windows.Forms.Padding(0);
+            this.button_SaveModel.Name = "button_SaveModel";
+            this.button_SaveModel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_SaveModel.Size = new System.Drawing.Size(170, 30);
+            this.button_SaveModel.TabIndex = 23;
+            this.button_SaveModel.Text = "Использование";
+            this.button_SaveModel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_SaveModel.UseVisualStyleBackColor = false;
+            this.button_SaveModel.Click += new System.EventHandler(this.button_SaveModel_Click);
+            // 
             // button_Evaluate
             // 
             this.button_Evaluate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.button_Evaluate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_Evaluate.Enabled = false;
             this.button_Evaluate.FlatAppearance.BorderSize = 0;
             this.button_Evaluate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Evaluate.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -329,5 +352,6 @@
         public System.Windows.Forms.Button button_LayersReady;
         private System.Windows.Forms.Panel panel_Left;
         public System.Windows.Forms.Button button_Evaluate;
+        public System.Windows.Forms.Button button_SaveModel;
     }
 }

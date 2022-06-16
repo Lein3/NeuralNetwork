@@ -77,6 +77,7 @@ namespace Constructor
 
             var parent = this.ParentForm as MainForm;
             parent.button_Evaluate.Enabled = true;
+            parent.button_SaveModel.Enabled = true;
             parent.RecolorButtons(parent.button_Evaluate);
             parent.button_Evaluate_Click(sender, e);
         }

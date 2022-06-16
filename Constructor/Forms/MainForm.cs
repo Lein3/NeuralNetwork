@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Linq;
 using Constructor.Properties;
 using System.Drawing;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Constructor
 {
@@ -100,6 +102,18 @@ namespace Constructor
         public void button_Evaluate_Click(object sender, EventArgs e)
         {
             OpenChildForm(new EvaluateForm());
+        }
+
+        private void button_SaveModel_Click(object sender, EventArgs e)
+        {
+            var folderFileDialog = new FolderBrowserDialog();
+            if (folderFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //using (FileStream fileStream = new FileStream($"{folderFileDialog.SelectedPath} + {DateTime.Today.ToString()}", FileMode.OpenOrCreate)
+                //{
+
+                //}
+            }
         }
     }
 }

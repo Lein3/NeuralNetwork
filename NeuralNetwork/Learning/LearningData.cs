@@ -10,6 +10,8 @@ namespace NeuralNetworkNamespace
     {
         public List<string> ParamNamesInput { get; set; }
         public List<string> ParamNamesOutput { get; set; }
+        public List<string> ClassNames { get; set; }
+        public Dictionary<string, int> ClassesCount => SelectClassesCountInformation();
         public List<LearningExample> LearningExamples { get; set; }
         public List<LearningExample> TestExamples { get; set; }
 
@@ -150,6 +152,53 @@ namespace NeuralNetworkNamespace
             {
                 return;
             }
+        }
+
+        private Dictionary<string, int> SelectClassesCountInformation()
+        {
+            if (ParamNamesOutput.Count == 1)
+                return GetBinaryClassesCountInformation();
+            else
+                return GetMultiClassesCountInformation();
+        }
+
+        private Dictionary<string, int> GetBinaryClassesCountInformation()
+        {
+            var dictionary = new Dictionary<string, int>();
+            int count0 = 0;
+            int count1 = 0;
+            if (TestExamples != null)
+            {
+                count0 = LearningExamples.Concat(TestExamples).Where(item => item.ExpectedOutputs[0] == 0).ToList().Count;
+                count1 = LearningExamples.Concat(TestExamples).Where(item => item.ExpectedOutputs[0] == 1).ToList().Count;
+            }
+            else
+            {
+                count0 = LearningExamples.Where(item => item.ExpectedOutputs[0] == 0).ToList().Count;
+                count1 = LearningExamples.Where(item => item.ExpectedOutputs[0] == 1).ToList().Count;
+            }
+            dictionary.Add(ClassNames[0], count1);
+            dictionary.Add("не " + ClassNames[0], count0);
+            return dictionary;
+        }
+
+        private Dictionary<string, int> GetMultiClassesCountInformation()
+        {
+            var dictionary = new Dictionary<string, int>();
+            for (int i = 0; i < ClassNames.Count; i++)
+            {
+                int count;
+                if (TestExamples != null)
+                {
+                    count = LearningExamples.Concat(TestExamples).Where(item => item.ExpectedOutputs[i] == 1).ToList().Count;
+                }
+                else
+                {
+                    count = LearningExamples.Where(item => item.ExpectedOutputs[i] == 1).ToList().Count;
+                }
+                dictionary.Add(ClassNames[i], count);
+            }
+            return dictionary;
         }
     }
 }

@@ -33,6 +33,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.scenarioControl1 = new Constructor.ScenarioControl();
+            this.scenarioControl2 = new Constructor.ScenarioControl();
+            this.scenarioControl4 = new Constructor.ScenarioControl();
+            this.scenarioControl5 = new Constructor.ScenarioControl();
+            this.scenarioControl3 = new Constructor.ScenarioControl();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -40,11 +45,6 @@
             this.scenarioControl6 = new Constructor.ScenarioControl();
             this.scenarioControl7 = new Constructor.ScenarioControl();
             this.scenarioControl8 = new Constructor.ScenarioControl();
-            this.scenarioControl1 = new Constructor.ScenarioControl();
-            this.scenarioControl2 = new Constructor.ScenarioControl();
-            this.scenarioControl3 = new Constructor.ScenarioControl();
-            this.scenarioControl4 = new Constructor.ScenarioControl();
-            this.scenarioControl5 = new Constructor.ScenarioControl();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -100,13 +100,96 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.scenarioControl1);
             this.flowLayoutPanel1.Controls.Add(this.scenarioControl2);
-            this.flowLayoutPanel1.Controls.Add(this.scenarioControl3);
             this.flowLayoutPanel1.Controls.Add(this.scenarioControl4);
             this.flowLayoutPanel1.Controls.Add(this.scenarioControl5);
+            this.flowLayoutPanel1.Controls.Add(this.scenarioControl3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 155);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1008, 670);
             this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // scenarioControl1
+            // 
+            this.scenarioControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.scenarioControl1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.scenarioControl1.Location = new System.Drawing.Point(3, 3);
+            this.scenarioControl1.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
+            this.scenarioControl1.MaximumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl1.MinimumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl1.Name = "scenarioControl1";
+            this.scenarioControl1.ScenarioDescription = "Классификация текстовых данных на несколько категорий, например прогнозирование т" +
+    "ого, являются ли комментарии позитивными или негативными.";
+            this.scenarioControl1.ScenarioImage = global::Constructor.Properties.Resources.бинарная;
+            this.scenarioControl1.ScenarioName = "Бинарная классификация";
+            this.scenarioControl1.Size = new System.Drawing.Size(220, 300);
+            this.scenarioControl1.TabIndex = 4;
+            this.scenarioControl1.DoubleClick += new System.EventHandler(this.scenarioControl1_DoubleClick);
+            // 
+            // scenarioControl2
+            // 
+            this.scenarioControl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.scenarioControl2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.scenarioControl2.Location = new System.Drawing.Point(253, 3);
+            this.scenarioControl2.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
+            this.scenarioControl2.MaximumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl2.MinimumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl2.Name = "scenarioControl2";
+            this.scenarioControl2.ScenarioDescription = "Классификация информации на несколько категорий, например, определение болезни че" +
+    "ловека.";
+            this.scenarioControl2.ScenarioImage = global::Constructor.Properties.Resources.мультиклассификация;
+            this.scenarioControl2.ScenarioName = "Мультиклассовая классификация";
+            this.scenarioControl2.Size = new System.Drawing.Size(220, 300);
+            this.scenarioControl2.TabIndex = 5;
+            this.scenarioControl2.DoubleClick += new System.EventHandler(this.scenarioControl2_DoubleClick);
+            // 
+            // scenarioControl4
+            // 
+            this.scenarioControl4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.scenarioControl4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.scenarioControl4.Location = new System.Drawing.Point(503, 3);
+            this.scenarioControl4.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
+            this.scenarioControl4.MaximumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl4.MinimumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl4.Name = "scenarioControl4";
+            this.scenarioControl4.ScenarioDescription = "Создание списка предлагаемых элементов для определенного пользователя, например р" +
+    "екомендуемые продукты.";
+            this.scenarioControl4.ScenarioImage = global::Constructor.Properties.Resources.рекомендация;
+            this.scenarioControl4.ScenarioName = "Классификация нескольких меток";
+            this.scenarioControl4.Size = new System.Drawing.Size(220, 300);
+            this.scenarioControl4.TabIndex = 7;
+            this.scenarioControl4.DoubleClick += new System.EventHandler(this.scenarioControl4_DoubleClick);
+            // 
+            // scenarioControl5
+            // 
+            this.scenarioControl5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.scenarioControl5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.scenarioControl5.Location = new System.Drawing.Point(753, 3);
+            this.scenarioControl5.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
+            this.scenarioControl5.MaximumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl5.MinimumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl5.Name = "scenarioControl5";
+            this.scenarioControl5.ScenarioDescription = "Обнаружение и идентификация объектов на изображениях, например, обнаружение автом" +
+    "обилей.";
+            this.scenarioControl5.ScenarioImage = global::Constructor.Properties.Resources.обнаружение_объектов;
+            this.scenarioControl5.ScenarioName = "Обнаружение объектов (недоступно)";
+            this.scenarioControl5.Size = new System.Drawing.Size(220, 300);
+            this.scenarioControl5.TabIndex = 8;
+            // 
+            // scenarioControl3
+            // 
+            this.scenarioControl3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.scenarioControl3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.scenarioControl3.Location = new System.Drawing.Point(3, 333);
+            this.scenarioControl3.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
+            this.scenarioControl3.MaximumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl3.MinimumSize = new System.Drawing.Size(220, 300);
+            this.scenarioControl3.Name = "scenarioControl3";
+            this.scenarioControl3.ScenarioDescription = "Прогнозирование числовых значений на основе данных (регрессия), например, прогноз" +
+    " цены дома на основе таких признаков как размер,  расположение и т.д.";
+            this.scenarioControl3.ScenarioImage = global::Constructor.Properties.Resources.прогнозирование;
+            this.scenarioControl3.ScenarioName = "Прогнозирование значений (недоступно)";
+            this.scenarioControl3.Size = new System.Drawing.Size(220, 300);
+            this.scenarioControl3.TabIndex = 9;
             // 
             // linkLabel2
             // 
@@ -199,91 +282,9 @@
             this.scenarioControl8.ScenarioDescription = "Определение групп связанных элементов без предварительного указания меток и катег" +
     "орий. ";
             this.scenarioControl8.ScenarioImage = global::Constructor.Properties.Resources.кластеризация;
-            this.scenarioControl8.ScenarioName = "Кластеризация (недоступно)";
+            this.scenarioControl8.ScenarioName = "Обучение без учителя";
             this.scenarioControl8.Size = new System.Drawing.Size(220, 300);
             this.scenarioControl8.TabIndex = 6;
-            // 
-            // scenarioControl1
-            // 
-            this.scenarioControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.scenarioControl1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.scenarioControl1.Location = new System.Drawing.Point(3, 3);
-            this.scenarioControl1.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
-            this.scenarioControl1.MaximumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl1.MinimumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl1.Name = "scenarioControl1";
-            this.scenarioControl1.ScenarioDescription = "Классификация текстовых данных на несколько категорий, например прогнозирование т" +
-    "ого, являются ли комментарии позитивными или негативными.";
-            this.scenarioControl1.ScenarioImage = global::Constructor.Properties.Resources.бинарная;
-            this.scenarioControl1.ScenarioName = "Бинарная классификация";
-            this.scenarioControl1.Size = new System.Drawing.Size(220, 300);
-            this.scenarioControl1.TabIndex = 4;
-            this.scenarioControl1.DoubleClick += new System.EventHandler(this.scenarioControl1_DoubleClick);
-            // 
-            // scenarioControl2
-            // 
-            this.scenarioControl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.scenarioControl2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.scenarioControl2.Location = new System.Drawing.Point(253, 3);
-            this.scenarioControl2.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
-            this.scenarioControl2.MaximumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl2.MinimumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl2.Name = "scenarioControl2";
-            this.scenarioControl2.ScenarioDescription = "Классификация информации на несколько категорий, например, определение болезни че" +
-    "ловека.";
-            this.scenarioControl2.ScenarioImage = global::Constructor.Properties.Resources.мультиклассификация;
-            this.scenarioControl2.ScenarioName = "Мультиклассовая классификация";
-            this.scenarioControl2.Size = new System.Drawing.Size(220, 300);
-            this.scenarioControl2.TabIndex = 5;
-            this.scenarioControl2.DoubleClick += new System.EventHandler(this.scenarioControl2_DoubleClick);
-            // 
-            // scenarioControl3
-            // 
-            this.scenarioControl3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.scenarioControl3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.scenarioControl3.Location = new System.Drawing.Point(503, 3);
-            this.scenarioControl3.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
-            this.scenarioControl3.MaximumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl3.MinimumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl3.Name = "scenarioControl3";
-            this.scenarioControl3.ScenarioDescription = "Прогнозирование числовых значений на основе данных (регрессия), например, прогноз" +
-    " цены дома на основе таких признаков как размер,  расположение и т.д.";
-            this.scenarioControl3.ScenarioImage = global::Constructor.Properties.Resources.прогнозирование;
-            this.scenarioControl3.ScenarioName = "Прогнозирование значений (недоступно)";
-            this.scenarioControl3.Size = new System.Drawing.Size(220, 300);
-            this.scenarioControl3.TabIndex = 6;
-            // 
-            // scenarioControl4
-            // 
-            this.scenarioControl4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.scenarioControl4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.scenarioControl4.Location = new System.Drawing.Point(753, 3);
-            this.scenarioControl4.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
-            this.scenarioControl4.MaximumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl4.MinimumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl4.Name = "scenarioControl4";
-            this.scenarioControl4.ScenarioDescription = "Создание списка предлагаемых элементов для определенного пользователя, например р" +
-    "екомендуемые продукты.";
-            this.scenarioControl4.ScenarioImage = global::Constructor.Properties.Resources.рекомендация;
-            this.scenarioControl4.ScenarioName = "Рекомендация (недоступно)";
-            this.scenarioControl4.Size = new System.Drawing.Size(220, 300);
-            this.scenarioControl4.TabIndex = 7;
-            // 
-            // scenarioControl5
-            // 
-            this.scenarioControl5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.scenarioControl5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.scenarioControl5.Location = new System.Drawing.Point(3, 333);
-            this.scenarioControl5.Margin = new System.Windows.Forms.Padding(3, 3, 27, 27);
-            this.scenarioControl5.MaximumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl5.MinimumSize = new System.Drawing.Size(220, 300);
-            this.scenarioControl5.Name = "scenarioControl5";
-            this.scenarioControl5.ScenarioDescription = "Обнаружение и идентификация объектов на изображениях, например, обнаружение автом" +
-    "обилей.";
-            this.scenarioControl5.ScenarioImage = global::Constructor.Properties.Resources.обнаружение_объектов;
-            this.scenarioControl5.ScenarioName = "Обнаружение объектов (недоступно)";
-            this.scenarioControl5.Size = new System.Drawing.Size(220, 300);
-            this.scenarioControl5.TabIndex = 8;
             // 
             // SelectScenarioForm
             // 
@@ -291,7 +292,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1200, 960);
+            this.ClientSize = new System.Drawing.Size(1200, 950);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.label4);
@@ -320,7 +321,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private ScenarioControl scenarioControl1;
         private ScenarioControl scenarioControl2;
-        private ScenarioControl scenarioControl3;
         private ScenarioControl scenarioControl4;
         private ScenarioControl scenarioControl5;
         private System.Windows.Forms.LinkLabel linkLabel2;
@@ -330,5 +330,6 @@
         private ScenarioControl scenarioControl6;
         private ScenarioControl scenarioControl7;
         private ScenarioControl scenarioControl8;
+        private ScenarioControl scenarioControl3;
     }
 }

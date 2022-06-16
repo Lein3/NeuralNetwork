@@ -14,7 +14,7 @@ namespace Constructor
 {
     public partial class DataForm : Form
     {
-        private LearningData learningData { get; set; }
+        public LearningData learningData { get; set; }
         private Point ActivePanelLocation { get; set; } = new Point(300, 150);
         private char FileSeparator { get; set; } = ';';
         private SqlConnectionStringBuilder dynamicSqlConnectionStringBuilder { get; set; }
@@ -29,7 +29,6 @@ namespace Constructor
             panel_FromPrivateDataset.Location = ActivePanelLocation;
             // в конструкторе панели расположены в целях удобства редактирования тут мы их перемещаем на рабочее место
 
-            //TODO: несколько меток
             if (GlobalTemplate.CurrentUser != null)
             {
                 radioButton4.Enabled = true;
@@ -67,7 +66,18 @@ namespace Constructor
             learningData = new LearningData(openFileDialog.FileName, FileSeparator);
             dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
             textBox_FromFileSaveName.Text = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+            predictMarkControl.Visible = true;
             UpdateComboBoxPredictMark();
+        }
+
+        private void radioButton_Separator1_CheckedChanged(object sender, EventArgs e)
+        {
+            FileSeparator = ';';
+        }
+
+        private void radioButton_Separator2_CheckedChanged(object sender, EventArgs e)
+        {
+            FileSeparator = ',';
         }
         #endregion
 
@@ -122,11 +132,12 @@ namespace Constructor
                 try
                 {
                     learningData = new LearningData(dataSet);
+                    predictMarkControl.Visible = true;
                     UpdateComboBoxPredictMark();
                 }
                 catch (Exception)
                 {
-                    comboBox_PredictMark.DataSource = null;
+                    predictMarkControl.comboBox_PredictMark.DataSource = null;
                     MessageBox.Show("Выбранный набор данных не может быть выбран для обучения нейронной сети");
                 }
             }
@@ -171,6 +182,7 @@ namespace Constructor
                 dataGridView.DataSource = null;
                 dataGridView.DataSource = dataSet.Tables[0];
                 learningData = new LearningData(dataSet);
+                predictMarkControl.Visible = true;
                 UpdateComboBoxPredictMark();
             }
         }
@@ -183,22 +195,14 @@ namespace Constructor
                 panel.Visible = false;
         }
 
-        private void comboBox_PredictMark_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            learningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
-            dataGridView.DataSource = null;
-            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
-            UpdateComboBoxPredictMark();
-        }
-
-        private void UpdateComboBoxPredictMark()
+        public void UpdateComboBoxPredictMark()
         {
             label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
             label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)";
 
             var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
-            comboBox_PredictMark.DataSource = paramsNames;
-            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1;
+            predictMarkControl.comboBox_PredictMark.DataSource = paramsNames;
+            predictMarkControl.comboBox_PredictMark.SelectedIndex = predictMarkControl.comboBox_PredictMark.Items.Count - 1;
             button_Next.Visible = true;         
         }
 
@@ -295,18 +299,6 @@ namespace Constructor
                 sqlTransaction.Commit();
             }        
         }
-
-        private void radioButton_Separator1_CheckedChanged(object sender, EventArgs e)
-        {
-            FileSeparator = ';';
-        }
-
-        private void radioButton_Separator2_CheckedChanged(object sender, EventArgs e)
-        {
-            FileSeparator = ',';
-        }
-
-
         #endregion
     }
 }

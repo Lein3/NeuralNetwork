@@ -27,5 +27,14 @@ namespace Constructor
             parent.RecolorButtons(parent.button_Data);
             parent.button_Data_Click(sender, e);
         }
+
+        private void scenarioControl4_DoubleClick(object sender, EventArgs e)
+        {
+            GlobalTemplate.CurrentScenario = GlobalTemplate.Scenario.multimarkClassification;
+            var parent = this.ParentForm as MainForm;
+            parent.button_Data.Enabled = true;
+            parent.RecolorButtons(parent.button_Data);
+            parent.button_Data_Click(sender, e);
+        }
     }
 }

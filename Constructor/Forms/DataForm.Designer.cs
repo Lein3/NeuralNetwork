@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_Description = new System.Windows.Forms.Label();
             this.Label_Description3 = new System.Windows.Forms.LinkLabel();
             this.label_Description2 = new System.Windows.Forms.Label();
@@ -59,11 +58,6 @@
             this.panel_FromPublicDataset = new System.Windows.Forms.Panel();
             this.comboBox_SelectPublicDataset = new System.Windows.Forms.ComboBox();
             this.label_SelectPublicDataset = new System.Windows.Forms.Label();
-            this.comboBox_PredictMark = new System.Windows.Forms.ComboBox();
-            this.label_PredictMark = new System.Windows.Forms.Label();
-            this.pictureBox_PredictMarkHelp = new System.Windows.Forms.PictureBox();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.linkLabel_PredictMarkParams = new System.Windows.Forms.LinkLabel();
             this.label_DataPreview = new System.Windows.Forms.Label();
             this.label_DataPreviewInfo = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -71,10 +65,10 @@
             this.comboBox_SelectPrivateDataset = new System.Windows.Forms.ComboBox();
             this.label_SelectPrivateDataset = new System.Windows.Forms.Label();
             this.button_Next = new System.Windows.Forms.Button();
+            this.predictMarkControl = new Constructor.PredictMarkControl();
             this.panel_FromFile.SuspendLayout();
             this.panel_FromDatabase.SuspendLayout();
             this.panel_FromPublicDataset.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel_FromPrivateDataset.SuspendLayout();
             this.SuspendLayout();
@@ -204,7 +198,7 @@
             this.panel_FromFile.Controls.Add(this.label_FileSeparatorSing);
             this.panel_FromFile.Controls.Add(this.button_FromFile);
             this.panel_FromFile.Controls.Add(this.textBox_FilePath);
-            this.panel_FromFile.Location = new System.Drawing.Point(305, 105);
+            this.panel_FromFile.Location = new System.Drawing.Point(575, 105);
             this.panel_FromFile.Name = "panel_FromFile";
             this.panel_FromFile.Size = new System.Drawing.Size(540, 115);
             this.panel_FromFile.TabIndex = 12;
@@ -318,7 +312,7 @@
             this.panel_FromDatabase.Controls.Add(this.comboBox_SelectDatasetFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.label_SelectTableFromDataSource);
             this.panel_FromDatabase.Controls.Add(this.button_SelectDataSource);
-            this.panel_FromDatabase.Location = new System.Drawing.Point(305, 240);
+            this.panel_FromDatabase.Location = new System.Drawing.Point(685, 243);
             this.panel_FromDatabase.Name = "panel_FromDatabase";
             this.panel_FromDatabase.Size = new System.Drawing.Size(429, 120);
             this.panel_FromDatabase.TabIndex = 13;
@@ -381,7 +375,7 @@
             // 
             this.panel_FromPublicDataset.Controls.Add(this.comboBox_SelectPublicDataset);
             this.panel_FromPublicDataset.Controls.Add(this.label_SelectPublicDataset);
-            this.panel_FromPublicDataset.Location = new System.Drawing.Point(760, 240);
+            this.panel_FromPublicDataset.Location = new System.Drawing.Point(625, 375);
             this.panel_FromPublicDataset.Name = "panel_FromPublicDataset";
             this.panel_FromPublicDataset.Size = new System.Drawing.Size(230, 80);
             this.panel_FromPublicDataset.TabIndex = 14;
@@ -410,55 +404,6 @@
             this.label_SelectPublicDataset.Size = new System.Drawing.Size(100, 17);
             this.label_SelectPublicDataset.TabIndex = 28;
             this.label_SelectPublicDataset.Text = "Набор данных";
-            // 
-            // comboBox_PredictMark
-            // 
-            this.comboBox_PredictMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox_PredictMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_PredictMark.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
-            this.comboBox_PredictMark.ForeColor = System.Drawing.Color.White;
-            this.comboBox_PredictMark.FormattingEnabled = true;
-            this.comboBox_PredictMark.Location = new System.Drawing.Point(20, 340);
-            this.comboBox_PredictMark.Name = "comboBox_PredictMark";
-            this.comboBox_PredictMark.Size = new System.Drawing.Size(185, 23);
-            this.comboBox_PredictMark.TabIndex = 29;
-            this.comboBox_PredictMark.Text = "Выберите столбец";
-            this.comboBox_PredictMark.SelectionChangeCommitted += new System.EventHandler(this.comboBox_PredictMark_SelectionChangeCommitted);
-            // 
-            // label_PredictMark
-            // 
-            this.label_PredictMark.AutoSize = true;
-            this.label_PredictMark.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_PredictMark.ForeColor = System.Drawing.Color.White;
-            this.label_PredictMark.Location = new System.Drawing.Point(15, 310);
-            this.label_PredictMark.Name = "label_PredictMark";
-            this.label_PredictMark.Size = new System.Drawing.Size(229, 17);
-            this.label_PredictMark.TabIndex = 28;
-            this.label_PredictMark.Text = "Прогнозируемый столбец(метка):\r\n";
-            // 
-            // pictureBox_PredictMarkHelp
-            // 
-            this.pictureBox_PredictMarkHelp.Image = global::Constructor.Properties.Resources.иконка_справки;
-            this.pictureBox_PredictMarkHelp.Location = new System.Drawing.Point(245, 310);
-            this.pictureBox_PredictMarkHelp.Name = "pictureBox_PredictMarkHelp";
-            this.pictureBox_PredictMarkHelp.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox_PredictMarkHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_PredictMarkHelp.TabIndex = 30;
-            this.pictureBox_PredictMarkHelp.TabStop = false;
-            this.toolTip.SetToolTip(this.pictureBox_PredictMarkHelp, "Это целевой столбец, который должна спрогнозировать модель.");
-            // 
-            // linkLabel_PredictMarkParams
-            // 
-            this.linkLabel_PredictMarkParams.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel_PredictMarkParams.AutoSize = true;
-            this.linkLabel_PredictMarkParams.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel_PredictMarkParams.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(174)))), ((int)(((byte)(199)))));
-            this.linkLabel_PredictMarkParams.Location = new System.Drawing.Point(15, 375);
-            this.linkLabel_PredictMarkParams.Name = "linkLabel_PredictMarkParams";
-            this.linkLabel_PredictMarkParams.Size = new System.Drawing.Size(392, 17);
-            this.linkLabel_PredictMarkParams.TabIndex = 31;
-            this.linkLabel_PredictMarkParams.TabStop = true;
-            this.linkLabel_PredictMarkParams.Text = "Расширенные параметры данных (не успеваю - вырезать?)";
             // 
             // label_DataPreview
             // 
@@ -491,51 +436,51 @@
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.dataGridView.Location = new System.Drawing.Point(20, 490);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView.Size = new System.Drawing.Size(885, 330);
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView.Size = new System.Drawing.Size(1016, 330);
             this.dataGridView.TabIndex = 34;
             // 
             // panel_FromPrivateDataset
             // 
             this.panel_FromPrivateDataset.Controls.Add(this.comboBox_SelectPrivateDataset);
             this.panel_FromPrivateDataset.Controls.Add(this.label_SelectPrivateDataset);
-            this.panel_FromPrivateDataset.Location = new System.Drawing.Point(758, 340);
+            this.panel_FromPrivateDataset.Location = new System.Drawing.Point(880, 375);
             this.panel_FromPrivateDataset.Name = "panel_FromPrivateDataset";
             this.panel_FromPrivateDataset.Size = new System.Drawing.Size(230, 80);
             this.panel_FromPrivateDataset.TabIndex = 35;
@@ -575,7 +520,7 @@
             this.button_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Next.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Next.ForeColor = System.Drawing.Color.White;
-            this.button_Next.Location = new System.Drawing.Point(920, 775);
+            this.button_Next.Location = new System.Drawing.Point(1051, 775);
             this.button_Next.Margin = new System.Windows.Forms.Padding(0);
             this.button_Next.Name = "button_Next";
             this.button_Next.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -587,22 +532,29 @@
             this.button_Next.Visible = false;
             this.button_Next.Click += new System.EventHandler(this.button_Next_Click);
             // 
+            // predictMarkControl
+            // 
+            this.predictMarkControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.predictMarkControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.predictMarkControl.Location = new System.Drawing.Point(17, 276);
+            this.predictMarkControl.Name = "predictMarkControl";
+            this.predictMarkControl.Size = new System.Drawing.Size(280, 130);
+            this.predictMarkControl.TabIndex = 37;
+            this.predictMarkControl.Visible = false;
+            // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1000, 840);
+            this.ClientSize = new System.Drawing.Size(1131, 840);
             this.ControlBox = false;
+            this.Controls.Add(this.predictMarkControl);
             this.Controls.Add(this.button_Next);
             this.Controls.Add(this.panel_FromPrivateDataset);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label_DataPreviewInfo);
             this.Controls.Add(this.label_DataPreview);
-            this.Controls.Add(this.linkLabel_PredictMarkParams);
-            this.Controls.Add(this.pictureBox_PredictMarkHelp);
-            this.Controls.Add(this.comboBox_PredictMark);
-            this.Controls.Add(this.label_PredictMark);
             this.Controls.Add(this.panel_FromPublicDataset);
             this.Controls.Add(this.panel_FromDatabase);
             this.Controls.Add(this.panel_FromFile);
@@ -627,7 +579,6 @@
             this.panel_FromDatabase.PerformLayout();
             this.panel_FromPublicDataset.ResumeLayout(false);
             this.panel_FromPublicDataset.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PredictMarkHelp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panel_FromPrivateDataset.ResumeLayout(false);
             this.panel_FromPrivateDataset.PerformLayout();
@@ -658,17 +609,11 @@
         private System.Windows.Forms.ComboBox comboBox_SelectPublicDataset;
         private System.Windows.Forms.Label label_SelectPublicDataset;
         private System.Windows.Forms.Label label_DataSourceName;
-        private System.Windows.Forms.ComboBox comboBox_PredictMark;
-        private System.Windows.Forms.Label label_PredictMark;
-        private System.Windows.Forms.PictureBox pictureBox_PredictMarkHelp;
-        private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.LinkLabel linkLabel_PredictMarkParams;
         private System.Windows.Forms.Label label_DataPreview;
         private System.Windows.Forms.Label label_DataPreviewInfo;
         private System.Windows.Forms.Label label_FileSeparatorSing;
         private System.Windows.Forms.RadioButton radioButton_Separator2;
         private System.Windows.Forms.RadioButton radioButton_Separator1;
-        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel panel_FromPrivateDataset;
         private System.Windows.Forms.ComboBox comboBox_SelectPrivateDataset;
         private System.Windows.Forms.Label label_SelectPrivateDataset;
@@ -676,5 +621,7 @@
         private System.Windows.Forms.CheckBox checkBox_FromFileSaveCheck;
         private System.Windows.Forms.TextBox textBox_FromFileSaveName;
         private System.Windows.Forms.Label label_FromFileSave;
+        private PredictMarkControl predictMarkControl;
+        public System.Windows.Forms.DataGridView dataGridView;
     }
 }

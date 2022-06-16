@@ -120,6 +120,13 @@ namespace NeuralNetworkNamespace.Tests
             Assert.IsNotNull(neuralNetwork.LearningStatistics.MAE);
         }
 
+        [TestMethod]
+        public void LearningDataClassNames_Test()
+        {
+            LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\болезни.csv", ',');
+            learningData.ClassNames = new List<string>() { "больные" };
+            var kek = learningData.ClassesCount;
+        }
         #endregion
 
         #region регрессия
