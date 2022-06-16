@@ -126,6 +126,8 @@ namespace NeuralNetworkNamespace.Tests
             LearningData learningData = new LearningData(@"C:\ProgesForC\Dz\NeuralNetwork\болезни.csv", ',');
             learningData.ClassNames = new List<string>() { "больные" };
             var kek = learningData.ClassesCount;
+
+            var kek2 = Math.Log(-5);
         }
         #endregion
 
