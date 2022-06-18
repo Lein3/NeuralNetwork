@@ -202,8 +202,7 @@ namespace Constructor
             }
             else
             {
-                layer = new Layer(Structure.NeuronType.Output, Layers.Last().Neurons.Count, GlobalTemplate.LearningData.ParamNamesOutput.Count);
-                setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum.Softmax, layer);
+                layer = new LayerSoftMax(Layers.Last().Neurons.Count, GlobalTemplate.LearningData.ParamNamesOutput.Count);
                 comboBox_SelectActivationFunctionOutput.SelectedIndex = 6;
                 comboBox_SelectActivationFunctionOutput.Enabled = false;
                 numericUpDown_NeuronsCountOutput.Enabled = false;
@@ -224,6 +223,7 @@ namespace Constructor
             if (tabControl.SelectedIndex == 2)
             {
                 numericUpDown_NeuronsCountOutput.Value = GlobalTemplate.LearningData.ParamNamesOutput.Count;
+                numericUpDown_NeuronsCountOutput_ValueChanged(null, null);
             }
         }
 
@@ -236,14 +236,6 @@ namespace Constructor
         private void setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
             foreach (var neuron in Layers.Last().Neurons)
-            {
-                neuron.SetActivationFunction(activationFunction);
-            }
-        }
-
-        private void setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction, Layer layer)
-        {
-            foreach (var neuron in layer.Neurons)
             {
                 neuron.SetActivationFunction(activationFunction);
             }

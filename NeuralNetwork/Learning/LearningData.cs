@@ -34,13 +34,22 @@ namespace NeuralNetworkNamespace
                 ParamNamesInput = paramNames.GetRange(0, paramNames.Count - 1);
                 ParamNamesOutput = paramNames.GetRange(paramNames.Count - 1, 1);
 
+                int i = 0;
                 while (!streamReader.EndOfStream)
                 {
-                    List<double> values = streamReader.ReadLine().Split(separator).ToList().ConvertAll(item => Convert.ToDouble(item));
-                    List<double> inputSignals = values.GetRange(0, values.Count - 1);
-                    List<double> expectedOutputs = values.GetRange(values.Count - 1, 1);
-                    LearningExample LearningExample = new LearningExample(inputSignals, expectedOutputs);
-                    LearningExamples.Add(LearningExample);
+                    try
+                    {
+                        i++;
+                        List<double> values = streamReader.ReadLine().Split(separator).ToList().ConvertAll(item => Convert.ToDouble(item));
+                        List<double> inputSignals = values.GetRange(0, values.Count - 1);
+                        List<double> expectedOutputs = values.GetRange(values.Count - 1, 1);
+                        LearningExample LearningExample = new LearningExample(inputSignals, expectedOutputs);
+                        LearningExamples.Add(LearningExample);
+                    }
+                    catch (Exception)
+                    {
+                        int k = i;
+                    }
                 }
             }
         }

@@ -3,8 +3,9 @@ using System.Windows.Forms;
 using System.Linq;
 using Constructor.Properties;
 using System.Drawing;
-using System.IO;
 using Newtonsoft.Json;
+using NeuralNetworkNamespace;
+using System.Collections.Generic;
 
 namespace Constructor
 {
@@ -109,10 +110,21 @@ namespace Constructor
             var folderFileDialog = new FolderBrowserDialog();
             if (folderFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //using (FileStream fileStream = new FileStream($"{folderFileDialog.SelectedPath} + {DateTime.Today.ToString()}", FileMode.OpenOrCreate)
-                //{
-
-                //}
+                var SerializationBinder = new KnownTypesBinder()
+                { KnownTypes = new List<Type>() 
+                    { 
+                    typeof(BinaryLogLoss),
+                    typeof(Sigmoid),
+                    typeof(None),
+                    typeof(Neuron_Bias),
+                    typeof(Neuron_Input),
+                    typeof(Neuron_Normal),
+                    typeof(Neuron_Output),
+                    }
+                };
+                var settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto, SerializationBinder = SerializationBinder };
+                string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, settings);
+                var neuralNetwork = JsonConvert.DeserializeObject<NeuralNetwork>(json, settings);
             }
         }
     }

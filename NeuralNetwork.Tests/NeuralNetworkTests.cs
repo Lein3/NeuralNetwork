@@ -332,5 +332,15 @@ namespace NeuralNetworkNamespace.Tests
         }
 
         #endregion
+
+        #region Мультк
+        [TestMethod]
+        public void SoftmaxLayer_Test()
+        {
+            var structure = new Structure(5, 5, 5);
+            var neural = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
+
+        }
+        #endregion
     }
 }

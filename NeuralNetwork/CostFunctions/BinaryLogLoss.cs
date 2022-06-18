@@ -2,7 +2,7 @@
 
 namespace NeuralNetworkNamespace
 {
-    internal class BinaryLogLoss : ICostFunction
+    public class BinaryLogLoss : ICostFunction
     {
         public double Function(double expected, double actual)
         {

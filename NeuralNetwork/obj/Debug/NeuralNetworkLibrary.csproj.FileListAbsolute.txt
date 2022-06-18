@@ -15,7 +15,9 @@ C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\bin\Debug\System.ValueTuple.xml
 C:\ProgesForC\Dz\UltraSolution\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csproj.CopyComplete
 C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\bin\Debug\NeuralNetwork.dll
 C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\bin\Debug\NeuralNetwork.pdb
+C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\bin\Debug\Newtonsoft.Json.dll
 C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\bin\Debug\System.ValueTuple.dll
+C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\bin\Debug\Newtonsoft.Json.xml
 C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\bin\Debug\System.ValueTuple.xml
 C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csproj.AssemblyReference.cache
 C:\ProgesForC\Dz\NeuralNetwork\NeuralNetwork\obj\Debug\NeuralNetworkLibrary.csproj.CoreCompileInputs.cache

@@ -112,7 +112,7 @@
             this.button_StartLearning.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button_StartLearning.Size = new System.Drawing.Size(223, 45);
             this.button_StartLearning.TabIndex = 57;
-            this.button_StartLearning.Text = "умереть";
+            this.button_StartLearning.Text = "Начать обучение";
             this.button_StartLearning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_StartLearning.UseVisualStyleBackColor = false;
             this.button_StartLearning.Click += new System.EventHandler(this.button_StartLearning_Click);

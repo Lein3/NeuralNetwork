@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace NeuralNetworkNamespace
 {
@@ -8,16 +9,14 @@ namespace NeuralNetworkNamespace
         public Structure Structure { get; private set; }
         public List<Layer> Layers { get; private set; }
         public enum CostFunctionEnum { AbsoluteError, BinaryLogLoss, CategoryLogLoss, SquaredError };
-        public ICostFunction CostFunction { get; private set; }
-        public LearningStatistics LearningStatistics { get; private set; }
-
+        public ICostFunction CostFunction { get; set; }
+        public LearningStatistics LearningStatistics { get; set; }
         public NeuralNetwork(List<Layer> temp_layers)
         {
             Structure = new Structure();
             Layers = temp_layers;
             LearningStatistics = new LearningStatistics();
         }
-
         public NeuralNetwork(Structure temp_Structure, CostFunctionEnum costFunctionEnum)
         {
             Structure = temp_Structure;
@@ -27,6 +26,15 @@ namespace NeuralNetworkNamespace
             CreateMiddleLayers();
             CreateOutputLayer();
             SetCostFunction(costFunctionEnum);
+        }
+
+        [JsonConstructor]
+        public NeuralNetwork(Structure structure, List<Layer> layers, ICostFunction costFunction, LearningStatistics learningStatistics)
+        {
+            Structure = structure;
+            Layers = layers;
+            CostFunction = costFunction;
+            LearningStatistics = learningStatistics;
         }
 
         #region СозданиеСлоев
@@ -93,7 +101,7 @@ namespace NeuralNetworkNamespace
                     CostFunction = new BinaryLogLoss();
                     break;
                 case CostFunctionEnum.CategoryLogLoss:
-                    CostFunction = null;
+                    CostFunction = new CategoryLogLoss();
                     break;
                 case CostFunctionEnum.SquaredError:
                     CostFunction = new SquaredError();
@@ -136,6 +144,9 @@ namespace NeuralNetworkNamespace
                 List<double> previousLayerSignals = Layers[i - 1].GetSignals();
                 foreach (Neuron neuron in layer.Neurons)
                     neuron.ProcessInformation(previousLayerSignals);
+
+                if (layer is LayerSoftMax layerSoftMax)
+                    layerSoftMax.ProcessInformation();
             }
         }
 

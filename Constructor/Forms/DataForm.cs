@@ -198,6 +198,10 @@ namespace Constructor
         {
             foreach (var panel in this.Controls.OfType<Panel>())
                 panel.Visible = false;
+            //foreach (var predictMarkControl in this.Controls.OfType<PredictMarkControl>().Skip(1))
+            //    Controls.Remove(predictMarkControl);
+            //predictMarkControl0.comboBox_PredictMark.DataSource = null;
+            //predictMarkControl0.textBox_PredictMarkName.Text = "";
         }
 
         public void FirstUpdateComboBoxPredictMark()
@@ -209,6 +213,7 @@ namespace Constructor
             predictMarkControl0.button_AddMark.Enabled = true;
             predictMarkControl0.comboBox_PredictMark.DataSource = paramsNames;
             predictMarkControl0.comboBox_PredictMark.SelectedIndex = predictMarkControl0.comboBox_PredictMark.Items.Count - 1;
+            predictMarkControl0.textBox_PredictMarkName.Text = "Класс " + predictMarkControl0.comboBox_PredictMark.GetItemText(predictMarkControl0.comboBox_PredictMark.SelectedItem);
             button_Next.Visible = true;         
         }
 

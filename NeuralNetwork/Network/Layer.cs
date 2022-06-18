@@ -6,7 +6,12 @@ namespace NeuralNetworkNamespace
 {
     public class Layer
     {
-        public List<Neuron> Neurons { get; private set; }
+        public List<Neuron> Neurons { get; set; }
+
+        public Layer()
+        {
+
+        }
 
         public Layer(List<Neuron> temp_Neurons)
         {

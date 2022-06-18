@@ -207,8 +207,6 @@
             // checkBox_FromFileSaveCheck
             // 
             this.checkBox_FromFileSaveCheck.AutoSize = true;
-            this.checkBox_FromFileSaveCheck.Checked = true;
-            this.checkBox_FromFileSaveCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_FromFileSaveCheck.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.checkBox_FromFileSaveCheck.ForeColor = System.Drawing.Color.White;
             this.checkBox_FromFileSaveCheck.Location = new System.Drawing.Point(335, 86);
@@ -536,11 +534,11 @@
             // 
             this.predictMarkControl0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.predictMarkControl0.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.predictMarkControl0.Location = new System.Drawing.Point(15, 275);
+            this.predictMarkControl0.Location = new System.Drawing.Point(24, 276);
             this.predictMarkControl0.MarkIndex = 0;
             this.predictMarkControl0.Name = "predictMarkControl0";
             this.predictMarkControl0.Size = new System.Drawing.Size(280, 130);
-            this.predictMarkControl0.TabIndex = 38;
+            this.predictMarkControl0.TabIndex = 37;
             this.predictMarkControl0.Visible = false;
             // 
             // DataForm

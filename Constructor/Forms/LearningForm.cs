@@ -10,7 +10,15 @@ namespace Constructor
         {
             InitializeComponent();
             comboBox_SelectCostFunction.DataSource = Enum.GetValues(typeof(NeuralNetwork.CostFunctionEnum));
-            comboBox_SelectCostFunction.SelectedIndex = 1;
+            if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.multiclassClassification)
+            {
+                comboBox_SelectCostFunction.SelectedIndex = 2;
+            }
+            else
+            {
+                comboBox_SelectCostFunction.SelectedIndex = 1;
+            }
+
             numericUpDown_TestPercent_ValueChanged(null, null);
             comboBox_SelectCostFunction_SelectionChangeCommitted(null, null);
         }
@@ -67,11 +75,13 @@ namespace Constructor
             if (radioButton_ErrorLimit.Checked == true)
             {
                 var errorLimit = (double)numericUpDown_ErrorLimit.Value / 100;
+                neuralNetwork.SetCostFunction(NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
                 neuralNetwork.Learn_Backpropogation(learningData, errorLimit, learningRate);
             }
             else if (radioButton_EpochCount.Checked == true)
             {
                 var epochTimes = (int)numericUpDown_EpochCount.Value;
+                neuralNetwork.SetCostFunction(NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
                 neuralNetwork.Learn_Backpropogation(learningData, epochTimes, learningRate);
             }
 

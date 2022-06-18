@@ -37,6 +37,7 @@ namespace Constructor
                 parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
                 parent.UpdateAllComboBoxPredictMark();
             }
+            textBox_PredictMarkName.Text = "Класс " + comboBox_PredictMark.GetItemText(comboBox_PredictMark.SelectedItem);
         }
 
         private void button_AddMark_Click(object sender, EventArgs e)
@@ -69,6 +70,8 @@ namespace Constructor
         {
             var parent = ParentForm as DataForm;
             comboBox_PredictMark.DataSource = parent?.learningData?.ParamNamesInput.Concat(parent.learningData.ParamNamesOutput).ToList();
+            //comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1 - MarkIndex;
+            //comboBox_PredictMark_SelectionChangeCommitted(this, e);
         }
 
         private void textBox_PredictMarkName_TextChanged(object sender, EventArgs e)

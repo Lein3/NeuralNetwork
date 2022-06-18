@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
 
@@ -16,17 +17,18 @@ namespace Constructor
 
             var learningData = GlobalTemplate.LearningData;
             var dataset = learningData.ConvertToDotNetDataSet();           
-
             AddPredictedAnswer(dataset.Tables[0]);
             AddPredictedAnswer(dataset.Tables[1]);
             dataGridView_Learning.DataSource = dataset.Tables[0];
             dataGridView_Test.DataSource = dataset.Tables[1];
-            dataGridView_Learning.Columns[dataGridView_Learning.Columns.Count - 1].DisplayIndex = 0;
-            dataGridView_Learning.Columns[dataGridView_Learning.Columns.Count - 2].DisplayIndex = 0;
-            dataGridView_Test.Columns[dataGridView_Learning.Columns.Count - 1].DisplayIndex = 0;
-            dataGridView_Test.Columns[dataGridView_Learning.Columns.Count - 2].DisplayIndex = 0;
-
             FillPanelForPredict(learningData);
+
+            var stringBuilder = new StringBuilder();
+            foreach(var pair in GlobalTemplate.LearningData.ClassesCount)
+            {
+                stringBuilder.AppendLine($"{pair.Key} - {pair.Value}");
+            }
+            label_datasetInfo.Text += stringBuilder.ToString();
         }
 
         private void FillPanelForPredict(LearningData learningData)
@@ -91,76 +93,115 @@ namespace Constructor
 
         private void AddPredictedAnswer(DataTable dataTable)
         {
-            DataColumn dataColumn = new DataColumn("Ответ сети", typeof(double));
-            dataTable.Columns.Add(dataColumn);
+            foreach (var className in GlobalTemplate.LearningData.ClassNames)
+            {
+                DataColumn dataColumn = new DataColumn(className, typeof(double));
+                dataTable.Columns.Add(dataColumn);
+            }
 
-            var lastIndexOfArray = dataTable.Rows[0].ItemArray.Length - 1;
+            var lastIndexOfArray = dataTable.Rows[0].ItemArray.Length - GlobalTemplate.LearningData.ClassNames.Count;
             foreach(DataRow row in dataTable.Rows)
             {
-                var inputSignals = row.ItemArray.Take(lastIndexOfArray - 1).Select(item => Convert.ToDouble(item)).ToList(); //еще раз минус один потому что там ответ который не должен попадать
-                var answer = GlobalTemplate.NeuralNetwork.Predict_ReturnOnlyValues(inputSignals)[0];
-                row["Ответ сети"] = Math.Round(answer, 4);
+                var inputSignals = row.ItemArray.Take(lastIndexOfArray - GlobalTemplate.LearningData.ClassNames.Count).Select(item => Convert.ToDouble(item)).ToList(); //еще раз минус один потому что там ответ который не должен попадать
+                var answer = GlobalTemplate.NeuralNetwork.Predict_ReturnOnlyValues(inputSignals);
+
+                for (int i = 0; i < GlobalTemplate.LearningData.ClassNames.Count; i++)
+                {
+                    row[GlobalTemplate.LearningData.ClassNames[i]] = Math.Round(answer[i], 4);
+                }
             }
         }
 
         private void dataGridView_Learning_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            int count = 0;
-            foreach (DataGridViewRow row in dataGridView_Learning.Rows)
+            label_Learning.Text = String.Empty;
+            int criticalCount = 0;
+            if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.binaryClassification)
             {
-                
-                var expectedAnswer = Convert.ToDouble(row.Cells[dataGridView_Learning.Columns.Count - 1].Value);
-                var actualAnswer = Convert.ToDouble(row.Cells[dataGridView_Learning.Columns.Count - 2].Value);
-                if (Math.Abs(expectedAnswer - actualAnswer) > 0.2)
+                foreach (DataGridViewRow row in dataGridView_Learning.Rows)
                 {
-                    row.Cells[dataGridView_Learning.Columns.Count - 1].Style.BackColor = Color.IndianRed;
-                    row.Cells[dataGridView_Learning.Columns.Count - 2].Style.BackColor = Color.IndianRed;
-                    count++;
+
+                    var expectedAnswer = Convert.ToDouble(row.Cells[dataGridView_Learning.Columns.Count - 1].Value);
+                    var actualAnswer = Convert.ToDouble(row.Cells[dataGridView_Learning.Columns.Count - 2].Value);
+                    if (Math.Abs(expectedAnswer - actualAnswer) > 0.2)
+                    {
+                        row.Cells[dataGridView_Learning.Columns.Count - 1].Style.BackColor = Color.IndianRed;
+                        row.Cells[dataGridView_Learning.Columns.Count - 2].Style.BackColor = Color.IndianRed;
+                        criticalCount++;
+                    }
                 }
+                label_Learning.Text = "Тестовая выборка количество критических примеров " + criticalCount.ToString() + " \n";
             }
-            label_Learning.Text = "Обучающая выборка " + count.ToString() + " ";
 
-            //var error = new List<double>();
-            //var learningData = GlobalTemplate.LearningData;
-            //var dataset = learningData.ConvertToDotNetDataSet();
+            var Dictionary = new Dictionary<string, int>();
+            for (int i = 0; i < GlobalTemplate.LearningData.ClassNames.Count; i++)
+            {
+                var expected = 0;
+                var actual = 0;
+                foreach (DataGridViewRow row in dataGridView_Learning.Rows)
+                {
+                    var expectedAnswer = Convert.ToDouble(row.Cells[dataGridView_Learning.Columns.Count - GlobalTemplate.LearningData.ClassNames.Count * 2 + i].Value);
+                    var actualAnswer = Convert.ToDouble(row.Cells[dataGridView_Learning.Columns.Count - GlobalTemplate.LearningData.ClassNames.Count + i].Value);
 
-            //AddPredictedAnswer(dataset.Tables[0]);
-            //foreach (DataRow row in dataset.Tables[0].Rows)
-            //{
-            //    error.Add(Convert.ToDouble(row.ItemArray[14]));
-            //}
-            //label_Learning.Text += error.Average().ToString();
-            //error.Clear();
+                    if (expectedAnswer >= 0.6)
+                        expected++;
+                    if (actualAnswer >= 0.6)
+                        actual++;
+                }
+                Dictionary.Add("в наборе данных было " + GlobalTemplate.LearningData.ClassNames[i], expected);
+                Dictionary.Add("нейросеть ответила " + GlobalTemplate.LearningData.ClassNames[i], actual);
+            }
+
+            foreach (var pair in Dictionary)
+            {
+                label_Learning.Text += $"{pair.Key} - {pair.Value} ";
+            }
         }
 
         private void dataGridView_Test_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            int count = 0;
-            foreach (DataGridViewRow row in dataGridView_Test.Rows)
+            label_Test.Text = String.Empty;
+            int criticalCount = 0;
+            if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.binaryClassification)
             {
-                
-                var expectedAnswer = Convert.ToDouble(row.Cells[dataGridView_Test.Columns.Count - 1].Value);
-                var actualAnswer = Convert.ToDouble(row.Cells[dataGridView_Test.Columns.Count - 2].Value);
-                if (Math.Abs(expectedAnswer - actualAnswer) > 0.2)
+                foreach (DataGridViewRow row in dataGridView_Test.Rows)
                 {
-                    row.Cells[dataGridView_Test.Columns.Count - 1].Style.BackColor = Color.IndianRed;
-                    row.Cells[dataGridView_Test.Columns.Count - 2].Style.BackColor = Color.IndianRed;
-                    count++;
+
+                    var expectedAnswer = Convert.ToDouble(row.Cells[dataGridView_Test.Columns.Count - 1].Value);
+                    var actualAnswer = Convert.ToDouble(row.Cells[dataGridView_Test.Columns.Count - 2].Value);
+                    if (Math.Abs(expectedAnswer - actualAnswer) > 0.2)
+                    {
+                        row.Cells[dataGridView_Test.Columns.Count - 1].Style.BackColor = Color.IndianRed;
+                        row.Cells[dataGridView_Test.Columns.Count - 2].Style.BackColor = Color.IndianRed;
+                        criticalCount++;
+                    }
                 }
+                label_Test.Text = "Тестовая выборка количество критических примеров " + criticalCount.ToString() + " \n";
+            }           
+
+            var Dictionary = new Dictionary<string, int>();
+            for (int i = 0; i < GlobalTemplate.LearningData.ClassNames.Count; i++)
+            {
+                var expected = 0;
+                var actual = 0;
+                foreach (DataGridViewRow row in dataGridView_Test.Rows)
+                {
+                    var expectedAnswer = Convert.ToDouble(row.Cells[dataGridView_Test.Columns.Count - GlobalTemplate.LearningData.ClassNames.Count * 2 + i].Value);
+                    var actualAnswer = Convert.ToDouble(row.Cells[dataGridView_Test.Columns.Count - GlobalTemplate.LearningData.ClassNames.Count + i].Value);
+
+                    if (expectedAnswer >= 0.6)
+                        expected++;
+                    if (actualAnswer >= 0.6)
+                        actual++;
+                }
+                Dictionary.Add("в наборе данных было " + GlobalTemplate.LearningData.ClassNames[i], expected);
+                Dictionary.Add("нейросеть ответила " + GlobalTemplate.LearningData.ClassNames[i], actual);
             }
-            label_Learning.Text = "Тестовая выборка " + count.ToString() + " ";
-
-            //var error = new List<double>();
-            //var learningData = GlobalTemplate.LearningData;
-            //var dataset = learningData.ConvertToDotNetDataSet();
-
-            //AddPredictedAnswer(dataset.Tables[1]);
-            //foreach (DataRow row in dataset.Tables[1].Rows)
-            //{
-            //    error.Add(Convert.ToDouble(row.ItemArray[14]));
-            //}
-            //label_Test.Text += error.Average().ToString();
-            //error.Clear();
+            
+            foreach (var pair in Dictionary)
+            {
+                label_Test.Text += $"{pair.Key} - {pair.Value} ";
+            }
         }
     }
 }
