@@ -45,6 +45,8 @@ namespace Constructor
         {
             SetAllPanelsInvisible();
             panel_FromFile.Visible = true;
+            textBox_FilePath.Text = String.Empty;
+            textBox_FromFileSaveName.Text = String.Empty;
         }
 
         private void button_FromFile_Click(object sender, EventArgs e)

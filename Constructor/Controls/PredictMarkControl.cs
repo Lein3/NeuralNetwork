@@ -49,6 +49,7 @@ namespace Constructor
             var lastLocationY = lastpredictMarkControl.Location.Y;
             var predictMarkControl = new PredictMarkControl() { MarkIndex = lastIndex, Location = new Point(lastLocationX, lastLocationY) };
             parent.Controls.Add(predictMarkControl);
+            predictMarkControl.comboBox_PredictMark_SelectionChangeCommitted(null, null); //вот отсюда его не трогай формочки будут мозги ебать
         }
 
         private void button_RemoveMark_Click(object sender, EventArgs e)
@@ -70,8 +71,7 @@ namespace Constructor
         {
             var parent = ParentForm as DataForm;
             comboBox_PredictMark.DataSource = parent?.learningData?.ParamNamesInput.Concat(parent.learningData.ParamNamesOutput).ToList();
-            //comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1 - MarkIndex;
-            //comboBox_PredictMark_SelectionChangeCommitted(this, e);
+            comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1 - MarkIndex;         
         }
 
         private void textBox_PredictMarkName_TextChanged(object sender, EventArgs e)
