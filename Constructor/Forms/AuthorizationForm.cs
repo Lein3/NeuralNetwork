@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Constructor.Properties;
 using System.Linq;
-using System.Data.SqlClient;
 using Newtonsoft.Json;
 using NeuralNetworkNamespace;
 using System.IO;
@@ -231,6 +230,22 @@ namespace Constructor
             GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.freeMode;
             new MainForm() { PreviousForm = this }.Show();
             this.Hide();
+        }
+
+        private void button_MyModels_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 0.5;
+            if (new UserModelsForm() { PreviousForm = this }.ShowDialog() == DialogResult.OK)
+            {
+                GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.professionalMode;
+                GlobalTemplate.CurrentScenario = GlobalTemplate.Scenario.multiclassClassification;
+                var child = new MainForm() { PreviousForm = this };
+                child.Show();
+                child.button_Configuration_Click(null, null);
+                child.button_Data.Enabled = true;
+                child.button_Configuration.Enabled = true;
+                this.Hide();
+            }
         }
 
         private void button_MyDatasets_Click(object sender, EventArgs e)

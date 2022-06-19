@@ -4,20 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="441c8405bb9a45aaa7c168210f2cbba7" Name="Diagram1">
-        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.ActivationFunctions" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.CostFunctions" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.Datasets" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.LearningResults" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.NeuralNetworks" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.Users" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+      <Diagram DiagramId="babc604933a94b408fc271eaf89f769b" Name="Diagram1">
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.ActivationFunctions" Width="1.5" PointX="2.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.CostFunctions" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.Datasets" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.LearningResults" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.NeuralNetworks" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.NeuralNetworks_LearningResults" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuralNetworkConstructorModel.Users" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <AssociationConnector Association="NeuralNetworkConstructorModel.FK_NeuralNetworks_ActivationFunctions" ManuallyRouted="false" />
         <AssociationConnector Association="NeuralNetworkConstructorModel.FK_NeuralNetworks_CostFunctions" ManuallyRouted="false" />
         <AssociationConnector Association="NeuralNetworkConstructorModel.FK_Datasets_Users" ManuallyRouted="false" />
         <AssociationConnector Association="NeuralNetworkConstructorModel.FK_NeuralNetworks_Datasets" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuralNetworkConstructorModel.FK_NeuralNetworks_LearningResults_LearningResults" ManuallyRouted="false" />
+        <AssociationConnector Association="NeuralNetworkConstructorModel.FK_NeuralNetworks_LearningResults_NeuralNetworks" ManuallyRouted="false" />
         <AssociationConnector Association="NeuralNetworkConstructorModel.FK_NeuralNetworks_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="NeuralNetworkConstructorModel.NeuralNetworks_LearningResults" ManuallyRouted="false" />
-        <AssociationConnector Association="NeuralNetworkConstructorModel.Users_NeuralNetworks" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

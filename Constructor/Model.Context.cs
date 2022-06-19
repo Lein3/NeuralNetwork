@@ -30,6 +30,7 @@ namespace Constructor
         public virtual DbSet<Datasets> Datasets { get; set; }
         public virtual DbSet<LearningResults> LearningResults { get; set; }
         public virtual DbSet<NeuralNetworks> NeuralNetworks { get; set; }
+        public virtual DbSet<NeuralNetworks_LearningResults> NeuralNetworks_LearningResults { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

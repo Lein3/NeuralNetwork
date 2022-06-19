@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Constructor
@@ -21,9 +16,7 @@ namespace Constructor
             {
                 return;
             }
-
             label_Username.Text = "Здравствуйте, " + GlobalTemplate.CurrentUser.Login;
-
             foreach (var dataset in Connection.db.Value.Datasets.Where(item => item.Owner == GlobalTemplate.CurrentUser.ID))
             {
                 var control = new UserDatasetControl(dataset) { Dock = DockStyle.Top };

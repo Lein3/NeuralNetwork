@@ -14,11 +14,6 @@ namespace Constructor
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthorizationForm());
-            Application.Run(new MainForm());
-
-            //TODO: мои модели
-            //TODO: запись моделей в базу данных
-            //TODO: автоматизированный режим
         }
     }
 }

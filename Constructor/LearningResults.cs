@@ -17,7 +17,7 @@ namespace Constructor
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LearningResults()
         {
-            this.NeuralNetworks = new HashSet<NeuralNetworks>();
+            this.NeuralNetworks_LearningResults = new HashSet<NeuralNetworks_LearningResults>();
         }
     
         public int ID { get; set; }
@@ -31,6 +31,6 @@ namespace Constructor
         public Nullable<double> ResultErrorTestExamples { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NeuralNetworks> NeuralNetworks { get; set; }
+        public virtual ICollection<NeuralNetworks_LearningResults> NeuralNetworks_LearningResults { get; set; }
     }
 }

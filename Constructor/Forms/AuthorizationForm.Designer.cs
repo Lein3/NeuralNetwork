@@ -480,6 +480,7 @@
             this.button_MyModels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button_MyModels.UseVisualStyleBackColor = false;
             this.button_MyModels.Visible = false;
+            this.button_MyModels.Click += new System.EventHandler(this.button_MyModels_Click);
             this.button_MyModels.MouseEnter += new System.EventHandler(this.DescriptionFunction);
             // 
             // button_LoadModel

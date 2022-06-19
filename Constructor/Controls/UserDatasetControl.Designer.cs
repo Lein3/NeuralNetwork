@@ -52,7 +52,7 @@
             this.label_CreationDate.AutoSize = true;
             this.label_CreationDate.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_CreationDate.ForeColor = System.Drawing.Color.White;
-            this.label_CreationDate.Location = new System.Drawing.Point(10, 44);
+            this.label_CreationDate.Location = new System.Drawing.Point(10, 45);
             this.label_CreationDate.Name = "label_CreationDate";
             this.label_CreationDate.Size = new System.Drawing.Size(124, 20);
             this.label_CreationDate.TabIndex = 3;
@@ -60,12 +60,13 @@
             // 
             // label_Info
             // 
-            this.label_Info.AutoSize = true;
+            this.label_Info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Info.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Info.ForeColor = System.Drawing.Color.White;
-            this.label_Info.Location = new System.Drawing.Point(11, 74);
+            this.label_Info.Location = new System.Drawing.Point(10, 80);
             this.label_Info.Name = "label_Info";
-            this.label_Info.Size = new System.Drawing.Size(73, 17);
+            this.label_Info.Size = new System.Drawing.Size(660, 50);
             this.label_Info.TabIndex = 4;
             this.label_Info.Text = "Описание";
             // 
@@ -100,7 +101,7 @@
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(700, 130);
+            this.panel_Top.Size = new System.Drawing.Size(700, 140);
             this.panel_Top.TabIndex = 27;
             // 
             // UserDatasetControl
@@ -108,13 +109,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel_Top);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.MinimumSize = new System.Drawing.Size(0, 100);
+            this.MinimumSize = new System.Drawing.Size(2, 140);
             this.Name = "UserDatasetControl";
-            this.Size = new System.Drawing.Size(700, 130);
+            this.Size = new System.Drawing.Size(700, 140);
             this.panel_Top.ResumeLayout(false);
             this.panel_Top.PerformLayout();
             this.ResumeLayout(false);

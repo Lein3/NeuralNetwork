@@ -92,7 +92,7 @@ namespace Constructor
             button_GenerateRandom.ForeColor = System.Drawing.Color.White;
             button_GenerateRandom.Location = new System.Drawing.Point(startX + 140, startY + 60);
             button_GenerateRandom.Size = new System.Drawing.Size(120, 50);
-            button_GenerateRandom.Text = "Сгенерировать пример2";
+            button_GenerateRandom.Text = "Сгенерировать пример";
             button_GenerateRandom.UseVisualStyleBackColor = false;
             button_GenerateRandom.Click += button_Generate_Click;
             panel_Predict.Controls.Add(button_GenerateRandom);

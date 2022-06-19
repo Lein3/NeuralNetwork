@@ -218,6 +218,24 @@
     <Compile Include="Forms\LearningForm.Designer.cs">
       <DependentUpon>LearningForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NetworkConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NetworkConfigurationForm.Designer.cs">
+      <DependentUpon>NetworkConfigurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserDatasetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserDatasetsForm.Designer.cs">
+      <DependentUpon>UserDatasetsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PredictMarkControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PredictMarkControl.Designer.cs">
+      <DependentUpon>PredictMarkControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LearningResults.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -236,26 +254,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NetworkConfigurationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NetworkConfigurationForm.Designer.cs">
-      <DependentUpon>NetworkConfigurationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UserDatasetsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UserDatasetsForm.Designer.cs">
-      <DependentUpon>UserDatasetsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="NeuralNetworks.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PredictMarkControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\PredictMarkControl.Designer.cs">
-      <DependentUpon>PredictMarkControl.cs</DependentUpon>
+    <Compile Include="NeuralNetworks_LearningResults.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -277,6 +280,18 @@
     <Compile Include="Controls\UserDatasetControl.Designer.cs">
       <DependentUpon>UserDatasetControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserModelsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserModelsForm.Designer.cs">
+      <DependentUpon>UserModelsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserModelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserModelControl.Designer.cs">
+      <DependentUpon>UserModelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -294,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserDatasetControl.resx">
       <DependentUpon>UserDatasetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserModelControl.resx">
+      <DependentUpon>UserModelControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EvaluateForm.resx">
       <DependentUpon>EvaluateForm.cs</DependentUpon>
@@ -342,11 +360,14 @@
       <DependentUpon>ScenarioControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserModelsForm.resx">
+      <DependentUpon>UserModelsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="MLModel1.mbconfig" />
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MLModel1.mbconfig" />
     <None Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
@@ -436,21 +457,23 @@
     <None Include="Resources\Новый точечный рисунок.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\пасхалка.png" />
+    <None Include="Resources\иконка справки.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\пасхалка.png" />
-    <None Include="Resources\иконка справки.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

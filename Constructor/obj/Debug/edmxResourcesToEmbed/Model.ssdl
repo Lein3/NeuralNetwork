@@ -44,20 +44,22 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Owner" Type="int" />
-    <Property Name="Dataset" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Owner" Type="int" Nullable="false" />
+    <Property Name="Dataset" Type="int" />
     <Property Name="InputNeuronsCount" Type="int" Nullable="false" />
     <Property Name="OutputNeuronsCount" Type="int" Nullable="false" />
     <Property Name="MiddleLayers" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Bias" Type="bit" Nullable="false" />
     <Property Name="ActivationFunction" Type="int" Nullable="false" />
-    <Property Name="CostFunction" Type="int" Nullable="false" />
+    <Property Name="CostFunction" Type="int" />
+    <Property Name="SerializedString" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="NeuralNetworks_LearningResults">
     <Key>
-      <PropertyRef Name="ID_NeuralNetwork" />
-      <PropertyRef Name="ID_LearningResults" />
+      <PropertyRef Name="ID" />
     </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_NeuralNetwork" Type="int" Nullable="false" />
     <Property Name="ID_LearningResults" Type="int" Nullable="false" />
   </EntityType>
@@ -68,14 +70,6 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Users_NeuralNetworks">
-    <Key>
-      <PropertyRef Name="ID_User" />
-      <PropertyRef Name="ID_NeuralNetwork" />
-    </Key>
-    <Property Name="ID_User" Type="int" Nullable="false" />
-    <Property Name="ID_NeuralNetwork" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Datasets_Users">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -102,7 +96,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NeuralNetworks_CostFunctions">
-    <End Role="CostFunctions" Type="Self.CostFunctions" Multiplicity="1" />
+    <End Role="CostFunctions" Type="Self.CostFunctions" Multiplicity="0..1" />
     <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CostFunctions">
@@ -114,7 +108,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NeuralNetworks_Datasets">
-    <End Role="Datasets" Type="Self.Datasets" Multiplicity="1" />
+    <End Role="Datasets" Type="Self.Datasets" Multiplicity="0..1" />
     <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Datasets">
@@ -150,7 +144,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NeuralNetworks_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
@@ -158,30 +152,6 @@
       </Principal>
       <Dependent Role="NeuralNetworks">
         <PropertyRef Name="Owner" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_NeuralNetworks_NeuralNetworks">
-    <End Role="NeuralNetworks" Type="Self.NeuralNetworks" Multiplicity="1" />
-    <End Role="Users_NeuralNetworks" Type="Self.Users_NeuralNetworks" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NeuralNetworks">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Users_NeuralNetworks">
-        <PropertyRef Name="ID_NeuralNetwork" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_NeuralNetworks_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Users_NeuralNetworks" Type="Self.Users_NeuralNetworks" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Users_NeuralNetworks">
-        <PropertyRef Name="ID_User" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -193,7 +163,6 @@
     <EntitySet Name="NeuralNetworks" EntityType="Self.NeuralNetworks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NeuralNetworks_LearningResults" EntityType="Self.NeuralNetworks_LearningResults" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Users_NeuralNetworks" EntityType="Self.Users_NeuralNetworks" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Datasets_Users" Association="Self.FK_Datasets_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Datasets" EntitySet="Datasets" />
@@ -221,14 +190,6 @@
     <AssociationSet Name="FK_NeuralNetworks_Users" Association="Self.FK_NeuralNetworks_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_NeuralNetworks_NeuralNetworks" Association="Self.FK_Users_NeuralNetworks_NeuralNetworks">
-      <End Role="NeuralNetworks" EntitySet="NeuralNetworks" />
-      <End Role="Users_NeuralNetworks" EntitySet="Users_NeuralNetworks" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_NeuralNetworks_Users" Association="Self.FK_Users_NeuralNetworks_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Users_NeuralNetworks" EntitySet="Users_NeuralNetworks" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

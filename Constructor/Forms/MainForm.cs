@@ -5,9 +5,7 @@ using Constructor.Properties;
 using System.Drawing;
 using Newtonsoft.Json;
 using NeuralNetworkNamespace;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Constructor
 {

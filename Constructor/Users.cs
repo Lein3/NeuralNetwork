@@ -19,7 +19,6 @@ namespace Constructor
         {
             this.Datasets = new HashSet<Datasets>();
             this.NeuralNetworks = new HashSet<NeuralNetworks>();
-            this.NeuralNetworks1 = new HashSet<NeuralNetworks>();
         }
     
         public int ID { get; set; }
@@ -30,7 +29,5 @@ namespace Constructor
         public virtual ICollection<Datasets> Datasets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NeuralNetworks> NeuralNetworks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NeuralNetworks> NeuralNetworks1 { get; set; }
     }
 }

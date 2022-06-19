@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
+using Newtonsoft.Json;
 
 namespace Constructor
 {
@@ -345,6 +346,49 @@ namespace Constructor
         {
             GlobalTemplate.NeuralNetwork = new NeuralNetwork(Layers);
             GlobalTemplate.NeuralNetwork.Structure.Bias = this.Bias;
+
+            if (GlobalTemplate.CurrentUser != null)
+            {
+                var neuralNetworkForDatabase = new NeuralNetworks()
+                {
+                    Name = textBox_ModelName.Text,
+                    Owner = GlobalTemplate.CurrentUser.ID,
+                    Dataset = null,
+                    InputNeuronsCount = Layers.First().Neurons.Count - Convert.ToInt32(Bias),
+                    OutputNeuronsCount = Layers.Last().Neurons.Count,
+                    MiddleLayers = GetLayersString(),
+                    Bias = this.Bias,
+                    ActivationFunction = GetActivationFunction(),
+                    CostFunction = null,
+                    SerializedString = GetSerializedString()
+                };
+                GlobalTemplate.DatabaseNeuralNetwork = neuralNetworkForDatabase;
+                Connection.db.Value.NeuralNetworks.Add(neuralNetworkForDatabase);
+                Connection.db.Value.SaveChanges();
+            }
+        }
+
+        private string GetLayersString()
+        {
+            var values = new List<int>();
+            foreach (var layer in Layers.Take(Layers.Count - 1).Skip(1))
+                values.Add(layer.Neurons.Count);
+
+            var layerString = String.Join(", ", values);
+            return layerString;
+        }
+
+        private int GetActivationFunction()
+        {
+            var name = comboBox_SelectActivationFunctionMiddle.GetItemText(comboBox_SelectActivationFunctionMiddle.SelectedItem);
+            var id = Connection.db.Value.ActivationFunctions.Where(item => item.Name == name).FirstOrDefault().ID;
+            return id;
+        }
+
+        private string GetSerializedString()
+        {
+            string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, AuthorizationForm.settings);
+            return json;
         }
 
         private void textBox_ModelName_TextChanged(object sender, EventArgs e)

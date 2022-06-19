@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
 
@@ -53,6 +52,11 @@ namespace Constructor
         {
             var costFunction = (NeuralNetwork.CostFunctionEnum)comboBox_SelectCostFunction.SelectedValue;
             GlobalTemplate.NeuralNetwork.SetCostFunction(costFunction);
+
+            var name = comboBox_SelectCostFunction.GetItemText(comboBox_SelectCostFunction.SelectedItem);
+            var id = Connection.db.Value.CostFunctions.Where(item => item.Name == name).FirstOrDefault().ID;
+            GlobalTemplate.DatabaseNeuralNetwork.CostFunction = id;
+            Connection.db.Value.SaveChanges();
         }
 
         private void numericUpDown_ErrorLimit_ValueChanged(object sender, EventArgs e)
@@ -94,14 +98,14 @@ namespace Constructor
                     neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
                     if (currentEpoch % 250 == 0)
                     {
-                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        await Task.Run(() => label_Statistcs.Text += result);
+                        //string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        //await Task.Run(() => label_Statistcs.Text += result);
                     }
                     if (currentEpoch % 1000 == 0)
                     {
-                        await Task.Run(() => label_Statistcs.Text = String.Empty);
-                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        await Task.Run(() => label_Statistcs.Text += result);
+                        //await Task.Run(() => label_Statistcs.Text = String.Empty);
+                        //string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        //await Task.Run(() => label_Statistcs.Text += result);
                     }
                 } while (neuralNetwork.LearningStatistics.currentStatics.Last() >= errorLimit);
             }
@@ -132,6 +136,37 @@ namespace Constructor
             parent.button_SaveModel.Enabled = true;
             parent.RecolorButtons(parent.button_Evaluate);
             parent.button_Evaluate_Click(sender, e);
+
+            SaveLearningResults();
+        }
+
+        private void SaveLearningResults()
+        {
+            if (GlobalTemplate.CurrentUser != null)
+            {
+                var learningResults = new LearningResults();
+
+                if (radioButton_EpochCount.Checked == true)
+                    learningResults.EpochCount = (int)numericUpDown_EpochCount.Value;
+                if (radioButton_ErrorLimit.Checked == true)
+                    learningResults.ErrorLimit = (double)numericUpDown_ErrorLimit.Value / 100;
+
+                learningResults.LearningRate = (double)numericUpDown_LearningRate.Value;
+                learningResults.ExamplesLearningCount = GlobalTemplate.LearningData.LearningExamples.Count;
+                learningResults.ExamplesTestCount = GlobalTemplate.LearningData.TestExamples.Count;
+                learningResults.ResultErrorLearningExamples = 0;
+
+                Connection.db.Value.LearningResults.Add(learningResults);
+                Connection.db.Value.SaveChanges();
+
+                var kek = new NeuralNetworks_LearningResults()
+                {
+                    ID_NeuralNetwork = GlobalTemplate.DatabaseNeuralNetwork.ID,
+                    ID_LearningResults = learningResults.ID
+                };
+                Connection.db.Value.NeuralNetworks_LearningResults.Add(kek);
+                Connection.db.Value.SaveChanges();
+            }
         }
 
         private void button_Replace_Click(object sender, EventArgs e)
