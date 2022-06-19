@@ -43,6 +43,7 @@
             this.panel_Left = new System.Windows.Forms.Panel();
             this.button_SaveModel = new System.Windows.Forms.Button();
             this.button_Evaluate = new System.Windows.Forms.Button();
+            this.button_MainScreen = new System.Windows.Forms.Button();
             this.panel_Configuration.SuspendLayout();
             this.panel_Left.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +56,7 @@
             this.button_Scenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Scenario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Scenario.ForeColor = System.Drawing.Color.White;
-            this.button_Scenario.Location = new System.Drawing.Point(0, 0);
+            this.button_Scenario.Location = new System.Drawing.Point(0, 30);
             this.button_Scenario.Margin = new System.Windows.Forms.Padding(0);
             this.button_Scenario.Name = "button_Scenario";
             this.button_Scenario.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -75,7 +76,7 @@
             this.button_Data.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Data.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Data.ForeColor = System.Drawing.Color.White;
-            this.button_Data.Location = new System.Drawing.Point(0, 30);
+            this.button_Data.Location = new System.Drawing.Point(0, 60);
             this.button_Data.Margin = new System.Windows.Forms.Padding(0);
             this.button_Data.Name = "button_Data";
             this.button_Data.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -95,7 +96,7 @@
             this.button_Learning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Learning.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Learning.ForeColor = System.Drawing.Color.White;
-            this.button_Learning.Location = new System.Drawing.Point(0, 210);
+            this.button_Learning.Location = new System.Drawing.Point(0, 240);
             this.button_Learning.Margin = new System.Windows.Forms.Padding(0);
             this.button_Learning.Name = "button_Learning";
             this.button_Learning.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -160,7 +161,7 @@
             this.button_Configuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Configuration.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Configuration.ForeColor = System.Drawing.Color.White;
-            this.button_Configuration.Location = new System.Drawing.Point(0, 60);
+            this.button_Configuration.Location = new System.Drawing.Point(0, 90);
             this.button_Configuration.Margin = new System.Windows.Forms.Padding(0);
             this.button_Configuration.Name = "button_Configuration";
             this.button_Configuration.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -232,7 +233,7 @@
             this.panel_Configuration.Controls.Add(this.button_MiddleLayers);
             this.panel_Configuration.Controls.Add(this.button_InputLayer);
             this.panel_Configuration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Configuration.Location = new System.Drawing.Point(0, 90);
+            this.panel_Configuration.Location = new System.Drawing.Point(0, 120);
             this.panel_Configuration.Name = "panel_Configuration";
             this.panel_Configuration.Size = new System.Drawing.Size(170, 120);
             this.panel_Configuration.TabIndex = 21;
@@ -267,9 +268,10 @@
             this.panel_Left.Controls.Add(this.button_Configuration);
             this.panel_Left.Controls.Add(this.button_Data);
             this.panel_Left.Controls.Add(this.button_Scenario);
+            this.panel_Left.Controls.Add(this.button_MainScreen);
             this.panel_Left.Location = new System.Drawing.Point(39, 40);
             this.panel_Left.Name = "panel_Left";
-            this.panel_Left.Size = new System.Drawing.Size(170, 448);
+            this.panel_Left.Size = new System.Drawing.Size(170, 344);
             this.panel_Left.TabIndex = 22;
             // 
             // button_SaveModel
@@ -281,7 +283,7 @@
             this.button_SaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SaveModel.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_SaveModel.ForeColor = System.Drawing.Color.White;
-            this.button_SaveModel.Location = new System.Drawing.Point(0, 270);
+            this.button_SaveModel.Location = new System.Drawing.Point(0, 300);
             this.button_SaveModel.Margin = new System.Windows.Forms.Padding(0);
             this.button_SaveModel.Name = "button_SaveModel";
             this.button_SaveModel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -301,7 +303,7 @@
             this.button_Evaluate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Evaluate.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Evaluate.ForeColor = System.Drawing.Color.White;
-            this.button_Evaluate.Location = new System.Drawing.Point(0, 240);
+            this.button_Evaluate.Location = new System.Drawing.Point(0, 270);
             this.button_Evaluate.Margin = new System.Windows.Forms.Padding(0);
             this.button_Evaluate.Name = "button_Evaluate";
             this.button_Evaluate.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -311,6 +313,25 @@
             this.button_Evaluate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Evaluate.UseVisualStyleBackColor = false;
             this.button_Evaluate.Click += new System.EventHandler(this.button_Evaluate_Click);
+            // 
+            // button_MainScreen
+            // 
+            this.button_MainScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button_MainScreen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_MainScreen.FlatAppearance.BorderSize = 0;
+            this.button_MainScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_MainScreen.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_MainScreen.ForeColor = System.Drawing.Color.White;
+            this.button_MainScreen.Location = new System.Drawing.Point(0, 0);
+            this.button_MainScreen.Margin = new System.Windows.Forms.Padding(0);
+            this.button_MainScreen.Name = "button_MainScreen";
+            this.button_MainScreen.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.button_MainScreen.Size = new System.Drawing.Size(170, 30);
+            this.button_MainScreen.TabIndex = 24;
+            this.button_MainScreen.Text = "На главный экран";
+            this.button_MainScreen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_MainScreen.UseVisualStyleBackColor = false;
+            this.button_MainScreen.Click += new System.EventHandler(this.button_MainScreen_Click);
             // 
             // MainForm
             // 
@@ -353,5 +374,6 @@
         private System.Windows.Forms.Panel panel_Left;
         public System.Windows.Forms.Button button_Evaluate;
         public System.Windows.Forms.Button button_SaveModel;
+        public System.Windows.Forms.Button button_MainScreen;
     }
 }

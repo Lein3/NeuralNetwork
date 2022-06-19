@@ -6,6 +6,8 @@ namespace Constructor
 {
     public partial class LearningForm : Form
     {
+        private enum DataGrid { learning, test };
+        private DataGrid currentDataGridView;
         public LearningForm()
         {
             InitializeComponent();
@@ -93,8 +95,37 @@ namespace Constructor
         }
 
         private void button_Replace_Click(object sender, EventArgs e)
+        {          
+            var learningData = GlobalTemplate.LearningData;
+            switch (currentDataGridView)
+            {
+                case DataGrid.learning:
+                    var index = dataGridView_Learning.CurrentCell.RowIndex;
+                    learningData.TestExamples.Add(learningData.LearningExamples[index]);
+                    learningData.LearningExamples.RemoveAt(index);
+                    UpdateDataGrids();
+                    break;
+                case DataGrid.test:
+                    var index2 = dataGridView_Test.CurrentCell.RowIndex;
+                    learningData.LearningExamples.Add(learningData.TestExamples[index2]);
+                    learningData.TestExamples.RemoveAt(index2);
+                    UpdateDataGrids();
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private void dataGridView_Learning_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //TODO: сделать перекидывание примеров
+            dataGridView_Test.ClearSelection();
+            currentDataGridView = DataGrid.learning;
+        }
+
+        private void dataGridView_Test_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView_Learning.ClearSelection();
+            currentDataGridView = DataGrid.test;
         }
     }
 }

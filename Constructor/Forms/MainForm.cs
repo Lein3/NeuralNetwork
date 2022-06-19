@@ -11,6 +11,7 @@ namespace Constructor
 {
     public partial class MainForm : Form
     {
+        public Form PreviousForm { get; set; }
         private Form OpenedForm { get; set; }
         public MainForm()
         {
@@ -68,6 +69,12 @@ namespace Constructor
             Application.Exit();
         }
 
+        public void button_MainScreen_Click(object sender, EventArgs e)
+        {
+            PreviousForm.Show();
+            this.Close();
+        }
+
         public void button_Scenario_Click(object sender, EventArgs e)
         {
             OpenChildForm(new SelectScenarioForm());
@@ -82,7 +89,7 @@ namespace Constructor
 
         public void button_Configuration_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new NetworkConfigurationForm());
+            OpenChildForm(new NetworkConfigurationForm(this));
             panel_Configuration.Visible = !panel_Configuration.Visible;
         }
 

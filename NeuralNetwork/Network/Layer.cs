@@ -46,7 +46,7 @@ namespace NeuralNetworkNamespace
             }
         }
 
-        public Layer(LearningData learningData)
+        public Layer(LearningData learningData, bool bias = false)
         {
             Neurons = new List<Neuron>();
             for (int i = 0; i < learningData.ParamNamesInput.Count; i++)
@@ -58,7 +58,11 @@ namespace NeuralNetworkNamespace
                 column.Sort();
                 neuron.Min = column.Min();
                 neuron.Max = column.Max();
-
+                Neurons.Add(neuron);
+            }
+            if (bias == true)
+            {
+                Neuron neuron = new Neuron_Bias();
                 Neurons.Add(neuron);
             }
         }

@@ -18,5 +18,7 @@ namespace Constructor
 
         public static NeuralNetwork NeuralNetwork { get; set; }
 
+        public static string ModelName { get; set; }
+
     }
 }

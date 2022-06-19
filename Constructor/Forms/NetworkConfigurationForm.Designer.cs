@@ -48,6 +48,8 @@
             this.label_DescriptionOutput = new System.Windows.Forms.Label();
             this.label_NeuronsCountOutput = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.textBox_ModelName = new System.Windows.Forms.TextBox();
+            this.label_ModelName = new System.Windows.Forms.Label();
             this.checkBox_DrawOnCenter = new System.Windows.Forms.CheckBox();
             this.checkBox_Bias = new System.Windows.Forms.CheckBox();
             this.currentNeuronControl = new Constructor.CurrentNeuronControl();
@@ -81,7 +83,7 @@
             this.panel_Neurons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Neurons.Location = new System.Drawing.Point(15, 265);
             this.panel_Neurons.Name = "panel_Neurons";
-            this.panel_Neurons.Size = new System.Drawing.Size(875, 525);
+            this.panel_Neurons.Size = new System.Drawing.Size(1670, 520);
             this.panel_Neurons.TabIndex = 7;
             this.panel_Neurons.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawSeparator);
             // 
@@ -116,7 +118,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(512, 209);
+            this.tabPage1.Size = new System.Drawing.Size(1312, 209);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Входной слой";
             // 
@@ -132,7 +134,7 @@
             this.tabControl.Location = new System.Drawing.Point(15, 10);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(520, 237);
+            this.tabControl.Size = new System.Drawing.Size(1320, 237);
             this.tabControl.TabIndex = 42;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -289,6 +291,8 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.tabPage4.Controls.Add(this.textBox_ModelName);
+            this.tabPage4.Controls.Add(this.label_ModelName);
             this.tabPage4.Controls.Add(this.checkBox_DrawOnCenter);
             this.tabPage4.Controls.Add(this.checkBox_Bias);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
@@ -296,6 +300,29 @@
             this.tabPage4.Size = new System.Drawing.Size(512, 209);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Другие настройки";
+            // 
+            // textBox_ModelName
+            // 
+            this.textBox_ModelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.textBox_ModelName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_ModelName.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.textBox_ModelName.ForeColor = System.Drawing.Color.White;
+            this.textBox_ModelName.Location = new System.Drawing.Point(15, 115);
+            this.textBox_ModelName.Name = "textBox_ModelName";
+            this.textBox_ModelName.Size = new System.Drawing.Size(190, 22);
+            this.textBox_ModelName.TabIndex = 50;
+            this.textBox_ModelName.TextChanged += new System.EventHandler(this.textBox_ModelName_TextChanged);
+            this.textBox_ModelName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_ModelName_KeyDown);
+            // 
+            // label_ModelName
+            // 
+            this.label_ModelName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ModelName.ForeColor = System.Drawing.Color.White;
+            this.label_ModelName.Location = new System.Drawing.Point(15, 90);
+            this.label_ModelName.Name = "label_ModelName";
+            this.label_ModelName.Size = new System.Drawing.Size(160, 20);
+            this.label_ModelName.TabIndex = 46;
+            this.label_ModelName.Text = "Имя модели";
             // 
             // checkBox_DrawOnCenter
             // 
@@ -326,7 +353,7 @@
             this.currentNeuronControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.currentNeuronControl.BackColor = System.Drawing.Color.White;
             this.currentNeuronControl.CurrentNeuron = null;
-            this.currentNeuronControl.Location = new System.Drawing.Point(550, 32);
+            this.currentNeuronControl.Location = new System.Drawing.Point(1350, 32);
             this.currentNeuronControl.MaximumSize = new System.Drawing.Size(340, 215);
             this.currentNeuronControl.MinimumSize = new System.Drawing.Size(340, 215);
             this.currentNeuronControl.Name = "currentNeuronControl";
@@ -338,7 +365,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(900, 800);
+            this.ClientSize = new System.Drawing.Size(1700, 800);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.panel_Neurons);
@@ -357,6 +384,7 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NeuronsCountOutput)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -386,5 +414,7 @@
         private System.Windows.Forms.Label label_SelectActivationFunctionMiddle;
         private System.Windows.Forms.Label label_SelectActivationFunctionOutput;
         private System.Windows.Forms.ComboBox comboBox_SelectActivationFunctionOutput;
+        private System.Windows.Forms.Label label_ModelName;
+        public System.Windows.Forms.TextBox textBox_ModelName;
     }
 }

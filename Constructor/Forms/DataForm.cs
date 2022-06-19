@@ -200,10 +200,10 @@ namespace Constructor
         {
             foreach (var panel in this.Controls.OfType<Panel>())
                 panel.Visible = false;
-            //foreach (var predictMarkControl in this.Controls.OfType<PredictMarkControl>().Skip(1))
-            //    Controls.Remove(predictMarkControl);
-            //predictMarkControl0.comboBox_PredictMark.DataSource = null;
-            //predictMarkControl0.textBox_PredictMarkName.Text = "";
+            foreach (var predictMarkControl in this.Controls.OfType<PredictMarkControl>().Skip(1))
+                Controls.Remove(predictMarkControl);
+            predictMarkControl0.comboBox_PredictMark.DataSource = null;
+            predictMarkControl0.textBox_PredictMarkName.Text = String.Empty;
         }
 
         public void FirstUpdateComboBoxPredictMark()

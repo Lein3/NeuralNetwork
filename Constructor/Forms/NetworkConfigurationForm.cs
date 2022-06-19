@@ -9,28 +9,64 @@ namespace Constructor
 {
     public partial class NetworkConfigurationForm : Form
     {
+        public new MainForm ParentForm { get; set; }
         private List<Layer> Layers { get; set; }
-        private bool Bias { get; set; } = false;
+        private bool Bias => checkBox_Bias.Checked;
         private bool DrawOnCenter { get; set; } = false;
 
-        public NetworkConfigurationForm()
+        public NetworkConfigurationForm(MainForm mainForm)
         {
             InitializeComponent();
+            ParentForm = mainForm;
+
+            if (GlobalTemplate.NeuralNetwork != null)
+            {
+                LoadNetwork();
+                return;
+            }
+
             Layers = new List<Layer>();
             Layers.Add(new Layer(GlobalTemplate.LearningData));
-
-            DisplayNetwork();
             numericUpDown_NeuronsCountInput.Value = Layers.First().Neurons.Count;
-            comboBox_SelectActivationFunctionMiddle.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
-            comboBox_SelectActivationFunctionMiddle.SelectedIndex = 5;
-            comboBox_SelectActivationFunctionOutput.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
-            comboBox_SelectActivationFunctionOutput.SelectedIndex = 5;          
+            DisplayNetwork();
+            LoadComboboxesWithFuntions();
             tabControl.SelectedIndex = 0;
+            textBox_ModelName.Text = "Моя модель";
 
             if (GlobalTemplate.CurrentWorkMode == GlobalTemplate.WorkMode.freeMode)
             {
                 numericUpDown_NeuronsCountInput.Enabled = true;
             }
+        }
+
+        private void LoadComboboxesWithFuntions()
+        {
+            comboBox_SelectActivationFunctionMiddle.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
+            comboBox_SelectActivationFunctionMiddle.SelectedIndex = 5;
+            comboBox_SelectActivationFunctionOutput.DataSource = Enum.GetValues(typeof(Neuron.ActivationFunctionEnum));
+            comboBox_SelectActivationFunctionOutput.SelectedIndex = 5;
+        }
+
+        private void LoadNetwork()
+        {
+            Layers = GlobalTemplate.NeuralNetwork.Layers;
+            textBox_ModelName.Text = GlobalTemplate.ModelName;
+            checkBox_Bias.CheckedChanged -= checkBox_Bias_CheckedChanged;
+            if (GlobalTemplate.NeuralNetwork.Structure.Bias == true)
+            {
+                checkBox_Bias.Checked = true;
+            }
+            checkBox_Bias.CheckedChanged += checkBox_Bias_CheckedChanged;
+            numericUpDown_NeuronsCountInput.Value = Layers.First().Neurons.Count - Convert.ToInt32(Bias);
+            numericUpDown_NeuronsCountOutput.ValueChanged -= numericUpDown_NeuronsCountOutput_ValueChanged;
+            numericUpDown_NeuronsCountOutput.Value = Layers.Last().Neurons.Count;
+            numericUpDown_NeuronsCountOutput.ValueChanged += numericUpDown_NeuronsCountOutput_ValueChanged;
+            numericUpDown_LayersCountMiddle.ValueChanged -= numericUpDown_LayersCountMiddle_ValueChanged;                 
+            PlaceSecondaryNumericsLoaded();
+            numericUpDown_LayersCountMiddle.ValueChanged += numericUpDown_LayersCountMiddle_ValueChanged;
+
+            DisplayNetwork();
+            LoadComboboxesWithFuntions();
         }
 
         private void DisplayNetwork()
@@ -42,12 +78,13 @@ namespace Constructor
                 {
                     max = layer.Neurons.Count;
                 }
-            }                
+            }
 
-            int x = panel_Neurons.Width / Layers.Count;
-            int y;
+            //int x = panel_Neurons.Width / Layers.Count + Layers.Count % 2 * 60;
+            int x = 30;
+            int y = 30;
             int index = 1;
-            panel_Neurons.Controls.Clear();
+            panel_Neurons.Controls.Clear();          
 
             foreach (var layer in Layers)
             {
@@ -95,9 +132,8 @@ namespace Constructor
         #region Скрытые слои
         private void numericUpDown_LayersCountMiddle_ValueChanged(object sender, EventArgs e)
         {
-            var parent = this.ParentForm as MainForm;
-            parent.button_MiddleLayers.Text = "Скрытые слои ✓";
-            parent.button_MiddleLayers.ForeColor = Color.FromArgb(85, 170, 255);
+            ParentForm.button_MiddleLayers.Text = "Скрытые слои ✓";
+            ParentForm.button_MiddleLayers.ForeColor = Color.FromArgb(85, 170, 255);
 
             var values = new List<int>();
             foreach (var control in panel_LayerCountMiddle.Controls.OfType<LayerCountControl>())
@@ -107,6 +143,12 @@ namespace Constructor
             }
 
             panel_LayerCountMiddle.Controls.Clear();
+            PlaceSecondaryNumerics(values);
+            numericUpDown_Secondary_ValueChanged(null, null);
+        }
+
+        private void PlaceSecondaryNumerics(List<int> values)
+        {
             for (int i = 0, x = 5, y = 5; i < (int)numericUpDown_LayersCountMiddle.Value; i++, x += 60)
             {
                 LayerCountControl layerCountControl = new LayerCountControl(i + 1);
@@ -117,7 +159,7 @@ namespace Constructor
                 }
                 catch
                 {
-                    
+
                 }
                 layerCountControl.Location = new Point(x, y);
                 panel_LayerCountMiddle.Controls.Add(layerCountControl);
@@ -128,7 +170,40 @@ namespace Constructor
                     y += 55;
                 }
             }
-            numericUpDown_Secondary_ValueChanged(null, null);
+        }
+
+        private void PlaceSecondaryNumericsLoaded()
+        {
+            var values = new List<int>();
+            var middleLayers = Layers.Take(Layers.Count - 1).Skip(1);
+            numericUpDown_LayersCountMiddle.Value = middleLayers.Count();
+            foreach (var layer in middleLayers)
+            {
+                var value = layer.Neurons.Count;
+                values.Add(value);
+            }
+
+            for (int i = 0, x = 5, y = 5; i < (int)numericUpDown_LayersCountMiddle.Value; i++, x += 60)
+            {
+                LayerCountControl layerCountControl = new LayerCountControl(i + 1);              
+                try
+                {
+                    layerCountControl.numericUpDown_LayerNeuronsCount.Value = values[i];
+                }
+                catch
+                {
+
+                }
+                layerCountControl.Location = new Point(x, y);
+                layerCountControl.numericUpDown_LayerNeuronsCount.ValueChanged += numericUpDown_Secondary_ValueChanged;
+                panel_LayerCountMiddle.Controls.Add(layerCountControl);
+
+                if (i % 17 == 0 && i != 0)
+                {
+                    x = -55;
+                    y += 55;
+                }
+            }
         }
 
         private void numericUpDown_Secondary_ValueChanged(object sender, EventArgs e)
@@ -185,10 +260,9 @@ namespace Constructor
             else
             {
                 numericUpDown_NeuronsCountOutput.Minimum = 1;
-                var parent = this.ParentForm as MainForm;
-                parent.button_OutputLayer.Text = "Выходной слой ✓";
-                parent.button_OutputLayer.ForeColor = Color.FromArgb(85, 170, 255);
-                parent.button_LayersReady.Enabled = true;
+                ParentForm.button_OutputLayer.Text = "Выходной слой ✓";
+                ParentForm.button_OutputLayer.ForeColor = Color.FromArgb(85, 170, 255);
+                ParentForm.button_LayersReady.Enabled = true;
             }
             if (Layers.Last().Neurons.FirstOrDefault()?.NeuronType == Structure.NeuronType.Output)
             {
@@ -216,9 +290,8 @@ namespace Constructor
             
             if (tabControl.SelectedIndex == 1)
             {
-                var parent = this.ParentForm as MainForm;
-                parent.button_InputLayer.Text = "Входной слой ✓";
-                parent.button_InputLayer.ForeColor = Color.FromArgb(85, 170, 255);
+                ParentForm.button_InputLayer.Text = "Входной слой ✓";
+                ParentForm.button_InputLayer.ForeColor = Color.FromArgb(85, 170, 255);
             }
             if (tabControl.SelectedIndex == 2)
             {
@@ -242,19 +315,9 @@ namespace Constructor
         }
         #endregion
 
-        #region Другие настройки
         private void checkBox_Bias_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_Bias.Checked == true)
-            {
-                Bias = true;
-                Layers.First().Neurons.Add(new Neuron_Bias());
-            }
-            else
-            {
-                Bias = false;
-                Layers.First().Neurons.Remove(Layers.First().Neurons.Last());
-            }
+            Layers[0] = new Layer(GlobalTemplate.LearningData, Bias);
             numericUpDown_LayersCountMiddle_ValueChanged(null, null);
             numericUpDown_NeuronsCountOutput_ValueChanged(null, null);
         }
@@ -275,7 +338,27 @@ namespace Constructor
         public void SaveNetwork()
         {
             GlobalTemplate.NeuralNetwork = new NeuralNetwork(Layers);
+            GlobalTemplate.NeuralNetwork.Structure.Bias = this.Bias;
         }
-        #endregion
+
+        private void textBox_ModelName_TextChanged(object sender, EventArgs e)
+        {           
+            if (!string.IsNullOrWhiteSpace(textBox_ModelName.Text))
+            {
+                GlobalTemplate.ModelName = textBox_ModelName.Text;
+            }
+            else
+            {
+                GlobalTemplate.ModelName = "Моя модель";
+            }
+        }
+
+        private void textBox_ModelName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e as KeyEventArgs).KeyCode == Keys.Enter || (e as KeyEventArgs).KeyCode == Keys.Escape)
+            {
+                ActiveControl = null;
+            }
+        }
     }
 }
