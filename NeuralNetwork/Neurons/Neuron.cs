@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 
 namespace NeuralNetworkNamespace
@@ -7,16 +8,21 @@ namespace NeuralNetworkNamespace
     public abstract class Neuron
     {
         public List<double> Weights { get; set; }
+        [JsonIgnore]
         public List<double> Inputs { get; set; }
         public Structure.NeuronType NeuronType { get; set; }
         public enum ActivationFunctionEnum { None, ELU, Linear, LReLU, ReLu, Sigmoid, Softmax, Th, Threshold };
         public IActivationFunction ActivationFunction { get; set; }
+        [JsonIgnore]
         public double Sum { get; set; }
+        [JsonIgnore]
         public double Output { get; set; }
+        [JsonIgnore]
         public double Error { get; set; }
         public double Max { get; set; }
         public double Min { get; set; }
         public string Name { get; set; }
+        [JsonIgnore]
         protected static Random Rnd { get; set; } = new Random(DateTime.Now.Millisecond); //рандом не трожь все посыпется к чертям
 
         public Neuron(ActivationFunctionEnum function)

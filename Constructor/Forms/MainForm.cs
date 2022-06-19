@@ -6,6 +6,8 @@ using System.Drawing;
 using Newtonsoft.Json;
 using NeuralNetworkNamespace;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace Constructor
 {
@@ -131,7 +133,12 @@ namespace Constructor
                 };
                 var settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto, SerializationBinder = SerializationBinder };
                 string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, settings);
-                var neuralNetwork = JsonConvert.DeserializeObject<NeuralNetwork>(json, settings);
+                string path = $"{folderFileDialog.SelectedPath}\\{GlobalTemplate.ModelName}.json";
+                using (StreamWriter file = new StreamWriter(path, true))
+                {
+                    file.WriteLine(json, Encoding.UTF8);
+                    file.Close();
+                }
             }
         }
     }
