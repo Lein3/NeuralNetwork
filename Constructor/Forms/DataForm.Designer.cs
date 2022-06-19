@@ -207,6 +207,8 @@
             // checkBox_FromFileSaveCheck
             // 
             this.checkBox_FromFileSaveCheck.AutoSize = true;
+            this.checkBox_FromFileSaveCheck.Checked = true;
+            this.checkBox_FromFileSaveCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_FromFileSaveCheck.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.checkBox_FromFileSaveCheck.ForeColor = System.Drawing.Color.White;
             this.checkBox_FromFileSaveCheck.Location = new System.Drawing.Point(335, 86);

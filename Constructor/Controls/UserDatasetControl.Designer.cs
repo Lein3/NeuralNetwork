@@ -62,11 +62,11 @@
             // 
             this.label_Info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_Info.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Info.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Info.ForeColor = System.Drawing.Color.White;
             this.label_Info.Location = new System.Drawing.Point(10, 80);
             this.label_Info.Name = "label_Info";
-            this.label_Info.Size = new System.Drawing.Size(660, 50);
+            this.label_Info.Size = new System.Drawing.Size(660, 65);
             this.label_Info.TabIndex = 4;
             this.label_Info.Text = "Описание";
             // 
@@ -101,7 +101,7 @@
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(700, 140);
+            this.panel_Top.Size = new System.Drawing.Size(700, 150);
             this.panel_Top.TabIndex = 27;
             // 
             // UserDatasetControl
@@ -114,7 +114,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.MinimumSize = new System.Drawing.Size(2, 140);
             this.Name = "UserDatasetControl";
-            this.Size = new System.Drawing.Size(700, 140);
+            this.Size = new System.Drawing.Size(700, 150);
             this.panel_Top.ResumeLayout(false);
             this.panel_Top.PerformLayout();
             this.ResumeLayout(false);

@@ -302,7 +302,7 @@ namespace Constructor
             }
             if (tabControl.SelectedIndex == 2)
             {
-                //numericUpDown_NeuronsCountOutput.Value = GlobalTemplate.LearningData.ParamNamesOutput.Count;
+                numericUpDown_NeuronsCountOutput.Value = GlobalTemplate.LearningData.ParamNamesOutput.Count;
                 numericUpDown_NeuronsCountOutput_ValueChanged(null, null);
             }
         }

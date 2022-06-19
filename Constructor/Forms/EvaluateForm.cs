@@ -200,13 +200,14 @@ namespace Constructor
                     if (actualAnswer >= 0.6)
                         actual++;
                 }
-                Dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]} ", expected);
-                Dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]} ", actual);
+                Dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]}", expected);
+                Dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]}", actual);
             }
 
             foreach (var pair in Dictionary)
             {
-                label_Learning.Text += $"{pair.Key} - {pair.Value} ";
+                label_Learning.Text += $"   {pair.Key} - {pair.Value}   ";
+                label_Learning.Text += "|";
             }
         }
 
@@ -246,13 +247,14 @@ namespace Constructor
                     if (actualAnswer >= 0.6)
                         actual++;
                 }
-                Dictionary.Add("в наборе данных было " + GlobalTemplate.LearningData.ClassNames[i], expected);
-                Dictionary.Add("нейросеть ответила " + GlobalTemplate.LearningData.ClassNames[i], actual);
+                Dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]}", expected);
+                Dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]}", actual);
             }
             
             foreach (var pair in Dictionary)
             {
-                label_Test.Text += $"{pair.Key} - {pair.Value} ";
+                label_Test.Text += $"   {pair.Key} - {pair.Value}   ";
+                label_Test.Text += "|";
             }
         }
     }
