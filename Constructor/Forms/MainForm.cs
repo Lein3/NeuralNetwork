@@ -136,7 +136,7 @@ namespace Constructor
                 string path = $"{folderFileDialog.SelectedPath}\\{GlobalTemplate.ModelName}.json";
                 using (StreamWriter file = new StreamWriter(path, true))
                 {
-                    file.WriteLine(json, Encoding.UTF8);
+                    file.WriteLine(json);
                     file.Close();
                 }
             }
