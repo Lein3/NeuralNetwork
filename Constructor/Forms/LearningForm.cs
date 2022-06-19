@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
 
@@ -98,14 +99,14 @@ namespace Constructor
                     neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
                     if (currentEpoch % 250 == 0)
                     {
-                        //string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        //await Task.Run(() => label_Statistcs.Text += result);
+                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
                     }
                     if (currentEpoch % 1000 == 0)
                     {
-                        //await Task.Run(() => label_Statistcs.Text = String.Empty);
-                        //string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        //await Task.Run(() => label_Statistcs.Text += result);
+                        await Task.Run(() => label_Statistcs.Text = String.Empty);
+                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
                     }
                 } while (neuralNetwork.LearningStatistics.currentStatics.Last() >= errorLimit);
             }
@@ -119,14 +120,14 @@ namespace Constructor
                     neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
                     if (i % 250 == 0)
                     {
-                        //string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        //await Task.Run(() => label_Statistcs.Text += result);
+                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
                     }
                     if (i % 1000 == 0)
                     {
-                        //await Task.Run(() => label_Statistcs.Text = String.Empty);
-                        //string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        //await Task.Run(() => label_Statistcs.Text += result);
+                        await Task.Run(() => label_Statistcs.Text = String.Empty);
+                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
                     }
                 }
             }

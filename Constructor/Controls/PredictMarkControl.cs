@@ -79,9 +79,9 @@ namespace Constructor
                 for (int i = parent.learningData.ClassNames.Count; i < MarkIndex + 1; i++)
                 {
                     parent.learningData.ClassNames.Add("");
-                }
-                parent.learningData.ClassNames[MarkIndex] = textBox_PredictMarkName.Text;
+                }               
             }
+            parent.learningData.ClassNames[MarkIndex] = textBox_PredictMarkName.Text;
             parent.UpdateAllComboBoxPredictMark();
         }
     }
