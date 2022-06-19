@@ -209,7 +209,7 @@ namespace Constructor
         public void FirstUpdateComboBoxPredictMark()
         {
             label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
-            label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)";
+            label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов) ";
 
             var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
             predictMarkControl0.button_AddMark.Enabled = true;
@@ -228,6 +228,15 @@ namespace Constructor
                 var index = paramsNames.Count - learningData.ParamNamesOutput.Count + control.MarkIndex;
                 control.comboBox_PredictMark.SelectedIndex = index;
             }
+
+            label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
+            label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)    ";
+            var stringBuilder = new StringBuilder();
+            foreach (var pair in learningData.ClassesCount)
+            {
+                stringBuilder.Append($"{pair.Key} - {pair.Value}    ");
+            }
+            label_DataPreviewInfo.Text += stringBuilder.ToString();
         }
 
         private void button_Next_Click(object sender, EventArgs e)

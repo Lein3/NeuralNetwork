@@ -62,6 +62,7 @@ namespace Constructor
             var parent = ParentForm as DataForm;
             parent.Controls.Remove(this);
             parent.learningData.MoveToParamInput(MarkIndex);
+            parent.learningData.ClassNames.Remove(parent.learningData.ClassNames.Last());
             parent.dataGridView.DataSource = null;
             parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
             parent.UpdateAllComboBoxPredictMark();
@@ -85,6 +86,7 @@ namespace Constructor
                 }
                 parent.learningData.ClassNames[MarkIndex] = textBox_PredictMarkName.Text;
             }
+            parent.UpdateAllComboBoxPredictMark();
         }
     }
 }

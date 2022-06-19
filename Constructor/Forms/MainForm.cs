@@ -117,7 +117,7 @@ namespace Constructor
             var folderFileDialog = new FolderBrowserDialog();
             if (folderFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var SerializationBinder = new KnownTypesBinder()
+                var SerializationBinder = new JsonKnownTypesBinder()
                 { KnownTypes = new List<Type>() 
                     { 
                     typeof(BinaryLogLoss),
