@@ -58,37 +58,89 @@ namespace Constructor
                 startY += 60;
             }
 
-            var labelPredict = new Label();
-            labelPredict.AutoSize = true;
-            labelPredict.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            labelPredict.ForeColor = Color.White;
-            labelPredict.Location = new Point(100, startY + 60);
-            labelPredict.Size = new Size(86, 19);
-            labelPredict.Text = "Ответ сети";
-            labelPredict.TextAlign = ContentAlignment.MiddleCenter;
-            labelPredict.Click += label_Predict_Click;
-            panel_Predict.Controls.Add(labelPredict);
+            var label_Predict = new Label();
+            label_Predict.AutoSize = true;
+            label_Predict.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label_Predict.ForeColor = System.Drawing.Color.White;
+            label_Predict.Location = new System.Drawing.Point(startX + 40, startY + 20);
+            label_Predict.Size = new System.Drawing.Size(120, 30);
+            label_Predict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            panel_Predict.Controls.Add(label_Predict);
 
-            var labelPredictValue = new Label();
-            labelPredictValue.AutoSize = true;
-            labelPredictValue.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            labelPredictValue.ForeColor = Color.White;
-            labelPredictValue.Location = new Point(120, startY + 90);
-            labelPredictValue.Size = new Size(86, 19);
-            labelPredictValue.TextAlign = ContentAlignment.MiddleCenter;
-            panel_Predict.Controls.Add(labelPredictValue);
+            var button_Predict = new Button();
+            button_Predict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            button_Predict.Cursor = System.Windows.Forms.Cursors.Hand;
+            button_Predict.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
+            button_Predict.FlatAppearance.BorderSize = 0;
+            button_Predict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button_Predict.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button_Predict.ForeColor = System.Drawing.Color.White;
+            button_Predict.Location = new System.Drawing.Point(startX, startY + 60);
+            button_Predict.Size = new System.Drawing.Size(120, 50);
+            button_Predict.Text = "Предсказать";
+            button_Predict.UseVisualStyleBackColor = false;
+            button_Predict.Click += button_Predict_Click;
+            panel_Predict.Controls.Add(button_Predict);
+
+            var button_GenerateRandom = new Button();
+            button_GenerateRandom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            button_GenerateRandom.Cursor = System.Windows.Forms.Cursors.Hand;
+            button_GenerateRandom.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
+            button_GenerateRandom.FlatAppearance.BorderSize = 0;
+            button_GenerateRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button_GenerateRandom.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button_GenerateRandom.ForeColor = System.Drawing.Color.White;
+            button_GenerateRandom.Location = new System.Drawing.Point(startX + 140, startY + 60);
+            button_GenerateRandom.Size = new System.Drawing.Size(120, 50);
+            button_GenerateRandom.Text = "Сгенерировать пример2";
+            button_GenerateRandom.UseVisualStyleBackColor = false;
+            button_GenerateRandom.Click += button_Generate_Click;
+            panel_Predict.Controls.Add(button_GenerateRandom);
         }
 
-        private void label_Predict_Click(object sender, EventArgs e)
+        private void button_Predict_Click(object sender, EventArgs e)
         {
             var values = new List<double>();
             foreach (var textbox in panel_Predict.Controls.OfType<TextBox>())
             {
+                if (string.IsNullOrWhiteSpace(textbox.Text))
+                {
+                    MessageBox.Show("Не все поля заполнены");
+                    return;
+                }
                 values.Add(Convert.ToDouble(textbox.Text));
             }
-            var answer = GlobalTemplate.NeuralNetwork.Predict_ReturnOnlyValues(values)[0];
-            answer = Math.Round(answer, 4);
-            panel_Predict.Controls.OfType<Label>().Last().Text = answer.ToString();
+
+            var answer = GlobalTemplate.NeuralNetwork.Predict_ReturnOnlyValues(values);
+            for (int i = 0; i < answer.Count; i++)
+            {
+                answer[i] = Math.Round(answer[i], 4);
+            }
+
+            var stringAnswer = String.Join(", ", answer);
+            panel_Predict.Controls.OfType<Label>().Last().Text = $"[{stringAnswer}]";
+        }
+
+        private void button_Generate_Click(object sender, EventArgs e)
+        {           
+            var values = new List<double>();
+            Random random = new Random(DateTime.Now.Millisecond);
+            for (int i = 0; i < dataGridView_Learning.ColumnCount - GlobalTemplate.LearningData.ClassNames.Count * 2; i++)
+            {
+                var randomRow = random.Next(0, dataGridView_Learning.RowCount);
+                var value = Convert.ToDouble(dataGridView_Learning.Rows[randomRow].Cells[i].Value);
+                panel_Predict.Controls.OfType<TextBox>().ToList()[i].Text = value.ToString();
+                values.Add(value);
+            }
+
+            var answer = GlobalTemplate.NeuralNetwork.Predict_ReturnOnlyValues(values);
+            for (int i = 0; i < answer.Count; i++)
+            {
+                answer[i] = Math.Round(answer[i], 4);
+            }
+
+            var stringAnswer = String.Join(", ", answer);
+            panel_Predict.Controls.OfType<Label>().Last().Text = $"[{stringAnswer}]";
         }
 
         private void AddPredictedAnswer(DataTable dataTable)
@@ -148,8 +200,8 @@ namespace Constructor
                     if (actualAnswer >= 0.6)
                         actual++;
                 }
-                Dictionary.Add("в наборе данных было " + GlobalTemplate.LearningData.ClassNames[i], expected);
-                Dictionary.Add("нейросеть ответила " + GlobalTemplate.LearningData.ClassNames[i], actual);
+                Dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]} ", expected);
+                Dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]} ", actual);
             }
 
             foreach (var pair in Dictionary)

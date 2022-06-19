@@ -109,14 +109,14 @@ namespace Constructor
                     neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
                     if (i % 250 == 0)
                     {
-                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        await Task.Run(() => label_Statistcs.Text += result);
+                        //string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        //await Task.Run(() => label_Statistcs.Text += result);
                     }
                     if (i % 1000 == 0)
                     {
-                        await Task.Run(() => label_Statistcs.Text = String.Empty);
-                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
-                        await Task.Run(() => label_Statistcs.Text += result);
+                        //await Task.Run(() => label_Statistcs.Text = String.Empty);
+                        //string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        //await Task.Run(() => label_Statistcs.Text += result);
                     }
                 }
             }
