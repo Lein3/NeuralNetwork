@@ -1,0 +1,16 @@
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\DatabaseCleaner.exe.config
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\DatabaseCleaner.exe
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\DatabaseCleaner.pdb
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.csproj.AssemblyReference.cache
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.csproj.SuggestedBindingRedirects.cache
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.ProjectInstaller.resources
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.csproj.GenerateResource.cache
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.csproj.CoreCompileInputs.cache
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.exe
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.pdb
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\EntityFramework.dll
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\EntityFramework.SqlServer.dll
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\EntityFramework.xml
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\EntityFramework.SqlServer.xml
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Debug\ru\EntityFramework.resources.dll
+C:\ProgesForC\Dz\Baza\DatabaseCleaner\obj\Debug\DatabaseCleaner.csproj.CopyComplete

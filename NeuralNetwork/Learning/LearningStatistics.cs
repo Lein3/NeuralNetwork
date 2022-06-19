@@ -7,6 +7,7 @@ namespace NeuralNetworkNamespace
         public List<double> MAE { get; set; } // средняя абсолютная ошибка
         public List<double> MSE { get; set; } // средняя квадратичная ошибка
         public List<double> LogLoss { get; set; } // средняя квадратичная ошибка
+        public List<double> currentStatics { get; set; }
 
         public LearningStatistics()
         {

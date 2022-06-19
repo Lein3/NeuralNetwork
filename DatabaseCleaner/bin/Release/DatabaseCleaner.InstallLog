@@ -1,0 +1,26 @@
+﻿Выполняется установка сборки 'C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe
+   logfile = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.InstallLog
+Устанавливается служба DatabaseCleaner...
+Создается исходный EventLog DatabaseCleaner в журнале Application...
+Выполняется откат для сборки 'C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe
+   logfile = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.InstallLog
+Восстанавливается исходное состояние журнала событий для источника DatabaseCleaner.
+Выполняется установка сборки 'C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe
+   logfile = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.InstallLog
+Устанавливается служба DatabaseCleaner...
+Служба DatabaseCleaner успешно установлена.
+Создается исходный EventLog DatabaseCleaner в журнале Application...
+Выполняется фиксация сборки 'C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.exe
+   logfile = C:\ProgesForC\Dz\Baza\DatabaseCleaner\bin\Release\DatabaseCleaner.InstallLog

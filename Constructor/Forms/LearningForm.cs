@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworkNamespace;
 
@@ -69,7 +71,7 @@ namespace Constructor
             UpdateDataGrids();
         }
 
-        private void button_StartLearning_Click(object sender, EventArgs e)
+        private async void button_StartLearning_Click(object sender, EventArgs e)
         {
             var learningData = GlobalTemplate.LearningData;
             var neuralNetwork = GlobalTemplate.NeuralNetwork;
@@ -78,13 +80,45 @@ namespace Constructor
             {
                 var errorLimit = (double)numericUpDown_ErrorLimit.Value / 100;
                 neuralNetwork.SetCostFunction(NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
-                neuralNetwork.Learn_Backpropogation(learningData, errorLimit, learningRate);
+                int currentEpoch = 0;
+                label_Statistcs.Text = String.Empty;
+                do
+                {
+                    currentEpoch++;
+                    neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
+                    if (currentEpoch % 250 == 0)
+                    {
+                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
+                    }
+                    if (currentEpoch % 1000 == 0)
+                    {
+                        await Task.Run(() => label_Statistcs.Text = String.Empty);
+                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
+                    }
+                } while (neuralNetwork.LearningStatistics.currentStatics.Last() >= errorLimit);
             }
             else if (radioButton_EpochCount.Checked == true)
             {
                 var epochTimes = (int)numericUpDown_EpochCount.Value;
                 neuralNetwork.SetCostFunction(NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
-                neuralNetwork.Learn_Backpropogation(learningData, epochTimes, learningRate);
+                label_Statistcs.Text = String.Empty;
+                for (int i = 0; i < epochTimes; i++)
+                {
+                    neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
+                    if (i % 250 == 0)
+                    {
+                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
+                    }
+                    if (i % 1000 == 0)
+                    {
+                        await Task.Run(() => label_Statistcs.Text = String.Empty);
+                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        await Task.Run(() => label_Statistcs.Text += result);
+                    }
+                }
             }
 
             var parent = this.ParentForm as MainForm;

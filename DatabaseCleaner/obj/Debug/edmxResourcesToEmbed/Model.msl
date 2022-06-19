@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище NeuralNetworkConstructorModelContainer" CdmEntityContainer="NeuralNetworkConstructorEntities">
+    <EntitySetMapping Name="ActivationFunctions">
+      <EntityTypeMapping TypeName="NeuralNetworkConstructorModel.ActivationFunctions">
+        <MappingFragment StoreEntitySet="ActivationFunctions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CostFunctions">
+      <EntityTypeMapping TypeName="NeuralNetworkConstructorModel.CostFunctions">
+        <MappingFragment StoreEntitySet="CostFunctions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Datasets">
+      <EntityTypeMapping TypeName="NeuralNetworkConstructorModel.Datasets">
+        <MappingFragment StoreEntitySet="Datasets">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="ID_Table" ColumnName="ID_Table" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LearningResults">
+      <EntityTypeMapping TypeName="NeuralNetworkConstructorModel.LearningResults">
+        <MappingFragment StoreEntitySet="LearningResults">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EpochCount" ColumnName="EpochCount" />
+          <ScalarProperty Name="LearningRate" ColumnName="LearningRate" />
+          <ScalarProperty Name="ErrorLimit" ColumnName="ErrorLimit" />
+          <ScalarProperty Name="ExamplesLearningCount" ColumnName="ExamplesLearningCount" />
+          <ScalarProperty Name="ExamplesTestCount" ColumnName="ExamplesTestCount" />
+          <ScalarProperty Name="ElapsedTimeMilliseconds" ColumnName="ElapsedTimeMilliseconds" />
+          <ScalarProperty Name="ResultErrorLearningExamples" ColumnName="ResultErrorLearningExamples" />
+          <ScalarProperty Name="ResultErrorTestExamples" ColumnName="ResultErrorTestExamples" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NeuralNetworks">
+      <EntityTypeMapping TypeName="NeuralNetworkConstructorModel.NeuralNetworks">
+        <MappingFragment StoreEntitySet="NeuralNetworks">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="Dataset" ColumnName="Dataset" />
+          <ScalarProperty Name="InputNeuronsCount" ColumnName="InputNeuronsCount" />
+          <ScalarProperty Name="OutputNeuronsCount" ColumnName="OutputNeuronsCount" />
+          <ScalarProperty Name="MiddleLayers" ColumnName="MiddleLayers" />
+          <ScalarProperty Name="Bias" ColumnName="Bias" />
+          <ScalarProperty Name="ActivationFunction" ColumnName="ActivationFunction" />
+          <ScalarProperty Name="CostFunction" ColumnName="CostFunction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="NeuralNetworkConstructorModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="NeuralNetworks_LearningResults" TypeName="NeuralNetworkConstructorModel.NeuralNetworks_LearningResults" StoreEntitySet="NeuralNetworks_LearningResults">
+      <EndProperty Name="LearningResults">
+        <ScalarProperty Name="ID" ColumnName="ID_LearningResults" />
+      </EndProperty>
+      <EndProperty Name="NeuralNetworks">
+        <ScalarProperty Name="ID" ColumnName="ID_NeuralNetwork" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Users_NeuralNetworks" TypeName="NeuralNetworkConstructorModel.Users_NeuralNetworks" StoreEntitySet="Users_NeuralNetworks">
+      <EndProperty Name="NeuralNetworks">
+        <ScalarProperty Name="ID" ColumnName="ID_NeuralNetwork" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="ID" ColumnName="ID_User" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

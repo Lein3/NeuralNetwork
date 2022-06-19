@@ -1,0 +1,11 @@
+C:\ProgesForC\Dz\Baza\NeuralNetwork\bin\Release\NeuralNetwork.dll
+C:\ProgesForC\Dz\Baza\NeuralNetwork\bin\Release\NeuralNetwork.pdb
+C:\ProgesForC\Dz\Baza\NeuralNetwork\bin\Release\Newtonsoft.Json.dll
+C:\ProgesForC\Dz\Baza\NeuralNetwork\bin\Release\System.ValueTuple.dll
+C:\ProgesForC\Dz\Baza\NeuralNetwork\bin\Release\Newtonsoft.Json.xml
+C:\ProgesForC\Dz\Baza\NeuralNetwork\bin\Release\System.ValueTuple.xml
+C:\ProgesForC\Dz\Baza\NeuralNetwork\obj\Release\NeuralNetworkLibrary.csproj.AssemblyReference.cache
+C:\ProgesForC\Dz\Baza\NeuralNetwork\obj\Release\NeuralNetworkLibrary.csproj.CoreCompileInputs.cache
+C:\ProgesForC\Dz\Baza\NeuralNetwork\obj\Release\NeuralNetworkLibrary.csproj.CopyComplete
+C:\ProgesForC\Dz\Baza\NeuralNetwork\obj\Release\NeuralNetwork.dll
+C:\ProgesForC\Dz\Baza\NeuralNetwork\obj\Release\NeuralNetwork.pdb

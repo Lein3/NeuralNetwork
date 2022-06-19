@@ -273,8 +273,17 @@ namespace Constructor
         {
             //для начала нам нужно определить имя таблицы в базе данных
             //мы получаем список всех датасетов из бд по их id_Table и к последнему нужно добавить +1
-            var lastID = Connection.db.Value.Datasets.OrderByDescending(item => item.ID_Table).First().ID_Table;
-            lastID += 1;
+            int lastID;
+            try
+            {
+                lastID = Connection.db.Value.Datasets.OrderByDescending(item => item.ID_Table).First().ID_Table;
+                lastID += 1;
+            }
+            catch
+            {
+                lastID = 1;
+            }
+            
 
             //теперь нужно создать запрос на создание таблицы под наш датасет в базе
             StringBuilder createQuery = new StringBuilder($"CREATE TABLE [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastID}]");

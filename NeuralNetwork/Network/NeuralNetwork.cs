@@ -99,12 +99,15 @@ namespace NeuralNetworkNamespace
                     break;
                 case CostFunctionEnum.BinaryLogLoss:
                     CostFunction = new BinaryLogLoss();
+                    LearningStatistics.currentStatics = LearningStatistics.LogLoss;
                     break;
                 case CostFunctionEnum.CategoryLogLoss:
                     CostFunction = new CategoryLogLoss();
+                    LearningStatistics.currentStatics = LearningStatistics.LogLoss;
                     break;
                 case CostFunctionEnum.SquaredError:
                     CostFunction = new SquaredError();
+                    LearningStatistics.currentStatics = LearningStatistics.MSE;
                     break;
             }
         }
@@ -167,9 +170,9 @@ namespace NeuralNetworkNamespace
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
-                LearningStatistics.LogLoss.Add(currentEpochError.Average());
+                LearningStatistics.currentStatics.Add(currentEpochError.Average());
             } 
-            while (LearningStatistics.LogLoss.Last() >= errorLimit);
+            while (LearningStatistics.currentStatics.Last() >= errorLimit);
         }
 
         public void Learn_Backpropogation(LearningData learningData, int epochTimes, double learningRate = 0.1)
@@ -185,7 +188,7 @@ namespace NeuralNetworkNamespace
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
-                LearningStatistics.LogLoss.Add(currentEpochError.Average());
+                LearningStatistics.currentStatics.Add(currentEpochError.Average());
             }
         }
 
