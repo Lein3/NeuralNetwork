@@ -13,12 +13,10 @@ namespace Constructor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new AuthorizationForm());
+            Application.Run(new AuthorizationForm());
             Application.Run(new MainForm());
 
-            //TODO: загрузить модель
             //TODO: мои модели
-            //TODO: мои наборы данных
             //TODO: запись моделей в базу данных
             //TODO: автоматизированный режим
         }

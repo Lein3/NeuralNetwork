@@ -89,6 +89,12 @@ namespace Constructor
             panel_Configuration.Visible = false;
         }
 
+        public void button_Data_Click(int datasetID)
+        {
+            OpenChildForm(new DataForm(datasetID));
+            panel_Configuration.Visible = false;
+        }
+
         public void button_Configuration_Click(object sender, EventArgs e)
         {
             OpenChildForm(new NetworkConfigurationForm(this));
@@ -116,29 +122,37 @@ namespace Constructor
 
         private void button_SaveModel_Click(object sender, EventArgs e)
         {
-            var folderFileDialog = new FolderBrowserDialog();
-            if (folderFileDialog.ShowDialog() == DialogResult.OK)
+            if (panel_SaveModel.Visible == false)
             {
-                var SerializationBinder = new JsonKnownTypesBinder()
-                { KnownTypes = new List<Type>() 
-                    { 
-                    typeof(BinaryLogLoss),
-                    typeof(Sigmoid),
-                    typeof(None),
-                    typeof(Neuron_Bias),
-                    typeof(Neuron_Input),
-                    typeof(Neuron_Normal),
-                    typeof(Neuron_Output),
-                    }
-                };
-                var settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto, SerializationBinder = SerializationBinder };
-                string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, settings);
-                string path = $"{folderFileDialog.SelectedPath}\\{GlobalTemplate.ModelName}.json";
-                using (StreamWriter file = new StreamWriter(path, true))
+                panel_SaveModel.Visible = true;
+                textBox_ModelName.Text = GlobalTemplate.ModelName;
+                return;
+            }
+
+            var folderFileDialog = new FolderBrowserDialog();
+            folderFileDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            if (folderFileDialog.ShowDialog() == DialogResult.OK)
+            {             
+                string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, AuthorizationForm.settings);
+                string path = $"{folderFileDialog.SelectedPath}\\{GlobalTemplate.ModelName}.nc";
+                using (StreamWriter file = new StreamWriter(path, false))
                 {
                     file.WriteLine(json);
                     file.Close();
                 }
+                var neural = JsonConvert.DeserializeObject<NeuralNetwork>(json, AuthorizationForm.settings);
+            }
+        }
+
+        private void textBox_ModelName_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox_ModelName.Text))
+            {
+                GlobalTemplate.ModelName = textBox_ModelName.Text;
+            }
+            else
+            {
+                GlobalTemplate.ModelName = "Моя модель";
             }
         }
     }

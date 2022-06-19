@@ -500,6 +500,7 @@
             this.button_LoadModel.Text = "Загрузить модель";
             this.button_LoadModel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_LoadModel.UseVisualStyleBackColor = false;
+            this.button_LoadModel.Click += new System.EventHandler(this.button_LoadModel_Click);
             this.button_LoadModel.MouseEnter += new System.EventHandler(this.DescriptionFunction);
             // 
             // button_MyDatasets
@@ -521,6 +522,7 @@
             this.button_MyDatasets.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button_MyDatasets.UseVisualStyleBackColor = false;
             this.button_MyDatasets.Visible = false;
+            this.button_MyDatasets.Click += new System.EventHandler(this.button_MyDatasets_Click);
             this.button_MyDatasets.MouseEnter += new System.EventHandler(this.DescriptionFunction);
             // 
             // label_Registration

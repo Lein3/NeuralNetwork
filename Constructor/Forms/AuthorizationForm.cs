@@ -6,12 +6,16 @@ using System.Collections.Generic;
 using Constructor.Properties;
 using System.Linq;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
+using NeuralNetworkNamespace;
+using System.IO;
 
 namespace Constructor
 {
     public partial class AuthorizationForm : Form
     {
-        int pashalka = 0;
+        public int pashalka = 0;
+        public int selectedDatasetID { get; set; }
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -33,6 +37,28 @@ namespace Constructor
                 };
             });
         }
+
+        #region Статические настройки для сериализатора
+        public static JsonKnownTypesBinder SerializationBinder = new JsonKnownTypesBinder()
+        {
+            KnownTypes = new List<Type>()
+                    {
+                    typeof(BinaryLogLoss),
+                    typeof(Sigmoid),
+                    typeof(None),
+                    typeof(Neuron_Bias),
+                    typeof(Neuron_Input),
+                    typeof(Neuron_Normal),
+                    typeof(Neuron_Output),
+                    }
+        };
+
+        public static JsonSerializerSettings settings = new JsonSerializerSettings() 
+        { 
+            TypeNameHandling = TypeNameHandling.Auto,
+            SerializationBinder = SerializationBinder 
+        };
+        #endregion
 
         #region Description
         private void DescriptionFunction(object sender, EventArgs e)
@@ -123,7 +149,7 @@ namespace Constructor
             {
                 GlobalTemplate.CurrentUser = user;
                 AuthorizationVisibility();
-                label_Username.Text = "Привет, " + GlobalTemplate.CurrentUser.Login;
+                label_Username.Text = "Здравствуйте, " + GlobalTemplate.CurrentUser.Login;
             }
             else
             {
@@ -145,7 +171,7 @@ namespace Constructor
             GlobalTemplate.CurrentUser = user;
 
             AuthorizationVisibility();
-            label_Username.Text = "Привет, " + GlobalTemplate.CurrentUser.Login;
+            label_Username.Text = "Здравствуйте, " + GlobalTemplate.CurrentUser.Login;
         }
 
         private void AuthorizationVisibility()
@@ -158,6 +184,33 @@ namespace Constructor
             button_MyDatasets.Visible = true;
         }
         #endregion
+
+        private void button_LoadModel_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog() { Filter = "NeuralConstructor Files (*.nc)|*.nc|JSON Files (*.json)|*.json|All files (*.*)|*.*" };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string json = File.ReadAllText(openFileDialog.FileName);
+                var neural = JsonConvert.DeserializeObject<NeuralNetwork>(json, AuthorizationForm.settings);
+
+                GlobalTemplate.NeuralNetwork = neural;
+                GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.professionalMode;
+                GlobalTemplate.Loaded = true;
+
+                var child = new MainForm() { PreviousForm = this };
+                child.Show();
+                child.button_Configuration_Click(null, null);
+                child.button_Configuration.Enabled = true;
+                child.button_InputLayer.Text = "Входной слой ✓";
+                child.button_InputLayer.ForeColor = Color.FromArgb(85, 170, 255);
+                child.button_MiddleLayers.Text = "Скрытые слои ✓";
+                child.button_MiddleLayers.ForeColor = Color.FromArgb(85, 170, 255);
+                child.button_OutputLayer.Text = "Выходной слой ✓";
+                child.button_OutputLayer.ForeColor = Color.FromArgb(85, 170, 255);
+                child.button_LayersReady.Enabled = true;
+                this.Hide();
+            }
+        }
 
         private void button_AutoMode_Click(object sender, EventArgs e)
         {
@@ -178,6 +231,21 @@ namespace Constructor
             GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.freeMode;
             new MainForm() { PreviousForm = this }.Show();
             this.Hide();
+        }
+
+        private void button_MyDatasets_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 0.5;
+            if (new UserDatasetsForm() { PreviousForm = this }.ShowDialog() == DialogResult.OK)
+            {
+                GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.professionalMode;
+                GlobalTemplate.CurrentScenario = GlobalTemplate.Scenario.multiclassClassification;
+                var child = new MainForm() { PreviousForm = this };
+                child.Show();
+                child.button_Data_Click(selectedDatasetID);
+                child.button_Data.Enabled = true;
+                this.Hide();
+            }
         }
     }
 }

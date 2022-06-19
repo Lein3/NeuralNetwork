@@ -13,6 +13,12 @@ namespace Constructor
         public LearningForm()
         {
             InitializeComponent();
+            if (GlobalTemplate.LearningData == null)
+            {
+                MessageBox.Show("Отсутствует набор данных для обучения");
+                return;
+            }
+
             comboBox_SelectCostFunction.DataSource = Enum.GetValues(typeof(NeuralNetwork.CostFunctionEnum));
             if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.multiclassClassification)
             {

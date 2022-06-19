@@ -242,6 +242,12 @@
     <Compile Include="Forms\NetworkConfigurationForm.Designer.cs">
       <DependentUpon>NetworkConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserDatasetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserDatasetsForm.Designer.cs">
+      <DependentUpon>UserDatasetsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NeuralNetworks.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -265,6 +271,12 @@
     <Compile Include="Forms\SaveModelForm.Designer.cs">
       <DependentUpon>SaveModelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UserDatasetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserDatasetControl.Designer.cs">
+      <DependentUpon>UserDatasetControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -279,6 +291,9 @@
     <EmbeddedResource Include="Controls\NeuronControl.resx">
       <DependentUpon>NeuronControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserDatasetControl.resx">
+      <DependentUpon>UserDatasetControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EvaluateForm.resx">
       <DependentUpon>EvaluateForm.cs</DependentUpon>
@@ -314,6 +329,9 @@
     <EmbeddedResource Include="Controls\PredictMarkControl.resx">
       <DependentUpon>PredictMarkControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserDatasetsForm.resx">
+      <DependentUpon>UserDatasetsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

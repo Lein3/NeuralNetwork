@@ -142,3 +142,5 @@ C:\ProgesForC\Dz\Baza\Constructor\obj\Debug\Constructor.csproj.CoreCompileInputs
 C:\ProgesForC\Dz\Baza\Constructor\obj\Debug\Constructor.csproj.CopyComplete
 C:\ProgesForC\Dz\Baza\Constructor\obj\Debug\Constructor.exe
 C:\ProgesForC\Dz\Baza\Constructor\obj\Debug\Constructor.pdb
+C:\ProgesForC\Dz\Baza\Constructor\obj\Debug\Constructor.UserDatasetControl.resources
+C:\ProgesForC\Dz\Baza\Constructor\obj\Debug\Constructor.UserDatasetsForm.resources

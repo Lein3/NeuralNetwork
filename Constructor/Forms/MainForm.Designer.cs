@@ -44,8 +44,12 @@
             this.button_SaveModel = new System.Windows.Forms.Button();
             this.button_Evaluate = new System.Windows.Forms.Button();
             this.button_MainScreen = new System.Windows.Forms.Button();
+            this.panel_SaveModel = new System.Windows.Forms.Panel();
+            this.textBox_ModelName = new System.Windows.Forms.TextBox();
+            this.label_ModelName = new System.Windows.Forms.Label();
             this.panel_Configuration.SuspendLayout();
             this.panel_Left.SuspendLayout();
+            this.panel_SaveModel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Scenario
@@ -261,6 +265,7 @@
             // 
             // panel_Left
             // 
+            this.panel_Left.Controls.Add(this.panel_SaveModel);
             this.panel_Left.Controls.Add(this.button_SaveModel);
             this.panel_Left.Controls.Add(this.button_Evaluate);
             this.panel_Left.Controls.Add(this.button_Learning);
@@ -271,7 +276,7 @@
             this.panel_Left.Controls.Add(this.button_MainScreen);
             this.panel_Left.Location = new System.Drawing.Point(39, 40);
             this.panel_Left.Name = "panel_Left";
-            this.panel_Left.Size = new System.Drawing.Size(170, 344);
+            this.panel_Left.Size = new System.Drawing.Size(170, 450);
             this.panel_Left.TabIndex = 22;
             // 
             // button_SaveModel
@@ -333,6 +338,39 @@
             this.button_MainScreen.UseVisualStyleBackColor = false;
             this.button_MainScreen.Click += new System.EventHandler(this.button_MainScreen_Click);
             // 
+            // panel_SaveModel
+            // 
+            this.panel_SaveModel.Controls.Add(this.textBox_ModelName);
+            this.panel_SaveModel.Controls.Add(this.label_ModelName);
+            this.panel_SaveModel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_SaveModel.Location = new System.Drawing.Point(0, 330);
+            this.panel_SaveModel.Name = "panel_SaveModel";
+            this.panel_SaveModel.Size = new System.Drawing.Size(170, 60);
+            this.panel_SaveModel.TabIndex = 25;
+            this.panel_SaveModel.Visible = false;
+            // 
+            // textBox_ModelName
+            // 
+            this.textBox_ModelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.textBox_ModelName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_ModelName.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F);
+            this.textBox_ModelName.ForeColor = System.Drawing.Color.White;
+            this.textBox_ModelName.Location = new System.Drawing.Point(3, 32);
+            this.textBox_ModelName.Name = "textBox_ModelName";
+            this.textBox_ModelName.Size = new System.Drawing.Size(164, 22);
+            this.textBox_ModelName.TabIndex = 52;
+            this.textBox_ModelName.TextChanged += new System.EventHandler(this.textBox_ModelName_TextChanged);
+            // 
+            // label_ModelName
+            // 
+            this.label_ModelName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ModelName.ForeColor = System.Drawing.Color.White;
+            this.label_ModelName.Location = new System.Drawing.Point(3, 7);
+            this.label_ModelName.Name = "label_ModelName";
+            this.label_ModelName.Size = new System.Drawing.Size(147, 20);
+            this.label_ModelName.TabIndex = 51;
+            this.label_ModelName.Text = "Имя модели";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,6 +392,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel_Configuration.ResumeLayout(false);
             this.panel_Left.ResumeLayout(false);
+            this.panel_SaveModel.ResumeLayout(false);
+            this.panel_SaveModel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -375,5 +415,8 @@
         public System.Windows.Forms.Button button_Evaluate;
         public System.Windows.Forms.Button button_SaveModel;
         public System.Windows.Forms.Button button_MainScreen;
+        private System.Windows.Forms.Panel panel_SaveModel;
+        public System.Windows.Forms.TextBox textBox_ModelName;
+        private System.Windows.Forms.Label label_ModelName;
     }
 }

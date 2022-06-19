@@ -40,6 +40,32 @@ namespace Constructor
             }
         }
 
+        public DataForm(int dataset)
+        {
+            InitializeComponent();
+            panel_FromFile.Location = ActivePanelLocation;
+            panel_FromDatabase.Location = ActivePanelLocation;
+            panel_FromPublicDataset.Location = ActivePanelLocation;
+            panel_FromPrivateDataset.Location = ActivePanelLocation;
+            // в конструкторе панели расположены в целях удобства редактирования тут мы их перемещаем на рабочее место
+            radioButton4.Enabled = true;
+            radioButton4.Checked = true;
+
+            using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{dataset}]", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                DataSet dataSet = new DataSet();
+                sqlDataAdapter.Fill(dataSet);
+                dataGridView.DataSource = null;
+                dataGridView.DataSource = dataSet.Tables[0];
+                learningData = new LearningData(dataSet);
+                predictMarkControl0.Visible = true;
+                FirstUpdateComboBoxPredictMark();
+            }
+        }
+
         #region Из Файла
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -51,7 +77,7 @@ namespace Constructor
 
         private void button_FromFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "CSV (*.csv)|*.csv|TSV (*.tsv)|*.tsv|TXT (*.txt)|*.txt|All files (*.*)|*.*" };
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;

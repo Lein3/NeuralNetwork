@@ -49,6 +49,12 @@ namespace Constructor
 
         private void LoadNetwork()
         {
+            if (GlobalTemplate.Loaded)
+            {
+                MessageBox.Show("Для дальнейшей работы с нейронной сетью ей необходим набор данных а соответственно и повторное создание структуры");
+                GlobalTemplate.Loaded = false;
+            }
+
             Layers = GlobalTemplate.NeuralNetwork.Layers;
             textBox_ModelName.Text = GlobalTemplate.ModelName;
             checkBox_Bias.CheckedChanged -= checkBox_Bias_CheckedChanged;
@@ -295,7 +301,7 @@ namespace Constructor
             }
             if (tabControl.SelectedIndex == 2)
             {
-                numericUpDown_NeuronsCountOutput.Value = GlobalTemplate.LearningData.ParamNamesOutput.Count;
+                //numericUpDown_NeuronsCountOutput.Value = GlobalTemplate.LearningData.ParamNamesOutput.Count;
                 numericUpDown_NeuronsCountOutput_ValueChanged(null, null);
             }
         }
