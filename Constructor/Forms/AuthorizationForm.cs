@@ -13,8 +13,8 @@ namespace Constructor
 {
     public partial class AuthorizationForm : Form
     {
-        public int pashalka = 0;
-        public int selectedDatasetID { get; set; }
+        public int Pashalka = 0;
+        public int SelectedDatasetId { get; set; }
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -45,14 +45,14 @@ namespace Constructor
                     typeof(BinaryLogLoss),
                     typeof(Sigmoid),
                     typeof(None),
-                    typeof(Neuron_Bias),
-                    typeof(Neuron_Input),
-                    typeof(Neuron_Normal),
-                    typeof(Neuron_Output),
+                    typeof(NeuronBias),
+                    typeof(NeuronInput),
+                    typeof(NeuronNormal),
+                    typeof(NeuronOutput),
                     }
         };
 
-        public static JsonSerializerSettings settings = new JsonSerializerSettings() 
+        public static JsonSerializerSettings Settings = new JsonSerializerSettings() 
         { 
             TypeNameHandling = TypeNameHandling.Auto,
             SerializationBinder = SerializationBinder 
@@ -85,9 +85,9 @@ namespace Constructor
             }
         }
 
-        private void SetDescription(string Value)
+        private void SetDescription(string value)
         {
-            label_Explanation.Text = Value;
+            label_Explanation.Text = value;
         }
         #endregion
 
@@ -114,12 +114,12 @@ namespace Constructor
                 panel_Registration.Location = new Point(panel_Registration.Location.X, panel_Registration.Location.Y - 12);
                 label_Registration.Location = new Point(label_Registration.Location.X, label_Registration.Location.Y - 12);
             }
-            pashalka++;
-            if (pashalka >= 4)
+            Pashalka++;
+            if (Pashalka >= 4)
             {
                 Size = new Size(700, 800);
             }
-            if (pashalka == 6)
+            if (Pashalka == 6)
             {
                 pictureBox_Pashalka.Image = Resources.пасхалка;
             }
@@ -143,7 +143,7 @@ namespace Constructor
         {
             var login = textBox_LoginAuthorization.Text;
             var password = HashingPassword.Hashing_Function(textBox_PasswordAuthorization.Text);
-            var user = Connection.db.Value.Users.SingleOrDefault(item => item.Login == login && item.Password == password);
+            var user = Connection.Db.Value.Users.SingleOrDefault(item => item.Login == login && item.Password == password);
             if (user != null)
             {
                 GlobalTemplate.CurrentUser = user;
@@ -158,15 +158,15 @@ namespace Constructor
 
         private void button_Registration_Click(object sender, EventArgs e)
         {
-            if (Connection.db.Value.Users.Any(item => item.Login == textBox_LoginRegistration.Text))
+            if (Connection.Db.Value.Users.Any(item => item.Login == textBox_LoginRegistration.Text))
             {
                 MessageBox.Show("Логин уже занят");
                 return;
             }
 
             var user = new Users() { Login = textBox_LoginRegistration.Text, Password = HashingPassword.Hashing_Function(textBox_PasswordRegistration.Text)};
-            Connection.db.Value.Users.Add(user);
-            Connection.db.Value.SaveChanges();
+            Connection.Db.Value.Users.Add(user);
+            Connection.Db.Value.SaveChanges();
             GlobalTemplate.CurrentUser = user;
 
             AuthorizationVisibility();
@@ -190,7 +190,7 @@ namespace Constructor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string json = File.ReadAllText(openFileDialog.FileName);
-                var neural = JsonConvert.DeserializeObject<NeuralNetwork>(json, AuthorizationForm.settings);
+                var neural = JsonConvert.DeserializeObject<NeuralNetwork>(json, AuthorizationForm.Settings);
 
                 GlobalTemplate.NeuralNetwork = neural;
                 GlobalTemplate.CurrentWorkMode = GlobalTemplate.WorkMode.professionalMode;
@@ -257,7 +257,7 @@ namespace Constructor
                 GlobalTemplate.CurrentScenario = GlobalTemplate.Scenario.multiclassClassification;
                 var child = new MainForm() { PreviousForm = this };
                 child.Show();
-                child.button_Data_Click(selectedDatasetID);
+                child.button_Data_Click(SelectedDatasetId);
                 child.button_Data.Enabled = true;
                 this.Hide();
             }

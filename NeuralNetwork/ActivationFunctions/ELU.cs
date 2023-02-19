@@ -1,6 +1,6 @@
 ﻿namespace NeuralNetworkNamespace
 {
-    internal class ELU
+    internal class Elu
     {
     }
 }

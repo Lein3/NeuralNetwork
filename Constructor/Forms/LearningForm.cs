@@ -9,7 +9,7 @@ namespace Constructor
     public partial class LearningForm : Form
     {
         private enum DataGrid { learning, test };
-        private DataGrid currentDataGridView;
+        private DataGrid _currentDataGridView;
         public LearningForm()
         {
             InitializeComponent();
@@ -55,9 +55,9 @@ namespace Constructor
             GlobalTemplate.NeuralNetwork.SetCostFunction(costFunction);
 
             var name = comboBox_SelectCostFunction.GetItemText(comboBox_SelectCostFunction.SelectedItem);
-            var id = Connection.db.Value.CostFunctions.Where(item => item.Name == name).FirstOrDefault().ID;
+            var id = Connection.Db.Value.CostFunctions.Where(item => item.Name == name).FirstOrDefault().ID;
             GlobalTemplate.DatabaseNeuralNetwork.CostFunction = id;
-            Connection.db.Value.SaveChanges();
+            Connection.Db.Value.SaveChanges();
         }
 
         private void numericUpDown_ErrorLimit_ValueChanged(object sender, EventArgs e)
@@ -99,16 +99,16 @@ namespace Constructor
                     neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
                     if (currentEpoch % 250 == 0)
                     {
-                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.CurrentStatics.Last().ToString() + "\n");
                         await Task.Run(() => label_Statistcs.Text += result);
                     }
                     if (currentEpoch % 1000 == 0)
                     {
                         await Task.Run(() => label_Statistcs.Text = String.Empty);
-                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        string result = await Task.Run(() => $"Текущая эпоха {currentEpoch} средняя ошибка " + neuralNetwork.LearningStatistics.CurrentStatics.Last().ToString() + "\n");
                         await Task.Run(() => label_Statistcs.Text += result);
                     }
-                } while (neuralNetwork.LearningStatistics.currentStatics.Last() >= errorLimit);
+                } while (neuralNetwork.LearningStatistics.CurrentStatics.Last() >= errorLimit);
             }
             else if (radioButton_EpochCount.Checked == true)
             {
@@ -120,13 +120,13 @@ namespace Constructor
                     neuralNetwork.Learn_Backpropogation(learningData, 1, learningRate);
                     if (i % 250 == 0)
                     {
-                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.CurrentStatics.Last().ToString() + "\n");
                         await Task.Run(() => label_Statistcs.Text += result);
                     }
                     if (i % 1000 == 0)
                     {
                         await Task.Run(() => label_Statistcs.Text = String.Empty);
-                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.currentStatics.Last().ToString() + "\n");
+                        string result = await Task.Run(() => $"Обучили {i} из {epochTimes} средняя ошибка " + neuralNetwork.LearningStatistics.CurrentStatics.Last().ToString() + "\n");
                         await Task.Run(() => label_Statistcs.Text += result);
                     }
                 }
@@ -157,23 +157,23 @@ namespace Constructor
                 learningResults.ExamplesTestCount = GlobalTemplate.LearningData.TestExamples.Count;
                 learningResults.ResultErrorLearningExamples = 0;
 
-                Connection.db.Value.LearningResults.Add(learningResults);
-                Connection.db.Value.SaveChanges();
+                Connection.Db.Value.LearningResults.Add(learningResults);
+                Connection.Db.Value.SaveChanges();
 
                 var kek = new NeuralNetworks_LearningResults()
                 {
                     ID_NeuralNetwork = GlobalTemplate.DatabaseNeuralNetwork.ID,
                     ID_LearningResults = learningResults.ID
                 };
-                Connection.db.Value.NeuralNetworks_LearningResults.Add(kek);
-                Connection.db.Value.SaveChanges();
+                Connection.Db.Value.NeuralNetworks_LearningResults.Add(kek);
+                Connection.Db.Value.SaveChanges();
             }
         }
 
         private void button_Replace_Click(object sender, EventArgs e)
         {          
             var learningData = GlobalTemplate.LearningData;
-            switch (currentDataGridView)
+            switch (_currentDataGridView)
             {
                 case DataGrid.learning:
                     var index = dataGridView_Learning.CurrentCell.RowIndex;
@@ -195,13 +195,13 @@ namespace Constructor
         private void dataGridView_Learning_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView_Test.ClearSelection();
-            currentDataGridView = DataGrid.learning;
+            _currentDataGridView = DataGrid.learning;
         }
 
         private void dataGridView_Test_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView_Learning.ClearSelection();
-            currentDataGridView = DataGrid.test;
+            _currentDataGridView = DataGrid.test;
         }
     }
 }

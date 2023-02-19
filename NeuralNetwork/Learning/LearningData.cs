@@ -43,8 +43,8 @@ namespace NeuralNetworkNamespace
                         List<double> values = streamReader.ReadLine().Split(separator).ToList().ConvertAll(item => Convert.ToDouble(item));
                         List<double> inputSignals = values.GetRange(0, values.Count - 1);
                         List<double> expectedOutputs = values.GetRange(values.Count - 1, 1);
-                        LearningExample LearningExample = new LearningExample(inputSignals, expectedOutputs);
-                        LearningExamples.Add(LearningExample);
+                        LearningExample learningExample = new LearningExample(inputSignals, expectedOutputs);
+                        LearningExamples.Add(learningExample);
                     }
                     catch (Exception)
                     {
@@ -54,22 +54,22 @@ namespace NeuralNetworkNamespace
             }
         }
 
-        public LearningData(string path, char separator, int TestPercents) : this(path, separator)
+        public LearningData(string path, char separator, int testPercents) : this(path, separator)
         {
-            SplitOnLearningAndTestData(TestPercents);
+            SplitOnLearningAndTestData(testPercents);
         }
 
-        public LearningData(List<double[]> temp_inputSignals, List<double[]> temp_expectedOutputs)
+        public LearningData(List<double[]> tempInputSignals, List<double[]> tempExpectedOutputs)
         {
-            if (temp_inputSignals.Count != temp_expectedOutputs.Count)
+            if (tempInputSignals.Count != tempExpectedOutputs.Count)
                 throw new Exception();
 
             LearningExamples = new List<LearningExample>();
             ClassNames = new List<string>();
-            for (int i = 0; i < temp_inputSignals.Count; i++)
+            for (int i = 0; i < tempInputSignals.Count; i++)
             {
-                LearningExample LearningExample = new LearningExample(temp_inputSignals[i].ToList(), temp_expectedOutputs[i].ToList());
-                LearningExamples.Add(LearningExample);
+                LearningExample learningExample = new LearningExample(tempInputSignals[i].ToList(), tempExpectedOutputs[i].ToList());
+                LearningExamples.Add(learningExample);
             }
         }
 
@@ -98,7 +98,7 @@ namespace NeuralNetworkNamespace
             }
         }
 
-        public void SplitOnLearningAndTestData(int TestPercents)
+        public void SplitOnLearningAndTestData(int testPercents)
         {
             if (TestExamples != null)
             {
@@ -106,7 +106,7 @@ namespace NeuralNetworkNamespace
             }
 
             TestExamples = new List<LearningExample>();
-            int count = LearningExamples.Count / 100 * TestPercents;
+            int count = LearningExamples.Count / 100 * testPercents;
             Random random = new Random();
             for (int i = 0; i < count; i++)
             {

@@ -239,10 +239,10 @@ namespace Constructor
                 comboBox_SelectActivationFunctionMiddle.SelectedIndex = 5;
                 return;
             }
-            setActivationFunctionToMiddleLayer(activationFunction);
+            SetActivationFunctionToMiddleLayer(activationFunction);
         }
 
-        private void setActivationFunctionToMiddleLayer(Neuron.ActivationFunctionEnum activationFunction)
+        private void SetActivationFunctionToMiddleLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
             foreach (var layer in Layers.Skip(1))
             {
@@ -310,10 +310,10 @@ namespace Constructor
         private void comboBox_SelectActivationFunctionOutput_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var activationFunction = (Neuron.ActivationFunctionEnum)comboBox_SelectActivationFunctionOutput.SelectedValue;
-            setActivationFunctionToOutputLayer(activationFunction);
+            SetActivationFunctionToOutputLayer(activationFunction);
         }
 
-        private void setActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction)
+        private void SetActivationFunctionToOutputLayer(Neuron.ActivationFunctionEnum activationFunction)
         {
             foreach (var neuron in Layers.Last().Neurons)
             {
@@ -363,8 +363,8 @@ namespace Constructor
                     SerializedString = GetSerializedString()
                 };
                 GlobalTemplate.DatabaseNeuralNetwork = neuralNetworkForDatabase;
-                Connection.db.Value.NeuralNetworks.Add(neuralNetworkForDatabase);
-                Connection.db.Value.SaveChanges();
+                Connection.Db.Value.NeuralNetworks.Add(neuralNetworkForDatabase);
+                Connection.Db.Value.SaveChanges();
             }
         }
 
@@ -381,13 +381,13 @@ namespace Constructor
         private int GetActivationFunction()
         {
             var name = comboBox_SelectActivationFunctionMiddle.GetItemText(comboBox_SelectActivationFunctionMiddle.SelectedItem);
-            var id = Connection.db.Value.ActivationFunctions.Where(item => item.Name == name).FirstOrDefault().ID;
+            var id = Connection.Db.Value.ActivationFunctions.Where(item => item.Name == name).FirstOrDefault().ID;
             return id;
         }
 
         private string GetSerializedString()
         {
-            string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, AuthorizationForm.settings);
+            string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, AuthorizationForm.Settings);
             return json;
         }
 

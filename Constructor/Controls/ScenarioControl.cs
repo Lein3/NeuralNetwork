@@ -30,8 +30,8 @@ namespace Constructor
         {
             InitializeComponent();
 
-            var ListControls = new List<Control>() { this, panel_Main, pictureBox_Image, label_ScenarioName, label_ScenarioDescription };
-            ListControls.ForEach(item =>
+            var listControls = new List<Control>() { this, panel_Main, pictureBox_Image, label_ScenarioName, label_ScenarioDescription };
+            listControls.ForEach(item =>
             {
                 item.MouseEnter += (object sender, EventArgs e) =>
                 {
@@ -42,7 +42,7 @@ namespace Constructor
                     BackColor = Color.FromArgb(77, 77, 77);
                 };
             });
-            ListControls.Skip(1).ToList().ForEach(item => item.DoubleClick += CustomDoubleClick);
+            listControls.Skip(1).ToList().ForEach(item => item.DoubleClick += CustomDoubleClick);
         }
 
         public void CustomDoubleClick(object sender, EventArgs e)

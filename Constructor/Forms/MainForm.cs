@@ -87,9 +87,9 @@ namespace Constructor
             panel_Configuration.Visible = false;
         }
 
-        public void button_Data_Click(int datasetID)
+        public void button_Data_Click(int datasetId)
         {
-            OpenChildForm(new DataForm(datasetID));
+            OpenChildForm(new DataForm(datasetId));
             panel_Configuration.Visible = false;
         }
 
@@ -131,14 +131,14 @@ namespace Constructor
             folderFileDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             if (folderFileDialog.ShowDialog() == DialogResult.OK)
             {             
-                string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, AuthorizationForm.settings);
+                string json = JsonConvert.SerializeObject(GlobalTemplate.NeuralNetwork, Formatting.Indented, AuthorizationForm.Settings);
                 string path = $"{folderFileDialog.SelectedPath}\\{GlobalTemplate.ModelName}.nc";
                 using (StreamWriter file = new StreamWriter(path, false))
                 {
                     file.WriteLine(json);
                     file.Close();
                 }
-                var neural = JsonConvert.DeserializeObject<NeuralNetwork>(json, AuthorizationForm.settings);
+                var neural = JsonConvert.DeserializeObject<NeuralNetwork>(json, AuthorizationForm.Settings);
             }
         }
 

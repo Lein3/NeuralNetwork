@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace NeuralNetworkNamespace
 {
-    public class Neuron_Input : Neuron
+    public class NeuronInput : Neuron
     {
-        public Neuron_Input(ActivationFunctionEnum function = ActivationFunctionEnum.None) : base(function)
+        public NeuronInput(ActivationFunctionEnum function = ActivationFunctionEnum.None) : base(function)
         {
             NeuronType = Structure.NeuronType.Input;
             Weights.Add(1);
             Inputs.Add(0);
         }
 
-        public override double ProcessInformation(List<double> original_inputs)
+        public override double ProcessInformation(List<double> originalInputs)
         {
-            for (int i = 0; i < original_inputs.Count; i++)
-                Inputs[i] = Convert.ToDouble((original_inputs[i] - Min) / (Max - Min));
+            for (int i = 0; i < originalInputs.Count; i++)
+                Inputs[i] = Convert.ToDouble((originalInputs[i] - Min) / (Max - Min));
 
             Sum = 0;
             for (int i = 0; i < Inputs.Count; i++)

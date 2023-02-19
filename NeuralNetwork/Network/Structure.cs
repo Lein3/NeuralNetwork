@@ -17,20 +17,20 @@ namespace NeuralNetworkNamespace
             Bias = false;
         }
 
-        public Structure(int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers)
+        public Structure(int tempInputCount, int tempOutputCount, params int[] tempMiddleLayers)
         {
             Bias = false;
-            InputNeuronsCount = temp_inputCount;
-            OutputNeuronsCount = temp_outputCount;
-            MiddleLayers = new List<int>(temp_middleLayers);
+            InputNeuronsCount = tempInputCount;
+            OutputNeuronsCount = tempOutputCount;
+            MiddleLayers = new List<int>(tempMiddleLayers);
         }
 
-        public Structure(bool temp_bias, int temp_inputCount, int temp_outputCount, params int[] temp_middleLayers) //два конструктора потому что будет не красиво с порядком
+        public Structure(bool tempBias, int tempInputCount, int tempOutputCount, params int[] tempMiddleLayers) //два конструктора потому что будет не красиво с порядком
         {
-            Bias = temp_bias;
-            InputNeuronsCount = temp_inputCount;
-            OutputNeuronsCount = temp_outputCount;
-            MiddleLayers = new List<int>(temp_middleLayers);
+            Bias = tempBias;
+            InputNeuronsCount = tempInputCount;
+            OutputNeuronsCount = tempOutputCount;
+            MiddleLayers = new List<int>(tempMiddleLayers);
         }
     }
 }

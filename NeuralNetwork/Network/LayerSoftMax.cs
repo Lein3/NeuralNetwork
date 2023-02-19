@@ -10,7 +10,7 @@ namespace NeuralNetworkNamespace
             Neurons = new List<Neuron>();
             for (int i = 0; i < currentLayerNeuronsCount; i++)
             {
-                Neuron neuronOutput = new Neuron_Output(previousLayerNeuronsCount, Neuron.ActivationFunctionEnum.Sigmoid);
+                Neuron neuronOutput = new NeuronOutput(previousLayerNeuronsCount, Neuron.ActivationFunctionEnum.Sigmoid);
                 Neurons.Add(neuronOutput);
             }
         }

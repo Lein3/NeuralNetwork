@@ -19,7 +19,7 @@ namespace Constructor
                 return;
             }
             label_Username.Text = "Здравствуйте, " + GlobalTemplate.CurrentUser.Login;
-            foreach (var network in Connection.db.Value.NeuralNetworks.Where(item => item.Owner == GlobalTemplate.CurrentUser.ID))
+            foreach (var network in Connection.Db.Value.NeuralNetworks.Where(item => item.Owner == GlobalTemplate.CurrentUser.ID))
             {
                 var control = new UserModelControl(network);
                 control.BackColor = Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -55,7 +55,7 @@ namespace Constructor
         private void CustomDoubleClick(object sender, EventArgs e)
         {
             var control = sender as UserModelControl;
-            var neuralNetwork = JsonConvert.DeserializeObject<NeuralNetwork>(control.NeuralNetworks.SerializedString, AuthorizationForm.settings);
+            var neuralNetwork = JsonConvert.DeserializeObject<NeuralNetwork>(control.NeuralNetworks.SerializedString, AuthorizationForm.Settings);
 
             GlobalTemplate.NeuralNetwork = neuralNetwork;
             GlobalTemplate.DatabaseNeuralNetwork = control.NeuralNetworks;

@@ -18,7 +18,7 @@ namespace Constructor
             label_Name.Text = CurrentDataset.Name;
             label_CreationDate.Text = $"Дата создания: {CurrentDataset.CreationDate.ToShortDateString()}";
 
-            using (SqlConnection sqlConnection = new SqlConnection(Connection.db.Value.Database.Connection.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(Connection.Db.Value.Database.Connection.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand($"SELECT TOP(1) * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{dataset.ID_Table}]", sqlConnection);
@@ -34,7 +34,7 @@ namespace Constructor
         private void button_Replace_Click(object sender, EventArgs e)
         {
             var parent = ParentForm as UserDatasetsForm;
-            parent.PreviousForm.selectedDatasetID = CurrentDataset.ID_Table;
+            parent.PreviousForm.SelectedDatasetId = CurrentDataset.ID_Table;
             parent.DialogResult = DialogResult.OK;
             parent.Close();
         }

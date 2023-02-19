@@ -2,21 +2,21 @@
 
 namespace NeuralNetworkNamespace
 {
-    public class Neuron_Output : Neuron
+    public class NeuronOutput : Neuron
     {
-        public Neuron_Output(int temp_previousLayerNeuronsCount, ActivationFunctionEnum function = ActivationFunctionEnum.Sigmoid) : base(function)
+        public NeuronOutput(int tempPreviousLayerNeuronsCount, ActivationFunctionEnum function = ActivationFunctionEnum.Sigmoid) : base(function)
         {
             NeuronType = Structure.NeuronType.Output;
-            for (int i = 0; i < temp_previousLayerNeuronsCount; i++)
+            for (int i = 0; i < tempPreviousLayerNeuronsCount; i++)
             {
                 Weights.Add(Rnd.NextDouble() * 2 - 1);
                 Inputs.Add(0);
             }
         }
 
-        public override double ProcessInformation(List<double> original_inputs)
+        public override double ProcessInformation(List<double> originalInputs)
         {
-            Inputs = new List<double>(original_inputs);
+            Inputs = new List<double>(originalInputs);
             Sum = 0;
             for (int i = 0; i < Inputs.Count; i++)
                 Sum += Inputs[i] * Weights[i];
@@ -29,8 +29,8 @@ namespace NeuralNetworkNamespace
         {
             for (int i = 0; i < Weights.Count; i++)
             {
-                double new_weight = Weights[i] + (learningRate * -Error * Inputs[i]);
-                Weights[i] = new_weight;
+                double newWeight = Weights[i] + (learningRate * -Error * Inputs[i]);
+                Weights[i] = newWeight;
             }
         }
     }

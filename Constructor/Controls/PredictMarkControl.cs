@@ -19,18 +19,18 @@ namespace Constructor
             var parent = ParentForm as DataForm;
             if (GlobalTemplate.CurrentScenario == GlobalTemplate.Scenario.binaryClassification || MarkIndex == 0)
             {
-                parent.learningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
+                parent.LearningData.SwapToParamOutput(comboBox_PredictMark.SelectedIndex);
                 parent.dataGridView.DataSource = null;
-                parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
+                parent.dataGridView.DataSource = parent.LearningData.ConvertToDotNetDataSet().Tables[0];
                 parent.FirstUpdateComboBoxPredictMark();
             }
             else
             {
-                parent.learningData.ParamNamesOutput.Add(null);
-                parent.learningData.MoveToParamOutput(comboBox_PredictMark.SelectedIndex);
+                parent.LearningData.ParamNamesOutput.Add(null);
+                parent.LearningData.MoveToParamOutput(comboBox_PredictMark.SelectedIndex);
                 button_AddMark.Enabled = true;
                 parent.dataGridView.DataSource = null;
-                parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
+                parent.dataGridView.DataSource = parent.LearningData.ConvertToDotNetDataSet().Tables[0];
                 parent.UpdateAllComboBoxPredictMark();
             }
             textBox_PredictMarkName.Text = "Класс " + comboBox_PredictMark.GetItemText(comboBox_PredictMark.SelectedItem);
@@ -57,31 +57,31 @@ namespace Constructor
 
             var parent = ParentForm as DataForm;
             parent.Controls.Remove(this);
-            parent.learningData.MoveToParamInput(MarkIndex);
-            parent.learningData.ClassNames.Remove(parent.learningData.ClassNames.Last());
+            parent.LearningData.MoveToParamInput(MarkIndex);
+            parent.LearningData.ClassNames.Remove(parent.LearningData.ClassNames.Last());
             parent.dataGridView.DataSource = null;
-            parent.dataGridView.DataSource = parent.learningData.ConvertToDotNetDataSet().Tables[0];
+            parent.dataGridView.DataSource = parent.LearningData.ConvertToDotNetDataSet().Tables[0];
             parent.UpdateAllComboBoxPredictMark();
         }
 
         private void PredictMarkControl_Load(object sender, EventArgs e)
         {
             var parent = ParentForm as DataForm;
-            comboBox_PredictMark.DataSource = parent?.learningData?.ParamNamesInput.Concat(parent.learningData.ParamNamesOutput).ToList();
+            comboBox_PredictMark.DataSource = parent?.LearningData?.ParamNamesInput.Concat(parent.LearningData.ParamNamesOutput).ToList();
             comboBox_PredictMark.SelectedIndex = comboBox_PredictMark.Items.Count - 1 - MarkIndex;         
         }
 
         private void textBox_PredictMarkName_TextChanged(object sender, EventArgs e)
         {
             var parent = ParentForm as DataForm;
-            if (parent.learningData.ClassNames.Count <= MarkIndex)
+            if (parent.LearningData.ClassNames.Count <= MarkIndex)
             {
-                for (int i = parent.learningData.ClassNames.Count; i < MarkIndex + 1; i++)
+                for (int i = parent.LearningData.ClassNames.Count; i < MarkIndex + 1; i++)
                 {
-                    parent.learningData.ClassNames.Add("");
+                    parent.LearningData.ClassNames.Add("");
                 }               
             }
-            parent.learningData.ClassNames[MarkIndex] = textBox_PredictMarkName.Text;
+            parent.LearningData.ClassNames[MarkIndex] = textBox_PredictMarkName.Text;
             parent.UpdateAllComboBoxPredictMark();
         }
     }

@@ -58,44 +58,44 @@ namespace Constructor
                 startY += 60;
             }
 
-            var label_Predict = new Label();
-            label_Predict.AutoSize = true;
-            label_Predict.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label_Predict.ForeColor = System.Drawing.Color.White;
-            label_Predict.Location = new System.Drawing.Point(startX + 40, startY + 20);
-            label_Predict.Size = new System.Drawing.Size(120, 30);
-            label_Predict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            panel_Predict.Controls.Add(label_Predict);
+            var labelPredict = new Label();
+            labelPredict.AutoSize = true;
+            labelPredict.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            labelPredict.ForeColor = System.Drawing.Color.White;
+            labelPredict.Location = new System.Drawing.Point(startX + 40, startY + 20);
+            labelPredict.Size = new System.Drawing.Size(120, 30);
+            labelPredict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            panel_Predict.Controls.Add(labelPredict);
 
-            var button_Predict = new Button();
-            button_Predict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            button_Predict.Cursor = System.Windows.Forms.Cursors.Hand;
-            button_Predict.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
-            button_Predict.FlatAppearance.BorderSize = 0;
-            button_Predict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button_Predict.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button_Predict.ForeColor = System.Drawing.Color.White;
-            button_Predict.Location = new System.Drawing.Point(startX, startY + 60);
-            button_Predict.Size = new System.Drawing.Size(120, 50);
-            button_Predict.Text = "Предсказать";
-            button_Predict.UseVisualStyleBackColor = false;
-            button_Predict.Click += button_Predict_Click;
-            panel_Predict.Controls.Add(button_Predict);
+            var buttonPredict = new Button();
+            buttonPredict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            buttonPredict.Cursor = System.Windows.Forms.Cursors.Hand;
+            buttonPredict.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
+            buttonPredict.FlatAppearance.BorderSize = 0;
+            buttonPredict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonPredict.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            buttonPredict.ForeColor = System.Drawing.Color.White;
+            buttonPredict.Location = new System.Drawing.Point(startX, startY + 60);
+            buttonPredict.Size = new System.Drawing.Size(120, 50);
+            buttonPredict.Text = "Предсказать";
+            buttonPredict.UseVisualStyleBackColor = false;
+            buttonPredict.Click += button_Predict_Click;
+            panel_Predict.Controls.Add(buttonPredict);
 
-            var button_GenerateRandom = new Button();
-            button_GenerateRandom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            button_GenerateRandom.Cursor = System.Windows.Forms.Cursors.Hand;
-            button_GenerateRandom.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
-            button_GenerateRandom.FlatAppearance.BorderSize = 0;
-            button_GenerateRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button_GenerateRandom.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button_GenerateRandom.ForeColor = System.Drawing.Color.White;
-            button_GenerateRandom.Location = new System.Drawing.Point(startX + 140, startY + 60);
-            button_GenerateRandom.Size = new System.Drawing.Size(120, 50);
-            button_GenerateRandom.Text = "Сгенерировать пример";
-            button_GenerateRandom.UseVisualStyleBackColor = false;
-            button_GenerateRandom.Click += button_Generate_Click;
-            panel_Predict.Controls.Add(button_GenerateRandom);
+            var buttonGenerateRandom = new Button();
+            buttonGenerateRandom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            buttonGenerateRandom.Cursor = System.Windows.Forms.Cursors.Hand;
+            buttonGenerateRandom.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(35)))));
+            buttonGenerateRandom.FlatAppearance.BorderSize = 0;
+            buttonGenerateRandom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonGenerateRandom.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            buttonGenerateRandom.ForeColor = System.Drawing.Color.White;
+            buttonGenerateRandom.Location = new System.Drawing.Point(startX + 140, startY + 60);
+            buttonGenerateRandom.Size = new System.Drawing.Size(120, 50);
+            buttonGenerateRandom.Text = "Сгенерировать пример";
+            buttonGenerateRandom.UseVisualStyleBackColor = false;
+            buttonGenerateRandom.Click += button_Generate_Click;
+            panel_Predict.Controls.Add(buttonGenerateRandom);
         }
 
         private void button_Predict_Click(object sender, EventArgs e)
@@ -185,7 +185,7 @@ namespace Constructor
                 label_Learning.Text = "Тестовая выборка количество критических примеров " + criticalCount.ToString() + " \n";
             }
 
-            var Dictionary = new Dictionary<string, int>();
+            var dictionary = new Dictionary<string, int>();
             for (int i = 0; i < GlobalTemplate.LearningData.ClassNames.Count; i++)
             {
                 var expected = 0;
@@ -200,11 +200,11 @@ namespace Constructor
                     if (actualAnswer >= 0.6)
                         actual++;
                 }
-                Dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]}", expected);
-                Dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]}", actual);
+                dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]}", expected);
+                dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]}", actual);
             }
 
-            foreach (var pair in Dictionary)
+            foreach (var pair in dictionary)
             {
                 label_Learning.Text += $"   {pair.Key} - {pair.Value}   ";
                 label_Learning.Text += "|";
@@ -232,7 +232,7 @@ namespace Constructor
                 label_Test.Text = "Тестовая выборка количество критических примеров " + criticalCount.ToString() + " \n";
             }           
 
-            var Dictionary = new Dictionary<string, int>();
+            var dictionary = new Dictionary<string, int>();
             for (int i = 0; i < GlobalTemplate.LearningData.ClassNames.Count; i++)
             {
                 var expected = 0;
@@ -247,11 +247,11 @@ namespace Constructor
                     if (actualAnswer >= 0.6)
                         actual++;
                 }
-                Dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]}", expected);
-                Dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]}", actual);
+                dictionary.Add($"в наборе данных было {GlobalTemplate.LearningData.ClassNames[i]}", expected);
+                dictionary.Add($"нейросеть ответила {GlobalTemplate.LearningData.ClassNames[i]}", actual);
             }
             
-            foreach (var pair in Dictionary)
+            foreach (var pair in dictionary)
             {
                 label_Test.Text += $"   {pair.Key} - {pair.Value}   ";
                 label_Test.Text += "|";

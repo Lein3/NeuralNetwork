@@ -4,11 +4,11 @@ namespace Constructor
 {
     public static class Connection
     {
-        public static Lazy<NeuralNetworkConstructorEntities> db { get; set; }
+        public static Lazy<NeuralNetworkConstructorEntities> Db { get; set; }
 
         static Connection()
         {
-            db = new Lazy<NeuralNetworkConstructorEntities>();
+            Db = new Lazy<NeuralNetworkConstructorEntities>();
         }
     }
 }

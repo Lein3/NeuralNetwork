@@ -7,10 +7,10 @@ namespace NeuralNetworkNamespace
         public List<double> InputSignals { get; set; }
         public List<double> ExpectedOutputs { get; set; }
 
-        public LearningExample(List<double> temp_inputSignals, List<double> temp_expectedOutputs)
+        public LearningExample(List<double> tempInputSignals, List<double> tempExpectedOutputs)
         {
-            InputSignals = temp_inputSignals;
-            ExpectedOutputs = temp_expectedOutputs;
+            InputSignals = tempInputSignals;
+            ExpectedOutputs = tempExpectedOutputs;
         }
     }
 }

@@ -2,14 +2,14 @@
 
 namespace NeuralNetworkNamespace
 {
-    public class Neuron_Bias : Neuron
+    public class NeuronBias : Neuron
     {
-        public Neuron_Bias() : base(ActivationFunctionEnum.None)
+        public NeuronBias() : base(ActivationFunctionEnum.None)
         {
             NeuronType = Structure.NeuronType.Bias;
         }
 
-        public override double ProcessInformation(List<double> original_inputs)
+        public override double ProcessInformation(List<double> originalInputs)
         {
             return 1;
         }

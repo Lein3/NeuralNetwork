@@ -2,7 +2,7 @@
 
 namespace NeuralNetworkNamespace
 {
-    internal class ReLU : IActivationFunction
+    internal class ReLu : IActivationFunction
     {
         public double Function(double input)
         {

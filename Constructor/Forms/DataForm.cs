@@ -14,11 +14,11 @@ namespace Constructor
 {
     public partial class DataForm : Form
     {
-        public LearningData learningData { get; set; }
+        public LearningData LearningData { get; set; }
         private Point ActivePanelLocation { get; set; } = new Point(300, 150);
         private char FileSeparator { get; set; } = ';';
-        private SqlConnectionStringBuilder dynamicSqlConnectionStringBuilder { get; set; }
-        private SqlConnectionStringBuilder localSqlConnectionStringBuilder { get; set; } = new SqlConnectionStringBuilder("Data Source=localhost;Initial Catalog=NeuralNetworkConstructor;Integrated Security=True");
+        private SqlConnectionStringBuilder DynamicSqlConnectionStringBuilder { get; set; }
+        private SqlConnectionStringBuilder LocalSqlConnectionStringBuilder { get; set; } = new SqlConnectionStringBuilder("Data Source=localhost;Initial Catalog=NeuralNetworkConstructor;Integrated Security=True");
 
         public DataForm()
         {
@@ -51,7 +51,7 @@ namespace Constructor
             radioButton4.Enabled = true;
             radioButton4.Checked = true;
 
-            using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(LocalSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{dataset}]", sqlConnection);
@@ -60,7 +60,7 @@ namespace Constructor
                 sqlDataAdapter.Fill(dataSet);
                 dataGridView.DataSource = null;
                 dataGridView.DataSource = dataSet.Tables[0];
-                learningData = new LearningData(dataSet);
+                LearningData = new LearningData(dataSet);
                 predictMarkControl0.Visible = true;
                 FirstUpdateComboBoxPredictMark();
             }
@@ -96,8 +96,8 @@ namespace Constructor
                     radioButton_Separator2.Checked = true;
                 }
             }
-            learningData = new LearningData(openFileDialog.FileName, FileSeparator);
-            dataGridView.DataSource = learningData.ConvertToDotNetDataSet().Tables[0];
+            LearningData = new LearningData(openFileDialog.FileName, FileSeparator);
+            dataGridView.DataSource = LearningData.ConvertToDotNetDataSet().Tables[0];
             textBox_FromFileSaveName.Text = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
             predictMarkControl0.Visible = true;
             FirstUpdateComboBoxPredictMark();
@@ -130,31 +130,31 @@ namespace Constructor
                 return;
             }
 
-            dynamicSqlConnectionStringBuilder = new SqlConnectionStringBuilder(d.ConnectionString);
-            label_DataSourceName.Text = dynamicSqlConnectionStringBuilder.InitialCatalog;
+            DynamicSqlConnectionStringBuilder = new SqlConnectionStringBuilder(d.ConnectionString);
+            label_DataSourceName.Text = DynamicSqlConnectionStringBuilder.InitialCatalog;
             comboBox_SelectDatasetFromDataSource.DataSource = GetDatasetsFromDataSource();
         }
 
         private List<string> GetDatasetsFromDataSource()
         {
-            using (SqlConnection sqlConnection = new SqlConnection(dynamicSqlConnectionStringBuilder.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(DynamicSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME != 'sysdiagrams'", sqlConnection);
-                var SelectedTables = sqlCommand.ExecuteReader();
-                var TableNames = new List<string>();
-                while (SelectedTables.Read())
+                var selectedTables = sqlCommand.ExecuteReader();
+                var tableNames = new List<string>();
+                while (selectedTables.Read())
                 {
-                    TableNames.Add(SelectedTables.GetString(0));
+                    tableNames.Add(selectedTables.GetString(0));
                 }
-                return TableNames;
+                return tableNames;
             }
         }
 
         private void comboBox_SelectDatasetsFromDataSource_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var tableName = comboBox_SelectDatasetFromDataSource.GetItemText(comboBox_SelectDatasetFromDataSource.SelectedItem); //по другому не обновляется либо криво идет
-            using (SqlConnection sqlConnection = new SqlConnection(dynamicSqlConnectionStringBuilder.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(DynamicSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [{tableName}]", sqlConnection);
@@ -164,7 +164,7 @@ namespace Constructor
                 dataGridView.DataSource = dataSet.Tables[0];
                 try
                 {
-                    learningData = new LearningData(dataSet);
+                    LearningData = new LearningData(dataSet);
                     predictMarkControl0.Visible = true;
                     FirstUpdateComboBoxPredictMark();
                 }
@@ -196,16 +196,16 @@ namespace Constructor
             comboBox_SelectPrivateDataset.ValueMember = "ID_Table";
         }
 
-        private IQueryable<Datasets> GetDatasetsFromLocalDatabase(Nullable<int> id_Owner)
+        private IQueryable<Datasets> GetDatasetsFromLocalDatabase(Nullable<int> idOwner)
         {
-            var Datasets = Connection.db.Value.Datasets.Where(item => item.Owner == id_Owner).OrderBy(item => item.Name);
-            return Datasets;
+            var datasets = Connection.Db.Value.Datasets.Where(item => item.Owner == idOwner).OrderBy(item => item.Name);
+            return datasets;
         }
 
         private void comboBox_SelectDatasetFromLocalDatabase_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var tableName = (sender as ComboBox).SelectedValue.ToString();        
-            using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(LocalSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{tableName}]", sqlConnection);
@@ -214,7 +214,7 @@ namespace Constructor
                 sqlDataAdapter.Fill(dataSet);
                 dataGridView.DataSource = null;
                 dataGridView.DataSource = dataSet.Tables[0];
-                learningData = new LearningData(dataSet);
+                LearningData = new LearningData(dataSet);
                 predictMarkControl0.Visible = true;
                 FirstUpdateComboBoxPredictMark();
             }
@@ -234,10 +234,10 @@ namespace Constructor
 
         public void FirstUpdateComboBoxPredictMark()
         {
-            label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
-            label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов) ";
+            label_DataPreviewInfo.Text = $"Всего {LearningData.ParamNamesInput.Count + LearningData.ParamNamesOutput.Count} параметров";
+            label_DataPreviewInfo.Text += $" и {LearningData.LearningExamples.Count} пример(ов) ";
 
-            var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
+            var paramsNames = LearningData.ParamNamesInput.Concat(LearningData.ParamNamesOutput).ToList();
             predictMarkControl0.button_AddMark.Enabled = true;
             predictMarkControl0.comboBox_PredictMark.DataSource = paramsNames;
             predictMarkControl0.comboBox_PredictMark.SelectedIndex = predictMarkControl0.comboBox_PredictMark.Items.Count - 1;
@@ -249,16 +249,16 @@ namespace Constructor
         {
             foreach (PredictMarkControl control in Controls.OfType<PredictMarkControl>())
             {
-                var paramsNames = learningData.ParamNamesInput.Concat(learningData.ParamNamesOutput).ToList();
+                var paramsNames = LearningData.ParamNamesInput.Concat(LearningData.ParamNamesOutput).ToList();
                 control.comboBox_PredictMark.DataSource = paramsNames;
-                var index = paramsNames.Count - learningData.ParamNamesOutput.Count + control.MarkIndex;
+                var index = paramsNames.Count - LearningData.ParamNamesOutput.Count + control.MarkIndex;
                 control.comboBox_PredictMark.SelectedIndex = index;
             }
 
-            label_DataPreviewInfo.Text = $"Всего {learningData.ParamNamesInput.Count + learningData.ParamNamesOutput.Count} параметров";
-            label_DataPreviewInfo.Text += $" и {learningData.LearningExamples.Count} пример(ов)    ";
+            label_DataPreviewInfo.Text = $"Всего {LearningData.ParamNamesInput.Count + LearningData.ParamNamesOutput.Count} параметров";
+            label_DataPreviewInfo.Text += $" и {LearningData.LearningExamples.Count} пример(ов)    ";
             var stringBuilder = new StringBuilder();
-            foreach (var pair in learningData.ClassesCount)
+            foreach (var pair in LearningData.ClassesCount)
             {
                 stringBuilder.Append($"{pair.Key} - {pair.Value}    ");
             }
@@ -269,26 +269,26 @@ namespace Constructor
         {
             if (panel_FromFile.Visible == true && checkBox_FromFileSaveCheck.Checked == true)
             {
-                if (Connection.db.Value.Datasets.Where(item => item.Owner == null).Any(item => item.Name == textBox_FromFileSaveName.Text))
+                if (Connection.Db.Value.Datasets.Where(item => item.Owner == null).Any(item => item.Name == textBox_FromFileSaveName.Text))
                 {
                     if (MessageBox.Show("В базе данных уже есть набор данных с таким названием. Продолжить?", "Наименование уже существует", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        while (Connection.db.Value.Datasets.Where(item => item.Owner == null).Any(item => item.Name == textBox_FromFileSaveName.Text))
+                        while (Connection.Db.Value.Datasets.Where(item => item.Owner == null).Any(item => item.Name == textBox_FromFileSaveName.Text))
                         {
                             textBox_FromFileSaveName.Text = textBox_FromFileSaveName.Text + "0";
                         }
-                        var dataset = learningData.ConvertToDotNetDataSet();
+                        var dataset = LearningData.ConvertToDotNetDataSet();
                         CreateTableInLocalDatabase(dataset);
                     }
                 }
                 else
                 {
-                    var dataset = learningData.ConvertToDotNetDataSet();
+                    var dataset = LearningData.ConvertToDotNetDataSet();
                     CreateTableInLocalDatabase(dataset);
                 }
             }
 
-            GlobalTemplate.LearningData = learningData;
+            GlobalTemplate.LearningData = LearningData;
             var parent = this.ParentForm as MainForm;
             parent.button_Configuration.Enabled = true;
             parent.RecolorButtons(parent.button_Configuration);
@@ -299,20 +299,20 @@ namespace Constructor
         {
             //для начала нам нужно определить имя таблицы в базе данных
             //мы получаем список всех датасетов из бд по их id_Table и к последнему нужно добавить +1
-            int lastID;
+            int lastId;
             try
             {
-                lastID = Connection.db.Value.Datasets.OrderByDescending(item => item.ID_Table).First().ID_Table;
-                lastID += 1;
+                lastId = Connection.Db.Value.Datasets.OrderByDescending(item => item.ID_Table).First().ID_Table;
+                lastId += 1;
             }
             catch
             {
-                lastID = 1;
+                lastId = 1;
             }
             
 
             //теперь нужно создать запрос на создание таблицы под наш датасет в базе
-            StringBuilder createQuery = new StringBuilder($"CREATE TABLE [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastID}]");
+            StringBuilder createQuery = new StringBuilder($"CREATE TABLE [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastId}]");
             createQuery.Append("(");
             for (int i = 0; i < dataSet.Tables[0].Columns.Count; i++)
             {
@@ -324,7 +324,7 @@ namespace Constructor
             createQuery.Append(")");
 
             //теперь нужно создать таблицу под наш датасет в базе
-            using (SqlConnection sqlConnection = new SqlConnection(localSqlConnectionStringBuilder.ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(LocalSqlConnectionStringBuilder.ConnectionString))
             {
                 sqlConnection.Open();
                 SqlTransaction sqlTransaction = sqlConnection.BeginTransaction();
@@ -335,7 +335,7 @@ namespace Constructor
                 sqlCommandCreateTable.ExecuteNonQuery();
 
                 //вставляем данные
-                SqlCommand sqlCommandInsertIntoTable = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastID}]", sqlConnection);
+                SqlCommand sqlCommandInsertIntoTable = new SqlCommand($"SELECT * FROM [ДинамическаяЧасть_ПользовательскиеДатасеты].[{lastId}]", sqlConnection);
                 sqlCommandInsertIntoTable.Transaction = sqlTransaction;
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommandInsertIntoTable);
                 SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
@@ -347,21 +347,21 @@ namespace Constructor
                 sqlCommandInsertIntoDatasets.Transaction = sqlTransaction;
 
                 SqlParameter ownerParam;
-                SqlParameter idTableParam = new SqlParameter("@ID_Table", lastID);
-                SqlParameter NameParam = new SqlParameter("@Name", textBox_FromFileSaveName.Text);
-                SqlParameter CreationDateParam = new SqlParameter("@CreationDate", DateTime.Today);
-                SqlParameter DeleteDateParam;
+                SqlParameter idTableParam = new SqlParameter("@ID_Table", lastId);
+                SqlParameter nameParam = new SqlParameter("@Name", textBox_FromFileSaveName.Text);
+                SqlParameter creationDateParam = new SqlParameter("@CreationDate", DateTime.Today);
+                SqlParameter deleteDateParam;
                 if (owner == null)
                 {
                     ownerParam = new SqlParameter("@Owner", DBNull.Value);
-                    DeleteDateParam = new SqlParameter("@DeleteDate", DateTime.Today.AddDays(5));
+                    deleteDateParam = new SqlParameter("@DeleteDate", DateTime.Today.AddDays(5));
                 }
                 else
                 {
                     ownerParam = new SqlParameter("@Owner", owner);
-                    DeleteDateParam = new SqlParameter("@DeleteDate", DBNull.Value);
+                    deleteDateParam = new SqlParameter("@DeleteDate", DBNull.Value);
                 }
-                sqlCommandInsertIntoDatasets.Parameters.AddRange( new SqlParameter[] { ownerParam, idTableParam, NameParam, CreationDateParam, DeleteDateParam } );
+                sqlCommandInsertIntoDatasets.Parameters.AddRange( new SqlParameter[] { ownerParam, idTableParam, nameParam, creationDateParam, deleteDateParam } );
                 sqlCommandInsertIntoDatasets.ExecuteNonQuery();
 
                 sqlTransaction.Commit();

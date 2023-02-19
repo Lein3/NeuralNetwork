@@ -11,15 +11,15 @@ namespace NeuralNetworkNamespace
         public enum CostFunctionEnum { AbsoluteError, BinaryLogLoss, CategoryLogLoss, SquaredError };
         public ICostFunction CostFunction { get; set; }
         public LearningStatistics LearningStatistics { get; set; }
-        public NeuralNetwork(List<Layer> temp_layers)
+        public NeuralNetwork(List<Layer> tempLayers)
         {
             Structure = new Structure();
-            Layers = temp_layers;
+            Layers = tempLayers;
             LearningStatistics = new LearningStatistics();
         }
-        public NeuralNetwork(Structure temp_Structure, CostFunctionEnum costFunctionEnum)
+        public NeuralNetwork(Structure tempStructure, CostFunctionEnum costFunctionEnum)
         {
-            Structure = temp_Structure;
+            Structure = tempStructure;
             Layers = new List<Layer>();
             LearningStatistics = new LearningStatistics();
             CreateInputLayer();
@@ -44,12 +44,12 @@ namespace NeuralNetworkNamespace
             List<Neuron> inputNeurons = new List<Neuron>();
             for (int i = 0; i < Structure.InputNeuronsCount; i++)
             {
-                Neuron neuron = new Neuron_Input();
+                Neuron neuron = new NeuronInput();
                 inputNeurons.Add(neuron);
             }
             if (Structure.Bias == true)
             {
-                Neuron bias = new Neuron_Bias();
+                Neuron bias = new NeuronBias();
                 inputNeurons.Add(bias);
             }
             Layer inputLayer = new Layer(inputNeurons);
@@ -64,12 +64,12 @@ namespace NeuralNetworkNamespace
                 Layer lastLayerNeuronCount = Layers.Last();
                 for (int j = 0; j < Structure.MiddleLayers[i]; j++)
                 {
-                    Neuron neuron = new Neuron_Normal(lastLayerNeuronCount.Neurons.Count);
+                    Neuron neuron = new NeuronNormal(lastLayerNeuronCount.Neurons.Count);
                     middleNeurons.Add(neuron);
                 }
                 if (Structure.Bias == true)
                 {
-                    Neuron bias = new Neuron_Bias();
+                    Neuron bias = new NeuronBias();
                     middleNeurons.Add(bias);
                 }
                 Layer middleLayer = new Layer(middleNeurons);
@@ -83,7 +83,7 @@ namespace NeuralNetworkNamespace
             Layer lastLayerNeuronCount = Layers.Last();
             for (int i = 0; i < Structure.OutputNeuronsCount; i++)
             {
-                Neuron neuron = new Neuron_Output(lastLayerNeuronCount.Neurons.Count);
+                Neuron neuron = new NeuronOutput(lastLayerNeuronCount.Neurons.Count);
                 outputNeurons.Add(neuron);
             }
             Layer outputLayer = new Layer(outputNeurons);
@@ -99,15 +99,15 @@ namespace NeuralNetworkNamespace
                     break;
                 case CostFunctionEnum.BinaryLogLoss:
                     CostFunction = new BinaryLogLoss();
-                    LearningStatistics.currentStatics = LearningStatistics.LogLoss;
+                    LearningStatistics.CurrentStatics = LearningStatistics.LogLoss;
                     break;
                 case CostFunctionEnum.CategoryLogLoss:
                     CostFunction = new CategoryLogLoss();
-                    LearningStatistics.currentStatics = LearningStatistics.LogLoss;
+                    LearningStatistics.CurrentStatics = LearningStatistics.LogLoss;
                     break;
                 case CostFunctionEnum.SquaredError:
                     CostFunction = new SquaredError();
-                    LearningStatistics.currentStatics = LearningStatistics.MSE;
+                    LearningStatistics.CurrentStatics = LearningStatistics.Mse;
                     break;
             }
         }
@@ -170,9 +170,9 @@ namespace NeuralNetworkNamespace
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
-                LearningStatistics.currentStatics.Add(currentEpochError.Average());
+                LearningStatistics.CurrentStatics.Add(currentEpochError.Average());
             } 
-            while (LearningStatistics.currentStatics.Last() >= errorLimit);
+            while (LearningStatistics.CurrentStatics.Last() >= errorLimit);
         }
 
         public void Learn_Backpropogation(LearningData learningData, int epochTimes, double learningRate = 0.1)
@@ -188,7 +188,7 @@ namespace NeuralNetworkNamespace
                     Learn_ChangeWeights(learningRate);
                 }
                 learningData.Mix();
-                LearningStatistics.currentStatics.Add(currentEpochError.Average());
+                LearningStatistics.CurrentStatics.Add(currentEpochError.Average());
             }
         }
 

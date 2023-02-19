@@ -4,15 +4,15 @@ namespace NeuralNetworkNamespace
 {
     public class LearningStatistics //щас это хуета
     {
-        public List<double> MAE { get; set; } // средняя абсолютная ошибка
-        public List<double> MSE { get; set; } // средняя квадратичная ошибка
+        public List<double> Mae { get; set; } // средняя абсолютная ошибка
+        public List<double> Mse { get; set; } // средняя квадратичная ошибка
         public List<double> LogLoss { get; set; } // средняя квадратичная ошибка
-        public List<double> currentStatics { get; set; }
+        public List<double> CurrentStatics { get; set; }
 
         public LearningStatistics()
         {
-            MAE = new List<double>();
-            MSE = new List<double>();
+            Mae = new List<double>();
+            Mse = new List<double>();
             LogLoss = new List<double>();
         }
     }

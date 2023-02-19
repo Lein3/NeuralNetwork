@@ -13,9 +13,9 @@ namespace NeuralNetworkNamespace
 
         }
 
-        public Layer(List<Neuron> temp_Neurons)
+        public Layer(List<Neuron> tempNeurons)
         {
-            Neurons = temp_Neurons;
+            Neurons = tempNeurons;
         }
 
         public Layer(Structure.NeuronType neuronType, int previousLayerNeuronsCount, int currentLayerNeuronsCount, bool bias = false)
@@ -26,22 +26,22 @@ namespace NeuralNetworkNamespace
                 switch (neuronType)
                 {
                     case Structure.NeuronType.Input:
-                        Neuron neuronInput = new Neuron_Input();
+                        Neuron neuronInput = new NeuronInput();
                         Neurons.Add(neuronInput);
                         break;
                     case Structure.NeuronType.Normal:
-                        Neuron neuronNormal = new Neuron_Normal(previousLayerNeuronsCount);
+                        Neuron neuronNormal = new NeuronNormal(previousLayerNeuronsCount);
                         Neurons.Add(neuronNormal);
                         break;
                     case Structure.NeuronType.Output:
-                        Neuron neuronOutput = new Neuron_Output(previousLayerNeuronsCount);
+                        Neuron neuronOutput = new NeuronOutput(previousLayerNeuronsCount);
                         Neurons.Add(neuronOutput);
                         break;
                 }             
             }
             if (bias == true && neuronType != Structure.NeuronType.Output)
             {
-                Neuron neuron = new Neuron_Bias();
+                Neuron neuron = new NeuronBias();
                 Neurons.Add(neuron);
             }
         }
@@ -51,7 +51,7 @@ namespace NeuralNetworkNamespace
             Neurons = new List<Neuron>();
             for (int i = 0; i < learningData.ParamNamesInput.Count; i++)
             {
-                Neuron neuron = new Neuron_Input();
+                Neuron neuron = new NeuronInput();
                 neuron.Name = learningData.ParamNamesInput[i];
 
                 var column = learningData.LearningExamples.Select(item => item.InputSignals[i]).ToList();
@@ -62,7 +62,7 @@ namespace NeuralNetworkNamespace
             }
             if (bias == true)
             {
-                Neuron neuron = new Neuron_Bias();
+                Neuron neuron = new NeuronBias();
                 Neurons.Add(neuron);
             }
         }

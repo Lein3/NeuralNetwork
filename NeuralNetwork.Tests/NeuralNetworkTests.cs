@@ -12,7 +12,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void NeuronConstructor_Test()
         {
-            Neuron neuron = new Neuron_Normal(10);
+            Neuron neuron = new NeuronNormal(10);
             Assert.IsNotNull(neuron);
             Assert.IsNotNull(neuron.Weights);
         }
@@ -20,7 +20,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void NeuronProccessInformation_Test()
         {
-            Neuron neuron = new Neuron_Normal(3);
+            Neuron neuron = new NeuronNormal(3);
             neuron.Weights = new List<double>() { -1, 0, 1 };
             neuron.ActivationFunction = new Sigmoid();
             neuron.ProcessInformation(new List<double>() { 3, 2, 1 });
@@ -31,7 +31,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void NeuronChangeWeightsErrorNotEqualsZero_Test()
         {
-            Neuron neuron = new Neuron_Normal(3);
+            Neuron neuron = new NeuronNormal(3);
             neuron.Weights = new List<double>() { -1, 0, 1 };
             neuron.Inputs = new List<double>() { 1, 1, 1 };
             neuron.Error = 5;
@@ -47,7 +47,7 @@ namespace NeuralNetworkNamespace.Tests
         [TestMethod]
         public void NeuronChangeWeightsErrorEqualsZero_Test()
         {
-            Neuron neuron = new Neuron_Normal(3);
+            Neuron neuron = new NeuronNormal(3);
             neuron.Weights = new List<double>() { -1, 0, 1 };
             neuron.Inputs = new List<double>() { 1, 1, 1 };
             neuron.Error = 0;
@@ -65,7 +65,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             List<Neuron> neurons = new List<Neuron>();
             for (int i = 0; i < 9; i++)
-                neurons.Add(new Neuron_Normal(3) { Name = "нейрон " + i.ToString()});
+                neurons.Add(new NeuronNormal(3) { Name = "нейрон " + i.ToString()});
 
             Layer layer = new Layer(neurons);
             Assert.IsNotNull(layer);
@@ -78,7 +78,7 @@ namespace NeuralNetworkNamespace.Tests
         {
             List<Neuron> neurons = new List<Neuron>();
             for (int i = 0; i < 5; i++)
-                neurons.Add(new Neuron_Normal(3) { Output = 1 });
+                neurons.Add(new NeuronNormal(3) { Output = 1 });
 
             Layer layer = new Layer(neurons);
             var signals = layer.GetSignals();
@@ -116,8 +116,8 @@ namespace NeuralNetworkNamespace.Tests
             NeuralNetwork neuralNetwork = new NeuralNetwork(structure, NeuralNetwork.CostFunctionEnum.BinaryLogLoss);
             neuralNetwork.Normalization(learningData);
             neuralNetwork.Learn_Backpropogation(learningData, 50);
-            Assert.IsNotNull(neuralNetwork.LearningStatistics.MSE);
-            Assert.IsNotNull(neuralNetwork.LearningStatistics.MAE);
+            Assert.IsNotNull(neuralNetwork.LearningStatistics.Mse);
+            Assert.IsNotNull(neuralNetwork.LearningStatistics.Mae);
         }
 
         [TestMethod]

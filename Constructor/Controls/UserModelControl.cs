@@ -20,7 +20,7 @@ namespace Constructor
             label_ActivationFunction.Text += NeuralNetworks.ActivationFunctions.Name;
             label_CostFunction.Text += NeuralNetworks.CostFunctions?.Name;
 
-            var ListControls = new List<Control>()
+            var listControls = new List<Control>()
             {
                 label_ActivationFunction,
                 label_Bias,
@@ -30,11 +30,11 @@ namespace Constructor
                 label_Name,
                 label_OutputNeurons
             };
-            ListControls.ForEach(item =>
+            listControls.ForEach(item =>
             {
                 item.MouseEnter += UserModelControl_MouseEnter;
             });
-            ListControls.ToList().ForEach(item => item.DoubleClick += CustomDoubleClick);
+            listControls.ToList().ForEach(item => item.DoubleClick += CustomDoubleClick);
         }
 
         public void CustomDoubleClick(object sender, EventArgs e)
